@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<title>TopJeu - Casinos Fiables en Ligne 2025</title>
+		<link rel="icon" href="img/favicon_queen.png" type="image/x-icon" />
+		<meta
+			name="description"
+			content="Découvrez les meilleurs casinos en ligne fiables en France en 2025. Classement, avis, bonus et conseils pour jouer en toute sécurité."
+		/>
+		<style>
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
+			}
+
+			main {
+				flex: 1;
+				padding: 0 2rem;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+
+			/* Header */
+			.header {
+				background: #000;
+				color: #fff;
+				padding-top: 0;
+				padding-bottom: 0;
+				font-family: Arial, sans-serif;
+			}
+			.header__container,
+			.footer__container {
+				max-width: 1200px;
+				margin: 0 auto;
+				width: 100%;
+				padding: 0 2rem;
+				box-sizing: border-box;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.header__container {
+				padding-top: 0.3rem;
+				padding-bottom: 0.3rem;
+			}
+			.header__logo {
+				height: auto;
+				max-height: 175px;
+				min-height: 105px;
+				max-width: 100%;
+				padding: 0.5rem 0.5rem;
+				margin-right: 2rem;
+			}
+			.header__nav {
+				margin-left: auto;
+			}
+			.header__link {
+				color: #fff;
+				margin-left: 2rem;
+				text-decoration: none;
+				font-size: 1.3rem;
+			}
+
+			/* Body */
+			body {
+				margin: 0;
+				font-family: Arial, sans-serif;
+				background: #fff;
+				color: #000;
+				font-size: 1rem; /* 16px */
+			}
+
+			/* Hero Section */
+			.hero {
+				padding: 2rem;
+				padding-left: 0;
+				padding-right: 0;
+			}
+			.hero__title {
+				font-size: 2rem;
+				margin-bottom: 0.5rem;
+			}
+			.hero__meta {
+				margin: 0 0 1rem 0;
+			}
+			.hero__text {
+				max-width: 800px;
+				line-height: 1.6;
+			}
+
+			/* Filter Buttons */
+			.filter {
+				padding: 1rem;
+				padding-left: 0;
+				padding-right: 0;
+			}
+			.filter__button {
+				margin-right: 1rem;
+				padding: 0.5rem 1rem;
+				border: none;
+				background: #eee;
+				cursor: pointer;
+			}
+			.filter__button:last-child {
+				margin-right: 0;
+			}
+
+			/* Casino Cards */
+			.casino-cards {
+				padding: 1rem;
+				padding-left: 0;
+				padding-right: 0;
+				margin-top: 2rem;
+				margin-bottom: 2rem;
+			}
+			.casino-card {
+				background: #fff;
+				border-radius: 8px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				padding: 1rem;
+				margin-bottom: 1.5rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.casino-card--top {
+				border: 3px solid;
+				border-image: linear-gradient(90deg, #f90202 10%, #c40000 100%);
+				border-image-slice: 1;
+				border-radius: 8px;
+			}
+			.casino-card__info {
+				display: flex;
+				align-items: center;
+			}
+			.casino-card__image {
+				max-width: 80px;
+				width: 100%;
+				height: auto;
+				object-fit: cover;
+				border-radius: 8px;
+				margin-right: 1rem;
+			}
+			@media (max-width: 600px) {
+				.header {
+					flex-direction: column;
+					align-items: flex-start;
+					padding: 1rem;
+				}
+				.header__nav ul {
+					flex-direction: column;
+					width: 100%;
+					padding: 0;
+				}
+				.header__nav li {
+					margin-left: 0;
+					margin-bottom: 0.5rem;
+				}
+				.casino-card {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+				.casino-card__features {
+					margin-left: 0;
+					padding-left: 0;
+					margin-top: 1rem;
+				}
+				.casino-card__rating {
+					min-width: auto;
+					margin-top: 1rem;
+				}
+				.filter {
+					padding: 1rem;
+				}
+				.filter__button {
+					margin-bottom: 0.5rem;
+					width: 100%;
+				}
+
+				@media (max-height: 300px) {
+					.header {
+						padding: 1rem;
+					}
+					.header__logo {
+						max-height: 80px;
+						min-height: 60px;
+					}
+					.header__link {
+						font-size: 1rem;
+					}
+				}
+				@media (max-height: 200px) {
+					.header__logo {
+						max-height: 60px;
+						min-height: 40px;
+					}
+					.header__link {
+						font-size: 0.9rem;
+					}
+				}
+				@media (max-height: 150px) {
+					.header {
+						padding: 0.5rem;
+						flex-direction: column;
+						align-items: center;
+					}
+					.header__logo {
+						max-height: 40px;
+						min-height: 30px;
+						padding: 0.25rem;
+					}
+					.header__link {
+						font-size: 0.8rem;
+						margin-left: 1rem;
+					}
+				}
+			}
+			.casino-card__title {
+				margin: 0.2rem 0;
+			}
+			.casino-card__bonus {
+				margin: 0;
+			}
+			.casino-card__features {
+				margin: 0 1rem;
+				padding-left: 1rem;
+				list-style: none;
+				max-width: calc(100% - 180px);
+			}
+			.casino-card__rating {
+				text-align: center;
+				min-width: 120px;
+			}
+			.casino-card__score {
+				font-size: 1.5rem;
+				font-weight: bold;
+				margin: 0;
+			}
+			.casino-card__stars {
+				color: gold;
+				margin: 0;
+			}
+			.casino-card__button {
+				margin-top: 0.5rem;
+				display: inline-block;
+				padding: 0.5rem 1rem;
+				background: #000;
+				color: #fff;
+				border-radius: 4px;
+				text-decoration: none;
+			}
+			.casino-card__button-link {
+				color: #fff;
+				text-decoration: none;
+				display: inline-block;
+				width: 100%;
+				height: 100%;
+				transition: color 0.2s;
+			}
+			.casino-card__button-link:hover {
+				color: #e60000;
+			}
+
+			/* Footer */
+			.footer {
+				background: #000;
+				color: #fff;
+				padding: 1.3rem 0;
+				font-family: Arial, sans-serif;
+			}
+			.footer__copyright {
+				font-size: 1.4rem;
+				opacity: 0.7;
+			}
+			.footer__social {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+			.footer__link {
+				color: #fff;
+				text-decoration: none;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				font-size: 1.4rem;
+			}
+			.footer__logo {
+				height: 24px;
+				width: 24px;
+			}
+			.landing-content {
+				padding-top: 2rem;
+				padding-bottom: 2rem;
+				line-height: 1.6;
+			}
+			.landing-content h2 {
+				font-size: 2rem;
+				margin-top: 2rem;
+			}
+			.landing-content h3 {
+				font-size: 1.5rem;
+				margin-top: 1.5rem;
+			}
+			.landing-content h4 {
+				font-size: 1.3rem;
+				margin-top: 1rem;
+				margin-bottom: 0.5rem;
+			}
+			.landing-content ul {
+				padding-left: 1.5rem;
+				margin-bottom: 1rem;
+			}
+			.landing-content li {
+				margin-bottom: 0.5rem;
+			}
+			html {
+				min-height: 100%;
+				position: relative;
+			}
+
+			body {
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
+			}
+
+			main {
+				flex: 1;
+			}
+			/* Общие настройки для параграфов */
+			p {
+				font-size: 1.1rem;
+				line-height: 1.6;
+				color: #222;
+				margin-bottom: 1rem;
+				max-width: 800px;
+			}
+
+			/* Заголовки */
+			h1,
+			h2,
+			h3,
+			h4 {
+				font-family: 'Arial Black', Arial, sans-serif;
+				color: #1a1a1a;
+				margin-top: 2rem;
+				margin-bottom: 0.5rem;
+				line-height: 1.2;
+			}
+
+			/* Основной заголовок */
+			h1 {
+				font-size: 2.8rem;
+				font-weight: 900;
+				letter-spacing: 0.05em;
+			}
+
+			/* Второй уровень заголовков */
+			h2 {
+				font-size: 2rem;
+				font-weight: 700;
+				border-bottom: 2px solid #e60000;
+				padding-bottom: 0.3rem;
+			}
+
+			/* Третий уровень заголовков */
+			h3 {
+				font-size: 1.3rem;
+				font-weight: 700;
+				color: black;
+			}
+
+			/* Четвертый уровень заголовков */
+			h4 {
+				font-size: 1rem;
+				font-weight: 600;
+				color: #cc0000;
+				margin-top: 1.5rem;
+				margin-bottom: 0.3rem;
+			}
+
+			/* Списки */
+			ul {
+				max-width: 700px;
+				margin-bottom: 1.5rem;
+				padding-left: 1.5rem;
+				color: #444;
+			}
+
+			li {
+				margin-bottom: 0.6rem;
+				font-size: 1rem;
+				line-height: 1.4;
+			}
+
+			/* Выделение жирным */
+			strong {
+				color: black;
+				font-weight: 700;
+			}
+
+			/* Ссылки */
+			a {
+				color: #b30000;
+				text-decoration: underline;
+			}
+
+			a:hover {
+				color: black;
+			}
+
+			/* Основной контейнер контента для читаемости */
+			.landing-content {
+				max-width: 850px;
+				margin: 0 auto 3rem;
+				padding: 0 1rem;
+			}
+
+			.casino-card__title {
+				font-size: 1.3rem; /* Было примерно 1.5rem или больше, уменьшено */
+				margin: 0.2rem 0;
+			}
+		</style>
+		<!-- SEO + Open Graph + Schema -->
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:title"
+			content="TopJeu - Casinos Fiables en Ligne 2025"
+		/>
+		<meta
+			property="og:description"
+			content="Découvrez les meilleurs casinos fiables en ligne en France avec bonus, avis et conseils à jour."
+		/>
+		<meta property="og:image" content="https://example.com/img/preview.jpg" />
+		<meta property="og:url" content="https://example.com/" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			name="twitter:title"
+			content="TopJeu - Casinos Fiables en Ligne 2025"
+		/>
+		<meta
+			name="twitter:description"
+			content="Classement et comparatif des meilleurs casinos en ligne français en 2025."
+		/>
+		<meta name="twitter:image" content="https://example.com/img/preview.jpg" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "WebPage",
+				"name": "TopJeu - Casinos Fiables en Ligne 2025",
+				"description": "Classement des meilleurs casinos en ligne fiables en France. Bonus, avis, retraits rapides.",
+				"inLanguage": "fr",
+				"url": "https://example.com/",
+				"author": {
+					"@type": "Person",
+					"name": "Jean Dupont"
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="header">
+			<div class="header__container">
+				<img
+					class="header__logo"
+					src="img/topjeu_logo_queen.png"
+					alt="logo-top-jeu"
+					loading="lazy"
+				/>
+				<nav class="header__nav" aria-label="Menu principal">
+					<a class="header__link" href="#">TopJeu</a>
+					<a class="header__link" href="#">À propos de nous</a>
+					<a class="header__link" href="#">Nous Contacter</a>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<!-- Hero Section -->
+			<section class="hero">
+				<h1 class="hero__title">
+					Les meilleurs casinos en ligne français fiables en 2025
+				</h1>
+				<p class="hero__meta">
+					Par Jean Dupont · Dernière mise à jour : 12 juin 2025
+				</p>
+				<p class="hero__text">
+					Le marché du casino en ligne en France ne cesse de croître, avec une
+					offre toujours plus riche et compétitive. Que vous soyez un joueur
+					occasionnel ou un passionné de jeux de hasard, choisir la bonne
+					plateforme est essentiel pour une expérience sécurisée, fluide et
+					divertissante.
+				</p>
+				<p>
+					Voici mon
+					<strong>Top 5 des meilleurs casinos en ligne français</strong>, basé
+					sur des critères comme la fiabilité, les bonus, la ludothèque, le
+					service client et la rapidité des retraits.
+				</p>
+			</section>
+
+			<!-- Casino Cards -->
+			<section class="casino-cards">
+				<div class="casino-card casino-card--top">
+					<div class="casino-card__info">
+						<img
+							class="casino-card__image"
+							style="max-width: 200px; width: 200px"
+							src="/img/logo-casinos/volerbet-logo.png"
+							alt="Logo de Volerbet Casino"
+							loading="lazy"
+						/>
+						<div>
+							<h2 class="casino-card__title">Volerbet Casino</h2>
+							<p class="casino-card__bonus">300% Jusqu'à 3000 €</p>
+						</div>
+					</div>
+					<ul class="casino-card__features">
+						<li>✓ Avantage 1</li>
+						<li>✓ Avantage 2</li>
+						<li>✓ Avantage 3</li>
+					</ul>
+					<div class="casino-card__rating">
+						<p class="casino-card__score">9.8</p>
+						<p class="casino-card__stars">★★★★★</p>
+					</div>
+					<div class="casino-card__button">
+						<a
+							class="casino-card__button-link"
+							href="https://volerbet.io/"
+							target="_blank"
+							rel="noopener noreferrer"
+							>Jouez maintenant!</a
+						>
+					</div>
+				</div>
+				<div class="casino-card">
+					<div class="casino-card__info">
+						<img
+							class="casino-card__image"
+							src="placeholder-logo2.jpg"
+							alt="Logo de Stonevegas Casino"
+							loading="lazy"
+						/>
+						<div>
+							<h2 class="casino-card__title">Stonevegas Casino</h2>
+							<p class="casino-card__bonus">
+								100% Jusqu'à 500 € + 200 Free Spins
+								<br />+1 Bonus Crab
+							</p>
+						</div>
+					</div>
+					<ul class="casino-card__features">
+						<li>✓ Avantage 1</li>
+						<li>✓ Avantage 2</li>
+						<li>✓ Avantage 3</li>
+					</ul>
+					<div class="casino-card__rating">
+						<p class="casino-card__score">9.6</p>
+						<p class="casino-card__stars">★★★★★</p>
+					</div>
+					<div class="casino-card__button">
+						<a
+							class="casino-card__button-link"
+							href="https://stonevegas.com/"
+							target="_blank"
+							rel="noopener noreferrer"
+							>Jouez maintenant!</a
+						>
+					</div>
+				</div>
+				<div class="casino-card">
+					<div class="casino-card__info">
+						<img
+							class="casino-card__image"
+							src="placeholder-logo3.jpg"
+							alt="Logo de GoldSpin Casino"
+							loading="lazy"
+						/>
+						<div>
+							<h2 class="casino-card__title">GoldSpin Casino</h2>
+							<p class="casino-card__bonus">Jusqu'à 3000 € + 100 Free Spins</p>
+						</div>
+					</div>
+					<ul class="casino-card__features">
+						<li>✓ Avantage 1</li>
+						<li>✓ Avantage 2</li>
+						<li>✓ Avantage 3</li>
+					</ul>
+					<div class="casino-card__rating">
+						<p class="casino-card__score">9.2</p>
+						<p class="casino-card__stars">★★★★★</p>
+					</div>
+					<div class="casino-card__button">
+						<a
+							class="casino-card__button-link"
+							href="https://www.goldspin06310.com/fr-ca"
+							target="_blank"
+							rel="noopener noreferrer"
+							>Jouez maintenant !</a
+						>
+					</div>
+				</div>
+				<div class="casino-card">
+					<div class="casino-card__info">
+						<img
+							class="casino-card__image"
+							src="placeholder-logo4.jpg"
+							alt="Logo de Robocat Casino"
+							loading="lazy"
+						/>
+						<div>
+							<h2 class="casino-card__title">Robocat Casino</h2>
+							<p class="casino-card__bonus">
+								100% Jusqu'à 500 € + 200 Free Spins <br />+1 Bonus Crab
+							</p>
+						</div>
+					</div>
+					<ul class="casino-card__features">
+						<li>✓ Avantage 1</li>
+						<li>✓ Avantage 2</li>
+						<li>✓ Avantage 3</li>
+					</ul>
+					<div class="casino-card__rating">
+						<p class="casino-card__score">9.0</p>
+						<p class="casino-card__stars">★★★★★</p>
+					</div>
+					<div class="casino-card__button">
+						<a
+							class="casino-card__button-link"
+							href="https://robocat.com/eu"
+							target="_blank"
+							rel="noopener noreferrer"
+							>Jouez maintenant!</a
+						>
+					</div>
+				</div>
+				<div class="casino-card">
+					<div class="casino-card__info">
+						<img
+							class="casino-card__image"
+							src="placeholder-logo5.jpg"
+							alt="Logo de Sushi Casino"
+							loading="lazy"
+						/>
+						<div>
+							<h2 class="casino-card__title">Sushi Casino</h2>
+							<p class="casino-card__bonus">Jusqu'à 2500 € + 50 Free Spins</p>
+						</div>
+					</div>
+					<ul class="casino-card__features">
+						<li>✓ Avantage 1</li>
+						<li>✓ Avantage 2</li>
+						<li>✓ Avantage 3</li>
+					</ul>
+					<div class="casino-card__rating">
+						<p class="casino-card__score">8.9</p>
+						<p class="casino-card__stars">★★★★★</p>
+					</div>
+					<div class="casino-card__button">
+						<a
+							class="casino-card__button-link"
+							href="https://www.sush1casin0.com/fr"
+							target="_blank"
+							rel="noopener noreferrer"
+							>Jouez maintenant!</a
+						>
+					</div>
+				</div>
+			</section>
+			<section class="landing-content">
+				<p>
+					1. <strong>Volerbet Casino</strong>: Le nouveau casino en ligne en
+					France pour débuter et gagner en toute sécurité.
+				</p>
+				<p>
+					2. <strong>Stonevegas Casino</strong>: L’expérience casino haut de
+					gamme 100 % française avec des jackpots exclusifs.
+				</p>
+				<p>
+					3. <strong>GoldSpin Casino</strong>: Le casino en ligne français qui
+					transforme chaque spin en trésor.
+				</p>
+				<p>
+					4. <strong>Robocat Casino</strong>: Le casino en ligne high-tech de
+					France dédié aux joueurs modernes et ambitieux.
+				</p>
+				<p>
+					5. <strong>Sushi Casino</strong>: Le casino en ligne au style japonais
+					qui séduit les joueurs français en 2025.
+				</p>
+
+				<h3>Détails par casino</h3>
+
+				<h3>
+					🎰 Volerbet Casino – Casino en ligne français idéal pour débutants
+					ambitieux
+				</h3>
+				<p>
+					Volerbet est un nouveau casino en ligne avec une interface claire,
+					bonus sans dépôt, et un support en français disponible 24/7.
+				</p>
+				<ul>
+					<li>✅ Avantages : interface claire, bonus sans dépôt</li>
+					<li>
+						❌ Inconvénients : catalogue de jeux encore limité, pas de section
+						paris sportifs
+					</li>
+				</ul>
+
+				<h4>
+					🎰 Stonevegas Casino – Le casino en ligne premium pour joueurs
+					exigeants en France
+				</h4>
+				<p>
+					Stonevegas propose une expérience haut de gamme avec un design
+					premium, jackpots exclusifs, et retraits rapides, garantissant
+					fiabilité.
+				</p>
+				<ul>
+					<li>
+						✅ Avantages : design premium, jackpots exclusifs, retraits rapides
+					</li>
+					<li>
+						❌ Inconvénients : conditions de bonus strictes, manque de jeux
+						gratuits
+					</li>
+				</ul>
+
+				<h3>
+					🎰 GoldSpin Casino – Le casino en ligne français spécialisé en
+					machines à sous lucratives
+				</h3>
+				<p>
+					GoldSpin mise sur les slots à forte volatilité avec des RTP élevés,
+					offrant de nombreux free spins et promotions régulières.
+				</p>
+				<ul>
+					<li>
+						✅ Avantages : nombreux free spins, catalogue de slots varié,
+						promotions régulières
+					</li>
+					<li>
+						❌ Inconvénients : peu de jeux de table, site non encore disponible
+						en application mobile
+					</li>
+				</ul>
+
+				<h3>
+					🎰 Robocat Casino – Casino en ligne futuriste avec des paiements
+					ultra-rapides
+				</h3>
+				<p>
+					Robocat propose une approche techno et novatrice avec des retraits en
+					moins d’une heure, un design innovant, et une sécurité renforcée.
+				</p>
+				<ul>
+					<li>
+						✅ Avantages : retraits en moins d’une heure, design innovant,
+						sécurité renforcée
+					</li>
+					<li>
+						❌ Inconvénients : absence de licence ANJ, peu d’options de dépôt
+						classiques (CB)
+					</li>
+				</ul>
+
+				<h4>
+					🎰 Sushi Casino – Le casino en ligne inspiré du Japon qui séduit les
+					joueurs français
+				</h4>
+				<p>
+					Sushi Casino offre une ambiance unique avec un univers visuel
+					original, bonus clairs et sans wager, ainsi que de nombreux jeux
+					mobiles.
+				</p>
+				<ul>
+					<li>
+						✅ Avantages : univers visuel original, bonus clairs et sans wager,
+						nombreux jeux mobiles
+					</li>
+					<li>
+						❌ Inconvénients : service client parfois lent, site chargé
+						visuellement pour certains
+					</li>
+				</ul>
+
+				<h3>
+					🎯 Jouer de façon responsable sur un casino en ligne : nos conseils
+					essentiels
+				</h3>
+				<ul>
+					<li>Fixez un budget de jeu clair et ne le dépassez jamais</li>
+					<li>
+						Utilisez les outils de limites de dépôt ou d’auto-exclusion proposés
+						par les casinos en ligne fiables
+					</li>
+					<li>
+						Ne jouez jamais sous l’emprise de l’émotion ou pour « vous refaire »
+					</li>
+					<li>Faites régulièrement des pauses pour garder le contrôle</li>
+				</ul>
+
+				<h3>
+					🏆 Comment choisir le meilleur casino en ligne en France en 2025 ?
+				</h3>
+				<ul>
+					<li>Licence légale : ANJ, Curaçao, MGA, etc.</li>
+					<li>Bonus de bienvenue transparents</li>
+					<li>Sécurité des paiements : SSL, PayPal, cartes, crypto</li>
+					<li>Support client réactif en français</li>
+					<li>Qualité des jeux : NetEnt, Evolution, Pragmatic Play</li>
+				</ul>
+
+				<h3>📜 Bonus de casino en ligne : comprendre les conditions de mise</h3>
+				<ul>
+					<li>
+						Le wagering indique combien de fois vous devez miser le bonus avant
+						retrait
+					</li>
+					<li>Certains casinos offrent des bonus sans condition de mise</li>
+					<li>Lisez toujours les termes et conditions</li>
+					<li>Vérifiez les contributions au wagering par jeu</li>
+				</ul>
+
+				<h3>👨‍💼 Mon expertise dans l’univers du casino en ligne</h3>
+				<p>
+					Fort de plus de 10 ans d’expérience, je travaille avec des opérateurs
+					fiables.
+				</p>
+				<ul>
+					<li>🎰 Problème avec un retrait ?</li>
+					<li>📄 Documents non validés ?</li>
+					<li>⛔ Compte bloqué ?</li>
+				</ul>
+				<p>
+					👉 Contactez-moi directement : aide gratuite, confidentielle et rapide
+				</p>
+				<ul>
+					<li>🔹 Formulaire de contact</li>
+					<li>🔹 Email / Telegram : @votrepseudo</li>
+					<li>🔹 Réponse sous 24h</li>
+				</ul>
+			</section>
+		</main>
+
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="footer__copyright">
+					© 2025 TopJeu. Tous droits réservés.
+				</div>
+				<div class="footer__social">
+					<a class="footer__link" href="#">
+						<img
+							class="footer__logo"
+							src="img/youtube.png"
+							alt="logo-YouTube-officiel"
+							loading="lazy"
+						/>
+						<span>YouTube</span>
+					</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
