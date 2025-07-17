@@ -73,7 +73,7 @@
 			/* Body */
 			body {
 				margin: 0;
-				font-family: Arial, sans-serif;
+				font-family: Helvetica, sans-serif;
 				background: #fff;
 				color: #000;
 				font-size: 1rem; /* 16px */
@@ -81,7 +81,7 @@
 
 			/* Hero Section */
 			.hero {
-				padding: 2rem;
+				padding: 1rem;
 				padding-left: 0;
 				padding-right: 0;
 			}
@@ -116,15 +116,16 @@
 
 			/* Casino Cards */
 			.casino-cards {
-				padding: 1rem;
+				/* padding: 1rem; */
 				padding-left: 0;
 				padding-right: 0;
-				margin-top: 2rem;
+				margin-top: 1rem;
 				margin-bottom: 2rem;
 			}
 			.casino-card {
 				background: #fff;
-				border-radius: 8px;
+				border-radius: 0;
+				overflow: visible;
 				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 				padding: 1rem;
 				margin-bottom: 1.5rem;
@@ -134,111 +135,52 @@
 			}
 			.casino-card--top {
 				border: 3px solid;
-				border-image: linear-gradient(90deg, #f90202 10%, #c40000 100%);
+				border-image: linear-gradient(90deg, #f90202 20%, #c40000 90%);
 				border-image-slice: 1;
-				border-radius: 8px;
 			}
 			.casino-card__info {
 				display: flex;
 				align-items: center;
 			}
 			.casino-card__image {
-				max-width: 80px;
-				width: 100%;
-				height: auto;
-				object-fit: cover;
+				max-width: 150px;
+				width: 150px;
+				height: 150px;
+				object-fit: contain;
 				border-radius: 8px;
 				margin-right: 1rem;
-			}
-			@media (max-width: 600px) {
-				.header {
-					flex-direction: column;
-					align-items: flex-start;
-					padding: 1rem;
-				}
-				.header__nav ul {
-					flex-direction: column;
-					width: 100%;
-					padding: 0;
-				}
-				.header__nav li {
-					margin-left: 0;
-					margin-bottom: 0.5rem;
-				}
-				.casino-card {
-					flex-direction: column;
-					align-items: flex-start;
-				}
-				.casino-card__features {
-					margin-left: 0;
-					padding-left: 0;
-					margin-top: 1rem;
-				}
-				.casino-card__rating {
-					min-width: auto;
-					margin-top: 1rem;
-				}
-				.filter {
-					padding: 1rem;
-				}
-				.filter__button {
-					margin-bottom: 0.5rem;
-					width: 100%;
-				}
-
-				@media (max-height: 300px) {
-					.header {
-						padding: 1rem;
-					}
-					.header__logo {
-						max-height: 80px;
-						min-height: 60px;
-					}
-					.header__link {
-						font-size: 1rem;
-					}
-				}
-				@media (max-height: 200px) {
-					.header__logo {
-						max-height: 60px;
-						min-height: 40px;
-					}
-					.header__link {
-						font-size: 0.9rem;
-					}
-				}
-				@media (max-height: 150px) {
-					.header {
-						padding: 0.5rem;
-						flex-direction: column;
-						align-items: center;
-					}
-					.header__logo {
-						max-height: 40px;
-						min-height: 30px;
-						padding: 0.25rem;
-					}
-					.header__link {
-						font-size: 0.8rem;
-						margin-left: 1rem;
-					}
-				}
-			}
-			.casino-card__title {
-				margin: 0.2rem 0;
-			}
-			.casino-card__bonus {
-				margin: 0;
 			}
 			.casino-card__features {
 				margin: 0 1rem;
 				padding-left: 1rem;
 				list-style: none;
 				max-width: calc(100% - 180px);
+				font-size: 12px;
+			}
+			.casino-card__features li {
+				color: #222;
+			}
+			.casino-card__features li::before {
+				content: '✓';
+				color: #1db100;
+				margin-right: 0.5em;
+			}
+			.casino-card__features li::first-letter {
+				color: inherit;
 			}
 			.casino-card__rating {
 				text-align: center;
 				min-width: 120px;
+				max-width: 120px;
+				width: 120px;
+				height: 100px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				box-sizing: border-box;
+				margin-left: auto;
+				margin-right: auto;
 			}
 			.casino-card__score {
 				font-size: 1.5rem;
@@ -257,6 +199,7 @@
 				color: #fff;
 				border-radius: 4px;
 				text-decoration: none;
+				/* no flex, no height, keep as is for desktop */
 			}
 			.casino-card__button-link {
 				color: #fff;
@@ -327,13 +270,11 @@
 				min-height: 100%;
 				position: relative;
 			}
-
 			body {
 				display: flex;
 				flex-direction: column;
 				min-height: 100vh;
 			}
-
 			main {
 				flex: 1;
 			}
@@ -399,7 +340,7 @@
 
 			li {
 				margin-bottom: 0.6rem;
-				font-size: 1rem;
+				/* font-size: 0.8rem; */
 				line-height: 1.4;
 			}
 
@@ -416,7 +357,7 @@
 			}
 
 			a:hover {
-				color: black;
+				color: red;
 			}
 
 			/* Основной контейнер контента для читаемости */
@@ -425,10 +366,151 @@
 				margin: 0 auto 3rem;
 				padding: 0 1rem;
 			}
-
 			.casino-card__title {
-				font-size: 1.3rem; /* Было примерно 1.5rem или больше, уменьшено */
 				margin: 0.2rem 0;
+				font-size: 20px;
+			}
+			/* ====== MEDIA QUERIES AT THE END ====== */
+			@media (max-width: 600px) {
+				.header {
+					flex-direction: column;
+					align-items: flex-start;
+					padding: 1rem;
+				}
+				.header__nav ul {
+					flex-direction: column;
+					width: 100%;
+					padding: 0;
+				}
+				.header__nav li {
+					margin-left: 0;
+					margin-bottom: 0.5rem;
+				}
+				.casino-card {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+				.casino-card__features {
+					margin-left: 0;
+					padding-left: 0;
+					margin-top: 1rem;
+				}
+				.casino-card__rating {
+					min-width: auto;
+					margin-top: 1rem;
+				}
+				.filter {
+					padding: 1rem;
+				}
+				.filter__button {
+					margin-bottom: 0.5rem;
+					width: 100%;
+				}
+			}
+			@media (max-height: 300px) {
+				.header {
+					padding: 1rem;
+				}
+				.header__logo {
+					max-height: 80px;
+					min-height: 60px;
+				}
+				.header__link {
+					font-size: 1rem;
+				}
+			}
+			@media (max-height: 200px) {
+				.header__logo {
+					max-height: 60px;
+					min-height: 40px;
+				}
+				.header__link {
+					font-size: 0.9rem;
+				}
+			}
+			@media (max-height: 150px) {
+				.header {
+					padding: 0.5rem;
+					flex-direction: column;
+					align-items: center;
+				}
+				.header__logo {
+					max-height: 40px;
+					min-height: 30px;
+					padding: 0.25rem;
+				}
+				.header__link {
+					font-size: 0.8rem;
+					margin-left: 1rem;
+				}
+			}
+			.casino-card__title {
+				margin: 0.2rem 0;
+				font-size: 20px;
+			}
+
+			.casino-card__features {
+				margin: 0 1rem;
+				padding-left: 1rem;
+				list-style: none;
+				max-width: calc(100% - 180px);
+				font-size: 12px;
+			}
+
+			.popup {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.6);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				z-index: 1000;
+			}
+
+			.popup__content {
+				background: #fff;
+				padding: 2rem;
+				border-radius: 8px;
+				max-width: 600px;
+				width: 90%;
+				position: relative;
+				font-size: 1rem;
+				color: #000;
+			}
+
+			.popup__close {
+				position: absolute;
+				top: 0.5rem;
+				right: 1rem;
+				font-size: 2rem;
+				cursor: pointer;
+				color: #900;
+			}
+
+			.popup__button {
+				margin-top: 1.5rem;
+				background: #e60000;
+				color: #fff;
+				padding: 0.5rem 1rem;
+				border: none;
+				border-radius: 4px;
+				font-size: 1rem;
+				cursor: pointer;
+			}
+
+			.popup__button:hover {
+				background: #b30000;
+			}
+
+			.hidden {
+				display: none;
+			}
+			.casino-card:not(.casino-card--top) .casino-card__title {
+				border-bottom: 2px solid #e60000;
+				padding-bottom: 0.3rem;
 			}
 		</style>
 		<!-- SEO + Open Graph + Schema -->
@@ -469,7 +551,7 @@
 			}
 		</script>
 	</head>
-	<body>
+	<body lang="fr">
 		<!-- Header -->
 		<header class="header">
 			<div class="header__container">
@@ -480,9 +562,9 @@
 					loading="lazy"
 				/>
 				<nav class="header__nav" aria-label="Menu principal">
-					<a class="header__link" href="#">TopJeu</a>
-					<a class="header__link" href="#">À propos de nous</a>
-					<a class="header__link" href="#">Nous Contacter</a>
+					<!-- <a class="header__link" href="#">TopJeu</a> -->
+					<a class="header__link" href="#about">Qui suis-je ?</a>
+					<a class="header__link" href="#contact">Envoyez-moi un message</a>
 				</nav>
 			</div>
 		</header>
@@ -494,7 +576,7 @@
 					Les meilleurs casinos en ligne français fiables en 2025
 				</h1>
 				<p class="hero__meta">
-					Par Jean Dupont · Dernière mise à jour : 12 juin 2025
+					Par Dariah Belle · Dernière mise à jour : 12 juin 2025
 				</p>
 				<p class="hero__text">
 					Le marché du casino en ligne en France ne cesse de croître, avec une
@@ -517,20 +599,19 @@
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
-							style="max-width: 200px; width: 200px"
 							src="/img/logo-casinos/volerbet-logo.png"
 							alt="Logo de Volerbet Casino"
 							loading="lazy"
 						/>
 						<div>
-							<h2 class="casino-card__title">Volerbet Casino</h2>
+							<h3 class="casino-card__title">Volerbet Casino</h3>
 							<p class="casino-card__bonus">300% Jusqu'à 3000 €</p>
 						</div>
 					</div>
 					<ul class="casino-card__features">
-						<li>✓ Avantage 1</li>
-						<li>✓ Avantage 2</li>
-						<li>✓ Avantage 3</li>
+						<li>Large choix de jeux disponibles</li>
+						<li>Multiples options de paiement</li>
+						<li>Programme de fidélité ouvert à tous les joueurs</li>
 					</ul>
 					<div class="casino-card__rating">
 						<p class="casino-card__score">9.8</p>
@@ -542,7 +623,7 @@
 							href="https://volerbet.io/"
 							target="_blank"
 							rel="noopener noreferrer"
-							>Jouez maintenant!</a
+							>Jouez maintenant !</a
 						>
 					</div>
 				</div>
@@ -550,22 +631,22 @@
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
-							src="placeholder-logo2.jpg"
+							src="/img/logo-casinos/stonevegas-logo.webp"
 							alt="Logo de Stonevegas Casino"
 							loading="lazy"
 						/>
 						<div>
-							<h2 class="casino-card__title">Stonevegas Casino</h2>
+							<h3 class="casino-card__title">Stonevegas Casino</h3>
 							<p class="casino-card__bonus">
-								100% Jusqu'à 500 € + 200 Free Spins
-								<br />+1 Bonus Crab
+								100% Jusqu'à 500 € + <br />
+								200 Free Spins +1 Bonus Crab
 							</p>
 						</div>
 					</div>
 					<ul class="casino-card__features">
-						<li>✓ Avantage 1</li>
-						<li>✓ Avantage 2</li>
-						<li>✓ Avantage 3</li>
+						<li>Offre de bienvenue avantageuse</li>
+						<li>Club VIP exclusif</li>
+						<li>Large éventail de solutions de paiement</li>
 					</ul>
 					<div class="casino-card__rating">
 						<p class="casino-card__score">9.6</p>
@@ -577,7 +658,7 @@
 							href="https://stonevegas.com/"
 							target="_blank"
 							rel="noopener noreferrer"
-							>Jouez maintenant!</a
+							>Jouez maintenant !</a
 						>
 					</div>
 				</div>
@@ -585,19 +666,19 @@
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
-							src="placeholder-logo3.jpg"
+							src="/img/logo-casinos/goldspin-logo.png"
 							alt="Logo de GoldSpin Casino"
 							loading="lazy"
 						/>
 						<div>
-							<h2 class="casino-card__title">GoldSpin Casino</h2>
+							<h3 class="casino-card__title">GoldSpin Casino</h3>
 							<p class="casino-card__bonus">Jusqu'à 3000 € + 100 Free Spins</p>
 						</div>
 					</div>
 					<ul class="casino-card__features">
-						<li>✓ Avantage 1</li>
-						<li>✓ Avantage 2</li>
-						<li>✓ Avantage 3</li>
+						<li>Double système de cashback</li>
+						<li>Outil de création de paris intuitif</li>
+						<li>Traitement des paiements ultra-rapide</li>
 					</ul>
 					<div class="casino-card__rating">
 						<p class="casino-card__score">9.2</p>
@@ -617,21 +698,21 @@
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
-							src="placeholder-logo4.jpg"
+							src="/img/logo-casinos/winbay-logo.webp"
 							alt="Logo de Robocat Casino"
 							loading="lazy"
 						/>
 						<div>
-							<h2 class="casino-card__title">Robocat Casino</h2>
+							<h3 class="casino-card__title">Winbay Casino</h3>
 							<p class="casino-card__bonus">
-								100% Jusqu'à 500 € + 200 Free Spins <br />+1 Bonus Crab
+								100% Jusqu'à 500 € + <br />200 Free Spins + 1 Bonus Crab
 							</p>
 						</div>
 					</div>
 					<ul class="casino-card__features">
-						<li>✓ Avantage 1</li>
-						<li>✓ Avantage 2</li>
-						<li>✓ Avantage 3</li>
+						<li>Une ludothèque de plus de 15 000 jeux</li>
+						<li>Support des paiements en crypto</li>
+						<li>Programme de fidélité attractif</li>
 					</ul>
 					<div class="casino-card__rating">
 						<p class="casino-card__score">9.0</p>
@@ -640,10 +721,10 @@
 					<div class="casino-card__button">
 						<a
 							class="casino-card__button-link"
-							href="https://robocat.com/eu"
+							href="https://wnb.servclick1move.com/?mid=246613_1451376"
 							target="_blank"
 							rel="noopener noreferrer"
-							>Jouez maintenant!</a
+							>Jouez maintenant !</a
 						>
 					</div>
 				</div>
@@ -651,19 +732,19 @@
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
-							src="placeholder-logo5.jpg"
+							src="/img/logo-casinos/sushicasino-logo.webp"
 							alt="Logo de Sushi Casino"
 							loading="lazy"
 						/>
 						<div>
-							<h2 class="casino-card__title">Sushi Casino</h2>
+							<h3 class="casino-card__title">Sushi Casino</h3>
 							<p class="casino-card__bonus">Jusqu'à 2500 € + 50 Free Spins</p>
 						</div>
 					</div>
 					<ul class="casino-card__features">
-						<li>✓ Avantage 1</li>
-						<li>✓ Avantage 2</li>
-						<li>✓ Avantage 3</li>
+						<li>Plus de 1 000 titres de casino en direct</li>
+						<li>Programme VIP avec bonus et privilèges exclusifs</li>
+						<li>Nombreuses solutions de paiement disponibles</li>
 					</ul>
 					<div class="casino-card__rating">
 						<p class="casino-card__score">8.9</p>
@@ -675,7 +756,7 @@
 							href="https://www.sush1casin0.com/fr"
 							target="_blank"
 							rel="noopener noreferrer"
-							>Jouez maintenant!</a
+							>Jouez maintenant !</a
 						>
 					</div>
 				</div>
@@ -862,7 +943,7 @@
 					© 2025 TopJeu. Tous droits réservés.
 				</div>
 				<div class="footer__social">
-					<a class="footer__link" href="#">
+					<a class="footer__link" href="https://www.youtube.com/@TopJeu777">
 						<img
 							class="footer__logo"
 							src="img/youtube.png"
@@ -874,5 +955,123 @@
 				</div>
 			</div>
 		</footer>
+		<!-- POPUP: À propos de nous -->
+		<div id="popup" class="popup hidden">
+			<div class="popup__content">
+				<span id="popup-close" class="popup__close">&times;</span>
+				<h2>Qui suis-je ?</h2>
+				<p>
+					👩‍💼 Moi, c’est Dariah Belle – votre alliée dans l’univers du casino en
+					ligne<br />
+					Bienvenue sur mon site dédié aux meilleurs casinos en ligne pour les
+					joueurs francophones.
+				</p>
+				<p>
+					Avec plus de 10 ans d’expérience dans l’industrie, je collabore
+					directement avec des opérateurs fiables, reconnus sur les marchés
+					francophones et internationaux.
+				</p>
+				<ul>
+					<li>🎰 Vous avez un souci avec un retrait ?</li>
+					<li>📑 Vos documents ne sont pas validés ?</li>
+					<li>🚫 Votre compte est bloqué sans raison claire ?</li>
+				</ul>
+				<p>
+					👉 Je peux vous aider – gratuitement, en toute confidentialité. Grâce
+					à mes contacts dans le secteur, j’interviens directement auprès du
+					support pour débloquer votre situation.
+				</p>
+				<ul>
+					<li>
+						💬 Assistance personnalisée pour tous les joueurs francophones.
+					</li>
+					<li>
+						📩 Contact rapide via le formulaire ou email topjeu777@gmail.com
+					</li>
+					<li>⏱ Réponse sous 24h garantie.</li>
+				</ul>
+			</div>
+		</div>
+		<!-- POPUP: Contact -->
+		<div id="popup-contact" class="popup hidden">
+			<div class="popup__content">
+				<span id="popup-contact-close" class="popup__close">&times;</span>
+				<h2>Contactez-moi</h2>
+				<form action="https://formspree.io/f/mjkokkor" method="POST">
+					<label for="name">Nom *</label>
+					<input
+						type="text"
+						id="name"
+						name="name"
+						required
+						style="width: 100%; padding: 0.5rem; margin-bottom: 1rem"
+					/>
+					<label for="email">Email *</label>
+					<input
+						type="email"
+						id="email"
+						name="email"
+						required
+						style="width: 100%; padding: 0.5rem; margin-bottom: 1rem"
+					/>
+
+					<label for="message">Message *</label>
+					<textarea
+						id="message"
+						name="message"
+						required
+						rows="5"
+						style="width: 100%; padding: 0.5rem; margin-bottom: 1rem"
+					></textarea>
+					<button type="submit" class="popup__button">Envoyer</button>
+				</form>
+			</div>
+		</div>
+		<script>
+			// Открытие попапа
+			document
+				.querySelector('.header__link[href="#about"]')
+				.addEventListener('click', function (e) {
+					e.preventDefault();
+					document.getElementById('popup').classList.remove('hidden');
+				});
+
+			// Закрытие по крестику
+			document
+				.getElementById('popup-close')
+				.addEventListener('click', function () {
+					document.getElementById('popup').classList.add('hidden');
+				});
+
+			// Закрытие при клике вне окна
+			window.addEventListener('click', function (e) {
+				const popup = document.getElementById('popup');
+				if (e.target === popup) {
+					popup.classList.add('hidden');
+				}
+			});
+			// Открытие попапа «Envoyez-moi un message»
+			document
+				.querySelector('.header__link[href="#contact"]')
+				.addEventListener('click', function (e) {
+					e.preventDefault();
+					document.getElementById('popup-contact').classList.remove('hidden');
+				});
+
+			// Закрытие попапа «Contact» по крестику
+			document
+				.getElementById('popup-contact-close')
+				.addEventListener('click', function () {
+					document.getElementById('popup-contact').classList.add('hidden');
+				});
+
+			// Закрытие при клике вне окна
+			window.addEventListener('click', function (e) {
+				const popupContact = document.getElementById('popup-contact');
+				if (e.target === popupContact) {
+					popupContact.classList.add('hidden');
+				}
+			});
+		</script>
 	</body>
 </html>
