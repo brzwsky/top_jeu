@@ -53,21 +53,47 @@
 				padding-bottom: 0.3rem;
 			}
 			.header__logo {
-				height: auto;
 				max-height: 175px;
 				min-height: 105px;
-				max-width: 100%;
-				padding: 0.5rem 0.5rem;
+				height: auto;
+				width: auto;
 				margin-right: 2rem;
 			}
+			@keyframes rotate-once {
+				from {
+					transform: rotateY(0deg);
+				}
+				to {
+					transform: rotateY(360deg);
+				}
+			}
+			.header__logo.rotate-once {
+				animation: rotate-once 1s ease forwards;
+			}
 			.header__nav {
+				display: flex;
 				margin-left: auto;
+				align-items: center;
+				gap: 2rem;
 			}
 			.header__link {
 				color: #fff;
-				margin-left: 2rem;
 				text-decoration: none;
 				font-size: 1.3rem;
+				display: flex;
+				align-items: center;
+				gap: 0.4rem;
+			}
+			.header__social {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+
+			.youtube-icon {
+				width: 25px;
+				height: 25px;
+				object-fit: contain;
 			}
 
 			/* Body */
@@ -237,10 +263,7 @@
 				gap: 0.5rem;
 				font-size: 1.4rem;
 			}
-			.footer__logo {
-				height: 24px;
-				width: 24px;
-			}
+
 			.landing-content {
 				padding-top: 2rem;
 				padding-bottom: 2rem;
@@ -369,6 +392,9 @@
 			.casino-card__title {
 				margin: 0.2rem 0;
 				font-size: 20px;
+			}
+			.light {
+				font-weight: 300; /* или 200 */
 			}
 			/* ====== MEDIA QUERIES AT THE END ====== */
 			@media (max-width: 600px) {
@@ -512,6 +538,32 @@
 				border-bottom: 2px solid #e60000;
 				padding-bottom: 0.3rem;
 			}
+
+			.casino-card__rank {
+				position: absolute;
+				top: 50%;
+				left: -26px;
+				transform: translateY(-50%);
+				background: #000;
+				color: #fff;
+				font-size: 1.4rem;
+				font-weight: bold;
+				border-radius: 50%;
+				width: 36px;
+				height: 36px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				z-index: 2;
+				box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+				border: 2px solid;
+				border-color: #e60000;
+				border-image-slice: 1;
+			}
+
+			.casino-card {
+				position: relative;
+			}
 		</style>
 		<!-- SEO + Open Graph + Schema -->
 		<meta property="og:type" content="website" />
@@ -553,7 +605,7 @@
 	</head>
 	<body lang="fr">
 		<!-- Header -->
-		<header class="header">
+		<header class="header" role="banner">
 			<div class="header__container">
 				<img
 					class="header__logo"
@@ -562,40 +614,57 @@
 					loading="lazy"
 				/>
 				<nav class="header__nav" aria-label="Menu principal">
-					<!-- <a class="header__link" href="#">TopJeu</a> -->
+					<a
+						class="header__link"
+						href="https://www.youtube.com/@TopJeu777"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img
+							class="youtube-icon"
+							src="img/youtube.png"
+							alt="logo-YouTube-officiel"
+							loading="lazy"
+						/>
+						<span>YouTube</span>
+					</a>
 					<a class="header__link" href="#about">Qui suis-je ?</a>
 					<a class="header__link" href="#contact">Envoyez-moi un message</a>
 				</nav>
 			</div>
 		</header>
 
-		<main>
+		<main role="main">
 			<!-- Hero Section -->
 			<section class="hero">
 				<h1 class="hero__title">
-					Les meilleurs casinos en ligne français fiables en 2025
+					Les meilleurs casinos en ligne francophones fiables en 2025
 				</h1>
 				<p class="hero__meta">
-					Par Dariah Belle · Dernière mise à jour : 12 juin 2025
+					Rédigé par : <span class="light">Dariah Belle</span> · Dernière mise à
+					jour : <span class="light">12 juin 2025</span>
 				</p>
 				<p class="hero__text">
-					Le marché du casino en ligne en France ne cesse de croître, avec une
-					offre toujours plus riche et compétitive. Que vous soyez un joueur
-					occasionnel ou un passionné de jeux de hasard, choisir la bonne
-					plateforme est essentiel pour une expérience sécurisée, fluide et
-					divertissante.
+					Le marché des <strong> casinos en ligne francophones</strong> est en
+					pleine expansion, avec une offre toujours plus variée et compétitive.
+					Que vous soyez joueur occasionnel ou amateur de jeux en ligne, il est
+					essentiel de choisir une plateforme adaptée, fiable et pensée pour les
+					utilisateurs francophones.
 				</p>
 				<p>
 					Voici mon
-					<strong>Top 5 des meilleurs casinos en ligne français</strong>, basé
-					sur des critères comme la fiabilité, les bonus, la ludothèque, le
-					service client et la rapidité des retraits.
+					<strong>Top 5 des meilleurs casinos en ligne</strong> destinés au
+					public francophone, sélectionnés selon des critères rigoureux :
+					fiabilité des opérateurs, qualité des bonus, richesse de la
+					ludothèque, réactivité du support client et rapidité des retraits.
 				</p>
 			</section>
 
 			<!-- Casino Cards -->
 			<section class="casino-cards">
 				<div class="casino-card casino-card--top">
+					<div class="casino-card__rank-bg"></div>
+					<div class="casino-card__rank">1</div>
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
@@ -628,6 +697,8 @@
 					</div>
 				</div>
 				<div class="casino-card">
+					<div class="casino-card__rank-bg"></div>
+					<div class="casino-card__rank">2</div>
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
@@ -663,10 +734,12 @@
 					</div>
 				</div>
 				<div class="casino-card">
+					<div class="casino-card__rank-bg"></div>
+					<div class="casino-card__rank">3</div>
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
-							src="img/logo-casinos/goldspin-logo.png"
+							src="img/logo-casinos/goldspin-logo.svg"
 							alt="Logo de GoldSpin Casino"
 							loading="lazy"
 						/>
@@ -695,6 +768,8 @@
 					</div>
 				</div>
 				<div class="casino-card">
+					<div class="casino-card__rank-bg"></div>
+					<div class="casino-card__rank">4</div>
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
@@ -729,6 +804,8 @@
 					</div>
 				</div>
 				<div class="casino-card">
+					<div class="casino-card__rank-bg"></div>
+					<div class="casino-card__rank">5</div>
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
@@ -763,28 +840,25 @@
 			</section>
 			<section class="landing-content">
 				<p>
-					1. <strong>Volerbet Casino</strong>: Le nouveau casino en ligne en
-					France pour débuter et gagner en toute sécurité.
+					1. <strong>Volerbet Casino</strong>: Le nouveau casino en ligne
+					francophone pour débuter et gagner en toute sécurité.
 				</p>
 				<p>
-					2. <strong>Stonevegas Casino</strong>: L’expérience casino haut de
-					gamme 100 % française avec des jackpots exclusifs.
+					2. <strong>Stonevegas Casino</strong>: Le nouveau casino en ligne
+					francophone pour débuter et gagner en toute sécurité.
 				</p>
 				<p>
-					3. <strong>GoldSpin Casino</strong>: Le casino en ligne français qui
-					transforme chaque spin en trésor.
+					3. <strong>GoldSpin Casino</strong>: Une expérience haut de gamme 100
+					% francophone avec des jackpots exclusifs.
 				</p>
 				<p>
-					4. <strong>Robocat Casino</strong>: Le casino en ligne high-tech de
-					France dédié aux joueurs modernes et ambitieux.
+					4. <strong>Winbay Casino</strong>: La plateforme high-tech pensée pour
+					les joueurs francophones modernes et ambitieux.
 				</p>
 				<p>
 					5. <strong>Sushi Casino</strong>: Le casino en ligne au style japonais
-					qui séduit les joueurs français en 2025.
+					qui séduit les joueurs francophones en 2025.
 				</p>
-
-				<h3>Détails par casino</h3>
-
 				<h3>
 					🎰 Volerbet Casino – Casino en ligne français idéal pour débutants
 					ambitieux
@@ -879,9 +953,15 @@
 				</ul>
 
 				<h3>
-					🎯 Jouer de façon responsable sur un casino en ligne : nos conseils
+					🎯 Jouer de façon responsable sur un casino en ligne : mes conseils
 					essentiels
 				</h3>
+				<p>
+					Le jeu d’argent en ligne doit rester un divertissement, non une source
+					de stress ou de dépendance. Pour cela, adopter une approche
+					responsable sur un casino en ligne est crucial.
+				</p>
+				<p><strong>Mes conseils pour jouer en toute sécurité :</strong></p>
 				<ul>
 					<li>Fixez un budget de jeu clair et ne le dépassez jamais</li>
 					<li>
@@ -893,76 +973,122 @@
 					</li>
 					<li>Faites régulièrement des pauses pour garder le contrôle</li>
 				</ul>
+				<p>
+					✅ En respectant ces règles, vous profitez du casino en ligne dans
+					l’espace francophone de manière saine et durable.
+				</p>
 
 				<h3>
-					🏆 Comment choisir le meilleur casino en ligne en France en 2025 ?
+					🏆 Comment choisir le meilleur casino en ligne francophone en 2025 ?
 				</h3>
+				<p>
+					Avec des centaines de plateformes disponibles, choisir un casino en
+					ligne fiable peut sembler complexe. Voici les critères essentiels à
+					vérifier avant de vous inscrire :
+				</p>
 				<ul>
-					<li>Licence légale : ANJ, Curaçao, MGA, etc.</li>
-					<li>Bonus de bienvenue transparents</li>
-					<li>Sécurité des paiements : SSL, PayPal, cartes, crypto</li>
+					<li>
+						Licence légale : assurez-vous que le casino en ligne possède une
+						licence de jeu valide délivrée par une autorité reconnue (ANJ,
+						Curaçao, MGA, etc.). Cela garantit un environnement sécurisé, des
+						jeux équitables et une protection des joueurs
+					</li>
+					<li>
+						Bonus de bienvenue transparents : vérifiez les conditions de mise
+					</li>
+					<li>
+						Paiements sécurisés : chiffrement SSL et systèmes de protection
+						contre la fraude assurent la confidentialité de vos données
+						bancaires
+					</li>
 					<li>Support client réactif en français</li>
-					<li>Qualité des jeux : NetEnt, Evolution, Pragmatic Play</li>
+					<li>
+						Qualité des jeux : variété, fournisseurs renommés (NetEnt,
+						Evolution, Pragmatic Play)
+					</li>
 				</ul>
+				<p>
+					🎰 Un bon casino en ligne doit allier sécurité, diversité et fluidité
+					pour une expérience optimale.
+				</p>
 
-				<h3>📜 Bonus de casino en ligne : comprendre les conditions de mise</h3>
+				<h3>
+					📜 Bonus de casino en ligne : comprendre les conditions de mise avant
+					de jouer
+				</h3>
+				<p>
+					Les bonus de casino en ligne peuvent sembler attractifs, mais il est
+					crucial de comprendre les conditions de mise (ou “wagering
+					requirements”).
+				</p>
+				<p><strong>Voici ce que vous devez savoir :</strong></p>
 				<ul>
 					<li>
 						Le wagering indique combien de fois vous devez miser le bonus avant
-						retrait
+						de pouvoir retirer vos gains
 					</li>
-					<li>Certains casinos offrent des bonus sans condition de mise</li>
-					<li>Lisez toujours les termes et conditions</li>
-					<li>Vérifiez les contributions au wagering par jeu</li>
+					<li>
+						Certains casinos proposent des bonus sans condition de mise, plus
+						avantageux
+					</li>
+					<li>
+						Lisez toujours les termes et conditions avant d’accepter un bonus
+					</li>
+					<li>
+						Assurez-vous de quels jeux comptent pleinement pour remplir les
+						conditions de mise (par exemple, les machines à sous comptent
+						souvent à 100 %, contrairement au blackjack ou à la roulette)
+					</li>
 				</ul>
+				<p>
+					🧠 En comprenant bien ces règles, vous tirez le meilleur profit des
+					bonus sur un casino en ligne tout en évitant les pièges.
+				</p>
 
 				<h3>👨‍💼 Mon expertise dans l’univers du casino en ligne</h3>
 				<p>
-					Fort de plus de 10 ans d’expérience, je travaille avec des opérateurs
-					fiables.
+					Je suis là pour vous aider !<br />
+					Fort de plus de 10 ans d’expérience dans le secteur du casino en
+					ligne, je travaille en direct avec de nombreux opérateurs fiables dans
+					l’espace francophone et à l’international.
 				</p>
 				<ul>
 					<li>🎰 Problème avec un retrait ?</li>
 					<li>📄 Documents non validés ?</li>
-					<li>⛔ Compte bloqué ?</li>
+					<li>⛔ Compte bloqué sans explication ?</li>
 				</ul>
 				<p>
-					👉 Contactez-moi directement : aide gratuite, confidentielle et rapide
+					👉 Contactez-moi directement – je peux intervenir auprès du support
+					grâce à mes relations professionnelles dans l’industrie pour débloquer
+					votre situation rapidement.
 				</p>
 				<ul>
-					<li>🔹 Formulaire de contact</li>
-					<li>🔹 Email / Telegram : @votrepseudo</li>
-					<li>🔹 Réponse sous 24h</li>
+					<li>
+						💬 Aide 100 % gratuite, confidentielle et personnalisée pour les
+						joueurs francophones.
+					</li>
 				</ul>
 			</section>
 		</main>
 
-		<footer class="footer">
+		<footer class="footer" role="contentinfo">
 			<div class="footer__container">
 				<div class="footer__copyright">
 					© 2025 TopJeu. Tous droits réservés.
 				</div>
-				<div class="footer__social">
-					<a class="footer__link" href="https://www.youtube.com/@TopJeu777">
-						<img
-							class="footer__logo"
-							src="img/youtube.png"
-							alt="logo-YouTube-officiel"
-							loading="lazy"
-						/>
-						<span>YouTube</span>
-					</a>
-				</div>
 			</div>
 		</footer>
 		<!-- POPUP: À propos de nous -->
-		<div id="popup" class="popup hidden">
+		<div id="popup" class="popup hidden" role="dialog" aria-modal="true">
 			<div class="popup__content">
-				<span id="popup-close" class="popup__close">&times;</span>
-				<h2>Qui suis-je ?</h2>
+				<span id="popup-close" class="popup__close" aria-label="Fermer"
+					>&times;</span
+				>
+				<h2>Qui suis-je !</h2>
 				<p>
 					👩‍💼 Moi, c’est Dariah Belle – votre alliée dans l’univers du casino en
-					ligne<br />
+					ligne !<br />
+					<br />
 					Bienvenue sur mon site dédié aux meilleurs casinos en ligne pour les
 					joueurs francophones.
 				</p>
@@ -993,9 +1119,16 @@
 			</div>
 		</div>
 		<!-- POPUP: Contact -->
-		<div id="popup-contact" class="popup hidden">
+		<div
+			id="popup-contact"
+			class="popup hidden"
+			role="dialog"
+			aria-modal="true"
+		>
 			<div class="popup__content">
-				<span id="popup-contact-close" class="popup__close">&times;</span>
+				<span id="popup-contact-close" class="popup__close" aria-label="Fermer"
+					>&times;</span
+				>
 				<h2>Contactez-moi</h2>
 				<form action="https://formspree.io/f/mjkokkor" method="POST">
 					<label for="name">Nom *</label>
@@ -1071,6 +1204,11 @@
 				if (e.target === popupContact) {
 					popupContact.classList.add('hidden');
 				}
+			});
+			// Анимация логотипа при загрузке страницы
+			window.addEventListener('load', () => {
+				const logo = document.querySelector('.header__logo');
+				logo.classList.add('rotate-once');
 			});
 		</script>
 	</body>
