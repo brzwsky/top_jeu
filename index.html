@@ -150,7 +150,7 @@
 			}
 			.casino-card {
 				background: #fff;
-				border-radius: 0;
+				border-radius: 15px;
 				overflow: visible;
 				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 				padding: 1rem;
@@ -161,7 +161,7 @@
 			}
 			.casino-card--top {
 				border: 3px solid;
-				border-image: linear-gradient(90deg, #f90202 20%, #c40000 90%);
+				/* border-image: linear-gradient(90deg, #f90202 20%, #c40000 90%); */
 				border-image-slice: 1;
 			}
 			.casino-card__info {
@@ -561,6 +561,10 @@
 				border-bottom: 2px solid #e60000;
 				padding-bottom: 0.3rem;
 			}
+			.casino-card--top .casino-card__title {
+				border-bottom: 2px solid #33b538;
+				padding-bottom: 0.3rem;
+			}
 
 			.casino-card__rank {
 				position: absolute;
@@ -582,6 +586,16 @@
 				border: 2px solid;
 				border-color: #e60000;
 				border-image-slice: 1;
+			}
+
+			.casino-card__icon {
+				position: absolute;
+				top: -40px;
+				left: -35px;
+				width: 60px;
+				height: 60px;
+				z-index: 3;
+				transform: rotate(-35deg);
 			}
 
 			.casino-card {
@@ -688,6 +702,11 @@
 				<div class="casino-card casino-card--top">
 					<div class="casino-card__rank-bg"></div>
 					<div class="casino-card__rank">1</div>
+					<img
+						class="casino-card__icon"
+						src="img/crown-images.png"
+						alt="pictogramme"
+					/>
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
