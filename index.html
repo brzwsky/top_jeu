@@ -263,7 +263,21 @@
 				gap: 0.5rem;
 				font-size: 1.4rem;
 			}
+			.list {
+				max-width: 800px;
+				margin: 0 auto 3rem;
+				padding: 0 1rem;
 
+				display: flex;
+				flex-direction: column;
+				align-items: center; /* Центрирует сами абзацы по горизонтали */
+			}
+
+			.list p {
+				text-align: left;
+				width: 100%;
+				box-sizing: border-box;
+			}
 			.landing-content {
 				padding-top: 2rem;
 				padding-bottom: 2rem;
@@ -289,6 +303,7 @@
 			.landing-content li {
 				margin-bottom: 0.5rem;
 			}
+
 			html {
 				min-height: 100%;
 				position: relative;
@@ -385,9 +400,8 @@
 
 			/* Основной контейнер контента для читаемости */
 			.landing-content {
-				max-width: 850px;
-				margin: 0 auto 3rem;
-				padding: 0 1rem;
+				max-width: 100%;
+				padding: 1rem 0;
 			}
 			.casino-card__title {
 				margin: 0.2rem 0;
@@ -395,6 +409,17 @@
 			}
 			.light {
 				font-weight: 300; /* или 200 */
+			}
+			.banners {
+				width: 100%;
+				max-width: 1200px;
+				margin: 1rem auto;
+				display: block;
+			}
+			.banners img {
+				width: 100%;
+				height: auto;
+				display: block;
 			}
 			/* ====== MEDIA QUERIES AT THE END ====== */
 			@media (max-width: 600px) {
@@ -668,13 +693,16 @@
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
-							src="img/logo-casinos/volerbet-logo.png"
-							alt="Logo de Volerbet Casino"
+							src="img/logo-casinos/mafiacasino-logo.svg"
+							alt="Logo de Mafia Casino"
 							loading="lazy"
 						/>
 						<div>
-							<h3 class="casino-card__title">Volerbet Casino</h3>
-							<p class="casino-card__bonus">300% Jusqu'à 3000 €</p>
+							<h3 class="casino-card__title">Mafia Casino</h3>
+							<p class="casino-card__bonus">
+								100% Jusqu’à 500 € + 200<br />
+								Free Spins
+							</p>
 						</div>
 					</div>
 					<ul class="casino-card__features">
@@ -689,7 +717,7 @@
 					<div class="casino-card__button">
 						<a
 							class="casino-card__button-link"
-							href="https://volerbet.io/"
+							href="https://mafiacasino.com/"
 							target="_blank"
 							rel="noopener noreferrer"
 							>Jouez maintenant !</a
@@ -838,9 +866,9 @@
 					</div>
 				</div>
 			</section>
-			<section class="landing-content">
+			<section class="list">
 				<p>
-					1. <strong>Volerbet Casino</strong>: Le nouveau casino en ligne
+					1. <strong>Mafia Casino</strong>: Le nouveau casino en ligne
 					francophone pour débuter et gagner en toute sécurité.
 				</p>
 				<p>
@@ -859,15 +887,23 @@
 					5. <strong>Sushi Casino</strong>: Le casino en ligne au style japonais
 					qui séduit les joueurs francophones en 2025.
 				</p>
-				<h3>
-					🎰 Volerbet Casino – Casino en ligne français idéal pour débutants
+			</section>
+			<section class="landing-content">
+				<h3 style="max-width: 1200px">
+					🎰 Mafia Casino – Casino en ligne français idéal pour débutants
 					ambitieux
 				</h3>
-				<p>
+				<a class="banners">
+					<img
+						src="img/banners/Mafiacasino-desktop-screenshot.png"
+						alt="mafia casino banner desktop"
+					/>
+				</a>
+				<p style="max-width: 1200px">
 					Volerbet est un nouveau casino en ligne avec une interface claire,
 					bonus sans dépôt, et un support en français disponible 24/7.
 				</p>
-				<ul>
+				<ul style="max-width: 1200px">
 					<li>✅ Avantages : interface claire, bonus sans dépôt</li>
 					<li>
 						❌ Inconvénients : catalogue de jeux encore limité, pas de section
@@ -875,16 +911,16 @@
 					</li>
 				</ul>
 
-				<h4>
+				<h4 style="max-width: 1200px">
 					🎰 Stonevegas Casino – Le casino en ligne premium pour joueurs
 					exigeants en France
 				</h4>
-				<p>
+				<p style="max-width: 1200px">
 					Stonevegas propose une expérience haut de gamme avec un design
 					premium, jackpots exclusifs, et retraits rapides, garantissant
 					fiabilité.
 				</p>
-				<ul>
+				<ul style="max-width: 1200px">
 					<li>
 						✅ Avantages : design premium, jackpots exclusifs, retraits rapides
 					</li>
@@ -894,15 +930,15 @@
 					</li>
 				</ul>
 
-				<h3>
+				<h3 style="max-width: 1200px">
 					🎰 GoldSpin Casino – Le casino en ligne français spécialisé en
 					machines à sous lucratives
 				</h3>
-				<p>
+				<p style="max-width: 1200px">
 					GoldSpin mise sur les slots à forte volatilité avec des RTP élevés,
 					offrant de nombreux free spins et promotions régulières.
 				</p>
-				<ul>
+				<ul style="max-width: 1200px">
 					<li>
 						✅ Avantages : nombreux free spins, catalogue de slots varié,
 						promotions régulières
@@ -913,15 +949,15 @@
 					</li>
 				</ul>
 
-				<h3>
+				<h3 style="max-width: 1200px">
 					🎰 Robocat Casino – Casino en ligne futuriste avec des paiements
 					ultra-rapides
 				</h3>
-				<p>
+				<p style="max-width: 1200px">
 					Robocat propose une approche techno et novatrice avec des retraits en
 					moins d’une heure, un design innovant, et une sécurité renforcée.
 				</p>
-				<ul>
+				<ul style="max-width: 1200px">
 					<li>
 						✅ Avantages : retraits en moins d’une heure, design innovant,
 						sécurité renforcée
@@ -932,16 +968,16 @@
 					</li>
 				</ul>
 
-				<h4>
+				<h4 style="max-width: 1200px">
 					🎰 Sushi Casino – Le casino en ligne inspiré du Japon qui séduit les
 					joueurs français
 				</h4>
-				<p>
+				<p style="max-width: 1200px">
 					Sushi Casino offre une ambiance unique avec un univers visuel
 					original, bonus clairs et sans wager, ainsi que de nombreux jeux
 					mobiles.
 				</p>
-				<ul>
+				<ul style="max-width: 1200px">
 					<li>
 						✅ Avantages : univers visuel original, bonus clairs et sans wager,
 						nombreux jeux mobiles
@@ -952,17 +988,19 @@
 					</li>
 				</ul>
 
-				<h3>
+				<h3 style="max-width: 1200px">
 					🎯 Jouer de façon responsable sur un casino en ligne : mes conseils
 					essentiels
 				</h3>
-				<p>
+				<p style="max-width: 1200px">
 					Le jeu d’argent en ligne doit rester un divertissement, non une source
 					de stress ou de dépendance. Pour cela, adopter une approche
 					responsable sur un casino en ligne est crucial.
 				</p>
-				<p><strong>Mes conseils pour jouer en toute sécurité :</strong></p>
-				<ul>
+				<p style="max-width: 1200px">
+					<strong>Mes conseils pour jouer en toute sécurité :</strong>
+				</p>
+				<ul style="max-width: 1200px">
 					<li>Fixez un budget de jeu clair et ne le dépassez jamais</li>
 					<li>
 						Utilisez les outils de limites de dépôt ou d’auto-exclusion proposés
@@ -973,20 +1011,20 @@
 					</li>
 					<li>Faites régulièrement des pauses pour garder le contrôle</li>
 				</ul>
-				<p>
+				<p style="max-width: 1200px">
 					✅ En respectant ces règles, vous profitez du casino en ligne dans
 					l’espace francophone de manière saine et durable.
 				</p>
 
-				<h3>
+				<h3 style="max-width: 1200px">
 					🏆 Comment choisir le meilleur casino en ligne francophone en 2025 ?
 				</h3>
-				<p>
+				<p style="max-width: 1200px">
 					Avec des centaines de plateformes disponibles, choisir un casino en
 					ligne fiable peut sembler complexe. Voici les critères essentiels à
 					vérifier avant de vous inscrire :
 				</p>
-				<ul>
+				<ul style="max-width: 1200px">
 					<li>
 						Licence légale : assurez-vous que le casino en ligne possède une
 						licence de jeu valide délivrée par une autorité reconnue (ANJ,
@@ -1007,22 +1045,24 @@
 						Evolution, Pragmatic Play)
 					</li>
 				</ul>
-				<p>
+				<p style="max-width: 1200px">
 					🎰 Un bon casino en ligne doit allier sécurité, diversité et fluidité
 					pour une expérience optimale.
 				</p>
 
-				<h3>
+				<h3 style="max-width: 1200px">
 					📜 Bonus de casino en ligne : comprendre les conditions de mise avant
 					de jouer
 				</h3>
-				<p>
+				<p style="max-width: 1200px">
 					Les bonus de casino en ligne peuvent sembler attractifs, mais il est
 					crucial de comprendre les conditions de mise (ou “wagering
 					requirements”).
 				</p>
-				<p><strong>Voici ce que vous devez savoir :</strong></p>
-				<ul>
+				<p style="max-width: 1200px">
+					<strong>Voici ce que vous devez savoir :</strong>
+				</p>
+				<ul style="max-width: 1200px">
 					<li>
 						Le wagering indique combien de fois vous devez miser le bonus avant
 						de pouvoir retirer vos gains
@@ -1040,7 +1080,7 @@
 						souvent à 100 %, contrairement au blackjack ou à la roulette)
 					</li>
 				</ul>
-				<p>
+				<p style="max-width: 1200px">
 					🧠 En comprenant bien ces règles, vous tirez le meilleur profit des
 					bonus sur un casino en ligne tout en évitant les pièges.
 				</p>
