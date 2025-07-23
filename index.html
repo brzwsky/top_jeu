@@ -419,7 +419,44 @@
 				height: auto;
 				display: block;
 			}
-			/* ====== MEDIA QUERIES AT THE END ====== */
+			.header__logo-block {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.header__logo-block .header__logo {
+				max-height: 110px;
+				margin: 0 auto;
+				display: block;
+				margin-bottom: 0.7rem;
+			}
+			.header__logo-text {
+				text-align: center;
+				color: #ffffff;
+			}
+			.header__logo-line {
+				margin: 0;
+				text-align: center;
+				line-height: 1.2;
+			}
+
+			.header__logo-line--title {
+				color: #ffffff;
+				font-size: 1.4rem;
+				font-weight: 700;
+				font-family: 'Helvetica', sans-serif;
+				z-index: 2;
+			}
+
+			.header__logo-line--subtitle {
+				color: #ffffff;
+				font-size: 1.1rem;
+				font-weight: 500;
+				font-family: 'Helvetica', sans-serif;
+				z-index: 1;
+				text-transform: uppercase;
+			}
+
 			@media (max-width: 600px) {
 				.header {
 					flex-direction: column;
@@ -590,8 +627,8 @@
 
 			.casino-card__icon {
 				position: absolute;
-				top: -40px;
-				left: -35px;
+				top: -36px;
+				left: -28px;
 				width: 60px;
 				height: 60px;
 				z-index: 3;
@@ -644,12 +681,20 @@
 		<!-- Header -->
 		<header class="header" role="banner">
 			<div class="header__container">
-				<img
-					class="header__logo"
-					src="img/topjeu_logo_queen.png"
-					alt="logo-top-jeu"
-					loading="lazy"
-				/>
+				<div class="header__logo-block">
+					<img
+						class="header__logo"
+						src="img/card-queen-logo.png"
+						alt="logo-top-jeu"
+						loading="lazy"
+					/>
+					<div class="header__logo-text">
+						<p class="header__logo-line header__logo-line--title">TopJeu</p>
+						<p class="header__logo-line header__logo-line--subtitle">
+							casino fiables
+						</p>
+					</div>
+				</div>
 				<nav class="header__nav" aria-label="Menu principal">
 					<a
 						class="header__link"
@@ -704,7 +749,7 @@
 					<div class="casino-card__rank">1</div>
 					<img
 						class="casino-card__icon"
-						src="img/crown-images.png"
+						src="img/crown-icon.png"
 						alt="pictogramme"
 					/>
 					<div class="casino-card__info">
