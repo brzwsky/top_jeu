@@ -9,32 +9,101 @@
 			content="Découvrez les meilleurs casinos en ligne fiables en France en 2025. Classement, avis, bonus et conseils pour jouer en toute sécurité."
 		/>
 		<style>
+			/* ===== Сброс и глобальные стили ===== */
 			html,
 			body {
 				height: 100%;
 				margin: 0;
 				padding: 0;
 			}
-
+			html {
+				min-height: 100%;
+				position: relative;
+			}
 			body {
 				display: flex;
 				flex-direction: column;
 				min-height: 100vh;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				background: #fff;
+				color: #000;
+				font-size: 1rem; /* 16px */
 			}
-
 			main {
 				flex: 1;
 				padding: 0 2rem;
 				max-width: 1200px;
 				margin: 0 auto;
 			}
-
+			ul {
+				max-width: 700px;
+				margin-bottom: 1.5rem;
+				padding-left: 1.5rem;
+				color: #444;
+			}
+			li {
+				margin-bottom: 0.6rem;
+				line-height: 1.4;
+			}
+			p {
+				font-size: 1.1rem;
+				line-height: 1.6;
+				color: #222;
+				margin-bottom: 1rem;
+				max-width: 800px;
+			}
+			h1,
+			h2,
+			h3,
+			h4 {
+				font-family: 'Arial Black', Arial, sans-serif;
+				color: #1a1a1a;
+				margin-top: 2rem;
+				margin-bottom: 0.5rem;
+				line-height: 1.2;
+			}
+			h1 {
+				font-size: 2.8rem;
+				font-weight: 900;
+				letter-spacing: 0.05em;
+			}
+			h2 {
+				font-size: 2rem;
+				font-weight: 700;
+				border-bottom: 2px solid #e60000;
+				padding-bottom: 0.3rem;
+			}
+			h3 {
+				font-size: 1.3rem;
+				font-weight: 700;
+				color: black;
+			}
+			h4 {
+				font-size: 1rem;
+				font-weight: 600;
+				color: #cc0000;
+				margin-top: 1.5rem;
+				margin-bottom: 0.3rem;
+			}
+			strong {
+				color: black;
+				font-weight: 700;
+			}
+			a {
+				color: #b30000;
+				text-decoration: underline;
+			}
+			a:hover {
+				color: red;
+			}
+			/* ===== Компонентные стили ===== */
 			/* Header */
 			.header {
 				background: #000;
 				color: #fff;
-				padding-top: 0;
-				padding-bottom: 0;
+				padding-top: 1rem;
+				padding-bottom: 1rem;
 				font-family: Arial, sans-serif;
 			}
 			.header__container,
@@ -89,22 +158,46 @@
 				align-items: center;
 				gap: 0.5rem;
 			}
-
 			.youtube-icon {
 				width: 25px;
 				height: 25px;
 				object-fit: contain;
 			}
-
-			/* Body */
-			body {
-				margin: 0;
-				font-family: Helvetica, sans-serif;
-				background: #fff;
-				color: #000;
-				font-size: 1rem; /* 16px */
+			.header__logo-block {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
 			}
-
+			.header__logo-block .header__logo {
+				max-height: 110px;
+				margin: 0 auto;
+				display: block;
+				margin-bottom: 0.7rem;
+			}
+			.header__logo-text {
+				text-align: center;
+				color: #ffffff;
+			}
+			.header__logo-line {
+				margin: 0;
+				text-align: center;
+				line-height: 1.2;
+			}
+			.header__logo-line--title {
+				color: #ffffff;
+				font-size: 1.4rem;
+				font-weight: 700;
+				font-family: 'Helvetica', sans-serif;
+				z-index: 2;
+			}
+			.header__logo-line--subtitle {
+				color: #ffffff;
+				font-size: 0.875rem;
+				font-weight: 500;
+				font-family: 'Helvetica', sans-serif;
+				z-index: 1;
+				text-transform: uppercase;
+			}
 			/* Hero Section */
 			.hero {
 				padding: 1rem;
@@ -122,7 +215,9 @@
 				max-width: 800px;
 				line-height: 1.6;
 			}
-
+			.light {
+				font-weight: 300; /* или 200 */
+			}
 			/* Filter Buttons */
 			.filter {
 				padding: 1rem;
@@ -139,7 +234,6 @@
 			.filter__button:last-child {
 				margin-right: 0;
 			}
-
 			/* Casino Cards */
 			.casino-cards {
 				/* padding: 1rem; */
@@ -158,6 +252,7 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				position: relative;
 			}
 			.casino-card--top {
 				border: 3px solid;
@@ -238,7 +333,52 @@
 			.casino-card__button-link:hover {
 				color: #e60000;
 			}
-
+			.casino-card__title {
+				margin: 0.2rem 0;
+				font-size: 20px;
+				display: inline-block;
+				width: 220px; /* Фиксированная ширина для подчеркивания */
+			}
+			.casino-card:not(.casino-card--top) .casino-card__title {
+				border-bottom: 2px solid #e60000;
+				padding-bottom: 0.3rem;
+				width: 220px;
+			}
+			.casino-card--top .casino-card__title {
+				border-bottom: 2px solid #33b538;
+				padding-bottom: 0.3rem;
+				width: 220px;
+			}
+			.casino-card__rank {
+				position: absolute;
+				top: 50%;
+				left: -26px;
+				transform: translateY(-50%);
+				background: #000;
+				color: #fff;
+				font-size: 1.4rem;
+				font-weight: bold;
+				border-radius: 50%;
+				width: 36px;
+				height: 36px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				z-index: 2;
+				box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+				border: 2px solid;
+				border-color: #e60000;
+				border-image-slice: 1;
+			}
+			.casino-card__icon {
+				position: absolute;
+				top: -36px;
+				left: -28px;
+				width: 60px;
+				height: 60px;
+				z-index: 3;
+				transform: rotate(-35deg);
+			}
 			/* Footer */
 			.footer {
 				background: #000;
@@ -263,6 +403,7 @@
 				gap: 0.5rem;
 				font-size: 1.4rem;
 			}
+			/* List section */
 			.list {
 				max-width: 900px;
 				margin: 0 auto 3rem;
@@ -270,16 +411,20 @@
 				flex-direction: column;
 				align-items: center;
 			}
-
 			.list p {
 				text-align: left;
 				width: 100%;
 				box-sizing: border-box;
 			}
+			/* Landing content */
 			.landing-content {
-				padding-top: 2rem;
-				padding-bottom: 2rem;
+				max-width: 100%;
+				padding: 2rem 0;
 				line-height: 1.6;
+			}
+			.content-width {
+				max-width: 1200px;
+				margin: 0 auto;
 			}
 			.landing-content h2 {
 				font-size: 2rem;
@@ -301,113 +446,7 @@
 			.landing-content li {
 				margin-bottom: 0.5rem;
 			}
-
-			html {
-				min-height: 100%;
-				position: relative;
-			}
-			body {
-				display: flex;
-				flex-direction: column;
-				min-height: 100vh;
-			}
-			main {
-				flex: 1;
-			}
-			/* Общие настройки для параграфов */
-			p {
-				font-size: 1.1rem;
-				line-height: 1.6;
-				color: #222;
-				margin-bottom: 1rem;
-				max-width: 800px;
-			}
-
-			/* Заголовки */
-			h1,
-			h2,
-			h3,
-			h4 {
-				font-family: 'Arial Black', Arial, sans-serif;
-				color: #1a1a1a;
-				margin-top: 2rem;
-				margin-bottom: 0.5rem;
-				line-height: 1.2;
-			}
-
-			/* Основной заголовок */
-			h1 {
-				font-size: 2.8rem;
-				font-weight: 900;
-				letter-spacing: 0.05em;
-			}
-
-			/* Второй уровень заголовков */
-			h2 {
-				font-size: 2rem;
-				font-weight: 700;
-				border-bottom: 2px solid #e60000;
-				padding-bottom: 0.3rem;
-			}
-
-			/* Третий уровень заголовков */
-			h3 {
-				font-size: 1.3rem;
-				font-weight: 700;
-				color: black;
-			}
-
-			/* Четвертый уровень заголовков */
-			h4 {
-				font-size: 1rem;
-				font-weight: 600;
-				color: #cc0000;
-				margin-top: 1.5rem;
-				margin-bottom: 0.3rem;
-			}
-
-			/* Списки */
-			ul {
-				max-width: 700px;
-				margin-bottom: 1.5rem;
-				padding-left: 1.5rem;
-				color: #444;
-			}
-
-			li {
-				margin-bottom: 0.6rem;
-				/* font-size: 0.8rem; */
-				line-height: 1.4;
-			}
-
-			/* Выделение жирным */
-			strong {
-				color: black;
-				font-weight: 700;
-			}
-
-			/* Ссылки */
-			a {
-				color: #b30000;
-				text-decoration: underline;
-			}
-
-			a:hover {
-				color: red;
-			}
-
-			/* Основной контейнер контента для читаемости */
-			.landing-content {
-				max-width: 100%;
-				padding: 1rem 0;
-			}
-			.casino-card__title {
-				margin: 0.2rem 0;
-				font-size: 20px;
-			}
-			.light {
-				font-weight: 300; /* или 200 */
-			}
+			/* Banners */
 			.banners {
 				width: 100%;
 				max-width: 1200px;
@@ -419,44 +458,54 @@
 				height: auto;
 				display: block;
 			}
-			.header__logo-block {
+			/* Popup */
+			.popup {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.6);
 				display: flex;
-				flex-direction: column;
 				align-items: center;
+				justify-content: center;
+				z-index: 1000;
 			}
-			.header__logo-block .header__logo {
-				max-height: 110px;
-				margin: 0 auto;
-				display: block;
-				margin-bottom: 0.7rem;
+			.popup__content {
+				background: #fff;
+				padding: 2rem;
+				border-radius: 8px;
+				max-width: 600px;
+				width: 90%;
+				position: relative;
+				font-size: 1rem;
+				color: #000;
 			}
-			.header__logo-text {
-				text-align: center;
-				color: #ffffff;
+			.popup__close {
+				position: absolute;
+				top: 0.5rem;
+				right: 1rem;
+				font-size: 2rem;
+				cursor: pointer;
+				color: #900;
 			}
-			.header__logo-line {
-				margin: 0;
-				text-align: center;
-				line-height: 1.2;
+			.popup__button {
+				margin-top: 1.5rem;
+				background: #e60000;
+				color: #fff;
+				padding: 0.5rem 1rem;
+				border: none;
+				border-radius: 4px;
+				font-size: 1rem;
+				cursor: pointer;
 			}
-
-			.header__logo-line--title {
-				color: #ffffff;
-				font-size: 1.4rem;
-				font-weight: 700;
-				font-family: 'Helvetica', sans-serif;
-				z-index: 2;
+			.popup__button:hover {
+				background: #b30000;
 			}
-
-			.header__logo-line--subtitle {
-				color: #ffffff;
-				font-size: 1.1rem;
-				font-weight: 500;
-				font-family: 'Helvetica', sans-serif;
-				z-index: 1;
-				text-transform: uppercase;
+			.hidden {
+				display: none;
 			}
-
+			/* Responsive Styles */
 			@media (max-width: 600px) {
 				.header {
 					flex-direction: column;
@@ -491,6 +540,11 @@
 				.filter__button {
 					margin-bottom: 0.5rem;
 					width: 100%;
+				}
+				.casino-card__image {
+					max-width: 100px;
+					width: 100px;
+					height: auto;
 				}
 			}
 			@media (max-height: 300px) {
@@ -529,114 +583,6 @@
 					font-size: 0.8rem;
 					margin-left: 1rem;
 				}
-			}
-			.casino-card__title {
-				margin: 0.2rem 0;
-				font-size: 20px;
-			}
-
-			.casino-card__features {
-				margin: 0 1rem;
-				padding-left: 1rem;
-				list-style: none;
-				max-width: calc(100% - 180px);
-				font-size: 12px;
-			}
-
-			.popup {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: rgba(0, 0, 0, 0.6);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				z-index: 1000;
-			}
-
-			.popup__content {
-				background: #fff;
-				padding: 2rem;
-				border-radius: 8px;
-				max-width: 600px;
-				width: 90%;
-				position: relative;
-				font-size: 1rem;
-				color: #000;
-			}
-
-			.popup__close {
-				position: absolute;
-				top: 0.5rem;
-				right: 1rem;
-				font-size: 2rem;
-				cursor: pointer;
-				color: #900;
-			}
-
-			.popup__button {
-				margin-top: 1.5rem;
-				background: #e60000;
-				color: #fff;
-				padding: 0.5rem 1rem;
-				border: none;
-				border-radius: 4px;
-				font-size: 1rem;
-				cursor: pointer;
-			}
-
-			.popup__button:hover {
-				background: #b30000;
-			}
-
-			.hidden {
-				display: none;
-			}
-			.casino-card:not(.casino-card--top) .casino-card__title {
-				border-bottom: 2px solid #e60000;
-				padding-bottom: 0.3rem;
-			}
-			.casino-card--top .casino-card__title {
-				border-bottom: 2px solid #33b538;
-				padding-bottom: 0.3rem;
-			}
-
-			.casino-card__rank {
-				position: absolute;
-				top: 50%;
-				left: -26px;
-				transform: translateY(-50%);
-				background: #000;
-				color: #fff;
-				font-size: 1.4rem;
-				font-weight: bold;
-				border-radius: 50%;
-				width: 36px;
-				height: 36px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				z-index: 2;
-				box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-				border: 2px solid;
-				border-color: #e60000;
-				border-image-slice: 1;
-			}
-
-			.casino-card__icon {
-				position: absolute;
-				top: -36px;
-				left: -28px;
-				width: 60px;
-				height: 60px;
-				z-index: 3;
-				transform: rotate(-35deg);
-			}
-
-			.casino-card {
-				position: relative;
 			}
 		</style>
 		<!-- SEO + Open Graph + Schema -->
@@ -695,7 +641,7 @@
 						</p>
 					</div>
 				</div>
-				<nav class="header__nav" aria-label="Menu principal">
+				<nav class="header__nav" aria-label="Menu principal" role="navigation">
 					<a
 						class="header__link"
 						href="https://www.youtube.com/@TopJeu777"
@@ -951,21 +897,21 @@
 				</p>
 			</section>
 			<section class="landing-content">
-				<h3 style="max-width: 1200px">
+				<h3 class="content-width">
 					🎰 Mafia Casino – Casino en ligne français idéal pour débutants
 					ambitieux
 				</h3>
-				<a class="banners">
+				<a class="banners" href="#">
 					<img
 						src="img/banners/Mafiacasino-desktop-screenshot.png"
-						alt="mafia casino banner desktop"
+						alt="Capture d'écran du site Mafia Casino - Bannière promotionnelle"
 					/>
 				</a>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					Volerbet est un nouveau casino en ligne avec une interface claire,
 					bonus sans dépôt, et un support en français disponible 24/7.
 				</p>
-				<ul style="max-width: 1200px">
+				<ul class="content-width">
 					<li>✅ Avantages : interface claire, bonus sans dépôt</li>
 					<li>
 						❌ Inconvénients : catalogue de jeux encore limité, pas de section
@@ -973,16 +919,16 @@
 					</li>
 				</ul>
 
-				<h4 style="max-width: 1200px">
+				<h3 class="content-width">
 					🎰 Stonevegas Casino – Le casino en ligne premium pour joueurs
 					exigeants en France
-				</h4>
-				<p style="max-width: 1200px">
+				</h3>
+				<p class="content-width">
 					Stonevegas propose une expérience haut de gamme avec un design
 					premium, jackpots exclusifs, et retraits rapides, garantissant
 					fiabilité.
 				</p>
-				<ul style="max-width: 1200px">
+				<ul class="content-width">
 					<li>
 						✅ Avantages : design premium, jackpots exclusifs, retraits rapides
 					</li>
@@ -992,15 +938,15 @@
 					</li>
 				</ul>
 
-				<h3 style="max-width: 1200px">
+				<h3 class="content-width">
 					🎰 GoldSpin Casino – Le casino en ligne français spécialisé en
 					machines à sous lucratives
 				</h3>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					GoldSpin mise sur les slots à forte volatilité avec des RTP élevés,
 					offrant de nombreux free spins et promotions régulières.
 				</p>
-				<ul style="max-width: 1200px">
+				<ul class="content-width">
 					<li>
 						✅ Avantages : nombreux free spins, catalogue de slots varié,
 						promotions régulières
@@ -1011,15 +957,15 @@
 					</li>
 				</ul>
 
-				<h3 style="max-width: 1200px">
+				<h3 class="content-width">
 					🎰 Robocat Casino – Casino en ligne futuriste avec des paiements
 					ultra-rapides
 				</h3>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					Robocat propose une approche techno et novatrice avec des retraits en
 					moins d’une heure, un design innovant, et une sécurité renforcée.
 				</p>
-				<ul style="max-width: 1200px">
+				<ul class="content-width">
 					<li>
 						✅ Avantages : retraits en moins d’une heure, design innovant,
 						sécurité renforcée
@@ -1030,16 +976,16 @@
 					</li>
 				</ul>
 
-				<h4 style="max-width: 1200px">
+				<h3 class="content-width">
 					🎰 Sushi Casino – Le casino en ligne inspiré du Japon qui séduit les
 					joueurs français
-				</h4>
-				<p style="max-width: 1200px">
+				</h3>
+				<p class="content-width">
 					Sushi Casino offre une ambiance unique avec un univers visuel
 					original, bonus clairs et sans wager, ainsi que de nombreux jeux
 					mobiles.
 				</p>
-				<ul style="max-width: 1200px">
+				<ul class="content-width">
 					<li>
 						✅ Avantages : univers visuel original, bonus clairs et sans wager,
 						nombreux jeux mobiles
@@ -1050,19 +996,19 @@
 					</li>
 				</ul>
 
-				<h3 style="max-width: 1200px">
+				<h3 class="content-width">
 					🎯 Jouer de façon responsable sur un casino en ligne : mes conseils
 					essentiels
 				</h3>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					Le jeu d’argent en ligne doit rester un divertissement, non une source
 					de stress ou de dépendance. Pour cela, adopter une approche
 					responsable sur un casino en ligne est crucial.
 				</p>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					<strong>Mes conseils pour jouer en toute sécurité :</strong>
 				</p>
-				<ul style="max-width: 1200px">
+				<ul class="content-width">
 					<li>Fixez un budget de jeu clair et ne le dépassez jamais</li>
 					<li>
 						Utilisez les outils de limites de dépôt ou d’auto-exclusion proposés
@@ -1073,20 +1019,20 @@
 					</li>
 					<li>Faites régulièrement des pauses pour garder le contrôle</li>
 				</ul>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					✅ En respectant ces règles, vous profitez du casino en ligne dans
 					l’espace francophone de manière saine et durable.
 				</p>
 
-				<h3 style="max-width: 1200px">
+				<h3 class="content-width">
 					🏆 Comment choisir le meilleur casino en ligne francophone en 2025 ?
 				</h3>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					Avec des centaines de plateformes disponibles, choisir un casino en
 					ligne fiable peut sembler complexe. Voici les critères essentiels à
 					vérifier avant de vous inscrire :
 				</p>
-				<ul style="max-width: 1200px">
+				<ul class="content-width">
 					<li>
 						Licence légale : assurez-vous que le casino en ligne possède une
 						licence de jeu valide délivrée par une autorité reconnue (ANJ,
@@ -1107,24 +1053,24 @@
 						Evolution, Pragmatic Play)
 					</li>
 				</ul>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					🎰 Un bon casino en ligne doit allier sécurité, diversité et fluidité
 					pour une expérience optimale.
 				</p>
 
-				<h3 style="max-width: 1200px">
+				<h3 class="content-width">
 					📜 Bonus de casino en ligne : comprendre les conditions de mise avant
 					de jouer
 				</h3>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					Les bonus de casino en ligne peuvent sembler attractifs, mais il est
 					crucial de comprendre les conditions de mise (ou “wagering
 					requirements”).
 				</p>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					<strong>Voici ce que vous devez savoir :</strong>
 				</p>
-				<ul style="max-width: 1200px">
+				<ul class="content-width">
 					<li>
 						Le wagering indique combien de fois vous devez miser le bonus avant
 						de pouvoir retirer vos gains
@@ -1142,29 +1088,31 @@
 						souvent à 100 %, contrairement au blackjack ou à la roulette)
 					</li>
 				</ul>
-				<p style="max-width: 1200px">
+				<p class="content-width">
 					🧠 En comprenant bien ces règles, vous tirez le meilleur profit des
 					bonus sur un casino en ligne tout en évitant les pièges.
 				</p>
 
-				<h3>👨‍💼 Mon expertise dans l’univers du casino en ligne</h3>
-				<p>
+				<h3 class="content-width">
+					👨‍💼 Mon expertise dans l’univers du casino en ligne
+				</h3>
+				<p class="content-width">
 					Je suis là pour vous aider !<br />
 					Fort de plus de 10 ans d’expérience dans le secteur du casino en
 					ligne, je travaille en direct avec de nombreux opérateurs fiables dans
 					l’espace francophone et à l’international.
 				</p>
-				<ul>
+				<ul class="content-width">
 					<li>🎰 Problème avec un retrait ?</li>
 					<li>📄 Documents non validés ?</li>
 					<li>⛔ Compte bloqué sans explication ?</li>
 				</ul>
-				<p>
+				<p class="content-width">
 					👉 Contactez-moi directement – je peux intervenir auprès du support
 					grâce à mes relations professionnelles dans l’industrie pour débloquer
 					votre situation rapidement.
 				</p>
-				<ul>
+				<ul class="content-width">
 					<li>
 						💬 Aide 100 % gratuite, confidentielle et personnalisée pour les
 						joueurs francophones.
