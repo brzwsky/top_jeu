@@ -9,7 +9,67 @@
 			content="Découvrez les meilleurs casinos en ligne fiables en France en 2025. Classement, avis, bonus et conseils pour jouer en toute sécurité."
 		/>
 		<style>
-			/* ===== Сброс и глобальные стили ===== */
+			.burger {
+				display: none;
+				flex-direction: column;
+				justify-content: space-between;
+				width: 24px;
+				height: 18px;
+				background: none;
+				border: none;
+				cursor: pointer;
+				z-index: 1001;
+			}
+
+			.burger span {
+				display: block;
+				height: 2px;
+				background-color: #fff;
+				width: 100%;
+			}
+
+			.nav-menu {
+				display: flex;
+				gap: 1rem;
+			}
+
+			@media (max-width: 768px) {
+				.burger {
+					display: flex;
+				}
+				.nav-menu {
+					display: none;
+					flex-direction: column;
+					position: absolute;
+					top: 60px;
+					right: 1rem;
+					background-color: #000;
+					padding: 1rem;
+					z-index: 1000;
+				}
+				.nav-menu.active {
+					display: flex;
+				}
+			}
+			@media (max-width: 600px) {
+				.nav-menu {
+					display: none;
+					flex-direction: column;
+					position: absolute;
+					top: 100%;
+					right: 0;
+					background-color: #000;
+					padding: 1rem;
+					z-index: 1000;
+					gap: 1rem;
+				}
+				.nav-menu.active {
+					display: flex;
+				}
+				.burger {
+					display: flex;
+				}
+			}
 			html,
 			body {
 				height: 100%;
@@ -97,7 +157,7 @@
 			a:hover {
 				color: red;
 			}
-			/* ===== Компонентные стили ===== */
+
 			/* Header */
 			.header {
 				background: #000;
@@ -120,6 +180,7 @@
 			.header__container {
 				padding-top: 0.3rem;
 				padding-bottom: 0.3rem;
+				position: relative;
 			}
 			.header__logo {
 				max-height: 175px;
@@ -212,7 +273,14 @@
 				margin: 0 0 1rem 0;
 			}
 			.hero__text {
-				max-width: 800px;
+				display: flex;
+				justify-content: space-between;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.hero__text p {
+				max-width: 1200px;
 				line-height: 1.6;
 			}
 			.light {
@@ -337,7 +405,7 @@
 				margin: 0.2rem 0;
 				font-size: 20px;
 				display: inline-block;
-				width: 220px; /* Фиксированная ширина для подчеркивания */
+				width: 220px;
 			}
 			.casino-card:not(.casino-card--top) .casino-card__title {
 				border-bottom: 2px solid #e60000;
@@ -424,7 +492,9 @@
 			}
 			.content-width {
 				max-width: 1200px;
-				margin: 0 auto;
+				width: 100%;
+				margin-left: auto;
+				margin-right: auto;
 			}
 			.landing-content h2 {
 				font-size: 2rem;
@@ -505,6 +575,7 @@
 			.hidden {
 				display: none;
 			}
+
 			/* Responsive Styles */
 			@media (max-width: 600px) {
 				.header {
@@ -545,6 +616,9 @@
 					max-width: 100px;
 					width: 100px;
 					height: auto;
+				}
+				.burger {
+					display: flex;
 				}
 			}
 			@media (max-height: 300px) {
@@ -641,7 +715,12 @@
 						</p>
 					</div>
 				</div>
-				<nav class="header__nav" aria-label="Menu principal" role="navigation">
+				<div class="burger" aria-label="Menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<nav class="nav-menu" aria-label="Menu principal" role="navigation">
 					<a
 						class="header__link"
 						href="https://www.youtube.com/@TopJeu777"
@@ -672,22 +751,23 @@
 					Rédigé par : <span class="light">Dariah Belle</span> · Dernière mise à
 					jour : <span class="light">12 juin 2025</span>
 				</p>
-				<p class="hero__text">
-					Le marché des <strong> casinos en ligne francophones</strong> est en
-					pleine expansion, avec une offre toujours plus variée et compétitive.
-					Que vous soyez joueur occasionnel ou amateur de jeux en ligne, il est
-					essentiel de choisir une plateforme adaptée, fiable et pensée pour les
-					utilisateurs francophones.
-				</p>
-				<p>
-					Voici mon
-					<strong>Top 5 des meilleurs casinos en ligne</strong> destinés au
-					public francophone, sélectionnés selon des critères rigoureux :
-					fiabilité des opérateurs, qualité des bonus, richesse de la
-					ludothèque, réactivité du support client et rapidité des retraits.
-				</p>
+				<div class="hero__text">
+					<p>
+						Le marché des <strong> casinos en ligne francophones</strong> est en
+						pleine expansion, avec une offre toujours plus variée et
+						compétitive. Que vous soyez joueur occasionnel ou amateur de jeux en
+						ligne, il est essentiel de choisir une plateforme adaptée, fiable et
+						pensée pour les utilisateurs francophones.
+					</p>
+					<p>
+						Voici mon
+						<strong>Top 5 des meilleurs casinos en ligne</strong> destinés au
+						public francophone, sélectionnés selon des critères rigoureux :
+						fiabilité des opérateurs, qualité des bonus, richesse de la
+						ludothèque, réactivité du support client et rapidité des retraits.
+					</p>
+				</div>
 			</section>
-
 			<!-- Casino Cards -->
 			<section class="casino-cards">
 				<div class="casino-card casino-card--top">
@@ -903,7 +983,7 @@
 				</h3>
 				<a class="banners" href="#">
 					<img
-						src="img/banners/Mafiacasino-desktop-screenshot.png"
+						src="img/banners/mafia-casino-desktop-screenshot.png"
 						alt="Capture d'écran du site Mafia Casino - Bannière promotionnelle"
 					/>
 				</a>
@@ -923,6 +1003,12 @@
 					🎰 Stonevegas Casino – Le casino en ligne premium pour joueurs
 					exigeants en France
 				</h3>
+				<a class="banners" href="#">
+					<img
+						src="img/banners/stonevegas-casino-desktop-screenshot.png"
+						alt="Capture d'écran du site Stonevegas Casino - Bannière promotionnelle"
+					/>
+				</a>
 				<p class="content-width">
 					Stonevegas propose une expérience haut de gamme avec un design
 					premium, jackpots exclusifs, et retraits rapides, garantissant
@@ -942,6 +1028,12 @@
 					🎰 GoldSpin Casino – Le casino en ligne français spécialisé en
 					machines à sous lucratives
 				</h3>
+				<a class="banners" href="#">
+					<img
+						src="img/banners/goldspin-casino-desktop-screenshot.png"
+						alt="Capture d'écran du site GoldSpin Casino - Bannière promotionnelle"
+					/>
+				</a>
 				<p class="content-width">
 					GoldSpin mise sur les slots à forte volatilité avec des RTP élevés,
 					offrant de nombreux free spins et promotions régulières.
@@ -961,6 +1053,12 @@
 					🎰 Robocat Casino – Casino en ligne futuriste avec des paiements
 					ultra-rapides
 				</h3>
+				<a class="banners" href="#">
+					<img
+						src="img/banners/winbay-casino-desktop-screenshot.png"
+						alt="Capture d'écran du site Winbay Casino - Bannière promotionnelle"
+					/>
+				</a>
 				<p class="content-width">
 					Robocat propose une approche techno et novatrice avec des retraits en
 					moins d’une heure, un design innovant, et une sécurité renforcée.
@@ -980,6 +1078,12 @@
 					🎰 Sushi Casino – Le casino en ligne inspiré du Japon qui séduit les
 					joueurs français
 				</h3>
+				<a class="banners" href="#">
+					<img
+						src="img/banners/sushi-casino-desktop-screenshot.png"
+						alt="Capture d'écran du site Sushi Casino - Bannière promotionnelle"
+					/>
+				</a>
 				<p class="content-width">
 					Sushi Casino offre une ambiance unique avec un univers visuel
 					original, bonus clairs et sans wager, ainsi que de nombreux jeux
@@ -1211,7 +1315,7 @@
 			</div>
 		</div>
 		<script>
-			// Открытие попапа
+			// Popup functionality
 			document
 				.querySelector('.header__link[href="#about"]')
 				.addEventListener('click', function (e) {
@@ -1219,21 +1323,19 @@
 					document.getElementById('popup').classList.remove('hidden');
 				});
 
-			// Закрытие по крестику
 			document
 				.getElementById('popup-close')
 				.addEventListener('click', function () {
 					document.getElementById('popup').classList.add('hidden');
 				});
 
-			// Закрытие при клике вне окна
 			window.addEventListener('click', function (e) {
 				const popup = document.getElementById('popup');
 				if (e.target === popup) {
 					popup.classList.add('hidden');
 				}
 			});
-			// Открытие попапа «Envoyez-moi un message»
+
 			document
 				.querySelector('.header__link[href="#contact"]')
 				.addEventListener('click', function (e) {
@@ -1241,24 +1343,32 @@
 					document.getElementById('popup-contact').classList.remove('hidden');
 				});
 
-			// Закрытие попапа «Contact» по крестику
 			document
 				.getElementById('popup-contact-close')
 				.addEventListener('click', function () {
 					document.getElementById('popup-contact').classList.add('hidden');
 				});
 
-			// Закрытие при клике вне окна
 			window.addEventListener('click', function (e) {
 				const popupContact = document.getElementById('popup-contact');
 				if (e.target === popupContact) {
 					popupContact.classList.add('hidden');
 				}
 			});
-			// Анимация логотипа при загрузке страницы
+
 			window.addEventListener('load', () => {
 				const logo = document.querySelector('.header__logo');
 				logo.classList.add('rotate-once');
+			});
+			// Burger menu (wrapped in DOMContentLoaded)
+			document.addEventListener('DOMContentLoaded', () => {
+				const burger = document.querySelector('.burger');
+				const menu = document.querySelector('.nav-menu');
+				if (burger && menu) {
+					burger.addEventListener('click', () => {
+						menu.classList.toggle('active');
+					});
+				}
 			});
 		</script>
 	</body>
