@@ -252,7 +252,33 @@
 				margin-bottom: 0.5rem;
 			}
 			.hero__meta {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				flex-wrap: wrap;
 				margin: 0 0 1rem 0;
+			}
+			.author__icon {
+				width: 20px;
+				height: 20px;
+			}
+
+			.author__name {
+				text-decoration: underline;
+				color: inherit;
+				font-weight: 200;
+			}
+			.author {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+			.author__photo {
+				width: 35px;
+				height: 35px;
+				border-radius: 50%;
+				object-fit: cover;
+				display: inline-block;
 			}
 			.hero__text {
 				display: flex;
@@ -511,6 +537,32 @@
 				width: 100%;
 				height: auto;
 				display: block;
+			}
+
+			.casino-info table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 2rem 0;
+				font-size: 1rem;
+				color: #222;
+			}
+
+			.casino-info th,
+			.casino-info td {
+				padding: 0.75rem 1rem;
+				border: 1px solid #ddd;
+				text-align: left;
+				vertical-align: middle;
+			}
+
+			.casino-info th {
+				background-color: #f9f9f9;
+				font-weight: 700;
+				width: 40%;
+			}
+
+			.casino-info tbody tr:hover {
+				background-color: #f1f1f1;
 			}
 			/* Popup */
 			.popup {
@@ -790,8 +842,17 @@
 					Les meilleurs casinos en ligne francophones fiables en 2025
 				</h1>
 				<p class="hero__meta">
-					Rédigé par : <span class="light">Dariah Belle</span> · Dernière mise à
-					jour : <span class="light">12 juin 2025</span>
+					<span class="author"
+						><img
+							src="img/author-photo.png"
+							alt="Auteur"
+							class="author__photo"
+					/></span>
+					Rédigé par :
+					<span>
+						<a href="#" class="author__name">Dariah Belle</a>
+					</span>
+					· Dernière mise à jour : <span class="light">12 juin 2025</span>
 				</p>
 				<div class="hero__text">
 					<p>
@@ -1030,14 +1091,76 @@
 					/>
 				</a>
 				<p class="content-width">
-					Volerbet est un nouveau casino en ligne avec une interface claire,
-					bonus sans dépôt, et un support en français disponible 24/7.
+					Mafia Casino s’impose comme une nouvelle destination de choix pour les
+					amateurs de jeux en ligne francophones. Avec son univers original
+					inspiré du monde mafieux, le site mêle divertissement, simplicité
+					d’utilisation et sécurité, tout en proposant une plateforme 100 %
+					adaptée aux débutants comme aux joueurs plus expérimentés.
 				</p>
+
+				<p class="content-width">
+					Dès l’inscription, les nouveaux joueurs sont accueillis avec un bonus
+					de bienvenue attractif, sans conditions complexes ni pièges cachés.
+					L’interface est claire, fluide, et disponible en français, ce qui
+					permet une prise en main rapide.
+				</p>
+				<section class="casino-info content-width">
+					<table>
+						<tbody>
+							<tr>
+								<th>📅 Année de création</th>
+								<td>2025</td>
+							</tr>
+							<tr>
+								<th>🎮 Nombre de jeux</th>
+								<td>9200+</td>
+							</tr>
+							<tr>
+								<th>🎁 Bonus de bienvenue</th>
+								<td>100% Jusqu’à 500 € + 200 Free Spins</td>
+							</tr>
+							<tr>
+								<th>💳 Dépôt minimum</th>
+								<td>10 €</td>
+							</tr>
+							<tr>
+								<th>⏳ Délai de dépôt</th>
+								<td>Instantané</td>
+							</tr>
+							<tr>
+								<th>💶 Retrait minimum</th>
+								<td>10 €</td>
+							</tr>
+							<tr>
+								<th>🕛 Délai de retrait</th>
+								<td>0 - 3 jours ouvrables</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
 				<ul class="content-width">
-					<li>✅ Avantages : interface claire, bonus sans dépôt</li>
+					✅ Ce que propose Mafia Casino :
 					<li>
-						❌ Inconvénients : catalogue de jeux encore limité, pas de section
-						paris sportifs
+						Une interface en français, facile à utiliser sur mobile ou
+						ordinateur
+					</li>
+					<li>
+						Des jeux populaires (machines à sous, jeux de table, live casino)
+						proposés par des fournisseurs fiables
+					</li>
+					<li>Un support client réactif 24/7, disponible par chat ou email</li>
+					<li>
+						Des promotions régulières et un système de bonus adapté aux nouveaux
+						joueurs
+					</li>
+					<li>Une inscription rapide et des paiements sécurisés</li>
+				</ul>
+
+				<ul>
+					❌ À noter :
+					<li>
+						La licence de jeu délivrée par Anjouan, moins réputée que celles de
+						la MGA ou de Curaçao
 					</li>
 				</ul>
 
