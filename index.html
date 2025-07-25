@@ -43,10 +43,12 @@
 				box-sizing: border-box;
 				height: 100%;
 			}
+
 			html {
 				min-height: 100%;
 				position: relative;
 			}
+
 			body {
 				display: flex;
 				flex-direction: column;
@@ -56,22 +58,26 @@
 				color: #000;
 				font-size: 1rem; /* 16px */
 			}
+
 			main {
 				flex: 1;
 				padding: 0 2rem;
 				max-width: 1200px;
 				margin: 0 auto;
 			}
+
 			ul {
 				max-width: 700px;
 				margin-bottom: 1.5rem;
 				padding-left: 1.5rem;
 				color: #444;
 			}
+
 			li {
 				margin-bottom: 0.6rem;
 				line-height: 1.4;
 			}
+
 			p {
 				font-size: 1.1rem;
 				line-height: 1.6;
@@ -79,6 +85,7 @@
 				margin-bottom: 1rem;
 				max-width: 800px;
 			}
+
 			h1,
 			h2,
 			h3,
@@ -89,11 +96,13 @@
 				margin-bottom: 0.5rem;
 				line-height: 1.2;
 			}
+
 			h1 {
 				font-size: 2.8rem;
 				font-weight: 900;
 				letter-spacing: 0.05em;
 			}
+
 			h2 {
 				font-size: 2rem;
 				font-weight: 700;
@@ -104,6 +113,7 @@
 				padding-bottom: 0.6rem;
 				border: none;
 			}
+
 			h2::after {
 				content: '';
 				display: block;
@@ -114,33 +124,49 @@
 				left: 0;
 				bottom: 0;
 			}
+
 			h3 {
 				font-size: 1.3rem;
 				font-weight: 700;
 				color: black;
 			}
+
 			h4 {
 				font-size: 1rem;
 				font-weight: 600;
-				color: #cc0000;
 				margin-top: 1.5rem;
 				margin-bottom: 0.3rem;
 			}
+
 			strong {
 				color: black;
 				font-weight: 700;
 			}
+
 			a {
 				color: #b30000;
 				text-decoration: underline;
 			}
+
 			a:hover {
 				color: red;
 			}
 
 			/* Header */
 			.header {
-				background: #000;
+				background: -webkit-linear-gradient(
+					90deg,
+					#000000,
+					#0a162b,
+					#ac2f38
+				); /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(
+					90deg,
+					#000000,
+					#0a162b,
+					#ac2f38
+				); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 				color: #fff;
 				padding-top: 1rem;
 				padding-bottom: 1rem;
@@ -148,6 +174,7 @@
 				width: 100%;
 				box-sizing: border-box;
 			}
+
 			.header__container,
 			.footer__container {
 				max-width: 1200px;
@@ -159,11 +186,13 @@
 				justify-content: space-between;
 				align-items: center;
 			}
+
 			.header__container {
 				padding-top: 0.3rem;
 				padding-bottom: 0.3rem;
 				position: relative;
 			}
+
 			.header__logo {
 				max-height: 175px;
 				min-height: 105px;
@@ -171,23 +200,28 @@
 				width: auto;
 				margin-right: 2rem;
 			}
+
 			@keyframes rotate-once {
 				from {
 					transform: rotateY(0deg);
 				}
+
 				to {
 					transform: rotateY(360deg);
 				}
 			}
+
 			.header__logo.rotate-once {
 				animation: rotate-once 1s ease forwards;
 			}
+
 			.header__nav {
 				display: flex;
 				margin-left: auto;
 				align-items: center;
 				gap: 2rem;
 			}
+
 			.header__link {
 				color: #fff;
 				text-decoration: none;
@@ -196,36 +230,43 @@
 				align-items: center;
 				gap: 0.4rem;
 			}
+
 			.header__social {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
 			}
+
 			.youtube-icon {
 				width: 25px;
 				height: 25px;
 				object-fit: contain;
 			}
+
 			.header__logo-block {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 			}
+
 			.header__logo-block .header__logo {
 				max-height: 110px;
 				margin: 0 auto;
 				display: block;
 				margin-bottom: 0.7rem;
 			}
+
 			.header__logo-text {
 				text-align: center;
 				color: #ffffff;
 			}
+
 			.header__logo-line {
 				margin: 0;
 				text-align: center;
 				line-height: 1.2;
 			}
+
 			.header__logo-line--title {
 				color: #ffffff;
 				font-size: 1.4rem;
@@ -233,6 +274,7 @@
 				font-family: 'Helvetica', sans-serif;
 				z-index: 2;
 			}
+
 			.header__logo-line--subtitle {
 				color: #ffffff;
 				font-size: 0.875rem;
@@ -241,16 +283,19 @@
 				z-index: 1;
 				text-transform: uppercase;
 			}
+
 			/* Hero Section */
 			.hero {
 				padding: 1rem;
 				padding-left: 0;
 				padding-right: 0;
 			}
+
 			.hero__title {
 				font-size: 2rem;
 				margin-bottom: 0.5rem;
 			}
+
 			.hero__meta {
 				display: flex;
 				align-items: center;
@@ -258,6 +303,7 @@
 				flex-wrap: wrap;
 				margin: 0 0 1rem 0;
 			}
+
 			.author__icon {
 				width: 20px;
 				height: 20px;
@@ -268,11 +314,13 @@
 				color: inherit;
 				font-weight: 200;
 			}
+
 			.author {
 				display: inline-flex;
 				align-items: center;
 				gap: 0.5rem;
 			}
+
 			.author__photo {
 				width: 35px;
 				height: 35px;
@@ -280,6 +328,7 @@
 				object-fit: cover;
 				display: inline-block;
 			}
+
 			.hero__text {
 				display: flex;
 				justify-content: space-between;
@@ -291,25 +340,11 @@
 				max-width: 1200px;
 				line-height: 1.6;
 			}
+
 			.light {
 				font-weight: 300; /* или 200 */
 			}
-			/* Filter Buttons */
-			.filter {
-				padding: 1rem;
-				padding-left: 0;
-				padding-right: 0;
-			}
-			.filter__button {
-				margin-right: 1rem;
-				padding: 0.5rem 1rem;
-				border: none;
-				background: #eee;
-				cursor: pointer;
-			}
-			.filter__button:last-child {
-				margin-right: 0;
-			}
+
 			/* Casino Cards */
 			.casino-cards {
 				/* padding: 1rem; */
@@ -318,6 +353,7 @@
 				margin-top: 1rem;
 				margin-bottom: 2rem;
 			}
+
 			.casino-card {
 				background: #fff;
 				border-radius: 15px;
@@ -330,15 +366,18 @@
 				align-items: center;
 				position: relative;
 			}
+
 			.casino-card--top {
 				border: 3px solid;
 				/* border-image: linear-gradient(90deg, #f90202 20%, #c40000 90%); */
 				border-image-slice: 1;
 			}
+
 			.casino-card__info {
 				display: flex;
 				align-items: center;
 			}
+
 			.casino-card__image {
 				max-width: 150px;
 				width: 150px;
@@ -347,6 +386,7 @@
 				border-radius: 8px;
 				margin-right: 1rem;
 			}
+
 			.casino-card__features {
 				margin: 0 1rem;
 				padding-left: 1rem;
@@ -354,17 +394,21 @@
 				max-width: calc(100% - 180px);
 				font-size: 12px;
 			}
+
 			.casino-card__features li {
 				color: #222;
 			}
+
 			.casino-card__features li::before {
 				content: '✓';
 				color: #1db100;
 				margin-right: 0.5em;
 			}
+
 			.casino-card__features li::first-letter {
 				color: inherit;
 			}
+
 			.casino-card__rating {
 				text-align: center;
 				min-width: 120px;
@@ -379,25 +423,29 @@
 				margin-left: auto;
 				margin-right: auto;
 			}
+
 			.casino-card__score {
 				font-size: 1.5rem;
 				font-weight: bold;
 				margin: 0;
 			}
+
 			.casino-card__stars {
 				color: gold;
 				margin: 0;
 			}
+
 			.casino-card__button {
 				margin-top: 0.5rem;
 				display: inline-block;
 				padding: 0.5rem 1rem;
-				background: #000;
+				background: #121626;
 				color: #fff;
 				border-radius: 4px;
 				text-decoration: none;
 				/* no flex, no height, keep as is for desktop */
 			}
+
 			.casino-card__button-link {
 				color: #fff;
 				text-decoration: none;
@@ -406,25 +454,30 @@
 				height: 100%;
 				transition: color 0.2s;
 			}
+
 			.casino-card__button-link:hover {
-				color: #e60000;
+				color: #ff1021;
 			}
+
 			.casino-card__title {
 				margin: 0.2rem 0;
 				font-size: 20px;
 				display: inline-block;
 				width: 220px;
 			}
+
 			.casino-card:not(.casino-card--top) .casino-card__title {
 				border-bottom: 2px solid #e60000;
 				padding-bottom: 0.3rem;
 				width: 220px;
 			}
+
 			.casino-card--top .casino-card__title {
 				border-bottom: 2px solid #33b538;
 				padding-bottom: 0.3rem;
 				width: 220px;
 			}
+
 			.casino-card__rank {
 				position: absolute;
 				top: 50%;
@@ -446,6 +499,7 @@
 				border-color: #e60000;
 				border-image-slice: 1;
 			}
+
 			.casino-card__icon {
 				position: absolute;
 				top: -36px;
@@ -455,6 +509,7 @@
 				z-index: 3;
 				transform: rotate(-35deg);
 			}
+
 			/* Footer */
 			.footer {
 				background: #000;
@@ -464,15 +519,18 @@
 				width: 100%;
 				box-sizing: border-box;
 			}
+
 			.footer__copyright {
 				font-size: 1.4rem;
 				opacity: 0.7;
 			}
+
 			.footer__social {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
 			}
+
 			.footer__link {
 				color: #fff;
 				text-decoration: none;
@@ -481,6 +539,7 @@
 				gap: 0.5rem;
 				font-size: 1.4rem;
 			}
+
 			/* List section */
 			.list {
 				max-width: 900px;
@@ -489,43 +548,52 @@
 				flex-direction: column;
 				align-items: center;
 			}
+
 			.list p {
 				text-align: left;
 				width: 100%;
 				box-sizing: border-box;
 			}
+
 			/* Landing content */
 			.landing-content {
 				max-width: 100%;
 				padding: 2rem 0;
 				line-height: 1.6;
 			}
+
 			.content-width {
 				max-width: 1200px;
 				width: 100%;
 				margin-left: auto;
 				margin-right: auto;
 			}
+
 			.landing-content h2 {
 				font-size: 2rem;
 				margin-top: 2rem;
 			}
+
 			.landing-content h3 {
 				font-size: 1.5rem;
 				margin-top: 1.5rem;
 			}
+
 			.landing-content h4 {
 				font-size: 1.3rem;
 				margin-top: 1rem;
 				margin-bottom: 0.5rem;
 			}
+
 			.landing-content ul {
 				padding-left: 1.5rem;
 				margin-bottom: 1rem;
 			}
+
 			.landing-content li {
 				margin-bottom: 0.5rem;
 			}
+
 			/* Banners */
 			.banners {
 				width: 100%;
@@ -533,6 +601,7 @@
 				margin: 1rem auto;
 				display: block;
 			}
+
 			.banners img {
 				width: 100%;
 				height: auto;
@@ -564,6 +633,7 @@
 			.casino-info tbody tr:hover {
 				background-color: #f1f1f1;
 			}
+
 			/* Popup */
 			.popup {
 				position: fixed;
@@ -577,6 +647,7 @@
 				justify-content: center;
 				z-index: 1000;
 			}
+
 			.popup__content {
 				background: #fff;
 				padding: 2rem;
@@ -588,6 +659,7 @@
 				color: #000;
 				box-sizing: border-box;
 			}
+
 			.popup__close {
 				position: absolute;
 				top: 0.5rem;
@@ -596,6 +668,7 @@
 				cursor: pointer;
 				color: #900;
 			}
+
 			.popup__button {
 				margin-top: 1.5rem;
 				background: #e60000;
@@ -606,150 +679,149 @@
 				font-size: 1rem;
 				cursor: pointer;
 			}
+
 			.popup__button:hover {
 				background: #b30000;
 			}
+
 			.hidden {
 				display: none;
 			}
+			.close-menu {
+				display: none; /* По умолчанию скрыт */
+			}
 
 			/* Responsive Styles */
-			@media (max-width: 48em) {
-				.burger {
-					display: flex;
-				}
-				.nav-menu {
-					display: none;
-					flex-direction: column;
-					position: absolute;
-					top: 60px;
-					right: 1rem;
-					background-color: #000;
-					padding: 1rem;
-					z-index: 1000;
-				}
-				.nav-menu.active {
-					display: flex;
-				}
-			}
-			@media (max-width: 600px) {
-				.nav-menu {
-					display: none;
-					flex-direction: column;
-					position: absolute;
-					top: 100%;
-					right: 0;
-					background-color: #000;
-					padding: 1rem;
-					z-index: 1000;
-					gap: 1rem;
-				}
-				.nav-menu.active {
-					display: flex;
-				}
-				.burger {
-					display: flex;
-				}
-			}
+
 			@media (max-width: 768px) {
 				.header__container,
 				.footer__container {
 					padding-left: 1rem;
 					padding-right: 1rem;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
 				}
-				/* Burger and nav-menu responsive (merging 48em, 600px, 768px) */
+
 				.burger {
+					order: 1;
 					display: flex;
-				}
-				.nav-menu {
-					display: none;
 					flex-direction: column;
-					position: absolute;
-					top: 60px;
-					right: 1rem;
-					background-color: #000;
-					padding: 1rem;
-					z-index: 1000;
-					gap: 1rem;
+					justify-content: space-between;
+					width: 24px;
+					height: 18px;
+					background: none;
+					border: none;
+					cursor: pointer;
+					z-index: 1001;
 				}
-				.nav-menu.active {
+				.burger span {
+					display: block;
+					height: 2px;
+					background-color: #fff;
+					width: 100%;
+				}
+
+				.header__logo-block {
+					order: 2;
+					margin-left: auto;
 					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
+
+				.nav-menu {
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100vw;
+					height: 70vh;
+					background-color: rgba(0, 0, 0, 0.95);
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					gap: 2rem;
+					transform: translateY(-100%);
+					transition: transform 0.3s ease-in-out;
+					z-index: 1000;
+				}
+
+				.nav-menu.active {
+					transform: translateY(0);
+				}
+				.close-menu {
+					display: block;
+					position: absolute;
+					top: 1rem;
+					right: 1rem;
+					background: none;
+					border: none;
+					color: #fff;
+					font-size: 2rem;
+					cursor: pointer;
+					z-index: 1002;
 				}
 				.header {
-					flex-direction: column;
 					align-items: flex-start;
 					padding: 1rem;
 				}
+
 				.header__nav ul {
 					flex-direction: column;
 					width: 100%;
 					padding: 0;
 				}
+
 				.header__nav li {
 					margin-left: 0;
 					margin-bottom: 0.5rem;
 				}
+				header.header {
+					background: -webkit-linear-gradient(
+						90deg,
+						#ac2f38,
+						#0a162b,
+						#000000
+					); /* Chrome 10-25, Safari 5.1-6 */
+					background: linear-gradient(
+						90deg,
+						#ac2f38,
+						#0a162b,
+						#000000
+					); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+				}
+
+				/* Остальные стили для адаптива (пример) */
 				.casino-card {
 					flex-direction: column;
 					align-items: flex-start;
 				}
+
 				.casino-card__features {
 					margin-left: 0;
 					padding-left: 0;
 					margin-top: 1rem;
 				}
+
 				.casino-card__rating {
 					min-width: auto;
 					margin-top: 1rem;
 				}
+
 				.filter {
 					padding: 1rem;
 				}
+
 				.filter__button {
 					margin-bottom: 0.5rem;
 					width: 100%;
 				}
+
 				.casino-card__image {
 					max-width: 100px;
 					width: 100px;
 					height: auto;
-				}
-			}
-			@media (max-height: 300px) {
-				.header {
-					padding: 1rem;
-				}
-				.header__logo {
-					max-height: 80px;
-					min-height: 60px;
-				}
-				.header__link {
-					font-size: 1rem;
-				}
-			}
-			@media (max-height: 200px) {
-				.header__logo {
-					max-height: 60px;
-					min-height: 40px;
-				}
-				.header__link {
-					font-size: 0.9rem;
-				}
-			}
-			@media (max-height: 150px) {
-				.header {
-					padding: 0.5rem;
-					flex-direction: column;
-					align-items: center;
-				}
-				.header__logo {
-					max-height: 40px;
-					min-height: 30px;
-					padding: 0.25rem;
-				}
-				.header__link {
-					font-size: 0.8rem;
-					margin-left: 1rem;
 				}
 			}
 		</style>
@@ -815,6 +887,7 @@
 					<span></span>
 				</div>
 				<nav class="nav-menu" aria-label="Menu principal" role="navigation">
+					<button class="close-menu" aria-label="Fermer le menu">✕</button>
 					<a
 						class="header__link"
 						href="https://www.youtube.com/@TopJeu777"
@@ -843,10 +916,7 @@
 				</h1>
 				<p class="hero__meta">
 					<span class="author"
-						><img
-							src="img/author-photo.png"
-							alt="Auteur"
-							class="author__photo"
+						><img src="img/author-photo.png" alt="Auteur" class="author__photo"
 					/></span>
 					Rédigé par :
 					<span>
@@ -1080,114 +1150,225 @@
 				</p>
 			</section>
 			<section class="landing-content">
-				<h3 class="content-width">
-					🎰 Mafia Casino – Casino en ligne français idéal pour débutants
-					ambitieux
-				</h3>
-				<a class="banners" href="#">
-					<img
-						src="img/banners/mafia-casino-desktop-screenshot.png"
-						alt="Capture d'écran du site Mafia Casino - Bannière promotionnelle"
-					/>
-				</a>
-				<p class="content-width">
-					Mafia Casino s’impose comme une nouvelle destination de choix pour les
-					amateurs de jeux en ligne francophones. Avec son univers original
-					inspiré du monde mafieux, le site mêle divertissement, simplicité
-					d’utilisation et sécurité, tout en proposant une plateforme 100 %
-					adaptée aux débutants comme aux joueurs plus expérimentés.
-				</p>
+				<section class="casino-review_mafia-casino">
+					<h3 class="content-width">
+						Mafia Casino — un nouveau casino en ligne à l’ambiance unique pour
+						les joueurs francophones
+					</h3>
+					<a class="banners" href="#">
+						<img
+							src="img/banners/mafia-casino-desktop-screenshot.png"
+							alt="Capture d'écran du site Mafia Casino - Bannière promotionnelle"
+						/>
+					</a>
+					<p class="content-width">
+						Mafia Casino s’impose comme une nouvelle destination de choix pour
+						les amateurs de jeux en ligne francophones. Avec son univers
+						original inspiré du monde mafieux, le site mêle divertissement,
+						simplicité d’utilisation et sécurité, tout en proposant une
+						plateforme 100 % adaptée aux débutants comme aux joueurs plus
+						expérimentés.
+					</p>
 
-				<p class="content-width">
-					Dès l’inscription, les nouveaux joueurs sont accueillis avec un bonus
-					de bienvenue attractif, sans conditions complexes ni pièges cachés.
-					L’interface est claire, fluide, et disponible en français, ce qui
-					permet une prise en main rapide.
-				</p>
-				<section class="casino-info content-width">
-					<table>
-						<tbody>
-							<tr>
-								<th>📅 Année de création</th>
-								<td>2025</td>
-							</tr>
-							<tr>
-								<th>🎮 Nombre de jeux</th>
-								<td>9200+</td>
-							</tr>
-							<tr>
-								<th>🎁 Bonus de bienvenue</th>
-								<td>100% Jusqu’à 500 € + 200 Free Spins</td>
-							</tr>
-							<tr>
-								<th>💳 Dépôt minimum</th>
-								<td>10 €</td>
-							</tr>
-							<tr>
-								<th>⏳ Délai de dépôt</th>
-								<td>Instantané</td>
-							</tr>
-							<tr>
-								<th>💶 Retrait minimum</th>
-								<td>10 €</td>
-							</tr>
-							<tr>
-								<th>🕛 Délai de retrait</th>
-								<td>0 - 3 jours ouvrables</td>
-							</tr>
-						</tbody>
-					</table>
+					<p class="content-width">
+						Dès l’inscription, les nouveaux joueurs sont accueillis avec un
+						bonus de bienvenue attractif, sans conditions complexes ni pièges
+						cachés. L’interface est claire, fluide, et disponible en français,
+						ce qui permet une prise en main rapide.
+					</p>
+					<section class="casino-info content-width">
+						<table>
+							<tbody>
+								<tr>
+									<th>📅 Année de création</th>
+									<td>2025</td>
+								</tr>
+								<tr>
+									<th>🎮 Nombre de jeux</th>
+									<td>9200+</td>
+								</tr>
+								<tr>
+									<th>🎁 Bonus de bienvenue</th>
+									<td>100% Jusqu’à 500 € + 200 Free Spins</td>
+								</tr>
+								<tr>
+									<th>💳 Dépôt minimum</th>
+									<td>10 €</td>
+								</tr>
+								<tr>
+									<th>⏳ Délai de dépôt</th>
+									<td>Instantané</td>
+								</tr>
+								<tr>
+									<th>💶 Retrait minimum</th>
+									<td>10 €</td>
+								</tr>
+								<tr>
+									<th>🕛 Délai de retrait</th>
+									<td>0 - 3 jours ouvrables</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<h4>✅ Ce que propose Mafia Casino :</h4>
+					<ul class="content-width">
+						<li>
+							Une interface en français, facile à utiliser sur mobile ou
+							ordinateur
+						</li>
+						<li>
+							Des jeux populaires (machines à sous, jeux de table, live casino)
+							proposés par des fournisseurs fiables
+						</li>
+						<li>
+							Un support client réactif 24/7, disponible par chat ou email
+						</li>
+						<li>
+							Des promotions régulières et un système de bonus adapté aux
+							nouveaux joueurs
+						</li>
+						<li>Une inscription rapide et des paiements sécurisés</li>
+					</ul>
+
+					<h4>❌ À noter :</h4>
+
+					<ul>
+						<li>
+							La licence de jeu délivrée par Anjouan, moins réputée que celles
+							de la MGA ou de Curaçao
+						</li>
+					</ul>
+
+					<h4>🔍 Mon petit mot en tant que testeur :</h4>
+
+					<p class="light" style="font-style: italic">
+						Ce que j’ai apprécié en testant Mafia Casino, c’est qu’on n’a pas
+						l’impression d’être noyé sous les pop-ups et les bannières fluo
+						comme sur d’autres sites. Ici, tout est clair, sans surcharge
+						visuelle. Et franchement, le thème mafieux est plutôt bien intégré —
+						on se sent presque dans un film de Scorsese (sans les balles et avec
+						des free spins à la place).
+					</p>
+
+					<h4>
+						<strong> Verdict : </strong>
+					</h4>
+
+					<p>
+						<strong
+							>Mafia Casino est une excellente option pour les joueurs
+							francophones</strong
+						>
+						qui souhaitent débuter dans un environnement original, simple et
+						sécurisé. Avec ses bonus clairs, son support francophone et son
+						ambiance immersive, c’est une plateforme idéale pour jouer sans
+						prise de tête.
+					</p>
+
+					<p class="light" style="font-style: italic">
+						💬 Si vous cherchez un casino qui sort un peu des sentiers battus
+						tout en restant fiable, celui-ci mérite un essai. Après tout, qui
+						n’a jamais rêvé d’être le parrain… des jackpots ? 😉
+					</p>
 				</section>
-				<ul class="content-width">
-					✅ Ce que propose Mafia Casino :
-					<li>
-						Une interface en français, facile à utiliser sur mobile ou
-						ordinateur
-					</li>
-					<li>
-						Des jeux populaires (machines à sous, jeux de table, live casino)
-						proposés par des fournisseurs fiables
-					</li>
-					<li>Un support client réactif 24/7, disponible par chat ou email</li>
-					<li>
-						Des promotions régulières et un système de bonus adapté aux nouveaux
-						joueurs
-					</li>
-					<li>Une inscription rapide et des paiements sécurisés</li>
-				</ul>
+				<section class="casino-review_stonevegas-casino">
+					<h3 class="content-width">
+						Stonevegas Casino — une plateforme moderne avec des paiements
+						rapides et une interface en français
+					</h3>
+					<a class="banners" href="#">
+						<img
+							src="img/banners/stonevegas-casino-desktop-screenshot.png"
+							alt="Capture d'écran du site Stonevegas Casino - Bannière promotionnelle"
+						/>
+					</a>
+					<p class="content-width">
+						<strong>Stonevegas</strong> est un casino en ligne récent qui séduit
+						par son interface claire, son site entièrement traduit en français
+						et ses nombreuses méthodes de paiement, notamment les
+						<strong>cryptomonnaies</strong>. Avec un bonus de bienvenue
+						alléchant et une inscription rapide, la plateforme s’adresse aussi
+						bien aux débutants qu’aux joueurs réguliers à la recherche d’une
+						expérience fiable et flexible.
+					</p>
 
-				<ul>
-					❌ À noter :
-					<li>
-						La licence de jeu délivrée par Anjouan, moins réputée que celles de
-						la MGA ou de Curaçao
-					</li>
-				</ul>
-
-				<h3 class="content-width">
-					🎰 Stonevegas Casino – Le casino en ligne premium pour joueurs
-					exigeants en France
-				</h3>
-				<a class="banners" href="#">
-					<img
-						src="img/banners/stonevegas-casino-desktop-screenshot.png"
-						alt="Capture d'écran du site Stonevegas Casino - Bannière promotionnelle"
-					/>
-				</a>
-				<p class="content-width">
-					Stonevegas propose une expérience haut de gamme avec un design
-					premium, jackpots exclusifs, et retraits rapides, garantissant
-					fiabilité.
-				</p>
-				<ul class="content-width">
-					<li>
-						✅ Avantages : design premium, jackpots exclusifs, retraits rapides
-					</li>
-					<li>
-						❌ Inconvénients : conditions de bonus strictes, manque de jeux
-						gratuits
-					</li>
-				</ul>
+					<p>
+						Ce qui distingue Stonevegas des autres casinos récents, c’est sa
+						<strong>politique de retrait rapide</strong>, souvent sous 24
+						heures, et l’absence de frais cachés. Le site est bien optimisé pour
+						le jeu mobile, même sans application dédiée, et propose un accès
+						instantané à une large sélection de
+						<strong>machines à sous, jeux de table et casino en direct</strong>.
+					</p>
+					<section class="casino-info content-width">
+						<table>
+							<tbody>
+								<tr>
+									<th>📅 Année de création</th>
+									<td>2025</td>
+								</tr>
+								<tr>
+									<th>🎮 Nombre de jeux</th>
+									<td>9800+</td>
+								</tr>
+								<tr>
+									<th>🎁 Bonus de bienvenue</th>
+									<td>100% Jusqu'à 500 € + 200 Free Spins + 1 Bonus Crab</td>
+								</tr>
+								<tr>
+									<th>💳 Dépôt minimum</th>
+									<td>10 €</td>
+								</tr>
+								<tr>
+									<th>⏳ Délai de dépôt</th>
+									<td>Instantané</td>
+								</tr>
+								<tr>
+									<th>💶 Retrait minimum</th>
+									<td>10 €</td>
+								</tr>
+								<tr>
+									<th>🕛 Délai de retrait</th>
+									<td>0 - 5 jours ouvrables</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<p>✅ Avantages :</p>
+					<ul class="content-width">
+						<li>Site 100 % en français, interface fluide et intuitive</li>
+						<li>Délais de retrait courts et paiements automatisés</li>
+					</ul>
+					<p>❌ À noter :</p>
+					<ul>
+						<li>
+							Pas encore d’application mobile, mais le site fonctionne bien sur
+							smartphone
+						</li>
+						<li>Les bonus sans dépôt ne sont pas proposés pour le moment</li>
+					</ul>
+					<p>🔍 Mon petit mot en tant que testeur :</p>
+					<p class="light" style="font-style: italic">
+						Après avoir exploré StoneVegas, je peux dire que la plateforme tient
+						ses promesses : une belle variété de jeux, des promotions
+						régulières, et un programme VIP pensé pour récompenser les joueurs
+						les plus actifs. On sent que la sécurité est prise au sérieux, avec
+						une licence officielle et des systèmes fiables en place. Si vous
+						cherchez un casino en ligne clair, fluide et accessible en français,
+						StoneVegas mérite clairement le détour.
+					</p>
+					<h4>Verdict :</h4>
+					<p>
+						<strong>Stonevegas Casino</strong> propose une combinaison efficace
+						: un site 100 % francophone, des paiements rapides, des bonus
+						accessibles et une navigation fluide. Une excellente option pour
+						ceux qui veulent éviter les plateformes trop chargées ou complexes.
+					</p>
+					<p class="light" style="font-style: italic">
+						💬 Un casino en ligne qui va droit au but : idéal pour les joueurs
+						qui aiment la simplicité, la vitesse et l’efficacité.
+					</p>
+				</section>
 
 				<h3 class="content-width">
 					🎰 GoldSpin Casino – Le casino en ligne français spécialisé en
@@ -1526,13 +1707,39 @@
 				const logo = document.querySelector('.header__logo');
 				logo.classList.add('rotate-once');
 			});
-			// Burger menu (wrapped in DOMContentLoaded)
+			// Burger menu functionality
 			document.addEventListener('DOMContentLoaded', () => {
 				const burger = document.querySelector('.burger');
 				const menu = document.querySelector('.nav-menu');
+				const body = document.body;
+
 				if (burger && menu) {
 					burger.addEventListener('click', () => {
-						menu.classList.toggle('active');
+						const isActive = menu.classList.toggle('active');
+
+						if (isActive) {
+							body.classList.add('menu-open');
+						} else {
+							body.classList.remove('menu-open');
+						}
+					});
+				}
+			});
+			// Close menu on clicking the close button
+			document.addEventListener('DOMContentLoaded', () => {
+				const burger = document.querySelector('.burger');
+				const menu = document.querySelector('.nav-menu');
+				const closeBtn = document.querySelector('.close-menu');
+
+				if (burger && menu && closeBtn) {
+					burger.addEventListener('click', () => {
+						menu.classList.add('active');
+						burger.style.display = 'none';
+					});
+
+					closeBtn.addEventListener('click', () => {
+						menu.classList.remove('active');
+						burger.style.display = 'flex';
 					});
 				}
 			});
