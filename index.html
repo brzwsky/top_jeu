@@ -650,7 +650,13 @@
 				cursor: pointer;
 				color: #900;
 				z-index: 10;
+				border: none;
+				background: transparent;
 				user-select: none;
+			}
+			.popup__close:focus {
+				outline: 2px solid #e60000;
+				outline-offset: 2px;
 			}
 
 			.popup__button {
@@ -672,7 +678,7 @@
 				display: none;
 			}
 			.close-menu {
-				display: none; /* По умолчанию скрыт */
+				display: none;
 			}
 			.burger {
 				display: none;
@@ -738,16 +744,16 @@
 				}
 
 				.nav-menu {
+					display: none;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
 					position: fixed;
 					top: 0;
 					left: 0;
 					width: 100vw;
 					height: 70vh;
 					background-color: rgba(0, 0, 0, 0.95);
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: center;
 					gap: 2rem;
 					transform: translateY(-100%);
 					transition: transform 0.3s ease-in-out;
@@ -755,6 +761,7 @@
 				}
 
 				.nav-menu.active {
+					display: flex;
 					transform: translateY(0);
 				}
 				.close-menu {
@@ -878,7 +885,7 @@
 					<img
 						class="header__logo"
 						src="img/card-queen-logo.png"
-						alt="logo-top-jeu"
+						alt="top-jeu"
 						loading="lazy"
 					/>
 					<div class="header__logo-text">
@@ -888,12 +895,12 @@
 						</p>
 					</div>
 				</div>
-				<div class="burger" aria-label="Menu">
+				<button class="burger" aria-label="Menu">
 					<span></span>
 					<span></span>
 					<span></span>
-				</div>
-				<nav class="nav-menu" aria-label="Menu principal" role="navigation">
+				</button>
+				<nav class="nav-menu" aria-label="Menu principal">
 					<button class="close-menu" aria-label="Fermer le menu">✕</button>
 					<a
 						class="header__link"
@@ -1588,9 +1595,9 @@
 		<!-- POPUP: À propos de nous -->
 		<div id="popup" class="popup hidden" role="dialog" aria-modal="true">
 			<div class="popup__content">
-				<span id="popup-close" class="popup__close" aria-label="Fermer"
-					>&times;</span
-				>
+				<button id="popup-close" class="popup__close" aria-label="Fermer">
+					&times;
+				</button>
 				<h2>Qui suis-je !</h2>
 				<p>
 					👩‍💼 Moi, c’est Dariah Belle – votre alliée dans l’univers du casino en
@@ -1633,9 +1640,13 @@
 			aria-modal="true"
 		>
 			<div class="popup__content">
-				<span id="popup-contact-close" class="popup__close" aria-label="Fermer"
-					>&times;</span
+				<button
+					id="popup-contact-close"
+					class="popup__close"
+					aria-label="Fermer"
 				>
+					&times;
+				</button>
 				<h2>Contactez-moi</h2>
 				<div class="underline"></div>
 				<form action="https://formspree.io/f/mjkokkor" method="POST">
@@ -1669,85 +1680,109 @@
 			</div>
 		</div>
 		<script>
-			// Popup functionality
-			document
-				.querySelector('.header__link[href="#about"]')
-				.addEventListener('click', function (e) {
-					e.preventDefault();
-					document.getElementById('popup').classList.remove('hidden');
-				});
-
-			document
-				.getElementById('popup-close')
-				.addEventListener('click', function () {
-					document.getElementById('popup').classList.add('hidden');
-				});
-
-			window.addEventListener('click', function (e) {
+			document.addEventListener('DOMContentLoaded', () => {
 				const popup = document.getElementById('popup');
-				if (e.target === popup) {
-					popup.classList.add('hidden');
-				}
-			});
-
-			document
-				.querySelector('.header__link[href="#contact"]')
-				.addEventListener('click', function (e) {
-					e.preventDefault();
-					document.getElementById('popup-contact').classList.remove('hidden');
-				});
-
-			document
-				.getElementById('popup-contact-close')
-				.addEventListener('click', function () {
-					document.getElementById('popup-contact').classList.add('hidden');
-				});
-
-			window.addEventListener('click', function (e) {
+				const popupClose = document.getElementById('popup-close');
 				const popupContact = document.getElementById('popup-contact');
-				if (e.target === popupContact) {
-					popupContact.classList.add('hidden');
-				}
-			});
+				const popupContactClose = document.getElementById(
+					'popup-contact-close'
+				);
 
-			window.addEventListener('load', () => {
-				const logo = document.querySelector('.header__logo');
-				logo.classList.add('rotate-once');
-			});
-			// Burger menu functionality
-			document.addEventListener('DOMContentLoaded', () => {
-				const burger = document.querySelector('.burger');
-				const menu = document.querySelector('.nav-menu');
-				const body = document.body;
-
-				if (burger && menu) {
-					burger.addEventListener('click', () => {
-						const isActive = menu.classList.toggle('active');
-
-						if (isActive) {
-							body.classList.add('menu-open');
-						} else {
-							body.classList.remove('menu-open');
-						}
-					});
-				}
-			});
-			// Close menu on clicking the close button
-			document.addEventListener('DOMContentLoaded', () => {
 				const burger = document.querySelector('.burger');
 				const menu = document.querySelector('.nav-menu');
 				const closeBtn = document.querySelector('.close-menu');
+				const body = document.body;
+
+				let lastFocusedElement = null;
+
+				function openPopup(popupElement) {
+					if (!popupElement) return;
+					lastFocusedElement = document.activeElement;
+					popupElement.classList.remove('hidden');
+					const closeButton = popupElement.querySelector('.popup__close');
+					if (closeButton) closeButton.focus();
+					body.style.overflow = 'hidden';
+				}
+
+				function closePopup(popupElement) {
+					if (!popupElement) return;
+					popupElement.classList.add('hidden');
+					if (lastFocusedElement) lastFocusedElement.focus();
+					body.style.overflow = '';
+				}
+
+				const aboutLink = document.querySelector(
+					'.header__link[href="#about"]'
+				);
+				if (aboutLink) {
+					aboutLink.addEventListener('click', (e) => {
+						e.preventDefault();
+						openPopup(popup);
+					});
+				}
+
+				const contactLink = document.querySelector(
+					'.header__link[href="#contact"]'
+				);
+				if (contactLink) {
+					contactLink.addEventListener('click', (e) => {
+						e.preventDefault();
+						openPopup(popupContact);
+					});
+				}
+
+				if (popupClose) {
+					popupClose.addEventListener('click', () => closePopup(popup));
+				}
+				if (popupContactClose) {
+					popupContactClose.addEventListener('click', () =>
+						closePopup(popupContact)
+					);
+				}
+
+				window.addEventListener('click', (e) => {
+					if (e.target === popup) {
+						closePopup(popup);
+					} else if (e.target === popupContact) {
+						closePopup(popupContact);
+					}
+				});
+
+				window.addEventListener('keydown', (e) => {
+					if (e.key === 'Escape') {
+						if (popup && !popup.classList.contains('hidden')) {
+							closePopup(popup);
+						}
+						if (popupContact && !popupContact.classList.contains('hidden')) {
+							closePopup(popupContact);
+						}
+						if (menu && menu.classList.contains('active')) {
+							closeMenu();
+						}
+					}
+				});
+
+				function openMenu() {
+					menu.classList.add('active');
+					burger.style.display = 'none';
+					body.classList.add('menu-open');
+				}
+
+				function closeMenu() {
+					menu.classList.remove('active');
+					burger.style.display = 'flex';
+					body.classList.remove('menu-open');
+					burger.focus();
+				}
 
 				if (burger && menu && closeBtn) {
-					burger.addEventListener('click', () => {
-						menu.classList.add('active');
-						burger.style.display = 'none';
-					});
+					burger.addEventListener('click', openMenu);
+					closeBtn.addEventListener('click', closeMenu);
+				}
 
-					closeBtn.addEventListener('click', () => {
-						menu.classList.remove('active');
-						burger.style.display = 'flex';
-					});
+				const logo = document.querySelector('.header__logo');
+				if (logo) {
+					logo.classList.add('rotate-once');
 				}
 			});
 		</script>
