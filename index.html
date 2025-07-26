@@ -10,30 +10,7 @@
 			content="Découvrez les meilleurs casinos en ligne fiables en France en 2025. Classement, avis, bonus et conseils pour jouer en toute sécurité."
 		/>
 		<style>
-			.burger {
-				display: none;
-				flex-direction: column;
-				justify-content: space-between;
-				width: 24px;
-				height: 18px;
-				background: none;
-				border: none;
-				cursor: pointer;
-				z-index: 1001;
-			}
-
-			.burger span {
-				display: block;
-				height: 2px;
-				background-color: #fff;
-				width: 100%;
-			}
-
-			.nav-menu {
-				display: flex;
-				gap: 1rem;
-			}
-
+			/* Reset and base styles */
 			html,
 			body {
 				margin: 0;
@@ -639,25 +616,30 @@
 				position: fixed;
 				top: 0;
 				left: 0;
-				width: 100%;
-				height: 100%;
+				width: 100vw;
+				height: 100vh;
 				background: rgba(0, 0, 0, 0.6);
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				z-index: 1000;
+				padding: 1rem;
+				box-sizing: border-box;
 			}
 
 			.popup__content {
 				background: #fff;
 				padding: 2rem;
 				border-radius: 8px;
-				max-width: 600px;
+				max-width: 90vw;
+				max-height: 90vh;
 				width: 90%;
 				position: relative;
 				font-size: 1rem;
 				color: #000;
 				box-sizing: border-box;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch;
 			}
 
 			.popup__close {
@@ -667,6 +649,8 @@
 				font-size: 2rem;
 				cursor: pointer;
 				color: #900;
+				z-index: 10;
+				user-select: none;
 			}
 
 			.popup__button {
@@ -689,6 +673,29 @@
 			}
 			.close-menu {
 				display: none; /* По умолчанию скрыт */
+			}
+			.burger {
+				display: none;
+				flex-direction: column;
+				justify-content: space-between;
+				width: 24px;
+				height: 18px;
+				background: none;
+				border: none;
+				cursor: pointer;
+				z-index: 1001;
+			}
+
+			.burger span {
+				display: block;
+				height: 2px;
+				background-color: #fff;
+				width: 100%;
+			}
+
+			.nav-menu {
+				display: flex;
+				gap: 1rem;
 			}
 
 			/* Responsive Styles */
@@ -778,21 +785,10 @@
 					margin-bottom: 0.5rem;
 				}
 				header.header {
-					background: -webkit-linear-gradient(
-						90deg,
-						#ac2f38,
-						#0a162b,
-						#000000
-					); /* Chrome 10-25, Safari 5.1-6 */
-					background: linear-gradient(
-						90deg,
-						#ac2f38,
-						#0a162b,
-						#000000
-					); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+					background: -webkit-linear-gradient(90deg, #ac2f38, #0a162b, #000000);
+					background: linear-gradient(90deg, #ac2f38, #0a162b, #000000);
 				}
 
-				/* Остальные стили для адаптива (пример) */
 				.casino-card {
 					flex-direction: column;
 					align-items: flex-start;
@@ -822,6 +818,17 @@
 					max-width: 100px;
 					width: 100px;
 					height: auto;
+				}
+				@media (max-width: 320px) {
+					.popup__content {
+						padding: 1rem;
+						font-size: 0.9rem;
+					}
+					.popup__close {
+						font-size: 1.5rem;
+						top: 0.3rem;
+						right: 0.5rem;
+					}
 				}
 			}
 		</style>
