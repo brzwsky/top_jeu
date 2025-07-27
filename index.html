@@ -1682,6 +1682,11 @@
 
 				function openPopup(popupElement) {
 					if (!popupElement) return;
+
+					if (menu.classList.contains('active')) {
+						closeMenu();
+					}
+
 					lastFocusedElement = document.activeElement;
 					popupElement.classList.remove('hidden');
 					const closeButton = popupElement.querySelector('.popup__close');
