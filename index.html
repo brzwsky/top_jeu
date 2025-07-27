@@ -10,15 +10,15 @@
 			content="Découvrez les meilleurs casinos en ligne fiables en France en 2025. Classement, avis, bonus et conseils pour jouer en toute sécurité."
 		/>
 		<style>
-			/* Reset and base styles */
+			/* Reset и базовые стили */
 			html,
 			body {
 				margin: 0;
 				padding: 0;
 				width: 100%;
-				overflow-x: hidden;
-				box-sizing: border-box;
 				height: 100%;
+				box-sizing: border-box;
+				overflow-x: hidden;
 			}
 
 			html {
@@ -33,7 +33,7 @@
 				font-family: Helvetica, sans-serif;
 				background: #fff;
 				color: #000;
-				font-size: 1rem; /* 16px */
+				font-size: 1rem;
 			}
 
 			main {
@@ -69,8 +69,6 @@
 			h4 {
 				font-family: 'Arial Black', Arial, sans-serif;
 				color: #1a1a1a;
-				margin-top: 2rem;
-				margin-bottom: 0.5rem;
 				line-height: 1.2;
 			}
 
@@ -78,6 +76,7 @@
 				font-size: 2.8rem;
 				font-weight: 900;
 				letter-spacing: 0.05em;
+				margin: 2rem 0 0.5rem;
 			}
 
 			h2 {
@@ -86,9 +85,8 @@
 				position: relative;
 				display: block;
 				width: 100%;
-				box-sizing: border-box;
 				padding-bottom: 0.6rem;
-				border: none;
+				margin: 2rem 0 0.5rem;
 			}
 
 			h2::after {
@@ -111,8 +109,7 @@
 			h4 {
 				font-size: 1rem;
 				font-weight: 600;
-				margin-top: 1.5rem;
-				margin-bottom: 0.3rem;
+				margin: 1.5rem 0 0.3rem;
 			}
 
 			strong {
@@ -131,25 +128,12 @@
 
 			/* Header */
 			.header {
-				background: -webkit-linear-gradient(
-					90deg,
-					#000000,
-					#0a162b,
-					#ac2f38
-				); /* Chrome 10-25, Safari 5.1-6 */
-				background: linear-gradient(
-					90deg,
-					#000000,
-					#0a162b,
-					#ac2f38
-				); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+				background: linear-gradient(90deg, #000000, #0a162b, #ac2f38);
 				color: #fff;
-				padding-top: 1rem;
-				padding-bottom: 1rem;
-				font-family: Arial, sans-serif;
+				padding: 1rem 0;
 				width: 100%;
 				box-sizing: border-box;
+				font-family: Arial, sans-serif;
 			}
 
 			.header__container,
@@ -158,22 +142,21 @@
 				margin: 0 auto;
 				width: 100%;
 				padding: 0 2rem;
-				box-sizing: border-box;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				box-sizing: border-box;
 			}
 
 			.header__container {
+				position: relative;
 				padding-top: 0.3rem;
 				padding-bottom: 0.3rem;
-				position: relative;
 			}
 
 			.header__logo {
 				max-height: 175px;
 				min-height: 105px;
-				height: auto;
 				width: auto;
 				margin-right: 2rem;
 			}
@@ -182,7 +165,6 @@
 				from {
 					transform: rotateY(0deg);
 				}
-
 				to {
 					transform: rotateY(360deg);
 				}
@@ -192,11 +174,42 @@
 				animation: rotate-once 1s ease forwards;
 			}
 
-			.header__nav {
+			.header__logo-block {
 				display: flex;
-				margin-left: auto;
+				flex-direction: column;
 				align-items: center;
-				gap: 2rem;
+			}
+
+			.header__logo-block .header__logo {
+				max-height: 110px;
+				margin: 0 auto 0.7rem;
+				display: block;
+			}
+
+			.header__logo-text {
+				text-align: center;
+				color: #fff;
+			}
+
+			.header__logo-line {
+				margin: 0;
+				line-height: 1.2;
+				text-align: center;
+			}
+
+			.header__logo-line--title {
+				font-size: 1.4rem;
+				font-weight: 700;
+				font-family: 'Helvetica', sans-serif;
+				color: #fff;
+			}
+
+			.header__logo-line--subtitle {
+				font-size: 0.875rem;
+				font-weight: 500;
+				font-family: 'Helvetica', sans-serif;
+				color: #fff;
+				text-transform: uppercase;
 			}
 
 			.header__link {
@@ -208,58 +221,13 @@
 				gap: 0.4rem;
 			}
 
-			.header__social {
-				display: flex;
-				align-items: center;
-				gap: 0.5rem;
-			}
-
 			.youtube-icon {
 				width: 25px;
 				height: 25px;
 				object-fit: contain;
 			}
 
-			.header__logo-block {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-			}
-
-			.header__logo-block .header__logo {
-				max-height: 110px;
-				margin: 0 auto;
-				display: block;
-				margin-bottom: 0.7rem;
-			}
-
-			.header__logo-text {
-				text-align: center;
-				color: #ffffff;
-			}
-
-			.header__logo-line {
-				margin: 0;
-				text-align: center;
-				line-height: 1.2;
-			}
-
-			.header__logo-line--title {
-				color: #ffffff;
-				font-size: 1.4rem;
-				font-weight: 700;
-				font-family: 'Helvetica', sans-serif;
-				z-index: 2;
-			}
-
-			.header__logo-line--subtitle {
-				color: #ffffff;
-				font-size: 0.875rem;
-				font-weight: 500;
-				font-family: 'Helvetica', sans-serif;
-				z-index: 1;
-				text-transform: uppercase;
-			}
+			
 
 			/* Hero Section */
 			.hero {
@@ -324,7 +292,6 @@
 
 			/* Casino Cards */
 			.casino-cards {
-				/* padding: 1rem; */
 				padding-left: 0;
 				padding-right: 0;
 				margin-top: 1rem;
@@ -677,9 +644,11 @@
 			.hidden {
 				display: none;
 			}
+
 			.close-menu {
 				display: none;
 			}
+
 			.burger {
 				display: none;
 				flex-direction: column;
@@ -688,6 +657,8 @@
 				height: 18px;
 				background: none;
 				border: none;
+				padding: 0;
+				margin: 0;
 				cursor: pointer;
 				z-index: 1001;
 			}
@@ -728,6 +699,7 @@
 					cursor: pointer;
 					z-index: 1001;
 				}
+
 				.burger span {
 					display: block;
 					height: 2px;
@@ -764,6 +736,7 @@
 					display: flex;
 					transform: translateY(0);
 				}
+
 				.close-menu {
 					display: block;
 					position: absolute;
@@ -776,6 +749,7 @@
 					cursor: pointer;
 					z-index: 1002;
 				}
+
 				.header {
 					align-items: flex-start;
 					padding: 1rem;
@@ -791,6 +765,7 @@
 					margin-left: 0;
 					margin-bottom: 0.5rem;
 				}
+
 				header.header {
 					background: -webkit-linear-gradient(90deg, #ac2f38, #0a162b, #000000);
 					background: linear-gradient(90deg, #ac2f38, #0a162b, #000000);
@@ -831,10 +806,18 @@
 						padding: 1rem;
 						font-size: 0.9rem;
 					}
+
 					.popup__close {
 						font-size: 1.5rem;
 						top: 0.3rem;
 						right: 0.5rem;
+					}
+				}
+				@media (max-width: 300px) {
+					.header__link {
+						text-align: center;
+						max-width: 90vw;
+						white-space: normal;
 					}
 				}
 			}
@@ -1780,6 +1763,15 @@
 					closeBtn.addEventListener('click', closeMenu);
 				}
 
+				document.addEventListener('click', (e) => {
+					if (
+						menu.classList.contains('active') &&
+						!menu.contains(e.target) &&
+						!burger.contains(e.target)
+					) {
+						closeMenu();
+					}
+				});
 				const logo = document.querySelector('.header__logo');
 				if (logo) {
 					logo.classList.add('rotate-once');
