@@ -706,13 +706,6 @@
 					z-index: 1001;
 				}
 
-				.burger span {
-					display: block;
-					height: 2px;
-					background-color: #fff;
-					width: 100%;
-				}
-
 				.header__logo-block {
 					order: 2;
 					margin-left: auto;
@@ -826,6 +819,22 @@
 					font-size: 1.5rem;
 					top: 0.3rem;
 					right: 0.5rem;
+				}
+			}
+			@media (max-width: 406px) {
+				main {
+					flex: 1;
+					padding-left: 0.5rem;
+					padding-right: 0.5rem;
+					max-width: 100%;
+				}
+
+				main * {
+					max-width: 100%;
+					box-sizing: border-box;
+					white-space: normal !important;
+					word-break: break-word;
+					overflow-wrap: break-word;
 				}
 			}
 			@media (max-width: 300px) {
