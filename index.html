@@ -285,7 +285,7 @@
 			}
 
 			.light {
-				font-weight: 300; /* или 200 */
+				font-weight: 300;
 			}
 
 			/* Casino Cards */
@@ -378,27 +378,61 @@
 			}
 
 			.casino-card__button {
-				margin-top: 0.5rem;
-				display: inline-block;
-				padding: 0.5rem 1rem;
-				background: #121626;
-				color: #fff;
-				border-radius: 4px;
-				text-decoration: none;
-				/* no flex, no height, keep as is for desktop */
+				display: inline-flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				padding: 1rem 2rem;
+				background-color: #28a745;
+				border-radius: 6px;
+				cursor: pointer;
+				transition: background-color 0.3s ease;
+				overflow: hidden;
+			}
+
+			.casino-card__button:hover {
+				background-color: #1e7e34;
 			}
 
 			.casino-card__button-link {
+				position: relative;
 				color: #fff;
 				text-decoration: none;
-				display: inline-block;
-				width: 100%;
-				height: 100%;
-				transition: color 0.2s;
+				text-transform: uppercase;
+				font-weight: 600;
+				font-size: 1rem;
+				position: relative;
+				z-index: 1;
+				display: inline-flex;
+				align-items: center;
 			}
 
 			.casino-card__button-link:hover {
-				color: #ff1021;
+				color: #e0ffd6;
+			}
+
+			.casino-card__button-link::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 100%;
+				width: 6px;
+				height: 6px;
+				border-top: 2px solid #fff;
+				border-right: 2px solid #fff;
+				transform: translate(calc(0px), calc(-50%)) rotate(45deg);
+				opacity: 0;
+				transition: transform 0.3s ease, opacity 0.3s ease;
+				pointer-events: none;
+			}
+
+			.casino-card__button:hover .casino-card__button-link::after {
+				opacity: 1;
+				transform: translate(calc(5px), calc(-50%)) rotate(45deg);
+				border-color: #e0ffd6;
+			}
+			.casino-card__button-link:hover {
+				color: #e0ffd6;
 			}
 
 			.casino-card__title {
@@ -575,6 +609,28 @@
 				background-color: #f1f1f1;
 			}
 
+			.casino-button__rating {
+				text-align: center;
+				min-width: 120px;
+				max-width: 120px;
+				width: 120px;
+				height: 100px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				box-sizing: border-box;
+				margin-left: 1rem;
+				margin-right: 1rem;
+			}
+			.casino-button__title {
+				text-align: center;
+				font-size: 1.2rem;
+				font-weight: bold;
+				margin-bottom: 0.5rem;
+				border-bottom: 2px solid #e60000;
+			}
+
 			/* Popup */
 			.popup {
 				position: fixed;
@@ -619,6 +675,7 @@
 				background: transparent;
 				user-select: none;
 			}
+
 			.popup__close:focus {
 				outline: none;
 			}
@@ -803,15 +860,6 @@
 					margin-top: 1rem;
 				}
 
-				.filter {
-					padding: 1rem;
-				}
-
-				.filter__button {
-					margin-bottom: 0.5rem;
-					width: 100%;
-				}
-
 				.casino-card__image {
 					max-width: 100px;
 					width: 100px;
@@ -831,18 +879,6 @@
 					font-size: 0.9rem;
 				}
 			}
-			@media (max-width: 320px) {
-				.popup__content {
-					padding: 1rem;
-					font-size: 0.8rem;
-				}
-
-				.popup__close {
-					font-size: 1.5rem;
-					top: 0.3rem;
-					right: 0.5rem;
-				}
-			}
 			@media (max-width: 406px) {
 				main {
 					flex: 1;
@@ -859,11 +895,16 @@
 					overflow-wrap: break-word;
 				}
 			}
-			@media (max-width: 300px) {
-				.header__link {
-					text-align: center;
-					max-width: 90vw;
-					white-space: normal;
+			@media (max-width: 320px) {
+				.popup__content {
+					padding: 1rem;
+					font-size: 0.8rem;
+				}
+
+				.popup__close {
+					font-size: 1.5rem;
+					top: 0.3rem;
+					right: 0.5rem;
 				}
 			}
 		</style>
@@ -1023,7 +1064,7 @@
 							href="https://mafiacasino.com/"
 							target="_blank"
 							rel="noopener noreferrer"
-							>Jouez maintenant !</a
+							>Jouez maintenant</a
 						>
 					</div>
 				</div>
@@ -1060,7 +1101,7 @@
 							href="https://stonevegas.com/"
 							target="_blank"
 							rel="noopener noreferrer"
-							>Jouez maintenant !</a
+							>Jouez maintenant</a
 						>
 					</div>
 				</div>
@@ -1094,7 +1135,7 @@
 							href="https://www.goldspin06310.com/fr-ca"
 							target="_blank"
 							rel="noopener noreferrer"
-							>Jouez maintenant !</a
+							>Jouez maintenant</a
 						>
 					</div>
 				</div>
@@ -1130,7 +1171,7 @@
 							href="https://wnb.servclick1move.com/?mid=246613_1451376"
 							target="_blank"
 							rel="noopener noreferrer"
-							>Jouez maintenant !</a
+							>Jouez maintenant</a
 						>
 					</div>
 				</div>
@@ -1164,7 +1205,7 @@
 							href="https://www.sush1casin0.com/fr"
 							target="_blank"
 							rel="noopener noreferrer"
-							>Jouez maintenant !</a
+							>Jouez maintenant</a
 						>
 					</div>
 				</div>
@@ -1257,36 +1298,38 @@
 						</table>
 					</section>
 					<section class="casino-card casino-button">
-							<div class="casino-button__rank-bg"></div>
-					<div class="casino-card__info">
-						<img
-							class="casino-card__image"
-							src="img/logo-casinos/mafiacasino-logo.svg"
-							alt="Logo de Mafia Casino"
-							loading="lazy"
-						/>
-						<div>
-							<h3 class="casino-card__title">Mafia Casino</h3>
-							<p class="casino-card__bonus">
+						<div class="casino-card__info">
+							<img
+								class="casino-card__image"
+								src="img/logo-casinos/mafiacasino-logo.svg"
+								alt="Logo de Mafia Casino"
+								loading="lazy"
+							/>
+						</div>
+						<div class="casino-button__rating">
+							<p class="casino-card__score">9.8</p>
+							<p class="casino-card__stars">★★★★★</p>
+							<p style="align-items: center">
+								<strong>Mafia Casino</strong>
+							</p>
+						</div>
+						<div class="casino-card__features">
+							<h4 class="casino-button__title">Bonus De Bienvenue</h4>
+							<p class="casino-card__bonus" style="text-align: center">
 								100% Jusqu’à 500 € + 200<br />
 								Free Spins
 							</p>
 						</div>
-					</div>
-						
-					<div class="casino-card__rating">
-						<p class="casino-card__score">9.8</p>
-						<p class="casino-card__stars">★★★★★</p>
-					</div>
-					<div class="casino-card__button">
-						<a
-							class="casino-card__button-link"
-							href="https://mafiacasino.com/"
-							target="_blank"
-							rel="noopener noreferrer"
-							>Jouez maintenant !</a
-						>
-					</div>
+
+						<div class="casino-card__button">
+							<a
+								class="casino-card__button-link"
+								href="https://mafiacasino.com/"
+								target="_blank"
+								rel="noopener noreferrer"
+								>Jouez maintenant</a
+							>
+						</div>
 					</section>
 					<h4>✅ Avantages :</h4>
 					<ul class="content-width">
@@ -1953,7 +1996,6 @@
 					logo.classList.add('rotate-once');
 				}
 
-				// 👇 Этот блок перенесён внутрь, теперь burger доступен
 				window.addEventListener('resize', () => {
 					const isDesktop = window.innerWidth >= 769;
 
