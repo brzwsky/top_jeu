@@ -334,10 +334,8 @@
 				margin: 0 1rem;
 				padding-left: 1rem;
 				list-style: none;
-				width: 280px;
-				/* max-width: calc(100% - 180px); */
+				max-width: calc(100% - 180px);
 				font-size: 12px;
-				word-wrap: break-word;
 			}
 
 			.casino-card__features li {
@@ -385,8 +383,6 @@
 				justify-content: center;
 				align-items: center;
 				position: relative;
-				width: 264px; /* фиксированная ширина */
-				height: 50px;
 				padding: 1rem 2rem;
 				background-color: #28a745;
 				border-radius: 6px;
@@ -403,10 +399,9 @@
 				display: inline-flex;
 				align-items: center;
 				justify-content: center;
+
 				text-align: center;
 				position: relative;
-				width: 100%;
-				height: 100%;
 				color: #fff;
 				text-decoration: none;
 				text-transform: uppercase;
@@ -759,8 +754,12 @@
 			}
 
 			/* Responsive Styles */
-			/* Общие стили кнопки для десктопа и планшета */
-			/* Десктоп (фиксированная структура) */
+			@media (max-width: 1200px) {
+				.popup__content {
+					max-width: 80vw;
+				}
+			}
+
 			@media (min-width: 1024px) {
 				.casino-card__button {
 					width: 264px;
@@ -779,56 +778,6 @@
 					display: inline-flex;
 					align-items: center;
 					justify-content: center;
-					text-align: center;
-				}
-
-				.casino-card__button-link::after {
-					margin-left: 6px;
-					line-height: 1;
-				}
-
-				.casino-card__button-wrapper {
-					width: 264px;
-					height: 50px;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-				}
-			}
-
-			/* <=1124px: Сохраняем структуру карточки */
-			@media (max-width: 1124px) {
-				.casino-card {
-					display: flex;
-					flex-wrap: wrap;
-					justify-content: flex-start;
-					align-items: flex-start;
-				}
-
-				.casino-card__logo,
-				.casino-card__title,
-				.casino-card__rating,
-				.casino-card__features,
-				.casino-card__button-wrapper {
-					width: 100%;
-					max-width: 100%;
-					margin-bottom: 1rem;
-				}
-
-				.casino-card__features {
-					padding-left: 1rem;
-				}
-			}
-
-			/* <=1023px (Планшеты) */
-			@media (max-width: 1023px) {
-				.casino-card__button {
-					width: 200px;
-					height: 44px;
-				}
-
-				.casino-card__button-link {
-					font-size: 0.9rem;
 				}
 
 				.casino-card__button-link::after {
@@ -837,7 +786,6 @@
 				}
 			}
 
-			/* <=768px (Мобильные) */
 			@media (max-width: 768px) {
 				.header__container,
 				.footer__container {
@@ -921,6 +869,7 @@
 				}
 
 				header.header {
+					background: -webkit-linear-gradient(90deg, #ac2f38, #0a162b, #000000);
 					background: linear-gradient(90deg, #ac2f38, #0a162b, #000000);
 				}
 
@@ -929,16 +878,8 @@
 					align-items: flex-start;
 				}
 
-				.casino-card__logo,
-				.casino-card__title,
-				.casino-card__rating,
-				.casino-card__features,
-				.casino-card__button-wrapper {
-					width: 100%;
-					margin-bottom: 1rem;
-				}
-
 				.casino-card__features {
+					margin-left: 0;
 					padding-left: 0;
 					margin-top: 1rem;
 				}
@@ -958,32 +899,24 @@
 				li {
 					font-size: 1rem;
 				}
-
 				.popup__content {
 					max-width: 90vw;
 				}
-
 				.popup__content p,
 				.popup__content ul,
 				.popup__content li {
 					font-size: 0.9rem;
 				}
-
-				.casino-card__button {
-					width: 100%;
-					max-width: 300px;
-					height: 44px;
-				}
-
-				.casino-card__button-link {
-					font-size: 0.95rem;
-					justify-content: center;
-					width: 100%;
-					text-align: center;
-				}
 			}
-
-			/* Очень маленькие экраны */
+			.form-success-message {
+				color: #28a745;
+				font-weight: bold;
+				margin-top: 1rem;
+				text-align: center;
+			}
+			.hidden {
+				display: none;
+			}
 			@media (max-width: 406px) {
 				main {
 					flex: 1;
@@ -1000,7 +933,6 @@
 					overflow-wrap: break-word;
 				}
 			}
-
 			@media (max-width: 320px) {
 				.popup__content {
 					padding: 1rem;
@@ -1012,17 +944,6 @@
 					top: 0.3rem;
 					right: 0.5rem;
 				}
-			}
-			/* Form styles */
-			.form-success-message {
-				color: #28a745;
-				font-weight: bold;
-				margin-top: 1rem;
-				text-align: center;
-			}
-
-			.hidden {
-				display: none;
 			}
 		</style>
 		<!-- SEO + Open Graph + Schema -->
