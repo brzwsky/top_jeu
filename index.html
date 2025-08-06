@@ -320,6 +320,11 @@
 				align-items: center;
 			}
 
+			.casino-card__info > div {
+				max-width: 200px; /* или подходящее значение */
+				overflow-wrap: break-word;
+			}
+
 			.casino-card__image {
 				max-width: 150px;
 				width: 150px;
@@ -331,10 +336,10 @@
 			}
 
 			.casino-card__features {
-				margin: 0 1rem;
-				padding-left: 1rem;
+				margin: 0 auto;
+
 				list-style: none;
-				max-width: calc(100% - 180px);
+				max-width: calc(100% - 10px);
 				font-size: 12px;
 			}
 
@@ -356,15 +361,15 @@
 				text-align: center;
 				min-width: 120px;
 				max-width: 120px;
-				width: 120px;
+				width: 100px;
 				height: 100px;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
 				box-sizing: border-box;
-				margin-left: auto;
-				margin-right: auto;
+				margin-left: 1rem;
+				margin-right: 1rem;
 			}
 
 			.casino-card__score {
@@ -1229,9 +1234,9 @@
 						</div>
 					</div>
 					<ul class="casino-card__features">
-						<li>Plus de 1 000 titres de casino en direct</li>
-						<li>Programme VIP avec bonus et privilèges exclusifs</li>
-						<li>Nombreuses solutions de paiement disponibles</li>
+						<li>+1 000 jeux de casino en direct</li>
+						<li>Programme VIP exclusif</li>
+						<li>RTP - 96%</li>
 					</ul>
 					<div class="casino-card__rating">
 						<p class="casino-card__score">8.9</p>
