@@ -880,24 +880,48 @@
 
 				.casino-card {
 					flex-direction: column;
-					align-items: flex-start;
+					align-items: center;
+				}
+
+				.casino-card--top .casino-card__title {
+					width: 200px;
+				}
+				.casino-card:not(.casino-card--top) .casino-card__title {
+					width: 200px;
+				}
+
+				.casino-card__info {
+					justify-content: space-around;
+					align-items: center;
+					width: 100%;
+				}
+
+				.casino-card__info.casino-card__info_logo {
+					margin-bottom: 2rem;
+					margin-top: 2rem;
 				}
 
 				.casino-card__features {
-					margin-left: 0;
+					width: 100%;
+
+					margin: 1rem auto;
 					padding-left: 0;
-					margin-top: 1rem;
+					order: 2;
 				}
 
 				.casino-card__rating {
 					min-width: auto;
-					margin-top: 1rem;
+					order: 1;
 				}
 
 				.casino-card__image {
 					max-width: 100px;
 					width: 100px;
 					height: auto;
+				}
+
+				.casino-card__button {
+					order: 3;
 				}
 
 				.casino-review_mafia-casino ul,
@@ -1087,8 +1111,7 @@
 						<div>
 							<h3 class="casino-card__title">Mafia Casino</h3>
 							<p class="casino-card__bonus">
-								100% Jusqu’à 500 € + 200<br />
-								Free Spins
+								100% Jusqu’à 500 € + 200 Free Spins
 							</p>
 						</div>
 					</div>
@@ -1341,7 +1364,7 @@
 						</table>
 					</section>
 					<section class="casino-card casino-button">
-						<div class="casino-card__info">
+						<div class="casino-card__info casino-card__info_logo">
 							<img
 								class="casino-card__image"
 								src="img/logo-casinos/mafiacasino-logo.svg"
@@ -1507,7 +1530,8 @@
 						</table>
 					</section>
 					<section class="casino-card casino-button">
-						<div class="casino-card__info">
+						<div class="casino-card__info casino-card__info_logo">
+							<img">
 							<img
 								class="casino-card__image"
 								src="img/logo-casinos/stonevegas-logo.webp"
@@ -1518,7 +1542,7 @@
 						<div class="casino-button__rating">
 							<p class="casino-card__score">9.6</p>
 							<p class="casino-card__stars">★★★★★</p>
-							<p style="white-space: nowrap; ">
+							<p style="white-space: nowrap">
 								<strong>Stonevegas Casino</strong>
 							</p>
 						</div>
@@ -1664,7 +1688,7 @@
 						</table>
 					</section>
 					<section class="casino-card casino-button">
-						<div class="casino-card__info">
+						<div class="casino-card__info casino-card__info_logo">
 							<img
 								class="casino-card__image"
 								src="img/logo-casinos/goldspin-logo.svg"
@@ -1675,7 +1699,7 @@
 						<div class="casino-button__rating">
 							<p class="casino-card__score">9.2</p>
 							<p class="casino-card__stars">★★★★★</p>
-							<p style="white-space: nowrap;">
+							<p style="white-space: nowrap">
 								<strong>GoldSpin Casino</strong>
 							</p>
 						</div>
@@ -1818,7 +1842,7 @@
 						</table>
 					</section>
 					<section class="casino-card casino-button">
-						<div class="casino-card__info">
+						<div class="casino-card__info casino-card__info_logo">
 							<img
 								class="casino-card__image"
 								src="img/logo-casinos/winbay-logo.webp"
@@ -1829,7 +1853,7 @@
 						<div class="casino-button__rating">
 							<p class="casino-card__score">9.0</p>
 							<p class="casino-card__stars">★★★★★</p>
-							<p style="white-space: nowrap;">
+							<p style="white-space: nowrap">
 								<strong>Winbay Casino</strong>
 							</p>
 						</div>
@@ -1972,7 +1996,7 @@
 						</table>
 					</section>
 					<section class="casino-card casino-button">
-						<div class="casino-card__info">
+						<div class="casino-card__info casino-card__info_logo">
 							<img
 								class="casino-card__image"
 								src="img/logo-casinos/sushicasino-logo.webp"
@@ -2222,9 +2246,19 @@
 				<button id="popup-close" class="popup__close" aria-label="Fermer">
 					&times;
 				</button>
-				<h2>Qui suis-je !</h2>
+				<h2 style="text-align: right">Qui suis-je ?</h2>
+				<div style="display: flex; flex-direction: row; align-items: center">
+					<span class="author"
+						><img
+							style="width: 80px; height: 80px; margin-right: 1.5rem"
+							src="img/author-photo.png"
+							alt="Auteur"
+							class="author__photo"
+					/></span>
+					<h3>Dariah Belle</h3>
+				</div>
 				<p>
-					👩‍💼 Moi, c’est Dariah Belle – votre alliée dans l’univers du casino en
+					Moi, c’est Dariah Belle – votre alliée dans l’univers du casino en
 					ligne !<br />
 					<br />
 					Bienvenue sur mon site dédié aux meilleurs casinos en ligne pour les
