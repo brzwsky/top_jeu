@@ -658,9 +658,9 @@
 				background: #fff;
 				padding: 2rem;
 				border-radius: 8px;
-				max-width: 40vw;
-				max-height: 90vh;
+				max-width: 950px;
 				width: 90%;
+				max-height: 90vh;
 				position: relative;
 				padding-bottom: 5rem;
 				font-size: 1rem;
@@ -724,6 +724,10 @@
 				max-width: 100%;
 			}
 
+			.popup__title {
+				text-align: right;
+			}
+
 			.hidden {
 				display: none;
 			}
@@ -759,6 +763,13 @@
 			}
 
 			/* Responsive Styles */
+
+			@media (min-width: 768px) and (max-width: 1440px) {
+				.popup__content {
+					width: calc(598 / 1440 * 100vw);
+				}
+			}
+
 			@media (min-width: 1024px) {
 				.casino-card__button {
 					width: 264px;
@@ -931,7 +942,7 @@
 					font-size: 0.9rem;
 				}
 				.popup__title {
-					text-align: right;
+					text-align: left;
 				}
 			}
 			.form-success-message {
