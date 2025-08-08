@@ -288,6 +288,37 @@
 				font-weight: 300;
 			}
 
+			.disclaimer {
+				position: relative;
+				padding-top: 0.5rem;
+				padding-bottom: 0.5rem;
+				padding-left: 30px;
+				width: 100%;
+				font-size: 0.7rem;
+				color: #555;
+				max-width: 750px;
+				margin-top: 2rem;
+				margin-bottom: 1rem;
+				line-height: 1.4;
+				border-radius: 10px;
+				background: #ffffff;
+				background: linear-gradient(
+					298deg,
+					rgba(255, 255, 255, 1) 0%,
+					rgba(255, 250, 250, 1) 67%,
+					rgba(255, 224, 217, 1) 100%
+				);
+			}
+
+			.disclaimer::before {
+				content: '🔔';
+				position: absolute;
+				left: 5px;
+				top: 55%;
+				transform: translateY(-100%);
+				font-size: 1rem;
+				line-height: 1;
+			}
 			/* Casino Cards */
 			.casino-cards {
 				padding-left: 0;
@@ -450,6 +481,10 @@
 				width: 220px;
 			}
 
+			.casino-button__title::after {
+				content: none; /* по умолчанию псевдоэлемента нет */
+			}
+
 			.casino-card:not(.casino-card--top) .casino-card__title {
 				border-bottom: 2px solid #e60000;
 				padding-bottom: 0.3rem;
@@ -491,6 +526,65 @@
 				height: 60px;
 				z-index: 3;
 				transform: rotate(-35deg);
+			}
+
+			.faq {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 1rem;
+				box-sizing: border-box;
+			}
+
+			.faq-item {
+				width: 100%;
+			}
+
+			.faq-question {
+				width: 100%;
+				background: #ffffff;
+				background: linear-gradient(
+					298deg,
+					rgba(255, 255, 255, 0.3) 0%,
+					rgba(255, 255, 255, 1) 38%,
+					rgba(247, 247, 247, 1) 100%
+				);
+				border: none;
+				border-radius: 10px;
+				padding: 1rem;
+				text-align: left;
+				font-weight: bold;
+				cursor: pointer;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 1rem;
+			}
+
+			.faq-toggle {
+				font-size: 1.5rem;
+				transition: transform 0.3s ease;
+			}
+
+			.faq-question[aria-expanded='true'] .faq-toggle {
+				transform: rotate(45deg);
+			}
+
+			.faq-answer {
+				/* background: #fafafa; */
+				border-left: 2px solid #e60000;
+
+				max-height: 0;
+				margin-bottom: 0 !important;
+				padding: 0 0 0 1rem !important;
+				overflow: hidden;
+
+				transition: max-height 0.3s ease, margin-bottom 0.3s ease,
+					padding-bottom 0.3s ease;
+			}
+
+			.faq-answer.open {
+				margin-bottom: 2rem !important;
+				padding-bottom: 1rem !important;
 			}
 
 			/* Footer */
@@ -883,6 +977,20 @@
 					background: linear-gradient(90deg, #ac2f38, #0a162b, #000000);
 				}
 
+				.disclaimer {
+					font-size: 0.85rem;
+					padding-left: 1.8rem;
+					padding-right: 1rem;
+					max-width: 88%;
+					margin-top: 0.5rem;
+				}
+
+				.disclaimer::before {
+					font-size: 0.9rem;
+					left: 5px;
+					top: 23%;
+				}
+
 				.casino-card {
 					flex-direction: column;
 					align-items: center;
@@ -927,6 +1035,21 @@
 
 				.casino-card__button {
 					order: 3;
+				}
+
+				.casino-button__title {
+					border-bottom: none; /* убираем подчёркивание */
+					position: relative; /* для позиционирования псевдоэлемента */
+				}
+
+				.casino-button__title::after {
+					content: '';
+					position: absolute;
+					bottom: 0;
+					left: 50%;
+					transform: translateX(-50%);
+					width: 230px;
+					border-bottom: 2px solid #e30011;
 				}
 
 				.casino-review_mafia-casino ul,
@@ -1081,6 +1204,12 @@
 						<a href="#" class="author__name">Dariah Belle</a>
 					</span>
 					· Dernière mise à jour : <span class="light">12 juin 2025</span>
+				</p>
+				<p class="disclaimer">
+					18+. Le jeu en ligne doit rester un divertissement. Jouez avec
+					modération, fixez des limites et ne misez jamais plus que ce que vous
+					pouvez vous permettre de perdre. Si vous sentez que le jeu devient un
+					problème, demandez de l’aide dès maintenant.
 				</p>
 				<div class="hero__text">
 					<p>
@@ -1946,15 +2075,12 @@
 						/>
 					</a>
 					<p class="content-width">
-						<strong
-							>Sushi Casino est une plate‑forme thématique originale autour de
-							l’univers japonais du sushi : je ne manquerais cette expérience
-							pour rien au monde !</strong
-						>
-						On y trouve une grande variété de jeux de casino (plusieurs milliers
-						de titres) et même une section de paris sportifs. Le site est
-						immersif, le design clair et agréable, rendant l’expérience de jeu
-						fluide et mémorable.
+						Sushi Casino est une plateforme thématique originale autour de
+						<strong>l’univers japonais du sushi</strong> : je ne manquerais
+						cette expérience pour rien au monde ! On y trouve une grande variété
+						de jeux de casino (plusieurs milliers de titres) et même une section
+						de paris sportifs. Le site est immersif, le design clair et
+						agréable, rendant l’expérience de jeu fluide et mémorable.
 					</p>
 					<p class="content-width">
 						La navigation est intuitive, avec un style asiatique minimaliste
@@ -2212,35 +2338,89 @@
 					🧠 En comprenant bien ces règles, vous tirez le meilleur profit des
 					bonus sur un casino en ligne tout en évitant les pièges.
 				</p>
+				<!-- FAQ -->
+				<section class="faq">
+					<h2>FAQ sur les casinos en ligne</h2>
+					<div class="faq-item">
+						<button class="faq-question" aria-expanded="false">
+							<h4>🔍 Comment trouver un casino en ligne fiable ?</h4>
+							<span class="faq-toggle">+</span>
+						</button>
+						<div class="faq-answer">
+							<p class="content-width">
+								En consultant mon top des casinos testés sur cette page, vous
+								avez déjà une
+								<strong
+									>sélection de plateformes fiables, sécurisées et adaptées aux
+									joueurs francophones</strong
+								>. Tous les sites listés ont été vérifiés selon des critères
+								stricts (licence, rapidité des retraits, support client, bonus,
+								etc.).<br />
+								Pour aller plus loin, vous pouvez aussi jeter un œil aux avis de
+								joueurs sur des forums spécialisés comme Trustpilot.
+							</p>
+						</div>
+					</div>
 
-				<h3 class="content-width">
-					👨‍💼 Mon expertise dans l’univers du casino en ligne
-				</h3>
-				<p class="content-width">
-					Je suis là pour vous aider !<br />
-					Fort de plus de 10 ans d’expérience dans le secteur du casino en
-					ligne, je travaille en direct avec de nombreux opérateurs fiables dans
-					l’espace francophone et à l’international.
-				</p>
-				<ul class="content-width">
-					<li>🎰 Problème avec un retrait ?</li>
-					<li>📄 Documents non validés ?</li>
-					<li>⛔ Compte bloqué sans explication ?</li>
-				</ul>
-				<p class="content-width">
-					👉 Contactez-moi directement – je peux intervenir auprès du support
-					grâce à mes relations professionnelles dans l’industrie pour débloquer
-					votre situation rapidement.
-				</p>
-				<ul class="content-width">
-					<li>
-						💬 Aide 100 % gratuite, confidentielle et personnalisée pour les
-						joueurs francophones.
-					</li>
-				</ul>
+					<div class="faq-item">
+						<button class="faq-question" aria-expanded="false">
+							<h4>📍 Comment identifier un casino non fiable ?</h4>
+							<span class="faq-toggle">+</span>
+						</button>
+						<div class="faq-answer">
+							<p class="content-width">
+								Un casino douteux aura souvent des
+								<strong>conditions floues</strong>, des
+								<strong>avis négatifs répétés</strong>, des
+								<strong>retraits bloqués sans raison</strong> ou un support
+								client <strong>injoignable</strong>. Méfiez-vous des plateformes
+								qui promettent des gains trop faciles.
+							</p>
+						</div>
+
+						<div class="faq-item">
+							<button class="faq-question" aria-expanded="false">
+								<h4>🔞 Peut-on jouer au casino sans avoir 18 ans ?</h4>
+								<span class="faq-toggle">+</span>
+							</button>
+							<div class="faq-answer">
+								<p class="content-width">
+									Non. Il est
+									<strong
+										>strictement interdit de jouer en ligne sans avoir au moins
+										18 ans</strong
+									>, conformément à la loi. Les casinos sérieux demandent
+									toujours une vérification d’identité.
+								</p>
+							</div>
+						</div>
+						<div class="faq-item">
+							<button class="faq-question" aria-expanded="false">
+								<h4 class="conte">
+									🍀 Sur quels jeux de casinos a-t-on le plus de chance de
+									gagner ?
+								</h4>
+								<span class="faq-toggle">+</span>
+							</button>
+							<div class="faq-answer">
+								<p class="content-width">
+									Sur les casinos listés ici, vous pouvez jouer à des centaines
+									de jeux différents —
+									<strong>tous testés et sélectionnés</strong>. Pour maximiser
+									vos chances, je recommande en priorité les
+									<strong>machines à sous à faible volatilité</strong>, les
+									<strong>mini-jeux comme Aviator ou JetX</strong>, ainsi que
+									des classiques comme le <strong>blackjack</strong> ou la
+									<strong>roulette européenne</strong>, qui offrent généralement
+									un bon taux de retour.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
 			</section>
 		</main>
-
+		<!-- Footer -->
 		<footer class="footer" role="contentinfo">
 			<div class="footer__container">
 				<div class="footer__copyright">
@@ -2501,6 +2681,23 @@
 						}
 					});
 				}
+
+				document.querySelectorAll('.faq-question').forEach((button) => {
+					button.addEventListener('click', () => {
+						const answer = button.nextElementSibling;
+						const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+						if (isOpen) {
+							answer.style.maxHeight = '0';
+							button.setAttribute('aria-expanded', 'false');
+							answer.classList.remove('open');
+						} else {
+							answer.style.maxHeight = answer.scrollHeight + 'px';
+							button.setAttribute('aria-expanded', 'true');
+							answer.classList.add('open');
+						}
+					});
+				});
 			});
 		</script>
 	</body>
