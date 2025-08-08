@@ -658,7 +658,7 @@
 				background: #fff;
 				padding: 2rem;
 				border-radius: 8px;
-				max-width: 30vw;
+				max-width: 40vw;
 				max-height: 90vh;
 				width: 90%;
 				position: relative;
@@ -759,12 +759,6 @@
 			}
 
 			/* Responsive Styles */
-			@media (max-width: 1200px) {
-				.popup__content {
-					max-width: 80vw;
-				}
-			}
-
 			@media (min-width: 1024px) {
 				.casino-card__button {
 					width: 264px;
@@ -935,6 +929,9 @@
 				.popup__content ul,
 				.popup__content li {
 					font-size: 0.9rem;
+				}
+				.popup__title {
+					text-align: right;
 				}
 			}
 			.form-success-message {
@@ -2246,7 +2243,7 @@
 				<button id="popup-close" class="popup__close" aria-label="Fermer">
 					&times;
 				</button>
-				<h2 style="text-align: right">Qui suis-je ?</h2>
+				<h2 class="popup__title">Qui suis-je ?</h2>
 				<div style="display: flex; flex-direction: row; align-items: center">
 					<span class="author"
 						><img
