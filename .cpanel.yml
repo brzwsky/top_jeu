@@ -1,6 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYMENT_DIR=/home/topjeuco/public_html
-    - echo "Deploying TopJeu repository to $DEPLOYMENT_DIR"
-    - rsync -av --exclude='.git' --exclude='.cpanel.yml' ./ $DEPLOYMENT_DIR
+    - export DEPLOYPATH=/home/topjeuco/public_html/
+
+    - /bin/cp index.html $DEPLOYPATH
+
+    - /bin/cp -R img $DEPLOYPATH
