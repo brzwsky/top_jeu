@@ -43,6 +43,10 @@
 				margin: 0 auto;
 			}
 
+			section {
+				margin-top: 2rem;
+			}
+
 			ul {
 				max-width: 700px;
 				margin-bottom: 1.5rem;
@@ -56,7 +60,7 @@
 			}
 
 			p {
-				font-size: 1.1rem;
+				font-size: 0.975rem;
 				line-height: 1.6;
 				color: #222;
 				margin-bottom: 1rem;
@@ -80,7 +84,7 @@
 			}
 
 			h2 {
-				font-size: 2rem;
+				font-size: 1.875rem;
 				font-weight: 700;
 				position: relative;
 				display: block;
@@ -90,24 +94,17 @@
 			}
 
 			h2::after {
-				content: '';
-				display: block;
-				width: 100%;
-				height: 2px;
-				background-color: #e60000;
-				position: absolute;
-				left: 0;
-				bottom: 0;
+				content: none;
 			}
 
 			h3 {
-				font-size: 1.3rem;
+				font-size: 1.175rem;
 				font-weight: 700;
 				color: black;
 			}
 
 			h4 {
-				font-size: 1rem;
+				font-size: 0.875rem;
 				font-weight: 600;
 				margin: 1.5rem 0 0.3rem;
 			}
@@ -198,7 +195,7 @@
 			}
 
 			.header__logo-line--title {
-				font-size: 1.4rem;
+				font-size: 1.275rem;
 				font-weight: 700;
 				font-family: 'Helvetica', sans-serif;
 				color: #fff;
@@ -215,7 +212,7 @@
 			.header__link {
 				color: #fff;
 				text-decoration: none;
-				font-size: 1.3rem;
+				font-size: 1.175rem;
 				display: flex;
 				align-items: center;
 				gap: 0.4rem;
@@ -315,10 +312,53 @@
 				position: absolute;
 				left: 5px;
 				top: 55%;
-				transform: translateY(-100%);
+				/* base translate preserved during animation */
+				--bell-ty: -100%;
+				transform: translateY(var(--bell-ty));
+				transform-origin: 50% 0%;
 				font-size: 1rem;
 				line-height: 1;
 			}
+
+			/* Bell ring animation (global) */
+			@keyframes bell-ring {
+				0% {
+					transform: translateY(var(--bell-ty)) rotate(0deg) scale(1);
+				}
+				15% {
+					transform: translateY(var(--bell-ty)) rotate(8deg) scale(1.06);
+				}
+				30% {
+					transform: translateY(var(--bell-ty)) rotate(-8deg) scale(1.06);
+				}
+				45% {
+					transform: translateY(var(--bell-ty)) rotate(6deg) scale(1.04);
+				}
+				60% {
+					transform: translateY(var(--bell-ty)) rotate(-6deg) scale(1.04);
+				}
+				75% {
+					transform: translateY(var(--bell-ty)) rotate(3deg) scale(1.02);
+				}
+				100% {
+					transform: translateY(var(--bell-ty)) rotate(0deg) scale(1);
+				}
+			}
+
+			.disclaimer:hover::before {
+				animation: bell-ring 1s ease-in-out 0s 2;
+			}
+			.disclaimer.bell-start::before {
+				animation: bell-ring 1s ease-in-out 0s 2;
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				.disclaimer:hover::before,
+				.disclaimer.bell-start::before {
+					animation: none !important;
+				}
+			}
+
 			/* Casino Cards */
 			.casino-cards {
 				padding-left: 0;
@@ -404,7 +444,7 @@
 			}
 
 			.casino-card__score {
-				font-size: 1.5rem;
+				font-size: 1.375rem;
 				font-weight: bold;
 				margin: 0;
 			}
@@ -442,7 +482,7 @@
 				text-decoration: none;
 				text-transform: uppercase;
 				font-weight: 600;
-				font-size: 1rem;
+				font-size: 0.875rem;
 				z-index: 1;
 			}
 
@@ -582,6 +622,12 @@
 					padding-bottom 0.3s ease;
 			}
 
+			@media (prefers-reduced-motion: reduce) {
+				.faq-answer {
+					transition: none;
+				}
+			}
+
 			.faq-answer.open {
 				margin-bottom: 2rem !important;
 				padding-bottom: 1rem !important;
@@ -598,7 +644,7 @@
 			}
 
 			.footer__copyright {
-				font-size: 1.4rem;
+				font-size: 1.275rem;
 				opacity: 0.7;
 			}
 
@@ -614,7 +660,7 @@
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
-				font-size: 1.4rem;
+				font-size: 1.275rem;
 			}
 
 			/* List section */
@@ -646,17 +692,17 @@
 			}
 
 			.landing-content h2 {
-				font-size: 2rem;
+				font-size: 1.875rem;
 				margin-top: 2rem;
 			}
 
 			.landing-content h3 {
-				font-size: 1.5rem;
+				font-size: 1.375rem;
 				margin-top: 1.5rem;
 			}
 
 			.landing-content h4 {
-				font-size: 1.3rem;
+				font-size: 1.175rem;
 				margin-top: 1rem;
 				margin-bottom: 0.5rem;
 			}
@@ -726,7 +772,7 @@
 			}
 			.casino-button__title {
 				text-align: center;
-				font-size: 1.2rem;
+				font-size: 1.075rem;
 				font-weight: bold;
 				margin-bottom: 0.5rem;
 				border-bottom: 2px solid #e60000;
@@ -875,7 +921,7 @@
 				}
 
 				.casino-card__button-link {
-					font-size: 16px;
+					font-size: 14px;
 					line-height: 1;
 					padding: 0;
 					margin: 0;
@@ -978,6 +1024,9 @@
 				}
 
 				.disclaimer {
+					position: relative;
+					display: inline-block;
+					cursor: pointer;
 					font-size: 0.85rem;
 					padding-left: 1.8rem;
 					padding-right: 1rem;
@@ -986,9 +1035,18 @@
 				}
 
 				.disclaimer::before {
-					font-size: 0.9rem;
-					left: 5px;
-					top: 23%;
+					content: '🔔';
+					position: absolute;
+					left: 0;
+					top: 50%;
+					transform: translateY(-50%);
+					transform-origin: 50% 0%;
+					font-size: 1.2rem;
+					display: inline-block;
+				}
+
+				.disclaimer:hover::before {
+					animation: bell-ring 0.6s ease-in-out 0s 2;
 				}
 
 				.casino-card {
@@ -1162,12 +1220,17 @@
 						</p>
 					</div>
 				</div>
-				<button class="burger" aria-label="Menu">
+				<button
+					class="burger"
+					aria-label="Menu"
+					aria-controls="primary-menu"
+					aria-expanded="false"
+				>
 					<span></span>
 					<span></span>
 					<span></span>
 				</button>
-				<nav class="nav-menu" aria-label="Menu principal">
+				<nav id="primary-menu" class="nav-menu" aria-label="Menu principal">
 					<button class="close-menu" aria-label="Fermer le menu">✕</button>
 					<a
 						class="header__link"
@@ -1183,8 +1246,22 @@
 						/>
 						<span>YouTube</span>
 					</a>
-					<a class="header__link" href="#about">Qui suis-je ?</a>
-					<a class="header__link" href="#contact">Envoyez-moi un message</a>
+					<a
+						class="header__link"
+						href="#about"
+						role="button"
+						aria-haspopup="dialog"
+						aria-controls="popup"
+						>Qui suis-je ?</a
+					>
+					<a
+						class="header__link"
+						href="#contact"
+						role="button"
+						aria-haspopup="dialog"
+						aria-controls="popup-contact"
+						>Envoyez-moi un message</a
+					>
 				</nav>
 			</div>
 		</header>
@@ -1209,7 +1286,7 @@
 					18+. Le jeu en ligne doit rester un divertissement. Jouez avec
 					modération, fixez des limites et ne misez jamais plus que ce que vous
 					pouvez vous permettre de perdre. Si vous sentez que le jeu devient un
-					problème, demandez de l’aide dès maintenant.
+					problème, demandez de l'aide dès maintenant.
 				</p>
 				<div class="hero__text">
 					<p>
@@ -1248,7 +1325,7 @@
 						<div>
 							<h3 class="casino-card__title">Mafia Casino</h3>
 							<p class="casino-card__bonus">
-								100% Jusqu’à 500 € + 200 Free Spins
+								100% Jusqu'à 500 € + 200 Free Spins
 							</p>
 						</div>
 					</div>
@@ -1413,32 +1490,32 @@
 					</div>
 				</div>
 			</section>
-			<section class="list">
-				<p>
-					1. <strong>Mafia Casino</strong>: Le nouveau casino en ligne
-					francophone pour débuter et gagner en toute sécurité.
+			<div class="content-width">
+				<h2>🏅 Mon Top 5 des meilleurs casinos en ligne 2025</h2>
+				<p class="content-width">
+					J’ai testé personnellement ces plateformes pour vous. Je sais que
+					choisir un casino en ligne fiable n’est pas toujours simple.
 				</p>
-				<p>
-					2. <strong>Stonevegas Casino</strong>: Une expérience haut de gamme
-					100 % francophone avec des jackpots exclusifs.
+
+				<p class="content-width">
+					C’est pourquoi je partage ici mes avis honnêtes et directs, basés sur
+					mon expérience réelle de joueuse. Prenez une minute pour parcourir ce
+					classement — cela peut vraiment vous éviter des erreurs et vous faire
+					gagner du temps.
 				</p>
-				<p>
-					3. <strong>GoldSpin Casino</strong>: Le casino en ligne francophone
-					qui transforme chaque spin en trésor.
+
+				<p class="content-width">
+					Chaque site présenté ici a ses points forts et ses limites, que je
+					détaille sans détour. Mon objectif n’est pas de vous vendre du rêve,
+					mais de vous donner une vision claire et transparente. Avec ces
+					informations, vous pourrez jouer en toute sérénité et faire un choix
+					adapté à vos attentes.
 				</p>
-				<p>
-					4. <strong>Winbay Casino</strong>: La plateforme high-tech pensée pour
-					les joueurs francophones modernes et ambitieux.
-				</p>
-				<p>
-					5. <strong>Sushi Casino</strong>: Le casino en ligne au style japonais
-					qui séduit les joueurs francophones en 2025.
-				</p>
-			</section>
+			</div>
 			<section class="landing-content">
 				<section class="casino-review_mafia-casino">
 					<h3 class="content-width">
-						Mafia Casino — un nouveau casino en ligne à l’ambiance unique pour
+						Mafia Casino — un nouveau casino en ligne à l'ambiance unique pour
 						les joueurs francophones
 					</h3>
 					<a class="banners" href="#">
@@ -1448,18 +1525,18 @@
 						/>
 					</a>
 					<p class="content-width">
-						<strong>Mafia Casino</strong> s’impose comme une nouvelle
+						<strong>Mafia Casino</strong> s'impose comme une nouvelle
 						destination de choix pour les amateurs de jeux en ligne
 						francophones. Avec son univers original inspiré du monde mafieux, le
-						site mêle divertissement, simplicité d’utilisation et sécurité, tout
+						site mêle divertissement, simplicité d'utilisation et sécurité, tout
 						en proposant une plateforme 100 % adaptée aux débutants comme aux
 						joueurs plus expérimentés.
 					</p>
 
 					<p class="content-width">
-						Dès l’inscription, les nouveaux joueurs sont accueillis avec un
+						Dès l'inscription, les nouveaux joueurs sont accueillis avec un
 						bonus de bienvenue attractif, sans conditions complexes ni pièges
-						cachés. L’interface est claire, fluide, et disponible en français,
+						cachés. L'interface est claire, fluide, et disponible en français,
 						ce qui permet une prise en main rapide.
 					</p>
 					<section class="casino-info content-width">
@@ -1475,7 +1552,7 @@
 								</tr>
 								<tr>
 									<th>🎁 Bonus de bienvenue</th>
-									<td>100% Jusqu’à 500 € + 200 Free Spins</td>
+									<td>100% Jusqu'à 500 € + 200 Free Spins</td>
 								</tr>
 								<tr>
 									<th>💳 Dépôt minimum</th>
@@ -1519,7 +1596,7 @@
 						<div class="casino-card__features">
 							<h4 class="casino-button__title">Bonus De Bienvenue</h4>
 							<p class="casino-card__bonus" style="text-align: center">
-								100% Jusqu’à 500 € + 200<br />
+								100% Jusqu'à 500 € + 200<br />
 								Free Spins
 							</p>
 						</div>
@@ -1569,11 +1646,11 @@
 					<h4>🔍 Mon petit mot en tant que testeur :</h4>
 
 					<p class="light" style="font-style: italic">
-						J’ai testé Mafia Casino par curiosité, attirée par son univers
-						original façon film noir. J’ai déposé 25 € et profité du bonus de
-						bienvenue sans souci. J’ai surtout joué sur des titres comme Money
+						J'ai testé Mafia Casino par curiosité, attirée par son univers
+						original façon film noir. J'ai déposé 25 € et profité du bonus de
+						bienvenue sans souci. J'ai surtout joué sur des titres comme Money
 						Train 4 et Wanted Dead or a Wild. Le site est fluide, et le design
-						est vraiment immersif. Côté retrait, j’ai demandé 60 € via Skrill —
+						est vraiment immersif. Côté retrait, j'ai demandé 60 € via Skrill —
 						validé en 48 heures, sans frais ni complications. Support dispo en
 						français, réponse rapide et polie. Une bonne surprise !
 					</p>
@@ -1589,14 +1666,14 @@
 						>
 						qui souhaitent débuter dans un environnement original, simple et
 						sécurisé. Avec ses bonus clairs, son support francophone et son
-						ambiance immersive, c’est une plateforme idéale pour jouer sans
+						ambiance immersive, c'est une plateforme idéale pour jouer sans
 						prise de tête.
 					</p>
 
 					<p class="light" style="font-style: italic">
 						💬 Si vous cherchez un casino qui sort un peu des sentiers battus
 						tout en restant fiable, celui-ci mérite un essai. Après tout, qui
-						n’a jamais rêvé d’être le parrain… des jackpots ? 😉
+						n'a jamais rêvé d'être le parrain… des jackpots ? 😉
 					</p>
 				</section>
 				<section class="casino-review_stonevegas-casino">
@@ -1615,15 +1692,15 @@
 						par son interface claire, son site entièrement traduit en français
 						et ses nombreuses méthodes de paiement, notamment les
 						<strong>cryptomonnaies</strong>. Avec un bonus de bienvenue
-						alléchant et une inscription rapide, la plateforme s’adresse aussi
-						bien aux débutants qu’aux joueurs réguliers à la recherche d’une
+						alléchant et une inscription rapide, la plateforme s'adresse aussi
+						bien aux débutants qu'aux joueurs réguliers à la recherche d'une
 						expérience fiable et flexible.
 					</p>
 
 					<p class="content-width">
-						Ce qui distingue Stonevegas des autres casinos récents, c’est sa
+						Ce qui distingue Stonevegas des autres casinos récents, c'est sa
 						<strong>politique de retrait rapide</strong>, souvent sous 24
-						heures, et l’absence de frais cachés. Le site est bien optimisé pour
+						heures, et l'absence de frais cachés. Le site est bien optimisé pour
 						le jeu mobile, même sans application dédiée, et propose un accès
 						instantané à une large sélection de
 						<strong>machines à sous, jeux de table et casino en direct</strong>.
@@ -1725,7 +1802,7 @@
 					<h4>❌ À noter :</h4>
 					<ul class="content-width">
 						<li>
-							<strong>Pas encore d’application mobile</strong>, mais le site
+							<strong>Pas encore d'application mobile</strong>, mais le site
 							fonctionne bien sur smartphone
 						</li>
 						<li>
@@ -1735,12 +1812,12 @@
 					</ul>
 					<h4>🔍 Mon petit mot en tant que testeur :</h4>
 					<p class="light" style="font-style: italic">
-						Stonevegas m’a tout de suite séduite par son ambiance un peu rétro
-						et élégante. J’ai déposé 40 € pour profiter du pack de bienvenue, et
-						j’ai joué à plusieurs machines, notamment Sweet Bonanza et Big Bass
-						Splash. L’interface est très claire, tout est bien organisé, même
-						pour les débutantes. J’ai retiré 100 € après quelques sessions
-						chanceuses — virement traité en 3 jours ouvrés. J’ai aussi eu un
+						Stonevegas m'a tout de suite séduite par son ambiance un peu rétro
+						et élégante. J'ai déposé 40 € pour profiter du pack de bienvenue, et
+						j'ai joué à plusieurs machines, notamment Sweet Bonanza et Big Bass
+						Splash. L'interface est très claire, tout est bien organisé, même
+						pour les débutantes. J'ai retiré 100 € après quelques sessions
+						chanceuses — virement traité en 3 jours ouvrés. J'ai aussi eu un
 						petit échange avec le support par chat : réponse en français,
 						courtoise et efficace. Une expérience simple et agréable.
 					</p>
@@ -1753,7 +1830,7 @@
 					</p>
 					<p class="light" style="font-style: italic">
 						💬 Un casino en ligne qui va droit au but : idéal pour les joueurs
-						qui aiment la simplicité, la vitesse et l’efficacité.
+						qui aiment la simplicité, la vitesse et l'efficacité.
 					</p>
 				</section>
 				<section class="casino-review_goldspin-casino">
@@ -1777,13 +1854,13 @@
 						Free Spins, sans conditions cachées ni étapes compliquées.
 					</p>
 					<p class="content-width">
-						Ce qui distingue GoldSpin, c’est sa fluidité, ses dépôts
+						Ce qui distingue GoldSpin, c'est sa fluidité, ses dépôts
 						instantanés, et ses
 						<strong
 							>retraits traités généralement dans un délai de 3 à 4
 							heures</strong
-						>. L’interface est disponible en français, ce qui facilite
-						grandement l’inscription et la navigation, y compris pour les
+						>. L'interface est disponible en français, ce qui facilite
+						grandement l'inscription et la navigation, y compris pour les
 						nouveaux joueurs.
 					</p>
 					<section class="casino-info content-width">
@@ -1815,7 +1892,7 @@
 								</tr>
 								<tr>
 									<th>🕛 Délai de retrait</th>
-									<td>Jusqu’à 3-4 heures</td>
+									<td>Jusqu'à 3-4 heures</td>
 								</tr>
 								<tr>
 									<th>📜 Licence</th>
@@ -1864,7 +1941,7 @@
 						</li>
 						<li>
 							Une ludothèque de <strong>plus de 7000 jeux</strong> issus
-							d’environ 100 fournisseurs
+							d'environ 100 fournisseurs
 						</li>
 						<li>
 							Un programme <strong>VIP en 5 niveaux</strong> avec des avantages
@@ -1877,26 +1954,26 @@
 					</ul>
 					<h4>❌ À noter :</h4>
 					<ul>
-						<li>Pas encore d’application mobile dédiée</li>
+						<li>Pas encore d'application mobile dédiée</li>
 						<li>
 							Accessible uniquement dans certains pays / marchés restreints
 						</li>
 					</ul>
 					<h4>🔍 Mon petit mot en tant que testeur :</h4>
 					<p class="light" style="font-style: italic">
-						J’ai passé pas mal de temps à tester les jeux en direct sur
-						GoldSpin, notamment le blackjack et la roulette. L’ambiance est
+						J'ai passé pas mal de temps à tester les jeux en direct sur
+						GoldSpin, notamment le blackjack et la roulette. L'ambiance est
 						vraiment sympa grâce aux croupiers professionnels, et la qualité
-						vidéo est fluide, même sur mobile. J’ai apprécié la variété des
+						vidéo est fluide, même sur mobile. J'ai apprécié la variété des
 						tables disponibles, avec des mises adaptées à tous les budgets. Côté
 						service, le chat live est réactif et toujours disponible en
-						français, ce qui facilite les échanges. Globalement, c’est une
+						français, ce qui facilite les échanges. Globalement, c'est une
 						expérience immersive et agréable qui complète bien la ludothèque
 						classique.
 					</p>
 					<h4>Verdict :</h4>
 					<p class="content-width">
-						<strong>GoldSpin Casino</strong> s’impose en 2025 comme un
+						<strong>GoldSpin Casino</strong> s'impose en 2025 comme un
 						<strong>excellent choix pour les joueurs francophones</strong> :
 						énorme sélection de jeux, bonus attractifs, retraits rapides et
 						interface claire. Idéal pour ceux qui veulent jouer sans prise de
@@ -1922,14 +1999,14 @@
 						WinBay est une nouvelle destination de jeu incontournable que je ne
 						manquerais pour rien au monde ! On y trouve une immense sélection de
 						jeux de casino et de casino en direct parmi les plus populaires,
-						ainsi qu’une section paris sportifs bien structurée. Le site en
-						lui-même est une véritable pépite qui rend l’expérience de jeu
+						ainsi qu'une section paris sportifs bien structurée. Le site en
+						lui-même est une véritable pépite qui rend l'expérience de jeu
 						fluide et mémorable.
 					</p>
 					<p class="content-width">
 						<strong
 							>WinBay est un casino en ligne original, au design inspiré par
-							l’univers des pirates et les aventures en haute mer</strong
+							l'univers des pirates et les aventures en haute mer</strong
 						>. Sa plateforme intuitive permet une navigation fluide et rapide,
 						idéale pour explorer une riche ludothèque et bénéficier de bonus
 						attractifs.
@@ -2041,10 +2118,10 @@
 					</ul>
 					<h4>🔍 Mon petit mot en tant que testeur :</h4>
 					<p class="light" style="font-style: italic">
-						J’ai déposé 30 €, profité du bonus, et joué surtout aux machines à
-						sous (dont Gates of Olympus et Book of Dead). J’ai pu retirer mes
+						J'ai déposé 30 €, profité du bonus, et joué surtout aux machines à
+						sous (dont Gates of Olympus et Book of Dead). J'ai pu retirer mes
 						gains sans problème, le tout a été validé en 3 jours. Le support
-						était réactif et m’a répondu en français, ce qui est toujours
+						était réactif et m'a répondu en français, ce qui est toujours
 						rassurant.
 					</p>
 					<h4>Verdict :</h4>
@@ -2054,13 +2131,13 @@
 							>bonne option pour les joueurs et joueuses qui recherchent une
 							plateforme polyvalente</strong
 						>, avec beaucoup de jeux, des bonus intéressants et la possibilité
-						de parier sur le sport. Ce n’est peut-être pas le casino le plus
-						connu du moment, mais il vaut le détour. Personnellement, j’y
+						de parier sur le sport. Ce n'est peut-être pas le casino le plus
+						connu du moment, mais il vaut le détour. Personnellement, j'y
 						retournerai avec plaisir.
 					</p>
 					<p class="light" style="font-style: italic">
-						💬 Un casino “tout-en-un” pour les joueurs modernes : hissez les
-						voiles, l’aventure commence ici !
+						💬 Un casino "tout-en-un" pour les joueurs modernes : hissez les
+						voiles, l'aventure commence ici !
 					</p>
 				</section>
 				<section class="casino-review_sushi-casino">
@@ -2076,11 +2153,11 @@
 					</a>
 					<p class="content-width">
 						Sushi Casino est une plateforme thématique originale autour de
-						<strong>l’univers japonais du sushi</strong> : je ne manquerais
+						<strong>l'univers japonais du sushi</strong> : je ne manquerais
 						cette expérience pour rien au monde ! On y trouve une grande variété
 						de jeux de casino (plusieurs milliers de titres) et même une section
 						de paris sportifs. Le site est immersif, le design clair et
-						agréable, rendant l’expérience de jeu fluide et mémorable.
+						agréable, rendant l'expérience de jeu fluide et mémorable.
 					</p>
 					<p class="content-width">
 						La navigation est intuitive, avec un style asiatique minimaliste
@@ -2168,7 +2245,7 @@
 							de fidélité et bonus
 						</li>
 						<li>
-							<strong>Bonus de bienvenue très généreux</strong> : jusqu’à 2500
+							<strong>Bonus de bienvenue très généreux</strong> : jusqu'à 2500
 							 € répartis sur les trois premiers dépôts + 50 Free Spins
 						</li>
 						<li>
@@ -2197,7 +2274,7 @@
 							montant parfois jugé limité
 						</li>
 						<li>
-							L’assistance est
+							L'assistance est
 							<strong
 								>disponible 24/7 par chat et email, mais sans option
 								téléphonique</strong
@@ -2206,35 +2283,36 @@
 					</ul>
 					<h4>🔍 Mon petit mot en tant que testeur :</h4>
 					<p class="light" style="font-style: italic">
-						J’ai déposé <strong>10 €</strong> (le dépôt minimum), activé le
+						J'ai déposé <strong>10 €</strong> (le dépôt minimum), activé le
 						bonus de bienvenue sans souci, et profité de plusieurs missions et
 						promotions actives. Le système VIP se débloque rapidement avec
-						quelques mises. J’ai demandé un
+						quelques mises. J'ai demandé un
 						<strong>retrait de 60 € via Skrill</strong>, validé en
-						<strong>48 heures</strong> après une vérification d’identité simple
-						(pièce et selfie acceptés dès le premier envoi). Le support m’a
+						<strong>48 heures</strong> après une vérification d'identité simple
+						(pièce et selfie acceptés dès le premier envoi). Le support m'a
 						répondu rapidement en français, de façon claire et professionnelle.
 					</p>
 					<h4>Verdict :</h4>
 					<p class="content-width">
 						<strong
-							>Franchement, j’ai été agréablement surpris par Sushi
+							>Franchement, j'ai été agréablement surpris par Sushi
 							Casino.</strong
 						>
 						Le site a du style, les bonus tombent vite, et les missions rendent
-						l’expérience de jeu vraiment plus fun. Il y a de quoi faire avec
+						l'expérience de jeu vraiment plus fun. Il y a de quoi faire avec
 						tous les jeux dispo, et le programme de fidélité ajoute un vrai
 						petit plus si tu joues régulièrement.
 					</p>
+
 					<p class="content-width">
-						C’est sûr, ce n’est pas le casino le plus strict niveau régulation,
+						C'est sûr, ce n'est pas le casino le plus strict niveau régulation,
 						donc mieux vaut rester attentif aux conditions de retrait, surtout
 						au début.
 					</p>
 					<p class="content-width">
 						Mais pour une expérience sympa, fluide, avec plein de promos et un
 						bon support en français, je reviendrai sans hésiter pour continuer à
-						grimper dans les niveaux VIP et tester d’autres jeux.
+						grimper dans les niveaux VIP et tester d'autres jeux.
 					</p>
 					<p class="light" style="font-style: italic">
 						💬 Un casino au goût unique, qui marie parfaitement fun, fidélité et
@@ -2247,7 +2325,7 @@
 					essentiels
 				</h3>
 				<p class="content-width">
-					Le jeu d’argent en ligne doit rester un divertissement, non une source
+					Le jeu d'argent en ligne doit rester un divertissement, non une source
 					de stress ou de dépendance. Pour cela, adopter une approche
 					responsable sur un casino en ligne est crucial.
 				</p>
@@ -2257,17 +2335,17 @@
 				<ul class="content-width">
 					<li>Fixez un budget de jeu clair et ne le dépassez jamais</li>
 					<li>
-						Utilisez les outils de limites de dépôt ou d’auto-exclusion proposés
+						Utilisez les outils de limites de dépôt ou d'auto-exclusion proposés
 						par les casinos en ligne fiables
 					</li>
 					<li>
-						Ne jouez jamais sous l’emprise de l’émotion ou pour « vous refaire »
+						Ne jouez jamais sous l'emprise de l'émotion ou pour « vous refaire »
 					</li>
 					<li>Faites régulièrement des pauses pour garder le contrôle</li>
 				</ul>
 				<p class="content-width">
 					✅ En respectant ces règles, vous profitez du casino en ligne dans
-					l’espace francophone de manière saine et durable.
+					l'espace francophone de manière saine et durable.
 				</p>
 
 				<h3 class="content-width">
@@ -2310,8 +2388,8 @@
 				</h3>
 				<p class="content-width">
 					Les bonus de casino en ligne peuvent sembler attractifs, mais il est
-					crucial de comprendre les conditions de mise (ou “wagering
-					requirements”).
+					crucial de comprendre les conditions de mise (ou "wagering
+					requirements").
 				</p>
 				<p class="content-width">
 					<strong>Voici ce que vous devez savoir :</strong>
@@ -2326,7 +2404,7 @@
 						avantageux
 					</li>
 					<li>
-						Lisez toujours les termes et conditions avant d’accepter un bonus
+						Lisez toujours les termes et conditions avant d'accepter un bonus
 					</li>
 					<li>
 						Assurez-vous de quels jeux comptent pleinement pour remplir les
@@ -2342,11 +2420,22 @@
 				<section class="faq">
 					<h2>FAQ sur les casinos en ligne</h2>
 					<div class="faq-item">
-						<button class="faq-question" aria-expanded="false">
-							<h4>🔍 Comment trouver un casino en ligne fiable ?</h4>
+						<button
+							class="faq-question"
+							aria-expanded="false"
+							aria-controls="faq-1"
+						>
+							<h4 id="faq-q1">
+								🔍 Comment trouver un casino en ligne fiable ?
+							</h4>
 							<span class="faq-toggle">+</span>
 						</button>
-						<div class="faq-answer">
+						<div
+							id="faq-1"
+							class="faq-answer"
+							role="region"
+							aria-labelledby="faq-q1"
+						>
 							<p class="content-width">
 								En consultant mon top des casinos testés sur cette page, vous
 								avez déjà une
@@ -2363,11 +2452,20 @@
 					</div>
 
 					<div class="faq-item">
-						<button class="faq-question" aria-expanded="false">
-							<h4>📍 Comment identifier un casino non fiable ?</h4>
+						<button
+							class="faq-question"
+							aria-expanded="false"
+							aria-controls="faq-2"
+						>
+							<h4 id="faq-q2">📍 Comment identifier un casino non fiable ?</h4>
 							<span class="faq-toggle">+</span>
 						</button>
-						<div class="faq-answer">
+						<div
+							id="faq-2"
+							class="faq-answer"
+							role="region"
+							aria-labelledby="faq-q2"
+						>
 							<p class="content-width">
 								Un casino douteux aura souvent des
 								<strong>conditions floues</strong>, des
@@ -2379,30 +2477,50 @@
 						</div>
 
 						<div class="faq-item">
-							<button class="faq-question" aria-expanded="false">
-								<h4>🔞 Peut-on jouer au casino sans avoir 18 ans ?</h4>
+							<button
+								class="faq-question"
+								aria-expanded="false"
+								aria-controls="faq-3"
+							>
+								<h4 id="faq-q3">
+									🔞 Peut-on jouer au casino sans avoir 18 ans ?
+								</h4>
 								<span class="faq-toggle">+</span>
 							</button>
-							<div class="faq-answer">
+							<div
+								id="faq-3"
+								class="faq-answer"
+								role="region"
+								aria-labelledby="faq-q3"
+							>
 								<p class="content-width">
 									Non. Il est
 									<strong
 										>strictement interdit de jouer en ligne sans avoir au moins
 										18 ans</strong
 									>, conformément à la loi. Les casinos sérieux demandent
-									toujours une vérification d’identité.
+									toujours une vérification d'identité.
 								</p>
 							</div>
 						</div>
 						<div class="faq-item">
-							<button class="faq-question" aria-expanded="false">
-								<h4 class="conte">
+							<button
+								class="faq-question"
+								aria-expanded="false"
+								aria-controls="faq-4"
+							>
+								<h4 id="faq-q4" class="conte">
 									🍀 Sur quels jeux de casinos a-t-on le plus de chance de
 									gagner ?
 								</h4>
 								<span class="faq-toggle">+</span>
 							</button>
-							<div class="faq-answer">
+							<div
+								id="faq-4"
+								class="faq-answer"
+								role="region"
+								aria-labelledby="faq-q4"
+							>
 								<p class="content-width">
 									Sur les casinos listés ici, vous pouvez jouer à des centaines
 									de jeux différents —
@@ -2429,12 +2547,18 @@
 			</div>
 		</footer>
 		<!-- POPUP: À propos de nous -->
-		<div id="popup" class="popup hidden" role="dialog" aria-modal="true">
+		<div
+			id="popup"
+			class="popup hidden"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="about-title"
+		>
 			<div class="popup__content">
 				<button id="popup-close" class="popup__close" aria-label="Fermer">
 					&times;
 				</button>
-				<h2 class="popup__title">Qui suis-je ?</h2>
+				<h2 id="about-title" class="popup__title">Qui suis-je ?</h2>
 				<div style="display: flex; flex-direction: row; align-items: center">
 					<span class="author"
 						><img
@@ -2446,14 +2570,14 @@
 					<h3>Dariah Belle</h3>
 				</div>
 				<p>
-					Moi, c’est Dariah Belle – votre alliée dans l’univers du casino en
+					Moi, c'est Dariah Belle – votre alliée dans l'univers du casino en
 					ligne !<br />
 					<br />
 					Bienvenue sur mon site dédié aux meilleurs casinos en ligne pour les
 					joueurs francophones.
 				</p>
 				<p>
-					Avec plus de 10 ans d’expérience dans l’industrie, je collabore
+					Avec plus de 10 ans d'expérience dans l'industrie, je collabore
 					directement avec des opérateurs fiables, reconnus sur les marchés
 					francophones et internationaux.
 				</p>
@@ -2464,7 +2588,7 @@
 				</ul>
 				<p>
 					👉 Je peux vous aider – gratuitement, en toute confidentialité. Grâce
-					à mes contacts dans le secteur, j’interviens directement auprès du
+					à mes contacts dans le secteur, j'interviens directement auprès du
 					support pour débloquer votre situation.
 				</p>
 				<ul>
@@ -2484,6 +2608,7 @@
 			class="popup hidden"
 			role="dialog"
 			aria-modal="true"
+			aria-labelledby="contact-title"
 		>
 			<div class="popup__content">
 				<button
@@ -2493,7 +2618,7 @@
 				>
 					&times;
 				</button>
-				<h2>Contactez-moi</h2>
+				<h2 id="contact-title">Contactez-moi</h2>
 				<div class="underline"></div>
 				<form
 					id="contact-form"
@@ -2572,6 +2697,7 @@
 					menu.classList.add('active');
 					burger.style.display = 'none';
 					body.classList.add('menu-open');
+					burger.setAttribute('aria-expanded', 'true');
 				}
 
 				function closeMenu() {
@@ -2579,6 +2705,7 @@
 					burger.style.display = 'flex';
 					body.classList.remove('menu-open');
 					burger.focus();
+					burger.setAttribute('aria-expanded', 'false');
 				}
 
 				const aboutLink = document.querySelector(
@@ -2656,6 +2783,18 @@
 
 				const contactForm = document.getElementById('contact-form');
 				const successMessage = document.getElementById('form-success-message');
+
+				// Trigger disclaimer bell 5s after load (respect reduced motion)
+				const disclaimer = document.querySelector('.disclaimer');
+				const prefersReduced = window.matchMedia(
+					'(prefers-reduced-motion: reduce)'
+				).matches;
+				if (disclaimer && !prefersReduced) {
+					setTimeout(() => {
+						disclaimer.classList.add('bell-start');
+						setTimeout(() => disclaimer.classList.remove('bell-start'), 2000);
+					}, 5000);
+				}
 
 				if (contactForm && successMessage) {
 					contactForm.addEventListener('submit', async (e) => {
