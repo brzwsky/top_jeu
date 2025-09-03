@@ -660,34 +660,247 @@
 				padding-bottom: 1rem !important;
 			}
 
+			/* Cookie Banner */
+			.cookie-banner {
+				position: fixed;
+				bottom: 2rem;
+				left: 2rem;
+				transform: translateX(0);
+				background: #fff;
+				color: #333;
+				padding: 1.5rem 2rem;
+				border-radius: 20px;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+				z-index: 1000;
+				transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+				font-family: Arial, sans-serif;
+				max-width: 500px;
+				width: 90%;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				opacity: 0;
+			}
+
+			.cookie-banner:not(.minimized) {
+				width: 90% !important;
+				max-width: 500px !important;
+				padding: 1.5rem 2rem !important;
+				border-radius: 20px !important;
+			}
+
+			.cookie-banner.show {
+				transform: translateX(0);
+				opacity: 1;
+			}
+
+			.cookie-banner.minimized {
+				width: 60px !important;
+				height: 60px !important;
+				padding: 0 !important;
+				border-radius: 50% !important;
+				display: flex !important;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+				left: 1rem !important;
+				bottom: 1rem !important;
+				max-width: 60px !important;
+				opacity: 1;
+				transform: translateX(0);
+			}
+
+			.cookie-banner.minimized:hover {
+				transform: translateX(0) scale(1.1);
+				box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+			}
+
+			.cookie-banner.minimized .cookie-banner__container {
+				display: none !important;
+			}
+
+			.cookie-banner.minimized .cookie-banner__minimized-icon {
+				display: block !important;
+				font-size: 24px;
+				color: #333;
+			}
+
+			.cookie-banner__minimized-icon {
+				display: none;
+			}
+
+			.cookie-banner:not(.minimized) .cookie-banner__minimized-icon {
+				display: none !important;
+			}
+
+			.cookie-banner__container {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+
+			.cookie-banner:not(.minimized) .cookie-banner__container {
+				display: flex !important;
+			}
+
+			.cookie-banner__content {
+				text-align: left;
+			}
+
+			.cookie-banner__text {
+				font-size: 0.95rem;
+				line-height: 1.5;
+				margin: 0;
+				color: #555;
+			}
+
+			.cookie-banner__text a {
+				color: #e60000;
+				text-decoration: underline;
+				font-weight: 600;
+			}
+
+			.cookie-banner__text a:hover {
+				color: #b30000;
+			}
+
+			.cookie-banner__actions {
+				display: flex;
+				gap: 0.75rem;
+				justify-content: flex-start;
+			}
+
+			.cookie-banner__btn {
+				padding: 0.75rem 1.5rem;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				font-size: 0.9rem;
+				font-weight: 600;
+				transition: all 0.3s ease;
+				text-decoration: none;
+				display: inline-block;
+				text-align: center;
+				min-width: 120px;
+			}
+
+			.cookie-banner__btn--accept {
+				background: #2c5aa0;
+				color: #fff;
+			}
+
+			.cookie-banner__btn--accept:hover {
+				background: #1e3f73;
+				transform: translateY(-1px);
+			}
+
+			.cookie-banner__btn--decline {
+				background: #f5f5f5;
+				color: #666;
+				border: 1px solid #ddd;
+			}
+
+			.cookie-banner__btn--decline:hover {
+				background: #e9e9e9;
+				transform: translateY(-1px);
+			}
+
 			/* Footer */
 			.footer {
 				background: #121626;
 				color: #fff;
-				padding: 1.3rem 0;
+				padding: 2rem 0 1rem;
 				font-family: Arial, sans-serif;
 				width: 100%;
 				box-sizing: border-box;
 			}
 
+			.footer__content {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				gap: 2rem;
+				margin-bottom: 2rem;
+			}
+
+			.footer__section h4 {
+				color: #fff;
+				font-size: 1.1rem;
+				font-weight: 700;
+				margin: 0 0 1rem 0;
+				border-bottom: 2px solid #e60000;
+				padding-bottom: 0.5rem;
+				display: inline-block;
+			}
+
+			.footer__section p,
+			.footer__section li {
+				font-size: 0.9rem;
+				line-height: 1.5;
+				margin-bottom: 0.5rem;
+				color: #ccc;
+			}
+
+			.footer__section ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.footer__section li::before {
+				content: '•';
+				color: #e60000;
+				margin-right: 0.5rem;
+			}
+
+			.footer__link {
+				color: #fff;
+				text-decoration: none;
+				transition: color 0.3s ease;
+			}
+
+			.footer__link:hover {
+				color: #ff6b6b;
+			}
+
+			.footer__contact {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.footer__contact-icon {
+				width: 16px;
+				height: 16px;
+				flex-shrink: 0;
+			}
+
+			.footer__bottom {
+				border-top: 1px solid #333;
+				padding-top: 1rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 1rem;
+			}
+
 			.footer__copyright {
-				font-size: 1.275rem;
+				font-size: 0.85rem;
 				opacity: 0.7;
+				color: #ccc;
+			}
+
+			.footer__disclaimer {
+				font-size: 0.75rem;
+				color: #999;
+				line-height: 1.4;
+				max-width: 400px;
 			}
 
 			.footer__social {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
-			}
-
-			.footer__link {
-				color: #fff;
-				text-decoration: none;
-				display: flex;
-				align-items: center;
-				gap: 0.5rem;
-				font-size: 1.275rem;
 			}
 
 			/* List section */
@@ -811,7 +1024,8 @@
 			}
 
 			/* Popup */
-			.popup {
+			.popup,
+			.privacy-popup {
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -826,7 +1040,16 @@
 				box-sizing: border-box;
 			}
 
-			.popup__content {
+			.privacy-popup {
+				display: none;
+			}
+
+			.privacy-popup.show {
+				display: flex;
+			}
+
+			.popup__content,
+			.privacy-popup__content {
 				background: #fff;
 				padding: 2rem;
 				border-radius: 8px;
@@ -842,7 +1065,8 @@
 				-webkit-overflow-scrolling: touch;
 			}
 
-			.popup__close {
+			.popup__close,
+			.privacy-popup__close {
 				position: absolute;
 				top: 0.5rem;
 				right: 1rem;
@@ -855,11 +1079,13 @@
 				user-select: none;
 			}
 
-			.popup__close:focus {
+			.popup__close:focus,
+			.privacy-popup__close:focus {
 				outline: none;
 			}
 
-			.popup__close:focus-visible {
+			.popup__close:focus-visible,
+			.privacy-popup__close:focus-visible {
 				outline: 2px solid #e60000;
 				outline-offset: 2px;
 			}
@@ -969,6 +1195,49 @@
 			}
 
 			@media (max-width: 768px) {
+				.cookie-banner {
+					bottom: 1rem;
+					left: 1rem;
+					right: 1rem;
+					transform: translateX(0);
+					max-width: none;
+					width: auto;
+					opacity: 0;
+				}
+
+				.cookie-banner.show {
+					transform: translateX(0);
+					opacity: 1;
+				}
+
+				.cookie-banner__actions {
+					flex-direction: column;
+					gap: 0.5rem;
+				}
+
+				.cookie-banner__btn {
+					width: 100%;
+					min-width: auto;
+				}
+
+				.cookie-banner.minimized {
+					width: 50px;
+					height: 50px;
+					bottom: 1rem;
+					left: 1rem;
+				}
+
+				.footer__content {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+
+				.footer__bottom {
+					flex-direction: column;
+					text-align: center;
+					gap: 1rem;
+				}
+
 				.header__container,
 				.footer__container {
 					padding-left: 1rem;
@@ -1360,7 +1629,7 @@
 					<span>
 						<a href="javascript:void(0)" class="author__name">Dariah Belle</a>
 					</span>
-					· Dernière mise à jour : <span class="light">12 juin 2025</span>
+					· Dernière mise à jour : <span class="light">03 septembre 2025</span>
 				</p>
 				<p class="disclaimer">
 					18+. Le jeu en ligne doit rester un divertissement. Jouez avec
@@ -1386,7 +1655,7 @@
 				</div>
 			</section>
 			<!-- Casino Cards -->
-			<section class="casino-cards">
+			<section id="top5" class="casino-cards">
 				<div class="casino-card casino-card--top">
 					<div class="casino-card__rank-bg"></div>
 					<div class="casino-card__rank">1</div>
@@ -2390,7 +2659,7 @@
 					</p>
 				</section>
 
-				<h3 class="content-width">
+				<h3 id="responsable" class="content-width">
 					🎯 Jouer de façon responsable sur un casino en ligne : mes conseils
 					essentiels
 				</h3>
@@ -2418,7 +2687,7 @@
 					l'espace francophone de manière saine et durable.
 				</p>
 
-				<h3 class="content-width">
+				<h3 id="choisir" class="content-width">
 					🏆 Comment choisir le meilleur casino en ligne francophone en 2025 ?
 				</h3>
 				<p class="content-width">
@@ -2452,7 +2721,7 @@
 					pour une expérience optimale.
 				</p>
 
-				<h3 class="content-width">
+				<h3 id="bonus" class="content-width">
 					📜 Bonus de casino en ligne : comprendre les conditions de mise avant
 					de jouer
 				</h3>
@@ -2611,11 +2880,132 @@
 		<!-- Footer -->
 		<footer class="footer" role="contentinfo">
 			<div class="footer__container">
-				<div class="footer__copyright">
-					© 2025 TopJeu. Tous droits réservés.
+				<div class="footer__content">
+					<div class="footer__section">
+						<h3>🏆 TopJeu</h3>
+						<p>
+							Votre guide de confiance pour les meilleurs casinos en ligne
+							francophones. Nous testons et évaluons chaque plateforme pour vous
+							offrir des recommandations fiables et transparentes.
+						</p>
+						<div class="footer__contact">
+							<span class="footer__contact-icon">📧</span>
+							<a href="mailto:topjeu777@gmail.com" class="footer__link"
+								>topjeu777@gmail.com</a
+							>
+						</div>
+					</div>
+
+					<div class="footer__section">
+						<h3>🔗 Liens utiles</h3>
+						<ul>
+							<li>
+								<a href="#top5" class="footer__link">Top 5 des casinos</a>
+							</li>
+							<li><a href="#bonus" class="footer__link">Guide des bonus</a></li>
+							<li>
+								<a href="#choisir" class="footer__link">Comment choisir</a>
+							</li>
+							<li>
+								<a href="#responsable" class="footer__link">Jeu responsable</a>
+							</li>
+							<li><a href="#about" class="footer__link">Qui suis-je ?</a></li>
+							<li><a href="#contact" class="footer__link">Contact</a></li>
+							<li>
+								<a href="#privacy-popup" class="footer__link" id="privacy-link">
+									Politique de confidentialité
+								</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="footer__section">
+						<h3>⚠️ Avertissement</h3>
+						<p class="footer__disclaimer">
+							<strong>18+</strong> Le jeu peut causer une dépendance. Jouez avec
+							modération. Les jeux d'argent sont interdits aux mineurs. En cas
+							de problème, contactez
+							<a
+								href="https://www.joueurs-info-service.fr"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="footer__link"
+								>Joueurs Info Service</a
+							>
+							au 09 74 75 13 13.
+						</p>
+					</div>
+				</div>
+
+				<div class="footer__bottom">
+					<div class="footer__copyright">
+						© 2025 TopJeu. Tous droits réservés.
+					</div>
+					<div class="footer__social">
+						<a
+							href="https://www.youtube.com/@TopJeu777"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="footer__link"
+						>
+							<img
+								class="youtube-icon"
+								src="img/youtube.webp"
+								alt="YouTube"
+								loading="lazy"
+							/>
+							<span>YouTube</span>
+						</a>
+					</div>
 				</div>
 			</div>
 		</footer>
+
+		<!-- Politique de confidentialité Popup -->
+		<div
+			id="privacy-popup"
+			class="privacy-popup"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="privacy-title"
+			aria-hidden="true"
+		>
+			<div class="privacy-popup__content">
+				<button
+					class="privacy-popup__close"
+					id="privacy-close"
+					aria-label="Fermer"
+				>
+					&times;
+				</button>
+				<h2 id="privacy-title">Politique de confidentialité</h2>
+				<p>
+					Ce site n’exploite pas directement de jeux d’argent. Il a pour
+					objectif de fournir des informations et des conseils aux utilisateurs.
+				</p>
+				<p>
+					Nous utilisons uniquement des cookies techniques et analytiques afin
+					d’améliorer l’expérience utilisateur. Ces cookies ne collectent pas de
+					données personnelles permettant l’identification directe.
+				</p>
+				<p>
+					Vous pouvez accepter ou refuser l’utilisation des cookies à tout
+					moment via le bandeau affiché lors de votre première visite.
+				</p>
+				<p>
+					Les données collectées (statistiques de navigation anonymes) ne sont
+					utilisées qu’à des fins de mesure d’audience et ne sont transmises à
+					aucun tiers non autorisé.
+				</p>
+				<p>
+					Pour toute question, vous pouvez nous contacter à l’adresse suivante :
+					<a href="mailto:topjeu777@gmail.com" class="footer__link"
+						>topjeu777@gmail.com</a
+					>.
+				</p>
+				<p style="font-size: 13px; color: #777">Mise à jour : juin 2025</p>
+			</div>
+		</div>
 		<!-- POPUP: À propos de nous -->
 		<div
 			id="popup"
@@ -2736,6 +3126,63 @@
 				</p>
 			</div>
 		</div>
+
+		<!-- Cookie Banner -->
+		<div
+			id="cookie-banner"
+			class="cookie-banner"
+			role="dialog"
+			aria-labelledby="cookie-title"
+			aria-describedby="cookie-description"
+		>
+			<div class="cookie-banner__minimized-icon">🍪</div>
+			<div class="cookie-banner__container">
+				<div class="cookie-banner__content">
+					<h4
+						id="cookie-title"
+						style="
+							margin: 0 0 0.5rem 0;
+							font-size: 1.1rem;
+							color: #fff;
+							font-weight: 700;
+						"
+					>
+						🍪 Nous sommes des cookies
+					</h4>
+					<p id="cookie-description" class="cookie-banner__text">
+						On a attendu d'être sûrs que le contenu de ce site vous intéresse
+						avant de vous déranger, mais on aimerait bien vous accompagner
+						pendant votre visite... C'est OK pour vous ?
+					</p>
+					<p style="margin: 0.5rem 0 0 0; font-size: 0.85rem">
+						<a
+							href="#privacy-popup"
+							class="footer__link"
+							style="font-weight: 600"
+							id="cookie-privacy-link"
+							>Lire la politique de confidentialité</a
+						>
+					</p>
+				</div>
+				<div class="cookie-banner__actions">
+					<button
+						id="cookie-accept"
+						class="cookie-banner__btn cookie-banner__btn--accept"
+						aria-label="Accepter tous les cookies"
+					>
+						OK pour moi
+					</button>
+					<button
+						id="cookie-decline"
+						class="cookie-banner__btn cookie-banner__btn--decline"
+						aria-label="Refuser les cookies non essentiels"
+					>
+						Non merci
+					</button>
+				</div>
+			</div>
+		</div>
+
 		<script>
 			document.addEventListener('DOMContentLoaded', () => {
 				const popup = document.getElementById('popup');
@@ -2743,6 +3190,12 @@
 				const popupContact = document.getElementById('popup-contact');
 				const popupContactClose = document.getElementById(
 					'popup-contact-close'
+				);
+				const privacyPopup = document.getElementById('privacy-popup');
+				const privacyClose = document.getElementById('privacy-close');
+				const privacyLink = document.getElementById('privacy-link');
+				const cookiePrivacyLink = document.getElementById(
+					'cookie-privacy-link'
 				);
 
 				const burger = document.querySelector('.burger');
@@ -2769,6 +3222,28 @@
 				function closePopup(popupElement) {
 					if (!popupElement) return;
 					popupElement.classList.add('hidden');
+					if (lastFocusedElement) lastFocusedElement.focus();
+					body.style.overflow = '';
+				}
+
+				function openPrivacyPopup() {
+					if (!privacyPopup) return;
+
+					if (menu && menu.classList.contains('active')) {
+						closeMenu();
+					}
+
+					lastFocusedElement = document.activeElement;
+					privacyPopup.classList.add('show');
+					privacyPopup.setAttribute('aria-hidden', 'false');
+					if (privacyClose) privacyClose.focus();
+					body.style.overflow = 'hidden';
+				}
+
+				function closePrivacyPopup() {
+					if (!privacyPopup) return;
+					privacyPopup.classList.remove('show');
+					privacyPopup.setAttribute('aria-hidden', 'true');
 					if (lastFocusedElement) lastFocusedElement.focus();
 					body.style.overflow = '';
 				}
@@ -2808,6 +3283,25 @@
 					});
 				}
 
+				// Privacy popup handlers
+				if (privacyLink) {
+					privacyLink.addEventListener('click', (e) => {
+						e.preventDefault();
+						openPrivacyPopup();
+					});
+				}
+
+				if (cookiePrivacyLink) {
+					cookiePrivacyLink.addEventListener('click', (e) => {
+						e.preventDefault();
+						openPrivacyPopup();
+					});
+				}
+
+				if (privacyClose) {
+					privacyClose.addEventListener('click', closePrivacyPopup);
+				}
+
 				if (popupClose) {
 					popupClose.addEventListener('click', () => closePopup(popup));
 				}
@@ -2820,6 +3314,7 @@
 				window.addEventListener('click', (e) => {
 					if (e.target === popup) closePopup(popup);
 					else if (e.target === popupContact) closePopup(popupContact);
+					else if (e.target === privacyPopup) closePrivacyPopup();
 				});
 
 				window.addEventListener('keydown', (e) => {
@@ -2827,6 +3322,8 @@
 						if (popup && !popup.classList.contains('hidden')) closePopup(popup);
 						if (popupContact && !popupContact.classList.contains('hidden'))
 							closePopup(popupContact);
+						if (privacyPopup && privacyPopup.classList.contains('show'))
+							closePrivacyPopup();
 						if (menu && menu.classList.contains('active')) closeMenu();
 					}
 				});
@@ -2917,6 +3414,123 @@
 						}
 					});
 				});
+
+				// Cookie Banner functionality
+				const cookieBanner = document.getElementById('cookie-banner');
+				const cookieAccept = document.getElementById('cookie-accept');
+				const cookieDecline = document.getElementById('cookie-decline');
+
+				// Debug: Check if elements exist
+				if (!cookieBanner) {
+					console.error('Cookie banner element not found');
+					return;
+				}
+				if (!cookieAccept || !cookieDecline) {
+					console.error('Cookie buttons not found');
+					return;
+				}
+
+				// Check if user has already made a choice
+				const cookieChoice = localStorage.getItem('cookieConsent');
+				console.log('Cookie choice:', cookieChoice);
+
+				if (!cookieChoice) {
+					console.log('No cookie choice found, showing banner');
+					// Show banner after 2 seconds with fade-in animation
+					setTimeout(() => {
+						if (cookieBanner) {
+							cookieBanner.classList.add('show');
+							console.log('Banner shown');
+						}
+					}, 2000);
+				} else if (cookieChoice === 'accepted') {
+					console.log('Cookie choice accepted, hiding banner');
+					// Hide banner if user accepted cookies
+					if (cookieBanner) {
+						cookieBanner.style.display = 'none';
+					}
+				} else if (cookieChoice === 'declined') {
+					console.log('Cookie choice declined, showing minimized banner');
+					// Show minimized banner if user declined cookies
+					if (cookieBanner) {
+						cookieBanner.classList.add('minimized');
+					}
+				}
+
+				// Accept all cookies
+				cookieAccept.addEventListener('click', () => {
+					localStorage.setItem('cookieConsent', 'accepted');
+					cookieBanner.classList.remove('show');
+					cookieBanner.style.display = 'none';
+
+					// Enable Google Analytics and other tracking
+					if (typeof gtag !== 'undefined') {
+						gtag('consent', 'update', {
+							analytics_storage: 'granted',
+							ad_storage: 'granted',
+						});
+					}
+				});
+
+				// Decline non-essential cookies
+				cookieDecline.addEventListener('click', () => {
+					console.log('Decline button clicked');
+					localStorage.setItem('cookieConsent', 'declined');
+
+					// Start collapse animation
+					cookieBanner.classList.remove('show');
+
+					// Add minimized class after a short delay to allow fade-out
+					setTimeout(() => {
+						cookieBanner.classList.add('minimized');
+						console.log(
+							'Banner classes after decline:',
+							cookieBanner.className
+						);
+					}, 300);
+
+					// Disable tracking
+					if (typeof gtag !== 'undefined') {
+						gtag('consent', 'update', {
+							analytics_storage: 'denied',
+							ad_storage: 'denied',
+						});
+					}
+				});
+
+				// Handle click on minimized banner to expand it
+				cookieBanner.addEventListener('click', (e) => {
+					console.log(
+						'Banner clicked, is minimized:',
+						cookieBanner.classList.contains('minimized')
+					);
+					if (cookieBanner.classList.contains('minimized')) {
+						// Remove minimized class first
+						cookieBanner.classList.remove('minimized');
+
+						// Add show class after a short delay to allow expand animation
+						setTimeout(() => {
+							cookieBanner.classList.add('show');
+							console.log('Banner expanded, classes:', cookieBanner.className);
+						}, 100);
+					}
+				});
+
+				// Initialize Google Analytics consent
+				if (typeof gtag !== 'undefined') {
+					const consent = localStorage.getItem('cookieConsent');
+					gtag('consent', 'default', {
+						analytics_storage: consent === 'accepted' ? 'granted' : 'denied',
+						ad_storage: consent === 'accepted' ? 'granted' : 'denied',
+					});
+				}
+
+				// Debug function to clear cookie consent (for testing)
+				window.clearCookieConsent = function () {
+					localStorage.removeItem('cookieConsent');
+					console.log('Cookie consent cleared');
+					location.reload();
+				};
 			});
 		</script>
 	</body>
