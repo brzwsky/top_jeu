@@ -1,0 +1,1541 @@
+	/* Reset*/
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  html {
+    min-height: 100%;
+    position: relative;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Helvetica, sans-serif;
+    background: #fff;
+    color: #000;
+    font-size: 1rem;
+  }
+
+  main {
+    flex: 1;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  section {
+    margin-top: 2rem;
+  }
+
+  ul {
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    color: #444;
+  }
+
+  li {
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 0.975rem;
+    line-height: 1.6;
+    color: #222;
+    margin-bottom: 1rem;
+    max-width: 800px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: 'Arial Black', Arial, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    margin: 2rem 0 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-bottom: 0.6rem;
+    margin: 2rem 0 0.5rem;
+  }
+
+  h2::after {
+    content: none;
+  }
+
+  h3 {
+    font-size: 1.175rem;
+    font-weight: 700;
+    color: black;
+  }
+
+  h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.3rem;
+  }
+
+  strong {
+    color: black;
+    font-weight: 700;
+  }
+
+  a {
+    color: #b30000;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: red;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(90deg, #000000, #0a162b, #ac2f38);
+    color: #fff;
+    padding: 1rem 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  .header__container,
+  .footer__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .header__container {
+    position: relative;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .header__logo {
+    max-height: 175px;
+    min-height: 105px;
+    width: auto;
+    margin-right: 2rem;
+  }
+
+  @keyframes rotate-once {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+
+  .header__logo.rotate-once {
+    animation: rotate-once 1s ease forwards;
+  }
+
+  .header__logo-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header__logo-block .header__logo {
+    max-height: 110px;
+    margin: 0 auto 0.7rem;
+    display: block;
+  }
+
+  .header__logo-text {
+    text-align: center;
+    color: #fff;
+  }
+
+  .header__logo-line {
+    margin: 0;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .header__logo-line--title {
+    font-size: 1.275rem;
+    font-weight: 700;
+    font-family: 'Helvetica', sans-serif;
+    color: #fff;
+  }
+
+  .header__logo-line--subtitle {
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'Helvetica', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .header__link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.175rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .youtube-icon {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0 0 1rem 0;
+  }
+
+  .author__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .author__name {
+    text-decoration: underline;
+    color: inherit;
+    font-weight: 200;
+  }
+
+  .author {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .author__photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+  }
+
+  .hero__text {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__text p {
+    max-width: 1200px;
+    line-height: 1.6;
+  }
+
+  .light {
+    font-weight: 300;
+  }
+
+  .disclaimer {
+    position: relative;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 30px;
+    width: 100%;
+    font-size: 0.7rem;
+    color: #555;
+    max-width: 750px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    border-radius: 10px;
+    background: #ffffff;
+    background: linear-gradient(
+      298deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 250, 250, 1) 67%,
+      rgba(255, 224, 217, 1) 100%
+    );
+  }
+
+  .disclaimer::before {
+    content: '🔔';
+    position: absolute;
+    left: 5px;
+    top: 55%;
+    /* base translate preserved during animation */
+    --bell-ty: -100%;
+    transform: translateY(var(--bell-ty));
+    transform-origin: 50% 0%;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  /* Bell ring animation (global) */
+  @keyframes bell-ring {
+    0% {
+      transform: translateY(var(--bell-ty)) rotate(0deg) scale(1);
+    }
+    15% {
+      transform: translateY(var(--bell-ty)) rotate(8deg) scale(1.06);
+    }
+    30% {
+      transform: translateY(var(--bell-ty)) rotate(-8deg) scale(1.06);
+    }
+    45% {
+      transform: translateY(var(--bell-ty)) rotate(6deg) scale(1.04);
+    }
+    60% {
+      transform: translateY(var(--bell-ty)) rotate(-6deg) scale(1.04);
+    }
+    75% {
+      transform: translateY(var(--bell-ty)) rotate(3deg) scale(1.02);
+    }
+    100% {
+      transform: translateY(var(--bell-ty)) rotate(0deg) scale(1);
+    }
+  }
+
+  .disclaimer:hover::before {
+    animation: bell-ring 1s ease-in-out 0s 2;
+  }
+  .disclaimer.bell-start::before {
+    animation: bell-ring 1s ease-in-out 0s 2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .disclaimer:hover::before,
+    .disclaimer.bell-start::before {
+      animation: none !important;
+    }
+  }
+
+  /* Casino Cards */
+  .casino-cards {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .casino-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: visible;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .casino-card--top {
+    border: 1.5px solid;
+    border-color: #952631;
+    border-image-slice: 1;
+  }
+
+  .casino-card__info {
+    display: flex;
+    align-items: center;
+  }
+
+  .casino-card__info > div {
+    max-width: 200px; /* oui, c'est une bonne valeur */
+    overflow-wrap: break-word;
+  }
+
+  .casino-card__image {
+    max-width: 150px;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  .casino-card__features {
+    margin: 0 auto;
+
+    list-style: none;
+    max-width: calc(100% - 10px);
+    font-size: 12px;
+  }
+
+  .casino-card__features li {
+    color: #222;
+  }
+
+  .casino-card__features li::before {
+    content: '✓';
+    color: #1db100;
+    margin-right: 0.5em;
+  }
+
+  .casino-card__features li::first-letter {
+    color: inherit;
+  }
+
+  .casino-card__rating {
+    text-align: center;
+    min-width: 120px;
+    max-width: 120px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .casino-card__score {
+    font-size: 1.375rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .casino-card__stars {
+    color: gold;
+    margin: 0;
+  }
+
+  .casino-card__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem 2rem;
+    background-color: #28a745;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .casino-card__button:hover {
+    background-color: #1e7e34;
+  }
+
+  .casino-card__button-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.875rem;
+    z-index: 1;
+  }
+
+  .casino-card__button-link:hover {
+    color: #e0ffd6;
+  }
+
+  .casino-card__button-link::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 6px;
+    height: 6px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: translate(calc(0px), calc(-50%)) rotate(45deg);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .casino-card__button:hover .casino-card__button-link::after {
+    opacity: 1;
+    transform: translate(calc(5px), calc(-50%)) rotate(45deg);
+    border-color: #e0ffd6;
+  }
+  .casino-card__button-link:hover {
+    color: #e0ffd6;
+  }
+
+  .casino-card__title {
+    margin: 0.2rem 0;
+    font-size: 20px;
+    display: inline-block;
+    width: 220px;
+  }
+
+  .casino-button__title::after {
+    content: none; /* par défaut, il n'y a pas de pseudo-élément */
+  }
+
+  .casino-card:not(.casino-card--top) .casino-card__title {
+    border-bottom: 2px solid #e60000;
+    padding-bottom: 0.3rem;
+    width: 220px;
+  }
+
+  .casino-card--top .casino-card__title {
+    border-bottom: 2px solid #33b538;
+    padding-bottom: 0.3rem;
+    width: 220px;
+  }
+
+  .casino-card__rank {
+    position: absolute;
+    top: 50%;
+    left: -21px;
+    transform: translate(0, -50%);
+    background: rgba(23, 22, 38, 0.65);
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    border: 0.1px solid #e60000;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .casino-card__icon {
+    position: absolute;
+    top: -36px;
+    left: -28px;
+    width: 60px;
+    height: 60px;
+    z-index: 3;
+    transform: rotate(-35deg);
+  }
+
+  .faq {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .faq-item {
+    width: 100%;
+  }
+
+  .faq-question {
+    width: 100%;
+    background: #ffffff;
+    background: linear-gradient(
+      298deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 1) 38%,
+      rgba(247, 247, 247, 1) 100%
+    );
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: left;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .faq-toggle {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-question[aria-expanded='true'] .faq-toggle {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    /* background: #fafafa; */
+    border-left: 2px solid #e60000;
+
+    max-height: 0;
+    margin-bottom: 0 !important;
+    padding: 0 0 0 1rem !important;
+    overflow: hidden;
+
+    transition: max-height 0.3s ease, margin-bottom 0.3s ease,
+      padding-bottom 0.3s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-answer {
+      transition: none;
+    }
+  }
+
+  .faq-answer.open {
+    margin-bottom: 2rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  /* Cookie Banner */
+  .cookie-banner {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    transform: translateY(10px);
+    background: #fff;
+    color: #333;
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: opacity 0.5s ease, transform 0.5s ease,
+      box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: Arial, sans-serif;
+    max-width: 500px;
+    width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transform-origin: left bottom;
+  }
+
+  .cookie-banner.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hide cookie banner under modals to avoid overlap */
+  .modal-open #cookie-banner {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Expand animation from minimized circle to full card */
+  @keyframes cookie-expand {
+    0% {
+      transform: translateY(0) scale(0.85);
+      border-radius: 50%;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .cookie-banner.expanding {
+    animation: cookie-expand 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .cookie-banner__container {
+    transition: opacity 0.4s ease, max-height 0.4s ease;
+    overflow: hidden;
+  }
+
+  .cookie-banner__content {
+    text-align: left;
+  }
+
+  .cookie-banner__text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+    color: #555;
+  }
+
+  .cookie-banner__text a {
+    color: #e60000;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  /* Ensure footer link style doesn't override cookie link color */
+  .cookie-banner .footer__link {
+    color: #e60000 !important;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .cookie-banner .footer__link:hover {
+    color: #b30000 !important;
+  }
+
+  .cookie-banner__text a:hover {
+    color: #b30000;
+  }
+
+  .cookie-banner__actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-start;
+  }
+
+  .cookie-banner__btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    min-width: 120px;
+  }
+
+  .cookie-banner__btn--accept {
+    background: #2c5aa0;
+    color: #fff;
+  }
+
+  .cookie-banner__btn--accept:hover {
+    background: #1e3f73;
+    transform: translateY(-1px);
+  }
+
+  .cookie-banner__btn--decline {
+    background: #f5f5f5;
+    color: #666;
+    border: 1px solid #ddd;
+  }
+
+  .cookie-banner__btn--decline:hover {
+    background: #e9e9e9;
+    transform: translateY(-1px);
+  }
+
+  /* Minimized state */
+  .cookie-banner.minimized {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    left: 1rem;
+    bottom: 1rem;
+    max-width: 60px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      border-radius 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      bottom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .cookie-banner.minimized:hover {
+    transform: translateX(0) scale(1.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .cookie-banner.minimized .cookie-banner__container {
+    display: none;
+  }
+
+  .cookie-banner.minimized .cookie-banner__minimized-icon {
+    display: block;
+    font-size: 24px;
+    color: #333;
+  }
+
+  .cookie-banner__minimized-icon {
+    display: none;
+  }
+
+  .cookie-banner:not(.minimized) .cookie-banner__minimized-icon {
+    display: none !important;
+  }
+
+  .cookie-banner:not(.minimized) {
+    width: 90% !important;
+    max-width: 500px !important;
+    padding: 1.5rem 2rem !important;
+    border-radius: 20px !important;
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .cookie-banner {
+      transition: none !important;
+    }
+    .cookie-banner__container {
+      transition: none !important;
+    }
+    .cookie-banner.expanding,
+    .cookie-banner.collapsing {
+      animation: none !important;
+    }
+  }
+
+  /* Footer */
+  .footer {
+    background: #121626;
+    color: #e6e6e6;
+    padding: 2rem 0 1rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .footer__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: start;
+  }
+
+  .footer__section h4 {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    border-bottom: 2px solid #e60000;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .footer__section p,
+  .footer__section li {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    color: #bfbfbf;
+    text-align: left;
+  }
+
+  .footer__section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer__section li::before {
+    content: '•';
+    color: #e60000;
+    margin-right: 0.5rem;
+  }
+
+  .footer__link {
+    color: #e6e6e6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer__link:hover {
+    color: #ff6b6b;
+  }
+
+  .footer__contact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .footer__contact-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .footer__bottom {
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer__copyright {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    color: #bfbfbf;
+  }
+
+  .footer__disclaimer {
+    font-size: 0.75rem;
+    color: #999;
+    line-height: 1.4;
+    max-width: 400px;
+  }
+
+  .footer__social {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  /* List section */
+  .list {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .list p {
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Landing content */
+  .landing-content {
+    max-width: 100%;
+    line-height: 1.6;
+  }
+
+  .content-width {
+    max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .landing-content h2 {
+    font-size: 1.875rem;
+    margin-top: 2rem;
+  }
+
+  .landing-content h3 {
+    font-size: 1.375rem;
+    margin-top: 1.5rem;
+  }
+
+  .landing-content h4 {
+    font-size: 1.175rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .landing-content ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .landing-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Banners */
+  .banners {
+    width: 100%;
+    max-width: 1200px;
+    margin: 1rem auto;
+    display: block;
+  }
+
+  .banners img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .casino-info table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 1rem;
+    color: #222;
+  }
+
+  .casino-info th,
+  .casino-info td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  .casino-info th {
+    background-color: #f9f9f9;
+    font-weight: 700;
+    width: 40%;
+  }
+
+  .casino-info tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .casino-button__rating {
+    text-align: center;
+    min-width: 120px;
+    max-width: 120px;
+    width: 120px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .casino-button__title {
+    text-align: center;
+    font-size: 1.075rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #e60000;
+  }
+
+  /* Casino button sections */
+  .casino-button .casino-card__button {
+    text-decoration: none;
+  }
+
+  /* Popup */
+  .popup,
+  .privacy-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .privacy-popup {
+    display: none;
+  }
+
+  .privacy-popup.show {
+    display: flex;
+  }
+
+  .popup__content,
+  .privacy-popup__content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 750px;
+    width: 90%;
+    max-height: 90vh;
+    position: relative;
+    padding-bottom: 5rem;
+    font-size: 1rem;
+    color: #000;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .popup__close,
+  .privacy-popup__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #b30000;
+    z-index: 10;
+    border: none;
+    background: transparent;
+    user-select: none;
+  }
+
+  .popup__close:focus,
+  .privacy-popup__close:focus {
+    outline: none;
+  }
+
+  .popup__close:focus-visible,
+  .privacy-popup__close:focus-visible {
+    outline: 2px solid #e60000;
+    outline-offset: 2px;
+  }
+
+  .popup__button {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    background: #121626;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .popup__button:hover {
+    background: #b30000;
+  }
+
+  .popup__content form {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .popup__content form input,
+  .popup__content form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .popup__title {
+    text-align: right;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .close-menu {
+    display: none;
+  }
+
+  .burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .burger span {
+    display: block;
+    height: 2px;
+    background-color: #fff;
+    width: 100%;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 1rem;
+  }
+
+  /* Responsive Styles */
+
+  @media (min-width: 768px) and (max-width: 1440px) {
+    .popup__content {
+      width: calc(598 / 1440 * 100vw);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .casino-card__button {
+      width: 264px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
+
+    .casino-card__button-link {
+      font-size: 14px;
+      line-height: 1;
+      padding: 0;
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .casino-card__button-link::after {
+      margin-left: 6px;
+      line-height: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* Hide cookie icon in expanded banner on mobile */
+    .cookie-banner:not(.minimized) .cookie-banner__minimized-icon {
+      display: none !important;
+    }
+
+    .cookie-banner {
+      bottom: calc(env(safe-area-inset-bottom, 0) + 1rem);
+      left: calc(env(safe-area-inset-left, 0) + 1rem);
+      right: calc(env(safe-area-inset-right, 0) + 1rem);
+      transform: translateY(0);
+      max-width: none;
+      width: auto;
+      opacity: 0;
+      box-sizing: border-box;
+      padding: 1rem 1rem;
+      border-radius: 16px !important;
+    }
+
+    .cookie-banner.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .cookie-banner__actions {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .cookie-banner__btn {
+      width: 100%;
+      min-width: auto;
+    }
+
+    .cookie-banner__container {
+      max-height: 60vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .cookie-banner__text {
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .cookie-banner.minimized {
+      width: 50px;
+      height: 50px;
+      bottom: calc(env(safe-area-inset-bottom, 0) + 1rem);
+      left: calc(env(safe-area-inset-left, 0) + 1rem);
+    }
+
+    .footer__content {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .footer__bottom {
+      flex-direction: column;
+      text-align: left;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: nowrap;
+    }
+
+    .footer__bottom > * {
+      width: 100%;
+    }
+
+    .header__container,
+    .footer__container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .footer__container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 1.25rem;
+    }
+
+    .burger {
+      order: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .header__logo-block {
+      order: 2;
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 70vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      gap: 2rem;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .nav-menu.active {
+      display: flex;
+      transform: translateY(0);
+    }
+
+    .close-menu {
+      display: block;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1002;
+    }
+
+    .header {
+      align-items: flex-start;
+      padding: 1rem;
+    }
+
+    .header__nav ul {
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+    }
+
+    .header__nav li {
+      margin-left: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    header.header {
+      background: -webkit-linear-gradient(90deg, #ac2f38, #0a162b, #000000);
+      background: linear-gradient(90deg, #ac2f38, #0a162b, #000000);
+    }
+
+    .disclaimer {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding-left: 1.8rem;
+      padding-right: 1rem;
+      max-width: 88%;
+      margin-top: 0.5rem;
+    }
+
+    .disclaimer::before {
+      content: '🔔';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transform-origin: 50% 0%;
+      font-size: 1.2rem;
+      display: inline-block;
+    }
+
+    .disclaimer:hover::before {
+      animation: bell-ring 0.6s ease-in-out 0s 2;
+    }
+
+    .casino-card {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .casino-card--top .casino-card__title {
+      width: 200px;
+    }
+    .casino-card:not(.casino-card--top) .casino-card__title {
+      width: 200px;
+    }
+
+    .casino-card__info {
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+    }
+
+    .casino-card__info.casino-card__info_logo {
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
+
+    .casino-card__features {
+      width: 100%;
+
+      margin: 1rem auto;
+      padding-left: 0;
+      order: 2;
+    }
+
+    .casino-card__rating {
+      min-width: auto;
+      order: 1;
+    }
+
+    .casino-card__image {
+      max-width: 100px;
+      width: 100px;
+      height: auto;
+    }
+
+    .casino-card__button {
+      order: 3;
+    }
+
+    .casino-button__title {
+      border-bottom: none; /* убираем подчёркивание */
+      position: relative; /* для позиционирования псевдоэлемента */
+    }
+
+    .casino-button__title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 230px;
+      border-bottom: 2px solid #e30011;
+    }
+
+    .casino-review_mafia-casino ul,
+    li {
+      font-size: 1rem;
+    }
+    .popup__content {
+      max-width: 90vw;
+    }
+    .popup__content p,
+    .popup__content ul,
+    .popup__content li {
+      font-size: 0.9rem;
+    }
+    .popup__title {
+      text-align: left;
+    }
+  }
+  .form-success-message {
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .hidden {
+    display: none;
+  }
+  @media (max-width: 406px) {
+    main {
+      flex: 1;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      max-width: 100%;
+    }
+
+    main * {
+      max-width: 100%;
+      box-sizing: border-box;
+      white-space: normal !important;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+  }
+  @media (max-width: 320px) {
+    .popup__content {
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .popup__close {
+      font-size: 1.5rem;
+      top: 0.3rem;
+      right: 0.5rem;
+    }
+  }
+
+  /* Restore underline for popup titles only */
+  #about-title::after,
+  #contact-title::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #e60000;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  #cookie-title::after {
+    content: '';
+  }
+
+  @media (min-width: 769px) {
+    #cookie-title::before {
+      content: '🍪';
+      display: inline-block;
+      margin-right: 0.35rem;
+    }
+  }
