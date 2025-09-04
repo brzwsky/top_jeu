@@ -4,18 +4,9 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>TopJeu - Casinos Fiables en Ligne 2025</title>
-		<!-- Favicon base -->
-		<link rel="icon" href="favicon.ico" sizes="any" />
-		<link rel="preload" href="styles.css" as="style" />
-		<link
-			rel="stylesheet"
-			href="styles.css"
-			media="print"
-			onload="this.media='all'"
-		/>
-		<noscript><link rel="stylesheet" href=".styles.css" /></noscript>
 
-		<!-- PNG -->
+		<!-- Favicon -->
+		<link rel="icon" href="favicon.ico" sizes="any" />
 		<link
 			rel="icon"
 			type="image/png"
@@ -28,28 +19,24 @@
 			sizes="192x192"
 			href="img/favicons_pack/favicon-192.png"
 		/>
-
-		<!-- Apple iOS -->
 		<link
 			rel="apple-touch-icon"
 			sizes="180x180"
 			href="img/favicons_pack/favicon-180.png"
 		/>
-
-		<!-- Android/Chrome PWA -->
 		<link rel="manifest" href="site.webmanifest" />
 
-		<!-- Performance: Preconnect external origins -->
+		<!-- Preconnect / DNS Prefetch -->
 		<link rel="preconnect" href="https://www.googletagmanager.com" />
 		<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 		<link rel="preconnect" href="https://analytics.ahrefs.com" />
 		<link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
 
+		<!-- SEO & Open Graph -->
 		<meta
 			name="description"
 			content="Découvrez les meilleurs casinos en ligne fiables en France en 2025. Classement, avis, bonus et conseils pour jouer en toute sécurité."
 		/>
-		<!-- SEO + Open Graph + Schema -->
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href="https://www.topjeu777.com/" />
 
@@ -62,7 +49,6 @@
 			property="og:description"
 			content="Découvrez les meilleurs casinos fiables en ligne en France avec bonus, avis et conseils à jour."
 		/>
-
 		<meta property="og:url" content="https://www.topjeu777.com/" />
 		<meta
 			property="og:image"
@@ -82,28 +68,80 @@
 			name="twitter:image"
 			content="https://www.topjeu777.com/img/preview.jpg"
 		/>
-		<!-- Google tag (gtag.js) -->
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-YYE4H0PHYY"
-		></script>
+
+		<!-- Inline Critical CSS -->
+		<style>
+			/* Minimal critical CSS for above-the-fold content */
+			body {
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				background: #fff;
+				color: #000;
+			}
+			.header {
+				background: linear-gradient(90deg, #000, #0a162b, #ac2f38);
+				color: #fff;
+				padding: 1rem 0;
+			}
+			.header__container {
+				max-width: 1200px;
+				margin: 0 auto;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 2rem;
+			}
+			main {
+				flex: 1;
+				padding: 0 2rem;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			h1,
+			h2,
+			h3 {
+				color: #1a1a1a;
+			}
+		</style>
+
+		<!-- Stylesheet -->
+		<link rel="preload" href="styles.css" as="style" />
+		<link
+			rel="stylesheet"
+			href="styles.css"
+			media="print"
+			onload="this.media='all'"
+		/>
+		<noscript><link rel="stylesheet" href="styles.min.css" /></noscript>
+
+		<!-- Google Analytics (early consent) -->
 		<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag() {
 				dataLayer.push(arguments);
 			}
+			gtag('consent', 'default', {
+				analytics_storage: 'denied',
+				ad_storage: 'denied',
+			});
+		</script>
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-YYE4H0PHYY"
+		></script>
+		<script>
 			gtag('js', new Date());
-
 			gtag('config', 'G-YYE4H0PHYY');
 		</script>
 
 		<!-- Ahrefs Analytics -->
 		<script
+			async
 			src="https://analytics.ahrefs.com/analytics.js"
 			data-key="flKbnmCKyZQK+Qsr+U37qQ"
-			async
 		></script>
 
+		<!-- Structured Data -->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
@@ -112,12 +150,12 @@
 				"description": "Classement des meilleurs casinos en ligne fiables en France. Bonus, avis, retraits rapides.",
 				"inLanguage": "fr",
 				"url": "https://www.topjeu777.com/",
-				"author": {
-					"@type": "Person",
-					"name": "Jean Dupont"
-				}
+				"author": { "@type": "Person", "name": "Jean Dupont" }
 			}
 		</script>
+
+		<!-- JS -->
+		<script defer src="app.js"></script>
 	</head>
 	<script defer src="./app.js"></script>
 	<body lang="fr">
