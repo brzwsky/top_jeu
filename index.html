@@ -31,6 +31,12 @@
 		<!-- Android/Chrome PWA -->
 		<link rel="manifest" href="/site.webmanifest" />
 
+		<!-- Performance: Preconnect external origins -->
+		<link rel="preconnect" href="https://www.googletagmanager.com" />
+		<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+		<link rel="preconnect" href="https://analytics.ahrefs.com" />
+		<link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
+
 		<meta
 			name="description"
 			content="Découvrez les meilleurs casinos en ligne fiables en France en 2025. Classement, avis, bonus et conseils pour jouer en toute sécurité."
@@ -841,6 +847,20 @@
 				max-width: 500px !important;
 				padding: 1.5rem 2rem !important;
 				border-radius: 20px !important;
+			}
+
+			/* Respect reduced motion preferences */
+			@media (prefers-reduced-motion: reduce) {
+				.cookie-banner {
+					transition: none !important;
+				}
+				.cookie-banner__container {
+					transition: none !important;
+				}
+				.cookie-banner.expanding,
+				.cookie-banner.collapsing {
+					animation: none !important;
+				}
 			}
 
 			/* Footer */
@@ -3532,6 +3552,22 @@
 						}
 					});
 				});
+
+				// --- Header logo rotate on hover (replayable) ---
+				const headerLogo = document.querySelector('.header__logo');
+				const reduceMotion =
+					window.matchMedia &&
+					window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				if (headerLogo && !reduceMotion) {
+					// rotate once on initial load
+					headerLogo.classList.add('rotate-once');
+					headerLogo.addEventListener('mouseenter', () => {
+						headerLogo.classList.add('rotate-once');
+					});
+					headerLogo.addEventListener('animationend', () => {
+						headerLogo.classList.remove('rotate-once');
+					});
+				}
 			});
 
 			// Expose a testing helper to clear consent and re-open the banner
