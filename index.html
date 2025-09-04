@@ -687,6 +687,12 @@
 				transform: translateY(0);
 			}
 
+			/* Hide cookie banner under modals to avoid overlap */
+			.modal-open #cookie-banner {
+				opacity: 0 !important;
+				pointer-events: none !important;
+			}
+
 			/* Expand animation from minimized circle to full card */
 			@keyframes cookie-expand {
 				0% {
@@ -725,6 +731,17 @@
 				color: #e60000;
 				text-decoration: underline;
 				font-weight: 600;
+			}
+
+			/* Ensure footer link style doesn't override cookie link color */
+			.cookie-banner .footer__link {
+				color: #e60000 !important;
+				text-decoration: underline;
+				font-weight: 600;
+			}
+
+			.cookie-banner .footer__link:hover {
+				color: #b30000 !important;
 			}
 
 			.cookie-banner__text a:hover {
@@ -829,9 +846,10 @@
 			/* Footer */
 			.footer {
 				background: #121626;
-				color: #fff;
+				color: #e6e6e6;
 				padding: 2rem 0 1rem;
 				font-family: Arial, sans-serif;
+				font-size: 0.9rem;
 				width: 100%;
 				box-sizing: border-box;
 			}
@@ -841,11 +859,12 @@
 				grid-template-columns: 1fr 1fr 1fr;
 				gap: 2rem;
 				margin-bottom: 2rem;
+				align-items: start;
 			}
 
 			.footer__section h4 {
-				color: #fff;
-				font-size: 1.1rem;
+				color: #ffffff;
+				font-size: 1rem;
 				font-weight: 700;
 				margin: 0 0 1rem 0;
 				border-bottom: 2px solid #e60000;
@@ -855,10 +874,11 @@
 
 			.footer__section p,
 			.footer__section li {
-				font-size: 0.9rem;
-				line-height: 1.5;
+				font-size: 0.85rem;
+				line-height: 1.6;
 				margin-bottom: 0.5rem;
-				color: #ccc;
+				color: #bfbfbf;
+				text-align: left;
 			}
 
 			.footer__section ul {
@@ -874,7 +894,7 @@
 			}
 
 			.footer__link {
-				color: #fff;
+				color: #e6e6e6;
 				text-decoration: none;
 				transition: color 0.3s ease;
 			}
@@ -888,6 +908,7 @@
 				align-items: center;
 				gap: 0.5rem;
 				margin-bottom: 0.5rem;
+				justify-content: flex-start;
 			}
 
 			.footer__contact-icon {
@@ -907,9 +928,9 @@
 			}
 
 			.footer__copyright {
-				font-size: 0.85rem;
+				font-size: 0.8rem;
 				opacity: 0.7;
-				color: #ccc;
+				color: #bfbfbf;
 			}
 
 			.footer__disclaimer {
@@ -923,6 +944,7 @@
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
+				justify-content: flex-start;
 			}
 
 			/* List section */
@@ -1057,7 +1079,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				z-index: 1000;
+				z-index: 1200;
 				padding: 1rem;
 				box-sizing: border-box;
 			}
@@ -1217,6 +1239,11 @@
 			}
 
 			@media (max-width: 768px) {
+				/* Hide cookie icon in expanded banner on mobile */
+				.cookie-banner:not(.minimized) .cookie-banner__minimized-icon {
+					display: none !important;
+				}
+
 				.cookie-banner {
 					bottom: calc(env(safe-area-inset-bottom, 0) + 1rem);
 					left: calc(env(safe-area-inset-left, 0) + 1rem);
@@ -1270,17 +1297,28 @@
 
 				.footer__bottom {
 					flex-direction: column;
-					text-align: center;
+					text-align: left;
+					align-items: flex-start;
 					gap: 1rem;
+					flex-wrap: nowrap;
+				}
+
+				.footer__bottom > * {
+					width: 100%;
 				}
 
 				.header__container,
 				.footer__container {
 					padding-left: 1rem;
 					padding-right: 1rem;
+				}
+
+				.footer__container {
 					display: flex;
-					justify-content: space-between;
-					align-items: center;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					gap: 1.25rem;
 				}
 
 				.burger {
@@ -1512,6 +1550,18 @@
 				position: absolute;
 				left: 0;
 				bottom: 0;
+			}
+
+			#cookie-title::after {
+				content: '';
+			}
+
+			@media (min-width: 769px) {
+				#cookie-title::before {
+					content: '🍪';
+					display: inline-block;
+					margin-right: 0.35rem;
+				}
 			}
 		</style>
 		<!-- SEO + Open Graph + Schema -->
@@ -3182,7 +3232,7 @@
 							font-weight: 700;
 						"
 					>
-						🍪 Nous sommes des cookies
+						Nous sommes des cookies
 					</h4>
 					<p id="cookie-description" class="cookie-banner__text">
 						On a attendu d'être sûrs que le contenu de ce site vous intéresse
@@ -3345,6 +3395,7 @@
 					privacyPopup.setAttribute('aria-hidden', 'false');
 					if (privacyClose) privacyClose.focus();
 					body.style.overflow = 'hidden';
+					body.classList.add('modal-open');
 				}
 				function closePrivacyPopup() {
 					if (!privacyPopup) return;
@@ -3352,6 +3403,7 @@
 					privacyPopup.setAttribute('aria-hidden', 'true');
 					if (lastFocusedElement) lastFocusedElement.focus();
 					body.style.overflow = '';
+					body.classList.remove('modal-open');
 				}
 
 				function openMenu() {
