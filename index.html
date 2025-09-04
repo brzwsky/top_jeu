@@ -418,7 +418,7 @@
 			}
 
 			.casino-card__info > div {
-				max-width: 200px; /* или подходящее значение */
+				max-width: 200px; /* oui, c'est une bonne valeur */
 				overflow-wrap: break-word;
 			}
 
@@ -549,7 +549,7 @@
 			}
 
 			.casino-button__title::after {
-				content: none; /* по умолчанию псевдоэлемента нет */
+				content: none; /* par défaut, il n'y a pas de pseudo-élément */
 			}
 
 			.casino-card:not(.casino-card--top) .casino-card__title {
@@ -665,23 +665,44 @@
 				position: fixed;
 				bottom: 2rem;
 				left: 2rem;
-				transform: translateX(0);
+				transform: translateY(10px);
 				background: #fff;
 				color: #333;
 				padding: 1.5rem 2rem;
 				border-radius: 20px;
 				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 				z-index: 1000;
-				transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+				transition: opacity 0.5s ease, transform 0.5s ease,
+					box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 				font-family: Arial, sans-serif;
 				max-width: 500px;
 				width: 90%;
 				border: 1px solid rgba(255, 255, 255, 0.2);
 				opacity: 0;
+				transform-origin: left bottom;
 			}
 
 			.cookie-banner.show {
 				opacity: 1;
+				transform: translateY(0);
+			}
+
+			/* Expand animation from minimized circle to full card */
+			@keyframes cookie-expand {
+				0% {
+					transform: translateY(0) scale(0.85);
+					border-radius: 50%;
+					box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+				}
+				100% {
+					transform: translateY(0) scale(1);
+					border-radius: 20px;
+					box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+				}
+			}
+
+			.cookie-banner.expanding {
+				animation: cookie-expand 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
 			}
 
 			.cookie-banner__container {
@@ -765,7 +786,7 @@
 				bottom: 1rem;
 				max-width: 60px;
 				opacity: 1;
-				transform: translateX(0);
+				transform: translateY(0);
 				transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
 					height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
 					border-radius 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -2980,25 +3001,25 @@
 				</button>
 				<h2 id="privacy-title">Politique de confidentialité</h2>
 				<p>
-					Ce site n’exploite pas directement de jeux d’argent. Il a pour
+					Ce site n'exploite pas directement de jeux d'argent. Il a pour
 					objectif de fournir des informations et des conseils aux utilisateurs.
 				</p>
 				<p>
 					Nous utilisons uniquement des cookies techniques et analytiques afin
-					d’améliorer l’expérience utilisateur. Ces cookies ne collectent pas de
-					données personnelles permettant l’identification directe.
+					d'améliorer l'expérience utilisateur. Ces cookies ne collectent pas de
+					données personnelles permettant l'identification directe.
 				</p>
 				<p>
-					Vous pouvez accepter ou refuser l’utilisation des cookies à tout
+					Vous pouvez accepter ou refuser l'utilisation des cookies à tout
 					moment via le bandeau affiché lors de votre première visite.
 				</p>
 				<p>
 					Les données collectées (statistiques de navigation anonymes) ne sont
-					utilisées qu’à des fins de mesure d’audience et ne sont transmises à
+					utilisées qu'à des fins de mesure d'audience et ne sont transmises à
 					aucun tiers non autorisé.
 				</p>
 				<p>
-					Pour toute question, vous pouvez nous contacter à l’adresse suivante :
+					Pour toute question, vous pouvez nous contacter à l'adresse suivante :
 					<a href="mailto:topjeu777@gmail.com" class="footer__link"
 						>topjeu777@gmail.com</a
 					>.
@@ -3023,7 +3044,7 @@
 					<span class="author"
 						><img
 							style="width: 80px; height: 80px; margin-right: 1.5rem"
-							src="img/author-photo.png"
+							src="img/author-photo.webp"
 							alt="Auteur"
 							class="author__photo"
 					/></span>
@@ -3183,7 +3204,6 @@
 			</div>
 		</div>
 
-		<
 		<script>
 			document.addEventListener('DOMContentLoaded', () => {
 				// --- Cookie Banner ---
@@ -3218,6 +3238,7 @@
 							'.cookie-banner__container'
 						);
 						cookieBanner.classList.remove('minimized');
+						cookieBanner.classList.add('expanding');
 						setTimeout(() => {
 							cookieBanner.classList.add('show');
 							if (container) {
@@ -3225,6 +3246,7 @@
 								container.style.opacity = '1';
 							}
 						}, 20);
+						setTimeout(() => cookieBanner.classList.remove('expanding'), 450);
 					};
 
 					cookieAccept.addEventListener('click', () => {
@@ -3445,6 +3467,61 @@
 					});
 				});
 			});
+
+			// Expose a testing helper to clear consent and re-open the banner
+			window.clearCookies = function () {
+				try {
+					localStorage.removeItem('cookieConsent');
+				} catch (e) {}
+
+				// Try to expire common analytics cookies on current domain
+				const expireCookie = (name) => {
+					try {
+						const past = 'Thu, 01 Jan 1970 00:00:00 GMT';
+						document.cookie = name + '=; expires=' + past + '; path=/';
+					} catch (e) {}
+				};
+
+				const allCookies = document.cookie.split(';').map((c) => c.trim());
+				allCookies.forEach((pair) => {
+					const eq = pair.indexOf('=');
+					const key = eq > -1 ? pair.substring(0, eq) : pair;
+					if (
+						key.startsWith('_ga') ||
+						key === '_gid' ||
+						key === '_gat' ||
+						key === '_gcl_au' ||
+						key === '_fbp' ||
+						key === '_uetsid' ||
+						key === '_uetvid'
+					) {
+						expireCookie(key);
+					}
+				});
+
+				if (typeof gtag !== 'undefined') {
+					try {
+						gtag('consent', 'default', {
+							analytics_storage: 'denied',
+							ad_storage: 'denied',
+						});
+					} catch (e) {}
+				}
+
+				const banner = document.getElementById('cookie-banner');
+				if (banner) {
+					banner.style.display = '';
+					banner.classList.remove('minimized');
+					const container = banner.querySelector('.cookie-banner__container');
+					if (container) {
+						container.style.maxHeight = '';
+						container.style.opacity = '1';
+					}
+					setTimeout(() => banner.classList.add('show'), 10);
+				}
+
+				console.log('Cookie consent cleared. Banner reopened.');
+			};
 		</script>
 	</body>
 </html>
