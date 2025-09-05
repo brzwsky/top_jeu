@@ -310,7 +310,7 @@ a:hover {
 	position: absolute;
 	left: 5px;
 	top: 55%;
-	/* base translate preserved during animation */
+
 	--bell-ty: -100%;
 	transform: translateY(var(--bell-ty));
 	transform-origin: 50% 0%;
@@ -365,27 +365,27 @@ a:hover {
 	margin-bottom: 2rem;
 }
 
-.casino-card {
-	background: #fff;
+.casino-card,
+.casino-card--top {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	border-radius: 15px;
 	overflow: visible;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+
+.casino-card {
+	background: #fff;
 	padding: 1rem;
 	margin-bottom: 1.5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	position: relative;
 }
 
 .casino-card--top {
-	position: relative;
 	z-index: 10;
 	background: rgba(255, 255, 255, 0.7);
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
 	border: 1px solid rgba(255, 255, 255, 0.3);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .casino-card--top::before {
@@ -588,7 +588,7 @@ a:hover {
 	left: -28px;
 	width: 60px;
 	height: 60px;
-	z-index: 5; /* понижаем, чтобы рамка top-card частично перекрывала корону */
+	z-index: 5;
 	transform: rotate(-35deg);
 	animation: crown-wiggle 3s ease-in-out infinite;
 	filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
@@ -695,9 +695,7 @@ a:hover {
 }
 
 .faq-answer {
-	/* background: #fafafa; */
 	border-left: 2px solid #e60000;
-
 	max-height: 0;
 	margin-bottom: 0 !important;
 	padding: 0 0 0 1rem !important;
@@ -858,8 +856,8 @@ a:hover {
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	left: 1rem;
-	bottom: 1rem;
+	left: 2rem;
+	bottom: 4rem; 
 	max-width: 60px;
 	opacity: 1;
 	transform: translateY(0);
@@ -1267,10 +1265,6 @@ a:hover {
 	text-align: right;
 }
 
-.hidden {
-	display: none;
-}
-
 .close-menu {
 	display: none;
 }
@@ -1309,7 +1303,6 @@ a:hover {
 		gap: 1.5rem;
 	}
 
-	/* Reorder footer sections for tablet view */
 	.footer__section:nth-child(1) {
 		order: 2;
 	}
@@ -1323,7 +1316,6 @@ a:hover {
 	}
 
 	.footer__section:nth-child(4) {
-		/* Suivez-nous */
 		order: 3;
 	}
 }
