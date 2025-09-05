@@ -564,7 +564,7 @@ a:hover {
 .casino-card__rank {
 	position: absolute;
 	top: 50%;
-	left: -21px;
+	left: -20px;
 	transform: translate(0, -50%);
 	background: rgba(23, 22, 38, 0.65);
 	color: #fff;
@@ -576,7 +576,7 @@ a:hover {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	z-index: 2;
+	z-index: 7;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 	border: 0.1px solid #e60000;
 	-webkit-font-smoothing: antialiased;
