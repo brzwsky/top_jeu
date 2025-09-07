@@ -3,9 +3,16 @@
 ._index.html
 ._styles.css
 ._app.js
-._app.min.js
+._site.webmanifest
+._favicon.ico
+
 TopJeu_website/._*
 img/banners/._Mafiacasino-desktop-screenshot.png
 img/logo-casinos/._mafiacasino-logo.svg
+._favicons_pack
+img/banners/._brutal-banner.webp
+img/banners/._captain-banner.webp
+img/banners/._julius-banner.webp
+img/banners/._peaches-banner.webp
 .gitignore
 ._.gitignore
