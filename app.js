@@ -788,17 +788,37 @@ class DarkModeManager {
 
 	loadSavedTheme() {
 		const savedTheme = localStorage.getItem('theme');
+
 		if (savedTheme) {
 			this.body.classList.add(savedTheme);
 			this.updateToggleUI(savedTheme === 'dark');
 			if (this.toggleCheckbox)
 				this.toggleCheckbox.checked = savedTheme === 'dark';
-		} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			this.body.classList.add('dark');
-			this.updateToggleUI(true);
-			if (this.toggleCheckbox) this.toggleCheckbox.checked = true;
+		} else {
+			const prefersDark = window.matchMedia(
+				'(prefers-color-scheme: dark)'
+			).matches;
+			this.body.classList.add(prefersDark ? 'dark' : 'light');
+			this.updateToggleUI(prefersDark);
+			if (this.toggleCheckbox) this.toggleCheckbox.checked = prefersDark;
 		}
+
 		this.updateLogos();
+
+		// Слушаем изменения системной темы
+		window
+			.matchMedia('(prefers-color-scheme: dark)')
+			.addEventListener('change', (e) => {
+				if (!localStorage.getItem('theme')) {
+					// только если юзер не выбирал вручную
+					const isDark = e.matches;
+					this.body.classList.toggle('dark', isDark);
+					this.body.classList.toggle('light', !isDark);
+					this.updateToggleUI(isDark);
+					this.updateLogos();
+					if (this.toggleCheckbox) this.toggleCheckbox.checked = isDark;
+				}
+			});
 	}
 
 	setupEventListeners() {
@@ -823,7 +843,7 @@ class DarkModeManager {
 		}
 
 		if (this.themeLabel) {
-			this.themeLabel.style.color = isDark ? '#000' : '#fff';
+			this.themeLabel.style.color = isDark ? '#fff' : '#000';
 			this.themeLabel.style.transition = 'color 0.3s ease';
 		}
 
