@@ -777,32 +777,35 @@ class DarkModeManager {
 		this.toggleCheckbox = document.getElementById('theme-toggle');
 		this.toggleBall = document.querySelector('.toggle-ball');
 		this.themeLabel = document.querySelector('.theme-label');
+		this.themeSwitchLabel = document.querySelector('.theme-switch-label');
 		this.body = document.body;
 		this.init();
 	}
 
 	init() {
 		this.loadSavedTheme();
-		if (this.toggleCheckbox) this.setupEventListeners();
+		if (this.toggleCheckbox && this.body) this.setupEventListeners();
 	}
 
 	loadSavedTheme() {
+		if (!this.body) return;
 		const savedTheme = localStorage.getItem('theme');
 
+		let isDark;
 		if (savedTheme) {
 			this.body.classList.add(savedTheme);
-			this.updateToggleUI(savedTheme === 'dark');
+			isDark = savedTheme === 'dark';
 			if (this.toggleCheckbox)
-				this.toggleCheckbox.checked = savedTheme === 'dark';
+				this.toggleCheckbox.checked = isDark;
 		} else {
 			const prefersDark = window.matchMedia(
 				'(prefers-color-scheme: dark)'
 			).matches;
 			this.body.classList.add(prefersDark ? 'dark' : 'light');
-			this.updateToggleUI(prefersDark);
+			isDark = prefersDark;
 			if (this.toggleCheckbox) this.toggleCheckbox.checked = prefersDark;
 		}
-
+		this.updateToggleUI(isDark);
 		this.updateLogos();
 
 		// Слушаем изменения системной темы
@@ -810,8 +813,8 @@ class DarkModeManager {
 			.matchMedia('(prefers-color-scheme: dark)')
 			.addEventListener('change', (e) => {
 				if (!localStorage.getItem('theme')) {
-					// только если юзер не выбирал вручную
 					const isDark = e.matches;
+					if (!this.body) return;
 					this.body.classList.toggle('dark', isDark);
 					this.body.classList.toggle('light', !isDark);
 					this.updateToggleUI(isDark);
@@ -822,40 +825,38 @@ class DarkModeManager {
 	}
 
 	setupEventListeners() {
+		if (!this.toggleCheckbox) return;
 		this.toggleCheckbox.addEventListener('change', () => this.toggleTheme());
 	}
 
 	toggleTheme() {
+		if (!this.body) return;
 		const isDark = !this.body.classList.contains('dark');
 		this.body.classList.toggle('dark', isDark);
 		this.body.classList.toggle('light', !isDark);
-
 		this.updateToggleUI(isDark);
 		localStorage.setItem('theme', isDark ? 'dark' : 'light');
 		this.updateLogos();
 	}
 
 	updateToggleUI(isDark) {
+		// Update toggle ball with theme icon if present
 		if (this.toggleBall) {
-			this.toggleBall.textContent = isDark ? '☀️' : '🌙';
+			this.toggleBall.textContent = isDark ? '🌙' : '☀️';
 			this.toggleBall.style.transition =
 				'transform 0.3s ease, background 0.3s ease, color 0.3s ease';
 		}
-
 		if (this.themeLabel) {
 			this.themeLabel.style.color = isDark ? '#fff' : '#000';
 			this.themeLabel.style.transition = 'color 0.3s ease';
 		}
-
-		if (this.toggleCheckbox) {
-			const track = document.querySelector('.theme-switch-label');
-			if (track) {
-				track.style.transition = 'background 0.3s ease';
-			}
+		if (this.themeSwitchLabel) {
+			this.themeSwitchLabel.style.transition = 'background 0.3s ease';
 		}
 	}
 
 	updateLogos() {
+		if (!this.body) return;
 		const isDark = this.body.classList.contains('dark');
 		document.querySelectorAll('.casino-card__image').forEach((img) => {
 			const darkSrc = img.dataset.dark;
