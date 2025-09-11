@@ -289,24 +289,7 @@
 							"@type": "Offer",
 							"description": "Jusqu'à 3000 € + 100 Free Spins"
 						}
-					},
-					{
-						"@type": "Casino",
-						"name": "Sushi Casino",
-						"image": "https://www.topjeu777.com/img/logo-casinos/sushicasino-logo.webp",
-						"url": "https://www.sush1casin0.com/fr",
-						"aggregateRating": {
-							"@type": "AggregateRating",
-							"ratingValue": "8.9",
-							"bestRating": "10",
-							"worstRating": "0",
-							"reviewCount": "54"
-						},
-						"offers": {
-							"@type": "Offer",
-							"description": "Jusqu'à 2500 € + 50 Free Spins"
-						}
-					},
+
 					{
 						"@type": "Casino",
 						"name": "CasinoPeaches",
@@ -407,6 +390,24 @@
 						"offers": {
 							"@type": "Offer",
 							"description": "150% Jusqu'à 600 € + 200 Free Spins + 1 Bonus Crab"
+						},
+						{
+							"@type": "Casino",
+							"name": "Sushi Casino",
+							"image"	},
+					: "https://www.topjeu777.com/img/logo-casinos/sushicasino-logo.webp",
+							"url": "https://www.sush1casin0.com/fr",
+							"aggregateRating": {
+								"@type": "AggregateRating",
+								"ratingValue": "8.9",
+								"bestRating": "10",
+								"worstRating": "0",
+								"reviewCount": "54"
+							},
+							"offers": {
+								"@type": "Offer",
+								"description": "Jusqu'à 2500 € + 50 Free Spins"
+							}
 						}
 					}
 				]
@@ -444,6 +445,7 @@
 					<span></span>
 					<span></span>
 				</button>
+
 				<nav id="primary-menu" class="nav-menu" aria-label="Menu principal">
 					<button class="close-menu" aria-label="Fermer le menu">✕</button>
 					<a
@@ -479,6 +481,25 @@
 						>Envoyez-moi un message</a
 					>
 				</nav>
+				<div class="theme-switch-wrapper">
+					<label class="theme-switch-container">
+						<!-- Label next to toggle -->
+						<span class="theme-label">Theme</span>
+
+						<!-- Hidden checkbox for toggle -->
+						<input
+							type="checkbox"
+							id="theme-toggle"
+							class="theme-switch"
+							aria-label="Toggle dark/light mode"
+						/>
+
+						<!-- Toggle track with ball -->
+						<span class="theme-switch-label">
+							<span class="toggle-ball">🌙</span>
+						</span>
+					</label>
+				</div>
 			</div>
 		</header>
 
@@ -579,6 +600,7 @@
 						<img
 							class="casino-card__image"
 							src="img/logo-casinos/brutal-logo.webp"
+							data-dark="img/logo-casinos/brutal-logo-dark.webp"
 							alt="Logo de Brutal Casino, classé numéro 2"
 							loading="lazy"
 						/>
@@ -615,6 +637,7 @@
 						<img
 							class="casino-card__image"
 							src="img/logo-casinos/captainslots-logo.webp"
+							data-dark="img/logo-casinos/captainslots-logo-dark.webp"
 							alt="Logo de Captain Slots Casino, classé numéro 3"
 							loading="lazy"
 						/>
@@ -634,7 +657,43 @@
 					</div>
 					<a
 						class="casino-card__button"
-						href="javascript:void(0)"
+						href="https://record.roosterz.io/_6vYjCU0IzSRZSuvhn4yj1mNd7ZgqdRLk/1/"
+						target="_blank"
+						rel="noopener noreferrer"
+						tabindex="0"
+					>
+						<span class="casino-card__button-link">Jouez maintenant</span>
+					</a>
+				</div>
+
+				<!--Card MrPacho Casino-->
+				<div class="casino-card">
+					<div class="casino-card__rank-bg"></div>
+					<div class="casino-card__rank">4</div>
+					<div class="casino-card__info">
+						<img
+							class="casino-card__image"
+							src="img/logo-casinos/mrpacho- logo.svg"
+							alt="Logo de MrPacho Casino, classé numéro 4"
+							loading="lazy"
+						/>
+						<div>
+							<h3 class="casino-card__title">MrPacho Casino</h3>
+							<p class="casino-card__bonus">Jusqu'à 500 € + 200 Free Spins</p>
+						</div>
+					</div>
+					<ul class="casino-card__features">
+						<li>Bonus variés</li>
+						<li>Très peu de pays soumis à des restrictions</li>
+						<li>Programme de fidélité complet</li>
+					</ul>
+					<div class="casino-card__rating">
+						<p class="casino-card__score">9.3</p>
+						<p class="casino-card__stars">★★★★★</p>
+					</div>
+					<a
+						class="casino-card__button"
+						href="https://mrpc.fynkelto.com/?mid=311639_1836151"
 						target="_blank"
 						rel="noopener noreferrer"
 						tabindex="0"
@@ -646,7 +705,7 @@
 				<!--Card GoldSpin-->
 				<div class="casino-card">
 					<div class="casino-card__rank-bg"></div>
-					<div class="casino-card__rank">4</div>
+					<div class="casino-card__rank">5</div>
 					<div class="casino-card__info">
 						<img
 							class="casino-card__image"
@@ -679,42 +738,6 @@
 					</a>
 				</div>
 
-				<!--Card Sushi-->
-				<div class="casino-card">
-					<div class="casino-card__rank-bg"></div>
-					<div class="casino-card__rank">5</div>
-					<div class="casino-card__info">
-						<img
-							class="casino-card__image"
-							src="img/logo-casinos/sushicasino-logo.webp"
-							alt="Logo de Sushi Casino, classé numéro 5"
-							loading="lazy"
-						/>
-						<div>
-							<h3 class="casino-card__title">Sushi Casino</h3>
-							<p class="casino-card__bonus">Jusqu'à 2500 € + 50 Free Spins</p>
-						</div>
-					</div>
-					<ul class="casino-card__features">
-						<li>+1 000 jeux de casino en direct</li>
-						<li>Programme VIP exclusif</li>
-						<li>RTP - 96%</li>
-					</ul>
-					<div class="casino-card__rating">
-						<p class="casino-card__score">8.9</p>
-						<p class="casino-card__stars">★★★★★</p>
-					</div>
-					<a
-						class="casino-card__button"
-						href="https://www.sush1casin0.com/fr"
-						target="_blank"
-						rel="noopener noreferrer"
-						tabindex="0"
-					>
-						<span class="casino-card__button-link">Jouez maintenant</span>
-					</a>
-				</div>
-
 				<!--Card Peaches-->
 				<div class="casino-card">
 					<div class="casino-card__rank-bg"></div>
@@ -723,6 +746,7 @@
 						<img
 							class="casino-card__image"
 							src="img/logo-casinos/peaches-logo.webp"
+							data-dark="img/logo-casinos/peaches-logo-dark.webp"
 							alt="Logo de CasinoPeaches, classé numéro 6"
 							loading="lazy"
 						/>
@@ -778,7 +802,7 @@
 					</div>
 					<a
 						class="casino-card__button"
-						href="javascript:void(0)"
+						href="https://record.roosterz.io/_6vYjCU0IzSTUOsjNOfgKeWNd7ZgqdRLk/1/"
 						target="_blank"
 						rel="noopener noreferrer"
 						tabindex="0"
@@ -860,6 +884,7 @@
 						<span class="casino-card__button-link">Jouez maintenant</span>
 					</a>
 				</div>
+
 				<!--Card Wonderluck-->
 				<div class="casino-card">
 					<div class="casino-card__rank-bg"></div>
@@ -935,6 +960,42 @@
 						<span class="casino-card__button-link">Jouez maintenant</span>
 					</a>
 				</div>
+
+				<!--Card Sushi-->
+				<div class="casino-card">
+					<div class="casino-card__rank-bg"></div>
+					<div class="casino-card__rank">12</div>
+					<div class="casino-card__info">
+						<img
+							class="casino-card__image"
+							src="img/logo-casinos/sushicasino-logo.webp"
+							alt="Logo de Sushi Casino, classé numéro 12"
+							loading="lazy"
+						/>
+						<div>
+							<h3 class="casino-card__title">Sushi Casino</h3>
+							<p class="casino-card__bonus">Jusqu'à 2500 € + 50 Free Spins</p>
+						</div>
+					</div>
+					<ul class="casino-card__features">
+						<li>+1 000 jeux de casino en direct</li>
+						<li>Programme VIP exclusif</li>
+						<li>RTP - 96%</li>
+					</ul>
+					<div class="casino-card__rating">
+						<p class="casino-card__score">8.1</p>
+						<p class="casino-card__stars">★★★★★</p>
+					</div>
+					<a
+						class="casino-card__button"
+						href="https://www.sush1casin0.com/fr"
+						target="_blank"
+						rel="noopener noreferrer"
+						tabindex="0"
+					>
+						<span class="casino-card__button-link">Jouez maintenant</span>
+					</a>
+				</div>
 			</section>
 
 			<!--Mon Top 10 des meilleurs casinos en ligne 2025-->
@@ -963,6 +1024,8 @@
 					adapté à vos attentes.
 				</p>
 			</div>
+
+			<!-- Reviews -->
 			<section class="landing-content">
 				<!-- Review Mafia Casino -->
 				<section class="casino-review_mafia-casino">
@@ -970,7 +1033,10 @@
 						Mafia Casino — un nouveau casino en ligne à l'ambiance unique pour
 						les joueurs francophones
 					</h3>
-					<a class="banners" href="javascript:void(0)">
+					<a
+						class="banners"
+						href="https://mfac.lunostra.com/?mid=309272_1829542"
+					>
 						<img
 							src="img/banners/mafia-banner.webp"
 							alt="Bannière promotionnelle de Mafia Casino, offrant un bonus de bienvenue"
@@ -1139,7 +1205,7 @@
 						Brutal Casino — une plateforme moderne avec des paiements rapides et
 						une interface en français
 					</h3>
-					<a class="banners" href="javascript:void(0)">
+					<a class="banners" href="https://www.brutalcasinoclub.com/fr/">
 						<img
 							src="img/banners/brutal-banner-fix.webp"
 							alt="Bannière promotionnelle de Brutal Casino, bonus de bienvenue"
@@ -1202,6 +1268,7 @@
 							<img
 								class="casino-card__image"
 								src="img/logo-casinos/brutal-logo.webp"
+								data-dark="img/logo-casinos/brutal-logo-dark.webp"
 								alt="Logo de Brutal Casino (section avis détaillé)"
 								loading="lazy"
 							/>
@@ -1279,7 +1346,10 @@
 					<h3 class="content-width">
 						Captain Slots Casino - une aventure pirate pleine de surprises
 					</h3>
-					<a class="banners" href="javascript:void(0)">
+					<a
+						class="banners"
+						href="https://record.roosterz.io/_6vYjCU0IzSRZSuvhn4yj1mNd7ZgqdRLk/1/"
+					>
 						<img
 							src="img/banners/captain-banner.webp"
 							alt="Bannière promotionnelle de Captain Slots Casino, univers pirate"
@@ -1340,6 +1410,7 @@
 							<img
 								class="casino-card__image"
 								src="img/logo-casinos/captainslots-logo.webp"
+								data-dark="img/logo-casinos/captainslots-logo-dark.webp"
 								alt="Logo de Captain Slots Casino (section avis détaillé)"
 								loading="lazy"
 							/>
@@ -1359,7 +1430,7 @@
 						</div>
 						<a
 							class="casino-card__button"
-							href="javascript:void(0)"
+							href="https://record.roosterz.io/_6vYjCU0IzSRZSuvhn4yj1mNd7ZgqdRLk/1/"
 							target="_blank"
 							rel="noopener noreferrer"
 							tabindex="0"
@@ -1413,7 +1484,7 @@
 						GoldSpin Casino — un casino en ligne francophone avec plus de 7 000
 						jeux et des retraits rapides
 					</h3>
-					<a class="banners" href="javascript:void(0)">
+					<a class="banners" href="https://www.goldspin06310.com/fr-ca">
 						<img
 							src="img/banners/goldspin-banner.webp"
 							alt="Bannière promotionnelle de GoldSpin Casino, bonus et jeux"
@@ -1570,7 +1641,7 @@
 						Sushi Casino – le casino en ligne inspiré du Japon qui séduit les
 						joueurs francophones
 					</h3>
-					<a class="banners" href="javascript:void(0)">
+					<a class="banners" href="https://www.sush1casin0.com/fr">
 						<img
 							src="img/banners/sushi-banner.webp"
 							alt="Bannière promotionnelle de Sushi Casino, ambiance japonaise"
@@ -1753,7 +1824,10 @@
 					<h3 class="content-width">
 						CasinoPeaches — un site de jeu en ligne rafraîchissant et prometteur
 					</h3>
-					<a class="banners" href="javascript:void(0)">
+					<a
+						class="banners"
+						href="https://record.primeweb-affiliates.com/_GFcvXbc7UQ6YNevImT-MDGNd7ZgqdRLk/1"
+					>
 						<img
 							src="img/banners/peaches-banner.webp"
 							alt="Bannière promotionnelle de Peaches Casino, univers fruité"
@@ -1818,6 +1892,7 @@
 							<img
 								class="casino-card__image"
 								src="img/logo-casinos/peaches-logo.webp"
+								data-dark="img/logo-casinos/peaches-logo-dark.webp"
 								alt="Logo de Peaches Casino (section avis détaillé)"
 								loading="lazy"
 							/>
@@ -1899,7 +1974,10 @@
 						Julius Casino — une immersion dans l’Empire romain avec des bonus
 						impressionnants
 					</h3>
-					<a class="banners" href="javascript:void(0)">
+					<a
+						class="banners"
+						href="https://record.roosterz.io/_6vYjCU0IzSTUOsjNOfgKeWNd7ZgqdRLk/1/"
+					>
 						<img
 							src="img/banners/julius-banner.webp"
 							alt="Bannière promotionnelle de Julius Casino, ambiance romaine"
@@ -1977,7 +2055,7 @@
 						</div>
 						<a
 							class="casino-card__button"
-							href="javascript:void(0)"
+							href="https://record.roosterz.io/_6vYjCU0IzSTUOsjNOfgKeWNd7ZgqdRLk/1/"
 							target="_blank"
 							rel="noopener noreferrer"
 							tabindex="0"
@@ -2300,6 +2378,7 @@
 				</section>
 			</section>
 		</main>
+
 		<!-- Footer -->
 		<footer class="footer" role="contentinfo">
 			<div class="footer__container">
@@ -2327,7 +2406,9 @@
 							</li>
 							<li><a href="#bonus" class="footer__link">Bonus de casino</a></li>
 							<li>
-								<a href="#choisir" class="footer__link">Comment choisir</a>
+								<a href="#choisir" class="footer__link"
+									>Comment choisir le casino</a
+								>
 							</li>
 							<li>
 								<a href="#responsable" class="footer__link"

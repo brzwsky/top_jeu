@@ -4,14 +4,8 @@ body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	height: 100%;
 	box-sizing: border-box;
 	overflow-x: hidden;
-}
-
-html {
-	min-height: 100%;
-	position: relative;
 }
 
 body {
@@ -25,7 +19,7 @@ body {
 }
 
 main {
-	flex: 1;
+	flex: 1 0 auto; /* растягиваем main на доступное пространство */
 	padding: 0 2rem;
 	max-width: 1200px;
 	margin: 0 auto;
@@ -1362,6 +1356,7 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+	/* Cookie Banner */
 	.cookie-banner:not(.minimized) .cookie-banner__minimized-icon {
 		display: none !important;
 	}
@@ -1405,13 +1400,7 @@ a:hover {
 		overflow-wrap: anywhere;
 	}
 
-	.cookie-banner.minimized {
-		width: 50px;
-		height: 50px;
-		bottom: calc(env(safe-area-inset-bottom, 0) + 1rem);
-		left: calc(env(safe-area-inset-left, 0) + 1rem);
-	}
-
+	/* Footer */
 	.footer__content {
 		grid-template-columns: 1fr;
 		gap: 1.5rem;
@@ -1430,13 +1419,10 @@ a:hover {
 		text-align: center;
 	}
 
-	.header__container,
 	.footer__container {
 		padding-left: 1rem;
 		padding-right: 1rem;
-	}
-
-	.footer__container {
+		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -1444,8 +1430,38 @@ a:hover {
 		gap: 1.25rem;
 	}
 
+	/* Header */
+	.header__container {
+		padding-left: 1rem;
+		padding-right: 1rem;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		position: relative;
+	}
+
+	.header__left {
+		flex: 1;
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.header__center {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+	}
+
+	.header__right {
+		flex: 1;
+		display: flex;
+		justify-content: flex-end;
+	}
+
 	.burger {
-		order: 1;
+		order: 0;
+		position: static;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -1458,11 +1474,19 @@ a:hover {
 	}
 
 	.header__logo-block {
-		order: 2;
-		margin-left: auto;
+		order: 1;
+		margin: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+	}
+
+	.theme-toggle {
+		order: 0;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 1002;
 	}
 
 	.nav-menu {
@@ -1521,6 +1545,7 @@ a:hover {
 		background: linear-gradient(90deg, #ac2f38, #0a162b, #000000);
 	}
 
+	/* Disclaimer */
 	.disclaimer {
 		position: relative;
 		display: inline-block;
@@ -1547,14 +1572,13 @@ a:hover {
 		animation: bell-ring 0.6s ease-in-out 0s 2;
 	}
 
+	/* Casino cards adjustments for mobile */
 	.casino-card {
 		flex-direction: column;
 		align-items: center;
 	}
 
-	.casino-card--top .casino-card__title {
-		width: 200px;
-	}
+	.casino-card--top .casino-card__title,
 	.casino-card:not(.casino-card--top) .casino-card__title {
 		width: 200px;
 	}
@@ -1572,7 +1596,6 @@ a:hover {
 
 	.casino-card__features {
 		width: 100%;
-
 		margin: 1rem auto;
 		padding-left: 0;
 		order: 2;
@@ -1584,10 +1607,7 @@ a:hover {
 	}
 
 	.casino-card__image {
-		max-width: 100px;
 		width: 100px;
-		height: auto;
-		max-width: 100%;
 		height: auto;
 	}
 
@@ -1614,14 +1634,17 @@ a:hover {
 	li {
 		font-size: 1rem;
 	}
+
 	.popup__content {
 		max-width: 90vw;
 	}
+
 	.popup__content p,
 	.popup__content ul,
 	.popup__content li {
 		font-size: 0.9rem;
 	}
+
 	.popup__title {
 		text-align: left;
 	}
@@ -1712,4 +1735,269 @@ a:hover {
 		display: inline-block;
 		margin-right: 0.35rem;
 	}
+}
+
+/* ============================== */
+/*           Dark Mode            */
+/* ============================== */
+
+/* Main background and text */
+body.dark {
+	background: #121212;
+	color: #ffffff;
+	transition: background 0.3s, color 0.3s;
+}
+
+/* Make all text bright white and override light colors */
+body.dark p,
+body.dark strong,
+body.dark li,
+body.dark span,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4 {
+	color: #ffffff !important;
+}
+
+/* Links */
+body.dark a {
+	color: #66aaff;
+}
+body.dark a:hover {
+	color: #99cfff;
+}
+
+/* Header */
+body.dark .header {
+	background: linear-gradient(
+		90deg,
+		#050505,
+		#071328,
+		#8a272e
+	); /* градиент как в светлой теме, чуть темнее */
+	color: #ffffff;
+}
+
+body.dark .header__link {
+	color: #ffffff;
+}
+
+/* Footer */
+body.dark .footer {
+	background: #000;
+	color: #ffffff;
+}
+body.dark .footer__link {
+	color: #ffffff;
+}
+body.dark .footer__section p,
+body.dark .footer__section li {
+	color: #ffffff;
+}
+
+/* FAQ */
+body.dark .faq-question {
+	background: #1e1e1e;
+	color: #ffffff;
+}
+body.dark .faq-answer {
+	background: #1a1a1a;
+	color: #ffffff;
+}
+body.dark .faq-toggle {
+	color: #ffffff;
+}
+
+/* Popups */
+body.dark .popup__content,
+body.dark .privacy-popup__content {
+	background: #1e1e1e;
+	color: #ffffff;
+}
+
+/* Cookie Banner */
+body.dark .cookie-banner {
+	background: #1a1a1a;
+	color: #ffffff;
+	border-color: rgba(255, 255, 255, 0.2);
+}
+body.dark .cookie-banner__btn--accept {
+	background: #28a745;
+	color: #ffffff;
+}
+body.dark .cookie-banner__btn--accept:hover {
+	background: #1e7e34;
+}
+body.dark .cookie-banner__btn--decline {
+	background: #333;
+	color: #ffffff;
+	border: 1px solid #555;
+}
+
+body.dark .cookie-banner__btn--decline:hover {
+	background: #444;
+}
+
+body.dark .cookie-banner__minimized-icon {
+	color: #494949;
+}
+
+/* Casino Cards */
+body.dark .casino-card,
+body.dark .casino-card--top {
+	background: #2a2a2a; /* lighter gray for contrast */
+	color: #ffffff;
+	border-color: #333;
+}
+body.dark .casino-card__title {
+	color: #ffffff;
+}
+body.dark .casino-card__features li {
+	color: #ffffff;
+}
+body.dark .casino-card__score {
+	color: #ffffff;
+}
+body.dark .casino-card__stars {
+	color: gold;
+}
+
+/* Buttons inside casino cards */
+body.dark .casino-card__button {
+	background-color: #28a745;
+}
+body.dark .casino-card__button:hover {
+	background-color: #1e7e34;
+}
+body.dark .casino-card__button-link {
+	color: #ffffff;
+}
+body.dark .casino-card__button-link:hover {
+	color: #e0ffd6;
+}
+
+/* Casino Tables */
+body.dark .casino-info table {
+	color: #ffffff;
+}
+body.dark .casino-info th {
+	background-color: #1e1e1e;
+	color: #ffffff;
+	border-color: #444;
+}
+body.dark .casino-info td {
+	background-color: #121212;
+	color: #ffffff;
+	border-color: #444;
+}
+
+/* Disclaimer */
+body.dark .disclaimer {
+	color: #ffffff !important;
+	background: linear-gradient(to right, #3f0f05, #130f0f) !important;
+	border-color: #444 !important;
+}
+
+/* Theme switch wrapper */
+.theme-switch-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Container for toggle and label */
+.theme-switch-container {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem; /* space between label and toggle */
+}
+
+/* Label text */
+.theme-label {
+	display: none;
+	font-family: Arial, sans-serif; /* same as header buttons */
+	font-size: 1.175; /* same size as header buttons */
+	font-weight: 200; /* slightly bolder for better visibility */
+	color: #fff; /* default light theme color */
+	user-select: none;
+	transition: color 0.3s ease; /* smooth color change */
+}
+
+body.dark .theme-label {
+	color: #000; /* dark mode text color for contrast */
+}
+
+/* Hide default checkbox */
+.theme-switch {
+	display: none;
+}
+
+/* Toggle track */
+.theme-switch-label {
+	position: relative;
+	width: 70px;
+	height: 35px;
+	background: linear-gradient(
+		135deg,
+		#0d1524,
+		#241c0d
+	); /* dark track for light mode */
+	border-radius: 50px;
+	cursor: pointer;
+	transition: background 0.3s;
+	display: flex;
+	align-items: center;
+	padding: 2px;
+}
+
+body.dark .theme-switch-label {
+	background: linear-gradient(
+		135deg,
+		#f2f3ff,
+		#fffcf2
+	); /* light track for dark mode */
+}
+
+/* Toggle ball with icon */
+.toggle-ball {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 31px;
+	height: 31px;
+	background: #fff;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	transition: transform 0.3s ease, background 0.3s ease;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Move the ball and change icon when checked */
+.theme-switch:checked + .theme-switch-label .toggle-ball {
+	transform: translateX(35px);
+}
+
+/* Hide unused moon/sun icons inside the label */
+.theme-switch-label .moon,
+.theme-switch-label .sun {
+	display: none;
+}
+
+/* Smooth transitions */
+body.dark,
+body.dark a,
+body.dark .header,
+body.dark .footer,
+body.dark .faq-question,
+body.dark .faq-answer,
+body.dark .popup__content,
+body.dark .privacy-popup__content,
+body.dark .cookie-banner,
+body.dark .casino-card,
+body.dark .disclaimer {
+	transition: background 0.3s, color 0.3s, border-color 0.3s;
 }

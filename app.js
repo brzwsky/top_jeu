@@ -753,6 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.faqManager = new FAQManager();
 	window.casinoButtonsManager = new CasinoButtonsManager();
 	window.animationManager = new AnimationManager();
+	window.darkModeManager = new DarkModeManager();
 });
 
 // ============================================================================
@@ -766,3 +767,86 @@ window.clearCookies = function () {
 		// Cookie consent cleared. Banner reopened.
 	}
 };
+
+// ============================================================================
+// DARK MODE MANAGEMENT
+// ============================================================================
+
+class DarkModeManager {
+	constructor() {
+		this.toggleCheckbox = document.getElementById('theme-toggle');
+		this.toggleBall = document.querySelector('.toggle-ball');
+		this.themeLabel = document.querySelector('.theme-label');
+		this.body = document.body;
+		this.init();
+	}
+
+	init() {
+		this.loadSavedTheme();
+		if (this.toggleCheckbox) this.setupEventListeners();
+	}
+
+	loadSavedTheme() {
+		const savedTheme = localStorage.getItem('theme');
+		if (savedTheme) {
+			this.body.classList.add(savedTheme);
+			this.updateToggleUI(savedTheme === 'dark');
+			if (this.toggleCheckbox)
+				this.toggleCheckbox.checked = savedTheme === 'dark';
+		} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			this.body.classList.add('dark');
+			this.updateToggleUI(true);
+			if (this.toggleCheckbox) this.toggleCheckbox.checked = true;
+		}
+		this.updateLogos();
+	}
+
+	setupEventListeners() {
+		this.toggleCheckbox.addEventListener('change', () => this.toggleTheme());
+	}
+
+	toggleTheme() {
+		const isDark = !this.body.classList.contains('dark');
+		this.body.classList.toggle('dark', isDark);
+		this.body.classList.toggle('light', !isDark);
+
+		this.updateToggleUI(isDark);
+		localStorage.setItem('theme', isDark ? 'dark' : 'light');
+		this.updateLogos();
+	}
+
+	updateToggleUI(isDark) {
+		if (this.toggleBall) {
+			this.toggleBall.textContent = isDark ? '☀️' : '🌙';
+			this.toggleBall.style.transition =
+				'transform 0.3s ease, background 0.3s ease, color 0.3s ease';
+		}
+
+		if (this.themeLabel) {
+			this.themeLabel.style.color = isDark ? '#000' : '#fff';
+			this.themeLabel.style.transition = 'color 0.3s ease';
+		}
+
+		if (this.toggleCheckbox) {
+			const track = document.querySelector('.theme-switch-label');
+			if (track) {
+				track.style.transition = 'background 0.3s ease';
+			}
+		}
+	}
+
+	updateLogos() {
+		const isDark = this.body.classList.contains('dark');
+		document.querySelectorAll('.casino-card__image').forEach((img) => {
+			const darkSrc = img.dataset.dark;
+			if (darkSrc) {
+				if (isDark) {
+					img.dataset.light = img.src;
+					img.src = darkSrc;
+				} else if (img.dataset.light) {
+					img.src = img.dataset.light;
+				}
+			}
+		});
+	}
+}
