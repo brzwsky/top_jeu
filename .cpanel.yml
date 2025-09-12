@@ -1,8 +1,13 @@
----
+
 deployment:
   tasks:
     - export DEPLOYPATH=/home/topjeuco/public_html/
 
     - /bin/cp index.html $DEPLOYPATH
-
     - /bin/cp -R img $DEPLOYPATH
+    - /bin/cp robots.txt $DEPLOYPATH
+    - /bin/cp sitemap.xml $DEPLOYPATH
+    - /bin/cp app.v2.js $DEPLOYPATH
+    - /bin/cp styles.v2.css $DEPLOYPATH
+    - /bin/cp site.webmanifest $DEPLOYPATH
+    - /bin/cp favicon.ico $DEPLOYPATH
