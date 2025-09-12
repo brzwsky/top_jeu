@@ -383,410 +383,286 @@
 
 		<!-- Breadcrumb JSON-LD -->
 		<script type="application/ld+json">
-			[
-				{
-					"@context": "https://schema.org",
-					"@type": "WebSite",
-					"url": "https://www.topjeu777.com/",
-					"name": "TopJeu",
-					"description": "TopJeu 2025 : Classement des meilleurs casinos en ligne fiables pour les joueurs francophones. Avis, bonus, jeux et conseils pour jouer en toute sécurité.",
-					"inLanguage": "fr"
-				},
-				{
-					"@context": "https://schema.org",
-					"@type": "WebPage",
-					"url": "https://www.topjeu777.com/",
-					"name": "Accueil",
-					"description": "Accueil du site TopJeu présentant le classement des meilleurs casinos en ligne fiables pour joueurs francophones."
-				},
-				{
-					"@context": "https://schema.org",
-					"@type": "CollectionPage",
-					"url": "https://www.topjeu777.com/#top5",
-					"name": "Top 10 des casinos en ligne 2025",
-					"description": "Classement Top 10 des meilleurs casinos en ligne fiables en 2025 pour joueurs francophones."
-				},
-				{
-					"@context": "https://schema.org",
-					"@type": "FAQPage",
-					"mainEntity": [
-						{
-							"@type": "Question",
-							"name": "Comment trouver un casino en ligne fiable ?",
-							"acceptedAnswer": {
-								"@type": "Answer",
-								"text": "En consultant mon top des casinos testés sur cette page, vous avez déjà une sélection de plateformes fiables, sécurisées et adaptées aux joueurs francophones. Tous les sites listés ont été vérifiés selon des critères stricts (licence, rapidité des retraits, support client, bonus, etc.). Pour aller plus loin, vous pouvez aussi jeter un œil aux avis de joueurs sur des forums spécialisés comme Trustpilot."
-							}
-						},
-						{
-							"@type": "Question",
-							"name": "Comment identifier un casino non fiable ?",
-							"acceptedAnswer": {
-								"@type": "Answer",
-								"text": "Un casino douteux aura souvent des conditions floues, des avis négatifs répétés, des retraits bloqués sans raison ou un support client injoignable. Méfiez-vous des plateformes qui promettent des gains trop faciles."
-							}
-						},
-						{
-							"@type": "Question",
-							"name": "Peut-on jouer au casino sans avoir 18 ans ?",
-							"acceptedAnswer": {
-								"@type": "Answer",
-								"text": "Non. Il est strictement interdit de jouer en ligne sans avoir au moins 18 ans, conformément à la loi. Les casinos sérieux demandent toujours une vérification d'identité."
-							}
-						},
-						{
-							"@type": "Question",
-							"name": "Sur quels jeux de casinos a-t-on le plus de chance de gagner ?",
-							"acceptedAnswer": {
-								"@type": "Answer",
-								"text": "Pour maximiser vos chances, je recommande en priorité les machines à sous à faible volatilité, les mini-jeux comme Aviator ou JetX, ainsi que des classiques comme le blackjack ou la roulette européenne, qui offrent généralement un bon taux de retour."
-							}
-						}
-					]
-				},
-				{
-					"@context": "https://schema.org",
-					"@type": "BreadcrumbList",
-					"itemListElement": [
-						{
-							"@type": "ListItem",
-							"position": 1,
-							"name": "Accueil",
-							"item": "https://www.topjeu777.com/"
-						},
-						{
-							"@type": "ListItem",
-							"position": 2,
-							"name": "Top Casinos en Ligne 2025",
-							"item": "https://www.topjeu777.com/#top5"
-						}
-					]
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "Mafia Casino",
-					"url": "https://mfac.lunostra.com/?mid=309272_1829542",
-					"image": "https://www.topjeu777.com/img/logo-casinos/mafiacasino-logo.svg",
-					"description": "Large choix de jeux disponibles. Multiples options de paiement. Programme de fidélité ouvert à tous les joueurs.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Malte",
-						"addressCountry": "MT"
-					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 9.8,
-						"reviewCount": 120
-					},
-					"offers": {
-						"@type": "Offer",
+			{
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "Casino",
+						"name": "Mafia Casino",
 						"url": "https://mfac.lunostra.com/?mid=309272_1829542",
-						"price": 500,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "100% Jusqu'à 500 € + 200 Free Spins"
-					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "Brutal Casino",
-					"url": "https://www.brutalcasinoclub.com/fr/",
-					"image": "https://www.topjeu777.com/img/logo-casinos/brutal-logo.webp",
-					"description": "Expérience moderne avec interface en français et paiements rapides.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Monaco",
-						"addressCountry": "MC"
+						"image": "https://www.topjeu777.com/img/logo-casinos/mafiacasino-logo.svg",
+						"description": "Large choix de jeux disponibles. Multiples options de paiement. Programme de fidélité ouvert à tous les joueurs.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Malte",
+							"addressCountry": "MT"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 9.8,
+							"reviewCount": 120
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://mfac.lunostra.com/?mid=309272_1829542",
+							"price": 500,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "100% Jusqu'à 500 € + 200 Free Spins"
+						}
 					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 9.7,
-						"reviewCount": 98
-					},
-					"offers": {
-						"@type": "Offer",
+					{
+						"@type": "Casino",
+						"name": "Brutal Casino",
 						"url": "https://www.brutalcasinoclub.com/fr/",
-						"price": 1000,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "100% Jusqu'à 1000 €"
-					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "Captain Slots Casino",
-					"url": "https://record.roosterz.io/_6vYjCU0IzSRZSuvhn4yj1mNd7gqdRLk/1/",
-					"image": "https://www.topjeu777.com/img/logo-casinos/captainslots-logo.webp",
-					"description": "Univers pirate captivant avec bonus de bienvenue attractif.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Barbados",
-						"addressCountry": "BB"
+						"image": "https://www.topjeu777.com/img/logo-casinos/brutal-logo.webp",
+						"description": "Expérience moderne avec interface en français et paiements rapides.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Monaco",
+							"addressCountry": "MC"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 9.7,
+							"reviewCount": 98
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://www.brutalcasinoclub.com/fr/",
+							"price": 1000,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "100% Jusqu'à 1000 €"
+						}
 					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 9.6,
-						"reviewCount": 87
-					},
-					"offers": {
-						"@type": "Offer",
+					{
+						"@type": "Casino",
+						"name": "Captain Slots Casino",
 						"url": "https://record.roosterz.io/_6vYjCU0IzSRZSuvhn4yj1mNd7gqdRLk/1/",
-						"price": 3000,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "Jusqu'à 3000 € + 150 Free Spins"
-					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "MrPacho Casino",
-					"url": "https://mrpc.fynkelto.com/?mid=311639_1836151",
-					"image": "https://www.topjeu777.com/img/logo-casinos/mrpacho-logo.svg",
-					"description": "Plateforme avec bonus variés et programme de fidélité complet.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Gibraltar",
-						"addressCountry": "GI"
+						"image": "https://www.topjeu777.com/img/logo-casinos/captainslots-logo.webp",
+						"description": "Univers pirate captivant avec bonus de bienvenue attractif.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Barbados",
+							"addressCountry": "BB"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 9.6,
+							"reviewCount": 87
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://record.roosterz.io/_6vYjCU0IzSRZSuvhn4yj1mNd7gqdRLk/1/",
+							"price": 3000,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "Jusqu'à 3000 € + 150 Free Spins"
+						}
 					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 9.3,
-						"reviewCount": 60
-					},
-					"offers": {
-						"@type": "Offer",
+					{
+						"@type": "Casino",
+						"name": "MrPacho Casino",
 						"url": "https://mrpc.fynkelto.com/?mid=311639_1836151",
-						"price": 500,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "Jusqu'à 500 € + 200 Free Spins"
-					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "GoldSpin Casino",
-					"url": "https://www.goldspin06310.com/fr-ca",
-					"image": "https://www.topjeu777.com/img/logo-casinos/goldspin-logo.svg",
-					"description": "Plus de 7000 jeux avec retraits rapides et interface claire.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Malte",
-						"addressCountry": "MT"
+						"image": "https://www.topjeu777.com/img/logo-casinos/mrpacho-logo.svg",
+						"description": "Plateforme avec bonus variés et programme de fidélité complet.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Gibraltar",
+							"addressCountry": "GI"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 9.3,
+							"reviewCount": 60
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://mrpc.fynkelto.com/?mid=311639_1836151",
+							"price": 500,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "Jusqu'à 500 € + 200 Free Spins"
+						}
 					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 9.2,
-						"reviewCount": 75
-					},
-					"offers": {
-						"@type": "Offer",
+					{
+						"@type": "Casino",
+						"name": "GoldSpin Casino",
 						"url": "https://www.goldspin06310.com/fr-ca",
-						"price": 3000,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "Jusqu'à 3000 € + 100 Free Spins"
-					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "CasinoPeaches",
-					"url": "https://record.primeweb-affiliates.com/_GFcvXbc7UQ6YNevImT-MDGNd7ZgqdRLk/1",
-					"image": "https://www.topjeu777.com/img/logo-casinos/peaches-logo.webp",
-					"description": "Site rafraîchissant avec bonus généreux et cashback sans wagering.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Paris",
-						"addressCountry": "FR"
+						"image": "https://www.topjeu777.com/img/logo-casinos/goldspin-logo.svg",
+						"description": "Plus de 7000 jeux avec retraits rapides et interface claire.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Malte",
+							"addressCountry": "MT"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 9.2,
+							"reviewCount": 75
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://www.goldspin06310.com/fr-ca",
+							"price": 3000,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "Jusqu'à 3000 € + 100 Free Spins"
+						}
 					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 8.8,
-						"reviewCount": 55
-					},
-					"offers": {
-						"@type": "Offer",
+					{
+						"@type": "Casino",
+						"name": "CasinoPeaches",
 						"url": "https://record.primeweb-affiliates.com/_GFcvXbc7UQ6YNevImT-MDGNd7ZgqdRLk/1",
-						"price": 1000,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "250% Jusqu'à 1000 €"
-					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "Julius Casino",
-					"url": "https://record.roosterz.io/_6vYjCU0IzSTUOsjNOfgKeWNd7gqdRLk/1/",
-					"image": "https://www.topjeu777.com/img/logo-casinos/julius-logo.svg",
-					"description": "Immersion dans l’Empire romain avec bonus impressionnants.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Rome",
-						"addressCountry": "IT"
+						"image": "https://www.topjeu777.com/img/logo-casinos/peaches-logo.webp",
+						"description": "Site rafraîchissant avec bonus généreux et cashback sans wagering.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Paris",
+							"addressCountry": "FR"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 8.8,
+							"reviewCount": 55
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://record.primeweb-affiliates.com/_GFcvXbc7UQ6YNevImT-MDGNd7ZgqdRLk/1",
+							"price": 1000,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "250% Jusqu'à 1000 €"
+						}
 					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 8.7,
-						"reviewCount": 50
-					},
-					"offers": {
-						"@type": "Offer",
+					{
+						"@type": "Casino",
+						"name": "Julius Casino",
 						"url": "https://record.roosterz.io/_6vYjCU0IzSTUOsjNOfgKeWNd7gqdRLk/1/",
-						"price": 3000,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "Jusqu'à 3000 € + 150 Free Spins"
-					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "Winzter Casino",
-					"url": "https://go.affililinks.com/visit/?bta=35262&nci=5351&afp=1&utm_campaign=FR",
-					"image": "https://www.topjeu777.com/img/logo-casinos/winzter-logo.webp",
-					"description": "Bonus généreux et programme VIP complet pour les joueurs francophones.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Monaco",
-						"addressCountry": "MC"
+						"image": "https://www.topjeu777.com/img/logo-casinos/julius-logo.svg",
+						"description": "Immersion dans l’Empire romain avec bonus impressionnants.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Rome",
+							"addressCountry": "IT"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 8.7,
+							"reviewCount": 50
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://record.roosterz.io/_6vYjCU0IzSTUOsjNOfgKeWNd7gqdRLk/1/",
+							"price": 3000,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "Jusqu'à 3000 € + 150 Free Spins"
+						}
 					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 8.5,
-						"reviewCount": 48
-					},
-					"offers": {
-						"@type": "Offer",
+					{
+						"@type": "Casino",
+						"name": "Winzter Casino",
 						"url": "https://go.affililinks.com/visit/?bta=35262&nci=5351&afp=1&utm_campaign=FR",
-						"price": 3000,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "Jusqu'à 3000 € + 20% Cashback"
+						"image": "https://www.topjeu777.com/img/logo-casinos/winzter-logo.webp",
+						"description": "Bonus généreux et programme VIP complet pour les joueurs francophones.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Monaco",
+							"addressCountry": "MC"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 8.5,
+							"reviewCount": 48
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://go.affililinks.com/visit/?bta=35262&nci=5351&afp=1&utm_campaign=FR",
+							"price": 3000,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "Jusqu'à 3000 € + 20% Cashback"
+						}
+					},
+					{
+						"@type": "Casino",
+						"name": "Bethall Casino",
+						"url": "https://bhll.fynkelto.com/?mid=311639_1836151",
+						"image": "https://www.topjeu777.com/img/logo-casinos/bethall-logo.webp",
+						"description": "Jeux divers et promotions régulières pour tous types de joueurs.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Gibraltar",
+							"addressCountry": "GI"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 8.3,
+							"reviewCount": 40
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://bhll.fynkelto.com/?mid=311639_1836151",
+							"price": 500,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "100% Jusqu'à 500 € + 100 Free Spins"
+						}
+					},
+					{
+						"@type": "Casino",
+						"name": "Cresus Casino",
+						"url": "https://record.roosterz.io/_6vYjCU0IzSTUOsjNOfgKeWNd7gqdRLk/1/",
+						"image": "https://www.topjeu777.com/img/logo-casinos/cresus-logo.svg",
+						"description": "Plateforme reconnue pour sa fiabilité et ses gros jackpots.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "France",
+							"addressCountry": "FR"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 8.2,
+							"reviewCount": 38
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://record.roosterz.io/_6vYjCU0IzSTUOsjNOfgKeWNd7gqdRLk/1/",
+							"price": 3000,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "Jusqu'à 3000 € + 200 Free Spins"
+						}
+					},
+					{
+						"@type": "Casino",
+						"name": "Winorama Casino",
+						"url": "https://wrm.fynkelto.com/?mid=311639_1836151",
+						"image": "https://www.topjeu777.com/img/logo-casinos/winorama-logo.webp",
+						"description": "Expérience divertissante avec bonus quotidiens et tournois réguliers.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Malte",
+							"addressCountry": "MT"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 8.0,
+							"reviewCount": 35
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://wrm.fynkelto.com/?mid=311639_1836151",
+							"price": 2000,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "Jusqu'à 2000 € + 100 Free Spins"
+						}
 					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "Bethall Casino",
-					"url": "https://bhll.fynkelto.com/?mid=309843_1825733",
-					"image": "https://www.topjeu777.com/img/logo-casinos/bethall-logo.webp",
-					"description": "Large sélection de jeux, bonus de bienvenue et pari sportif inclus.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Berlin",
-						"addressCountry": "DE"
-					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 8.4,
-						"reviewCount": 45
-					},
-					"offers": {
-						"@type": "Offer",
-						"url": "https://bhll.fynkelto.com/?mid=309843_1825733",
-						"price": 2500,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "300% Jusqu'à 2500 € + 200 Free Spins + 1 Bonus Crab"
-					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "WonderLuck Casino",
-					"url": "https://wdrl.xarvilo.com/?mid=310063_1827767",
-					"image": "https://www.topjeu777.com/img/logo-casinos/wonderluck-logo.webp",
-					"description": "Nouveau casino 2025 avec bonus et grande ludothèque.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Lisbonne",
-						"addressCountry": "PT"
-					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 8.3,
-						"reviewCount": 40
-					},
-					"offers": {
-						"@type": "Offer",
-						"url": "https://wdrl.xarvilo.com/?mid=310063_1827767",
-						"price": 500,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "100% Jusqu'à 500 € + 200 Free Spins + 1 Bonus Crab"
-					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "CasinoLab",
-					"url": "https://record.primeweb-affiliates.com/_GFcvXbc7UQ6YPfTOMfMRuWNd7ZgqdRLk/1",
-					"image": "https://www.topjeu777.com/img/logo-casinos/casinolab-logo.svg",
-					"description": "Expérience mobile fluide, dépôts en crypto et promotions régulières.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Amsterdam",
-						"addressCountry": "NL"
-					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 8.2,
-						"reviewCount": 35
-					},
-					"offers": {
-						"@type": "Offer",
-						"url": "https://record.primeweb-affiliates.com/_GFcvXbc7UQ6YPfTOMfMRuWNd7ZgqdRLk/1",
-						"price": 500,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "100% Jusqu'à 500 € + 100 Free Spins"
-					}
-				},
-
-				{
-					"@context": "https://schema.org",
-					"@type": "Casino",
-					"name": "Sushi Casino",
-					"url": "https://record.roosterz.io/_GFcvXbc7UQ6YPfTOMfMRuWNd7gqdRLk/1",
-					"image": "https://www.topjeu777.com/img/logo-casinos/sushi-logo.svg",
-					"description": "Ambiance asiatique unique avec bonus attractifs pour nouveaux joueurs.",
-					"address": {
-						"@type": "PostalAddress",
-						"addressLocality": "Tokyo",
-						"addressCountry": "JP"
-					},
-					"aggregateRating": {
-						"@type": "AggregateRating",
-						"ratingValue": 8.1,
-						"reviewCount": 25
-					},
-					"offers": {
-						"@type": "Offer",
-						"url": "https://record.roosterz.io/_GFcvXbc7UQ6YPfTOMfMRuWNd7gqdRLk/1",
-						"price": 600,
-						"priceCurrency": "EUR",
-						"availability": "https://schema.org/InStock",
-						"description": "200% Jusqu'à 600 € + 50 Free Spins"
-					}
-				}
-			]
+				]
+			}
 		</script>
 		<!-- JS -->
 		<script defer src="app.v2.js"></script>
