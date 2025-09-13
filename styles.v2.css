@@ -114,7 +114,53 @@ a:hover {
 	outline: 2px solid #e60000;
 	outline-offset: 2px;
 }
+/* Cookie Consent Banner - Light styles */
+.cookie-consent-banner {
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	right: 1rem;
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 1rem;
+	z-index: 1000;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.cookie-consent-banner p {
+	margin: 0;
+	font-size: 0.9rem;
+}
+.cookie-consent-banner button {
+	margin-left: 1rem;
+	padding: 0.5rem 1rem;
+	background: #0a162b;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
 
+/* Dark Mode for cookie consent banner */
+body.dark .cookie-consent-banner {
+	background: #1a1a1a;
+	color: #ffffff;
+	border-color: #444;
+}
+
+body.dark .cookie-consent-banner p {
+	color: #ffffff;
+}
+
+body.dark .cookie-consent-banner button {
+	background: #28a745;
+	color: #ffffff;
+	border: none;
+}
+
+body.dark .cookie-consent-banner button:hover {
+	background: #1e7e34;
+}
 /* Header */
 .header {
 	background: linear-gradient(90deg, #000000, #0a162b, #ac2f38);

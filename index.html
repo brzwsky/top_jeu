@@ -357,12 +357,44 @@
 			});
 		</script>
 
+		<!-- Google Analytics GA4 -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-YYE4H0PHYY"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-YYE4H0PHYY');
+			
+			gtag('consent', 'default', {
+			  'analytics_storage': 'denied',
+			  'ad_storage': 'denied'
+			});
+			
+			function acceptAnalytics() {
+			  gtag('consent', 'update', {
+				'analytics_storage': 'granted'
+			  });
+			  console.log('Google Analytics включена после согласия');
+			}
+			document.addEventListener('DOMContentLoaded', function() {
+			  const btn = document.querySelector('#accept-analytics-btn');
+			  if(btn){
+				btn.addEventListener('click', acceptAnalytics);
+			  }
+			});
+		</script>
+
 		<!-- Breadcrumb JSON-LD -->
 		<script type="application/ld+json" src="/website.json"></script>
 		<!-- JS -->
 		<script defer src="app.v2.js"></script>
 	</head>
 	<body lang="fr">
+		<!-- Cookie Consent Banner -->
+		<div class="cookie-consent-banner">
+			<p>Nous utilisons Google Analytics pour améliorer votre expérience. Acceptez-vous ?</p>
+			<button id="accept-analytics-btn">Accepter</button>
+		</div>
 		<!-- Header -->
 		<header class="header" role="banner">
 			<div class="header__container">
