@@ -754,6 +754,37 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.casinoButtonsManager = new CasinoButtonsManager();
 	window.animationManager = new AnimationManager();
 	window.darkModeManager = new DarkModeManager();
+
+	// ========================================================================
+	// ANALYTICS BANNER MANAGEMENT
+	// ========================================================================
+	const analyticsBanner = document.querySelector('.cookie-consent-banner');
+	const analyticsAccept = document.getElementById('accept-analytics-btn');
+
+	if (analyticsBanner && analyticsAccept) {
+		const analyticsChoice = localStorage.getItem('analyticsConsent');
+
+		if (analyticsChoice === 'accepted') {
+			analyticsBanner.style.display = 'none';
+		} else {
+			setTimeout(() => {
+				analyticsBanner.classList.add('show');
+			}, 2000);
+		}
+
+		analyticsAccept.addEventListener('click', () => {
+			localStorage.setItem('analyticsConsent', 'accepted');
+			analyticsBanner.style.display = 'none';
+
+			// Запуск Google Analytics
+			if (typeof gtag !== 'undefined') {
+				gtag('consent', 'update', {
+					analytics_storage: 'granted',
+					ad_storage: 'granted',
+				});
+			}
+		});
+	}
 });
 
 // ============================================================================
@@ -795,8 +826,7 @@ class DarkModeManager {
 		if (savedTheme) {
 			this.body.classList.add(savedTheme);
 			isDark = savedTheme === 'dark';
-			if (this.toggleCheckbox)
-				this.toggleCheckbox.checked = isDark;
+			if (this.toggleCheckbox) this.toggleCheckbox.checked = isDark;
 		} else {
 			const prefersDark = window.matchMedia(
 				'(prefers-color-scheme: dark)'
@@ -808,7 +838,6 @@ class DarkModeManager {
 		this.updateToggleUI(isDark);
 		this.updateLogos();
 
-		// Слушаем изменения системной темы
 		window
 			.matchMedia('(prefers-color-scheme: dark)')
 			.addEventListener('change', (e) => {
