@@ -218,6 +218,33 @@
 					},
 					{
 						"@type": "Casino",
+						"name": "Sushi Casino",
+						"url": "https://www.sush1casin0.com/fr",
+						"image": "https://www.topjeu777.com/img/logo-casinos/sushicasino-logo.webp",
+						"description": "Casino en ligne inspiré du Japon avec large sélection de jeux et programme VIP.",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Curaçao",
+							"addressCountry": "CW"
+						},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": 8.9,
+							"bestRating": 10,
+							"worstRating": 1,
+							"reviewCount": 52
+						},
+						"offers": {
+							"@type": "Offer",
+							"url": "https://www.sush1casin0.com/fr",
+							"price": 0,
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock",
+							"description": "Jusqu'à 2500 € + 50 Free Spins"
+						}
+					},
+					{
+						"@type": "Casino",
 						"name": "CasinoPeaches",
 						"url": "https://record.primeweb-affiliates.com/_GFcvXbc7UQ6YNevImT-MDGNd7ZgqdRLk/1",
 						"image": "https://www.topjeu777.com/img/logo-casinos/peaches-logo.webp",
@@ -273,28 +300,28 @@
 					{
 						"@type": "Casino",
 						"name": "Winzter Casino",
-						"url": "https://go.affililinks.com/visit/?bta=35262&nci=5351&afp=1&utm_campaign=FR",
-						"image": "https://www.topjeu777.com/img/logo-casinos/winzter-logo.webp",
-						"description": "Bonus généreux et programme VIP complet pour les joueurs francophones.",
+						"url": "https://record.winzteraff.com/_WinzterPromo1/1/",
+						"image": "https://www.topjeu777.com/img/logo-casinos/winzter-logo.svg",
+						"description": "Casino en ligne avec interface moderne et promotions régulières.",
 						"address": {
 							"@type": "PostalAddress",
-							"addressLocality": "Monaco",
-							"addressCountry": "MC"
+							"addressLocality": "Malte",
+							"addressCountry": "MT"
 						},
 						"aggregateRating": {
 							"@type": "AggregateRating",
-							"ratingValue": 8.5,
+							"ratingValue": 8.6,
 							"bestRating": 10,
 							"worstRating": 1,
-							"reviewCount": 42
+							"reviewCount": 48
 						},
 						"offers": {
 							"@type": "Offer",
-							"url": "https://go.affililinks.com/visit/?bta=35262&nci=5351&afp=1&utm_campaign=FR",
+							"url": "https://record.winzteraff.com/_WinzterPromo1/1/",
 							"price": 0,
 							"priceCurrency": "EUR",
 							"availability": "https://schema.org/InStock",
-							"description": "100% Jusqu'à 500 €"
+							"description": "Jusqu'à 2000 € + 100 Free Spins"
 						}
 					}
 				]
@@ -336,14 +363,14 @@
 		</style>
 
 		<!-- Stylesheet -->
-		<link rel="preload" href="styles.v2.css" as="style" />
+		<link rel="preload" href="styles.v3.css" as="style" />
 		<link
 			rel="stylesheet"
-			href="styles.v2.css"
+			href="styles.v3.css"
 			media="print"
 			onload="this.media='all'"
 		/>
-		<noscript><link rel="stylesheet" href="styles.v2.css" /></noscript>
+		<noscript><link rel="stylesheet" href="styles.v3.css" /></noscript>
 
 		<!-- Google Analytics (blocked until consent) -->
 		<script>
@@ -358,41 +385,49 @@
 		</script>
 
 		<!-- Google Analytics GA4 -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-YYE4H0PHYY"></script>
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-YYE4H0PHYY"
+		></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
+			function gtag() {
+				dataLayer.push(arguments);
+			}
 			gtag('js', new Date());
 			gtag('config', 'G-YYE4H0PHYY');
-			
+
 			gtag('consent', 'default', {
-			  'analytics_storage': 'denied',
-			  'ad_storage': 'denied'
+				analytics_storage: 'denied',
+				ad_storage: 'denied',
 			});
-			
+
 			function acceptAnalytics() {
-			  gtag('consent', 'update', {
-				'analytics_storage': 'granted'
-			  });
-			  console.log('Google Analytics включена после согласия');
+				gtag('consent', 'update', {
+					analytics_storage: 'granted',
+				});
+				console.log('Google Analytics включена после согласия');
 			}
-			document.addEventListener('DOMContentLoaded', function() {
-			  const btn = document.querySelector('#accept-analytics-btn');
-			  if(btn){
-				btn.addEventListener('click', acceptAnalytics);
-			  }
+			document.addEventListener('DOMContentLoaded', function () {
+				const btn = document.querySelector('#accept-analytics-btn');
+				if (btn) {
+					btn.addEventListener('click', acceptAnalytics);
+				}
 			});
 		</script>
 
 		<!-- Breadcrumb JSON-LD -->
 		<script type="application/ld+json" src="/website.json"></script>
 		<!-- JS -->
-		<script defer src="app.v2.js"></script>
+		<script defer src="app.v3.js"></script>
 	</head>
 	<body lang="fr">
 		<!-- Cookie Consent Banner -->
 		<div class="cookie-consent-banner">
-			<p>Nous utilisons Google Analytics pour améliorer votre expérience. Acceptez-vous ?</p>
+			<p>
+				Nous utilisons Google Analytics pour améliorer votre expérience.
+				Acceptez-vous ?
+			</p>
 			<button id="accept-analytics-btn">Accepter</button>
 		</div>
 		<!-- Header -->
