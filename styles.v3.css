@@ -1906,7 +1906,7 @@ body.dark .casino-card__score {
 	color: #ffffff;
 }
 body.dark .casino-card__stars {
-	color: gold;
+	color: #ffd700 !important; /* точный цвет звездочек из светлой темы, переопределяет gold */
 }
 
 /* Buttons inside casino cards */
@@ -1943,6 +1943,17 @@ body.dark .disclaimer {
 	color: #ffffff !important;
 	background: linear-gradient(to right, #3f0f05, #130f0f) !important;
 	border-color: #444 !important;
+}
+
+/* Stars Glow Effect */
+body.dark .casino-card__stars {
+	position: relative;
+	display: inline-block;
+	color: #ffd700 !important;
+	filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+	text-shadow:
+		0 0 6px rgba(255, 215, 0, 0.10),
+		0 0 12px rgba(255, 215, 0, 0.10);
 }
 
 /* Theme switch wrapper */
