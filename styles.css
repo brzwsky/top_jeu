@@ -110,7 +110,7 @@ a:hover {
 	outline: none;
 }
 
-*:focus-visible {
+body.user-is-tabbing :focus-visible {
 	outline: 2px solid #e60000;
 	outline-offset: 2px;
 }
@@ -574,9 +574,7 @@ body.dark .cookie-consent-banner button:hover {
 	transform: translate(calc(5px), calc(-50%)) rotate(45deg);
 	border-color: #e0ffd6;
 }
-.casino-card__button-link:hover {
-	color: #e0ffd6;
-}
+/* duplicate :hover removed (kept the first occurrence above) */
 
 .casino-card__title {
 	margin: 0.2rem 0;
@@ -1677,7 +1675,7 @@ body.dark .cookie-consent-banner button:hover {
 	}
 
 	.casino-review_mafia-casino ul,
-	li {
+	.casino-review_mafia-casino li {
 		font-size: 1rem;
 	}
 
@@ -1905,9 +1903,6 @@ body.dark .casino-card__features li {
 body.dark .casino-card__score {
 	color: #ffffff;
 }
-body.dark .casino-card__stars {
-	color: #ffd700 !important; /* точный цвет звездочек из светлой темы, переопределяет gold */
-}
 
 /* Buttons inside casino cards */
 body.dark .casino-card__button {
@@ -1951,9 +1946,7 @@ body.dark .casino-card__stars {
 	display: inline-block;
 	color: #ffd700 !important;
 	filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
-	text-shadow:
-		0 0 6px rgba(255, 215, 0, 0.10),
-		0 0 12px rgba(255, 215, 0, 0.10);
+	text-shadow: 0 0 6px rgba(255, 215, 0, 0.1), 0 0 12px rgba(255, 215, 0, 0.1);
 }
 
 /* Theme switch wrapper */
@@ -1974,7 +1967,7 @@ body.dark .casino-card__stars {
 .theme-label {
 	display: none;
 	font-family: Arial, sans-serif; /* same as header buttons */
-	font-size: 1.175; /* same size as header buttons */
+	font-size: 1.175rem; /* same size as header buttons */
 	font-weight: 200; /* slightly bolder for better visibility */
 	color: #fff; /* default light theme color */
 	user-select: none;
@@ -2057,4 +2050,16 @@ body.dark .cookie-banner,
 body.dark .casino-card,
 body.dark .disclaimer {
 	transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Restore FAQ expand/collapse animation in dark mode */
+body.dark .faq-answer {
+	transition: max-height 0.3s ease, margin-bottom 0.3s ease,
+		padding-bottom 0.3s ease, background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.dark .faq-answer {
+		transition: none !important;
+	}
 }

@@ -66,16 +66,22 @@ class CookieConsentManager {
 		setTimeout(() => {
 			banner.classList.add('show');
 			if (container) {
+				// Stabilize height during transition
 				container.style.maxHeight = container.scrollHeight + 'px';
 				container.style.opacity = '1';
 			}
 		}, 20);
 
-		setTimeout(() => banner.classList.remove('expanding'), 450);
+		setTimeout(() => {
+			banner.classList.remove('expanding');
+			// After transition ends, remove maxHeight lock to allow natural layout
+			if (container) container.style.maxHeight = 'none';
+		}, 450);
 	}
 
 	setupEventListeners() {
 		const banner = document.getElementById('cookie-banner');
+		const isActivateKey = (e) => e.key === 'Enter' || e.key === ' ';
 		const acceptBtn = document.getElementById('cookie-accept');
 		const declineBtn = document.getElementById('cookie-decline');
 		const settingsLink = document.getElementById('cookie-settings-link');
@@ -108,7 +114,7 @@ class CookieConsentManager {
 				}
 			});
 			settingsLink.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
+				if (isActivateKey(e)) {
 					e.preventDefault();
 					// Reset banner state and show it
 					const banner = document.getElementById('cookie-banner');
@@ -138,7 +144,7 @@ class CookieConsentManager {
 		if (minimizedIcon) {
 			minimizedIcon.addEventListener('click', () => this.expandBanner());
 			minimizedIcon.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
+				if (isActivateKey(e)) {
 					e.preventDefault();
 					this.expandBanner();
 				}
@@ -283,6 +289,7 @@ class PopupManager {
 	}
 
 	setupEventListeners() {
+		const isActivateKey = (e) => e.key === 'Enter' || e.key === ' ';
 		// About popup
 		const aboutLink = document.querySelector('.header__link[href="#about"]');
 		const aboutFooterLink = document.querySelector(
@@ -297,7 +304,7 @@ class PopupManager {
 				this.openPopup(popup);
 			});
 			aboutLink.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
+				if (isActivateKey(e)) {
 					e.preventDefault();
 					this.openPopup(popup);
 				}
@@ -310,7 +317,7 @@ class PopupManager {
 				this.openPopup(popup);
 			});
 			aboutFooterLink.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
+				if (isActivateKey(e)) {
 					e.preventDefault();
 					this.openPopup(popup);
 				}
@@ -337,7 +344,7 @@ class PopupManager {
 				this.openPopup(popupContact);
 			});
 			contactLink.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
+				if (isActivateKey(e)) {
 					e.preventDefault();
 					this.openPopup(popupContact);
 				}
@@ -350,7 +357,7 @@ class PopupManager {
 				this.openPopup(popupContact);
 			});
 			contactFooterLink.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
+				if (isActivateKey(e)) {
 					e.preventDefault();
 					this.openPopup(popupContact);
 				}
@@ -375,7 +382,7 @@ class PopupManager {
 				this.openPrivacyPopup();
 			});
 			privacyLink.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
+				if (isActivateKey(e)) {
 					e.preventDefault();
 					this.openPrivacyPopup();
 				}
@@ -388,7 +395,7 @@ class PopupManager {
 				this.openPrivacyPopup();
 			});
 			cookiePrivacyLink.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
+				if (isActivateKey(e)) {
 					e.preventDefault();
 					this.openPrivacyPopup();
 				}
@@ -610,16 +617,24 @@ class FAQManager {
 	}
 
 	setupFAQ() {
-		document.querySelectorAll('.faq-question').forEach((button) => {
-			button.addEventListener('click', () => {
+		const isActivateKey = (e) => e.key === 'Enter' || e.key === ' ';
+
+		// Event delegation for clicks
+		document.addEventListener('click', (e) => {
+			const button =
+				e.target && e.target.closest && e.target.closest('.faq-question');
+			if (button) this.toggleFAQ(button);
+		});
+
+		// Event delegation for keyboard activation
+		document.addEventListener('keydown', (e) => {
+			if (e.defaultPrevented || !isActivateKey(e)) return;
+			const button =
+				e.target && e.target.closest && e.target.closest('.faq-question');
+			if (button) {
+				e.preventDefault();
 				this.toggleFAQ(button);
-			});
-			button.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
-					e.preventDefault();
-					this.toggleFAQ(button);
-				}
-			});
+			}
 		});
 	}
 
@@ -632,6 +647,22 @@ class FAQManager {
 			button.setAttribute('aria-expanded', 'false');
 			answer.classList.remove('open');
 		} else {
+			// Close any other open FAQ items (accordion behavior)
+			document
+				.querySelectorAll('.faq-question[aria-expanded="true"]')
+				.forEach((openBtn) => {
+					if (openBtn !== button) {
+						const openAnswer = openBtn.nextElementSibling;
+						if (openAnswer) {
+							openAnswer.style.maxHeight = '0';
+							openAnswer.classList.remove('open');
+						}
+						openBtn.setAttribute('aria-expanded', 'false');
+					}
+				});
+
+			// Stabilize: clear then set exact height for smooth transition
+			answer.style.maxHeight = '';
 			answer.style.maxHeight = answer.scrollHeight + 'px';
 			button.setAttribute('aria-expanded', 'true');
 			answer.classList.add('open');
@@ -653,34 +684,39 @@ class CasinoButtonsManager {
 	}
 
 	setupCasinoButtons() {
-		// Add keyboard support for all casino buttons
-		document.querySelectorAll('.casino-card__button').forEach((button) => {
-			button.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
-					e.preventDefault();
-					button.click();
-				}
-			});
-		});
+		const isActivateKey = (e) => e.key === 'Enter' || e.key === ' ';
 
-		// Add keyboard support for all footer links
-		document.querySelectorAll('.footer__link').forEach((link) => {
-			// Skip links that already have keyboard handlers
-			if (
-				link.id === 'privacy-link' ||
-				link.id === 'cookie-settings-link' ||
-				link.href === '#about' ||
-				link.href === '#contact'
-			) {
+		// Event delegation for keyboard activation on buttons and footer links
+		document.addEventListener('keydown', (e) => {
+			if (!isActivateKey(e)) return;
+
+			// Casino buttons
+			const casinoBtn =
+				e.target &&
+				e.target.closest &&
+				e.target.closest('.casino-card__button');
+			if (casinoBtn) {
+				e.preventDefault();
+				casinoBtn.click();
 				return;
 			}
 
-			link.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
-					e.preventDefault();
-					link.click();
-				}
-			});
+			// Footer links (skip ones with their own handlers)
+			const link =
+				e.target && e.target.closest && e.target.closest('.footer__link');
+			if (link) {
+				if (link.id === 'privacy-link' || link.id === 'cookie-settings-link')
+					return;
+				const href = link.getAttribute('href');
+				if (
+					link.hasAttribute('disabled') ||
+					link.getAttribute('aria-disabled') === 'true'
+				)
+					return;
+				if (href === '#about' || href === '#contact') return;
+				e.preventDefault();
+				link.click();
+			}
 		});
 	}
 }
@@ -720,15 +756,20 @@ class AnimationManager {
 	setupBellAnimation() {
 		const disclaimer = document.querySelector('.disclaimer');
 		if (!disclaimer) return;
+		const reduceMotion =
+			window.matchMedia &&
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 		// Trigger bell animation after 2 seconds on every page load
-		setTimeout(() => {
-			disclaimer.classList.add('bell-start');
-			// Remove class after animation completes
+		if (!reduceMotion) {
 			setTimeout(() => {
-				disclaimer.classList.remove('bell-start');
-			}, 2000); // 2 seconds for the animation
-		}, 2000);
+				disclaimer.classList.add('bell-start');
+				// Remove class after animation completes
+				setTimeout(() => {
+					disclaimer.classList.remove('bell-start');
+				}, 2000); // 2 seconds for the animation
+			}, 2000);
+		}
 
 		// Also trigger on hover
 		disclaimer.addEventListener('mouseenter', () => {
@@ -754,6 +795,51 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.casinoButtonsManager = new CasinoButtonsManager();
 	window.animationManager = new AnimationManager();
 	window.darkModeManager = new DarkModeManager();
+
+	// ========================================================================
+	// INPUT METHOD DETECTION (Keyboard-only focus outlines)
+	// ========================================================================
+	(function setupInputMethodDetection() {
+		let usingKeyboard = false;
+		const body = document.body;
+		if (!body) return;
+
+		const keyboardKeys = new Set([
+			'Tab',
+			'ArrowUp',
+			'ArrowDown',
+			'ArrowLeft',
+			'ArrowRight',
+			'Escape',
+		]);
+
+		window.addEventListener(
+			'keydown',
+			(e) => {
+				if (keyboardKeys.has(e.key)) {
+					usingKeyboard = true;
+					body.classList.add('user-is-tabbing');
+				}
+			},
+			{ passive: true }
+		);
+
+		const disableKeyboardMode = () => {
+			if (!usingKeyboard) return;
+			usingKeyboard = false;
+			body.classList.remove('user-is-tabbing');
+		};
+
+		window.addEventListener('mousedown', disableKeyboardMode, {
+			passive: true,
+		});
+		window.addEventListener('touchstart', disableKeyboardMode, {
+			passive: true,
+		});
+		window.addEventListener('pointerdown', disableKeyboardMode, {
+			passive: true,
+		});
+	})();
 
 	// ========================================================================
 	// ANALYTICS BANNER MANAGEMENT

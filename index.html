@@ -30,9 +30,19 @@
 		<link rel="manifest" href="site.webmanifest" />
 
 		<!-- Preconnect / DNS Prefetch -->
-		<link rel="preconnect" href="https://www.googletagmanager.com" />
+		<link
+			rel="preconnect"
+			href="https://www.google-analytics.com"
+			crossorigin
+		/>
+		<link rel="dns-prefetch" href="https://www.google-analytics.com" />
+		<link
+			rel="preconnect"
+			href="https://www.googletagmanager.com"
+			crossorigin
+		/>
 		<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-		<link rel="preconnect" href="https://analytics.ahrefs.com" />
+		<link rel="preconnect" href="https://analytics.ahrefs.com" crossorigin />
 		<link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
 
 		<!-- SEO & Open Graph -->
@@ -111,7 +121,7 @@
 					{
 						"@type": "Casino",
 						"name": "Brutal Casino",
-						"url": "https://www.brutalcasinoclub.com/fr/",
+						"url": "https://record.igpartners.xyz/_PwBtQtly5-OYkdHVp7xCcmNd7ZgqdRLk/1/",
 						"image": "https://www.topjeu777.com/img/logo-casinos/brutal-logo.webp",
 						"description": "Expérience moderne avec interface en français et paiements rapides.",
 						"address": {
@@ -128,7 +138,7 @@
 						},
 						"offers": {
 							"@type": "Offer",
-							"url": "https://www.brutalcasinoclub.com/fr/",
+							"url": "https://record.igpartners.xyz/_PwBtQtly5-OYkdHVp7xCcmNd7ZgqdRLk/1/",
 							"price": 0,
 							"priceCurrency": "EUR",
 							"availability": "https://schema.org/InStock",
@@ -363,53 +373,57 @@
 		</style>
 
 		<!-- Stylesheet -->
-		<link rel="preload" href="styles.css" as="style" />
 		<link
-			rel="stylesheet"
+			rel="preload"
 			href="styles.css"
-			media="print"
-			onload="this.media='all'"
+			as="style"
+			onload="this.onload=null;this.rel='stylesheet'"
 		/>
 		<noscript><link rel="stylesheet" href="styles.css" /></noscript>
 
 		<!-- Google Analytics 4 -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-YYE4H0PHYY"></script>
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-YYE4H0PHYY"
+		></script>
 		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
 
-		  // Initialization
-		  gtag('js', new Date());
+			// Initialization
+			gtag('js', new Date());
 
-		  // Default Consent Mode: disabled
-		  gtag('consent', 'default', {
-		    ad_storage: 'denied',
-		    analytics_storage: 'denied'
-		  });
+			// Default Consent Mode: disabled
+			gtag('consent', 'default', {
+				ad_storage: 'denied',
+				analytics_storage: 'denied',
+			});
 
-		  // GA configuration
-		  gtag('config', 'G-YYE4H0PHYY');
+			// GA configuration
+			gtag('config', 'G-YYE4H0PHYY');
 
-		  // Update consent on button click
-		  document.addEventListener('DOMContentLoaded', function () {
-		    var acceptBtn = document.getElementById('accept-analytics-btn');
-		    if (acceptBtn) {
-		      acceptBtn.addEventListener('click', function () {
-		        gtag('consent', 'update', {
-		          ad_storage: 'granted',
-		          analytics_storage: 'granted'
-		        });
-		        // Extra event to log consent granted
-		        gtag('event', 'consent_granted', { event_category: 'consent' });
-		      });
-		    }
-		  });
+			// Update consent on button click
+			document.addEventListener('DOMContentLoaded', function () {
+				var acceptBtn = document.getElementById('accept-analytics-btn');
+				if (acceptBtn) {
+					acceptBtn.addEventListener('click', function () {
+						gtag('consent', 'update', {
+							ad_storage: 'granted',
+							analytics_storage: 'granted',
+						});
+						// Extra event to log consent granted
+						gtag('event', 'consent_granted', { event_category: 'consent' });
+					});
+				}
+			});
 		</script>
 
 		<!-- Breadcrumb JSON-LD -->
 		<script type="application/ld+json" src="/website.json"></script>
 		<!-- JS -->
-		<script defer src="app.v3.js"></script>
+		<script defer src="app.js"></script>
 	</head>
 	<body lang="fr">
 		<!-- Cookie Consent Banner -->
@@ -599,7 +613,8 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-1"
+							aria-describedby="casino-uuid-001
+							"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -638,11 +653,12 @@
 						</div>
 						<a
 							class="casino-card__button"
-							href="https://www.brutalcasinoclub.com/fr/"
+							href="https://record.igpartners.xyz/_PwBtQtly5-OYkdHVp7xCcmNd7ZgqdRLk/1/"
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-2"
+							aria-describedby="casino-uuid-002
+							"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -687,7 +703,8 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-3"
+							aria-describedby="casino-uuid-003
+							"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -730,7 +747,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-4"
+							aria-describedby="casino-uuid-004"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -774,7 +791,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-5"
+							aria-describedby="casino-uuid-005"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -817,7 +834,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-6"
+							aria-describedby="casino-uuid-006"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -861,7 +878,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-7"
+							aria-describedby="casino-uuid-007"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -903,7 +920,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-8"
+							aria-describedby="casino-uuid-008"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -947,7 +964,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-9"
+							aria-describedby="casino-uuid-009"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -991,7 +1008,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-10"
+							aria-describedby="casino-uuid-010"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -1035,7 +1052,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-11"
+							aria-describedby="casino-uuid-011"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -1077,7 +1094,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-12"
+							aria-describedby="casino-uuid-012"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -1216,7 +1233,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-1"
+							aria-describedby="casino-uuid-001"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -1300,7 +1317,7 @@
 					<a
 						class="banners"
 						rel="nofollow noopener noreferrer"
-						href="https://www.brutalcasinoclub.com/fr/"
+						href="https://record.igpartners.xyz/_PwBtQtly5-OYkdHVp7xCcmNd7ZgqdRLk/1/"
 					>
 						<img
 							src="img/banners/brutal-banner-fix.webp"
@@ -1384,11 +1401,11 @@
 						</div>
 						<a
 							class="casino-card__button"
-							href="https://www.brutalcasinoclub.com/fr/"
+							href="https://record.igpartners.xyz/_PwBtQtly5-OYkdHVp7xCcmNd7ZgqdRLk/1/"
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-2"
+							aria-describedby="casino-uuid-002"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -1534,7 +1551,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-3"
+							aria-describedby="casino-uuid-003"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -1676,7 +1693,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-4"
+							aria-describedby="casino-uuid-004"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -1725,7 +1742,7 @@
 						l’accompagnement
 						<strong>VIP rend vraiment l’expérience unique</strong>. Grâce à
 						Kristop et son suivi impeccable,
-						<stromg>je me sens écoutée et prise en charge à chaque étape</stromg
+						<strong>je me sens écoutée et prise en charge à chaque étape</strong
 						>. Si vous cherchez un casino en ligne à la fois complet et
 						convivial, c’est clairement une valeur sûre.
 					</p>
@@ -1840,7 +1857,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-5"
+							aria-describedby="casino-uuid-005"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -2002,7 +2019,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-12"
+							aria-describedby="casino-uuid-012"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -2188,7 +2205,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-6"
+							aria-describedby="casino-uuid-006"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>
@@ -2333,7 +2350,7 @@
 							target="_blank"
 							rel="nofollow noopener noreferrer"
 							tabindex="0"
-							aria-describedby="casino-name-7"
+							aria-describedby="casino-uuid-007"
 						>
 							<span class="casino-card__button-link">Jouez maintenant</span>
 						</a>

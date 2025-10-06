@@ -2,4 +2,8 @@ User-agent: *
 Disallow: /private/
 Allow: /
 
-Sitemap: https://www.topjeu777.com/sitemap.xml
+# Sitemap for search engines
+Sitemap: https://topjeu777.com/sitemap.xml
+
+# Optional: limit crawl rate if server is under load
+# Crawl-delay: 5
