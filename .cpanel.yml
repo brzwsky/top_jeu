@@ -9,4 +9,3 @@ deployment:
     - /bin/cp app.js $DEPLOYPATH
     - /bin/cp styles.css $DEPLOYPATH
     - /bin/cp favicon.ico $DEPLOYPATH
-    
