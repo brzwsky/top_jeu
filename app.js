@@ -782,6 +782,36 @@ class AnimationManager {
 }
 
 // ============================================================================
+// SCROLL REVEAL ANIMATION MANAGEMENT
+// ============================================================================
+
+class ScrollRevealManager {
+	constructor() {
+		this.init();
+	}
+
+	init() {
+		const elements = document.querySelectorAll('.fade-in');
+		if (!elements.length) return;
+
+		const observer = new IntersectionObserver(
+			(entries, observer) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+					} else {
+						entry.target.classList.remove('visible');
+					}
+				});
+			},
+			{ threshold: 0.05, rootMargin: '0px 0px -5px 0px' }
+		);
+
+		elements.forEach((el) => observer.observe(el));
+	}
+}
+
+// ============================================================================
 // INITIALIZATION
 // ============================================================================
 
@@ -795,6 +825,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.casinoButtonsManager = new CasinoButtonsManager();
 	window.animationManager = new AnimationManager();
 	window.darkModeManager = new DarkModeManager();
+	window.scrollRevealManager = new ScrollRevealManager();
 
 	// ========================================================================
 	// INPUT METHOD DETECTION (Keyboard-only focus outlines)
