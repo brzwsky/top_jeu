@@ -118,8 +118,8 @@ body.user-is-tabbing :focus-visible {
 .cookie-consent-banner {
 	position: fixed;
 	top: 1rem;
-	left: 1rem;
-	right: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
 	background: #fff;
 	border: 1px solid #ccc;
 	padding: 1rem;
@@ -127,6 +127,10 @@ body.user-is-tabbing :focus-visible {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	max-width: 400px;
+	width: auto;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 .cookie-consent-banner p {
 	margin: 0;
@@ -146,6 +150,14 @@ body.dark .cookie-consent-banner {
 	background: #1a1a1a;
 	color: #ffffff;
 	border-color: #444;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode mobile styles */
+@media (max-width: 768px) {
+	body.dark .cookie-consent-banner {
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+	}
 }
 
 body.dark .cookie-consent-banner p {
@@ -1400,6 +1412,61 @@ body.dark .cookie-consent-banner button:hover {
 }
 
 @media (max-width: 768px) {
+	/* Cookie Consent Banner */
+	.cookie-consent-banner {
+		top: 8px;
+		left: 8px;
+		right: 8px;
+		transform: none;
+		max-width: none;
+		width: auto;
+		padding: 12px;
+		border-radius: 8px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		flex-direction: row;
+		gap: 12px;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.cookie-consent-banner p {
+		margin: 0;
+		font-size: 0.85rem;
+		line-height: 1.4;
+		flex: 1;
+		margin-right: 8px;
+	}
+
+	.cookie-consent-banner button {
+		margin-left: 0;
+		padding: 8px 12px;
+		font-size: 0.85rem;
+		flex-shrink: 0;
+		min-width: auto;
+		white-space: nowrap;
+	}
+
+	/* Для очень маленьких экранов */
+	@media (max-width: 480px) {
+		.cookie-consent-banner {
+			top: 6px;
+			left: 6px;
+			right: 6px;
+			padding: 10px;
+			gap: 8px;
+		}
+
+		.cookie-consent-banner p {
+			font-size: 0.8rem;
+			margin-right: 6px;
+		}
+
+		.cookie-consent-banner button {
+			padding: 6px 10px;
+			font-size: 0.8rem;
+		}
+	}
+
 	/* Cookie Banner */
 	.cookie-banner:not(.minimized) .cookie-banner__minimized-icon {
 		display: none !important;
