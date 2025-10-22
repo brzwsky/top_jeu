@@ -1521,7 +1521,10 @@ class ScrollRevealManager {
 		// Enhanced rootMargin for long pages and high element count
 		let rootMargin = '0px 0px -5px 0px'; // Base: 5px as requested
 
-		if (isVeryLongPage || isHighElementCount) {
+		if (isMobile) {
+			// Mobile: minimal rootMargin to prevent blocking scroll
+			rootMargin = '0px 0px -2px 0px';
+		} else if (isVeryLongPage || isHighElementCount) {
 			// For very long pages or many elements, trigger earlier
 			rootMargin = '0px 0px -50px 0px';
 		} else if (isLongPage) {
@@ -1530,7 +1533,7 @@ class ScrollRevealManager {
 		}
 
 		// Adaptive threshold based on page characteristics
-		let threshold = isMobile ? 0.1 : isTablet ? 0.08 : 0.05;
+		let threshold = isMobile ? 0.01 : isTablet ? 0.08 : 0.05;
 		if (isVeryLongPage || isHighElementCount) {
 			threshold = Math.max(0.01, threshold * 0.5); // Lower threshold for better performance
 		}
@@ -1979,6 +1982,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.animationManager = new AnimationManager();
 		window.scrollRevealManager = new ScrollRevealManager();
 	});
+
+	// Force enable scrolling immediately on mobile
+	if (window.innerWidth <= 768) {
+		document.body.style.overflow = '';
+		document.documentElement.style.overflow = '';
+	}
 
 	// ========================================================================
 	// INPUT METHOD DETECTION (Keyboard-only focus outlines)
