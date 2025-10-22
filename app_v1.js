@@ -1960,16 +1960,25 @@ class DarkModeManager {
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-	// Initialize all managers
+	// Safety: ensure body is scrollable on initial load
+	document.body.style.overflow = '';
+	document.body.classList.remove('menu-open', 'modal-open');
+
+	// Initialize critical managers first (non-blocking for scroll)
 	window.cookieConsentManager = new CookieConsentManager();
 	window.popupManager = new PopupManager();
 	window.mobileMenuManager = new MobileMenuManager();
 	window.formManager = new FormManager();
 	window.faqManager = new FAQManager();
 	window.casinoButtonsManager = new CasinoButtonsManager();
-	window.animationManager = new AnimationManager();
 	window.darkModeManager = new DarkModeManager();
-	window.scrollRevealManager = new ScrollRevealManager();
+
+	// Defer non-critical visual managers to idle time to avoid blocking initial scroll
+	const defer = window.requestIdleCallback || ((cb) => setTimeout(cb, 200));
+	defer(() => {
+		window.animationManager = new AnimationManager();
+		window.scrollRevealManager = new ScrollRevealManager();
+	});
 
 	// ========================================================================
 	// INPUT METHOD DETECTION (Keyboard-only focus outlines)
