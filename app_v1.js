@@ -673,9 +673,15 @@ class MobileMenuManager {
 	setupEventListeners() {
 		// Event delegation for mobile menu
 		document.addEventListener('click', (e) => {
-			if (e.target === this.burger) {
+			const burgerClicked = e.target.closest && e.target.closest('.burger');
+			const closeClicked = e.target.closest && e.target.closest('.close-menu');
+			if (burgerClicked && this.burger && burgerClicked === this.burger) {
 				this.openMenu();
-			} else if (e.target === this.closeBtn) {
+			} else if (
+				closeClicked &&
+				this.closeBtn &&
+				closeClicked === this.closeBtn
+			) {
 				this.closeMenu();
 			} else if (
 				this.menu &&

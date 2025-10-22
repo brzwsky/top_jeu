@@ -2125,13 +2125,11 @@ body.dark .faq-answer {
 		padding-bottom 0.3s ease, background 0.3s, color 0.3s, border-color 0.3s;
 }
 
-
 @media (prefers-reduced-motion: reduce) {
 	body.dark .faq-answer {
 		transition: none !important;
 	}
 }
-
 
 /* ===================================== */
 /*      Scroll Reveal Animation Effect    */
@@ -2143,9 +2141,7 @@ body.dark .faq-answer {
 	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-
 .fade-in.visible {
 	opacity: 1;
 	transform: translateY(0);
 }
-
