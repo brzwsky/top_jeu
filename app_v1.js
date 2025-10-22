@@ -1967,6 +1967,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.body.style.overflow = '';
 	document.body.classList.remove('menu-open', 'modal-open');
 
+	// Force enable scrolling immediately
+	document.documentElement.style.overflow = '';
+	document.body.style.position = '';
+	document.body.style.top = '';
+	document.body.style.left = '';
+	document.body.style.right = '';
+	document.body.style.bottom = '';
+
 	// Initialize critical managers first (non-blocking for scroll)
 	window.cookieConsentManager = new CookieConsentManager();
 	window.popupManager = new PopupManager();
@@ -1983,10 +1991,25 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.scrollRevealManager = new ScrollRevealManager();
 	});
 
+	// Additional safety: ensure scrolling is never blocked
+	setTimeout(() => {
+		document.body.style.overflow = '';
+		document.documentElement.style.overflow = '';
+		document.body.classList.remove('menu-open', 'modal-open');
+	}, 100);
+
 	// Force enable scrolling immediately on mobile
 	if (window.innerWidth <= 768) {
 		document.body.style.overflow = '';
 		document.documentElement.style.overflow = '';
+		// Remove any blocking classes
+		document.body.classList.remove('menu-open', 'modal-open');
+		// Force scroll to be enabled
+		document.body.style.position = '';
+		document.body.style.top = '';
+		document.body.style.left = '';
+		document.body.style.right = '';
+		document.body.style.bottom = '';
 	}
 
 	// ========================================================================
