@@ -2087,3 +2087,17 @@ window.addEventListener('beforeunload', () => {
 		window.casinoButtonsManager.cleanup();
 	}
 });
+
+// ========================================================================
+// MOBILE SCROLL UNBLOCKER (Fix for fast swipe / right-edge issue)
+// ========================================================================
+if (window.innerWidth <= 768) {
+	const unblockScroll = () => {
+		document.body.style.overflow = '';
+		document.documentElement.style.overflow = '';
+		document.body.classList.remove('menu-open', 'modal-open');
+	};
+	window.addEventListener('touchend', unblockScroll, { passive: true });
+	window.addEventListener('touchcancel', unblockScroll, { passive: true });
+	window.addEventListener('touchmove', unblockScroll, { passive: true });
+}
