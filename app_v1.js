@@ -2089,15 +2089,32 @@ window.addEventListener('beforeunload', () => {
 });
 
 // ========================================================================
-// MOBILE SCROLL UNBLOCKER (Fix for fast swipe / right-edge issue)
+// MOBILE SCROLL SAFEGUARD (Ensures scroll is never blocked)
 // ========================================================================
-if (window.innerWidth <= 768) {
-	const unblockScroll = () => {
+const mobileScrollSafeguard = () => {
+	if (window.innerWidth > 768) return;
+
+	const unblock = () => {
+		// Reset body and html overflow
 		document.body.style.overflow = '';
 		document.documentElement.style.overflow = '';
+		document.body.style.position = '';
+		document.body.style.top = '';
+		document.body.style.left = '';
+		document.body.style.right = '';
+		document.body.style.bottom = '';
+
+		// Remove any blocking classes
 		document.body.classList.remove('menu-open', 'modal-open');
 	};
-	window.addEventListener('touchend', unblockScroll, { passive: true });
-	window.addEventListener('touchcancel', unblockScroll, { passive: true });
-	window.addEventListener('touchmove', unblockScroll, { passive: true });
-}
+
+	// Trigger on touch interactions
+	['touchstart', 'touchend', 'touchcancel', 'touchmove'].forEach((evt) => {
+		window.addEventListener(evt, unblock, { passive: true });
+	});
+
+	// Also trigger on menu/modal open/close mutation (optional)
+	const observer = new MutationObserver(unblock);
+	observer.observe(document.body, { attributes: true, attributeFilter: ['class', 'style'] });
+};
+mobileScrollSafeguard();
