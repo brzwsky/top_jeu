@@ -449,7 +449,7 @@ class PopupManager {
 
 			const closeButton = popupElement.querySelector('.popup__close');
 			if (closeButton) closeButton.focus();
-			document.body.style.overflow = 'hidden';
+			document.documentElement.style.overflow = 'hidden';
 
 			// Track active modal
 			this.activeModals.add(popupElement);
@@ -489,7 +489,7 @@ class PopupManager {
 		}
 
 		if (this.lastFocusedElement) this.lastFocusedElement.focus();
-		document.body.style.overflow = '';
+		document.documentElement.style.overflow = 'auto';
 
 		// Remove from tracking
 		this.activeModals.delete(popupElement);
@@ -515,7 +515,7 @@ class PopupManager {
 			'.privacy-popup__close'
 		);
 		if (closeButton) closeButton.focus();
-		document.body.style.overflow = 'hidden';
+		document.documentElement.style.overflow = 'hidden';
 		document.body.classList.add('modal-open');
 	}
 
@@ -526,7 +526,7 @@ class PopupManager {
 		this.privacyPopup.classList.remove('show');
 		this.privacyPopup.setAttribute('aria-hidden', 'true');
 		if (this.lastFocusedElement) this.lastFocusedElement.focus();
-		document.body.style.overflow = '';
+		document.documentElement.style.overflow = 'auto';
 		document.body.classList.remove('modal-open');
 
 		// Reset closing flag after animation
@@ -603,7 +603,7 @@ class PopupManager {
 		this.isOpening = false;
 		this.activeModals.clear();
 		this.modalStack = [];
-		document.body.style.overflow = '';
+		document.documentElement.style.overflow = 'auto';
 		document.body.classList.remove('modal-open');
 
 		// Reset visual feedback styles
@@ -708,6 +708,7 @@ class MobileMenuManager {
 		if (this.menu && this.burger) {
 			this.menu.classList.add('active');
 			this.burger.style.display = 'none';
+			document.documentElement.style.overflow = 'hidden';
 			document.body.classList.add('menu-open');
 			this.burger.setAttribute('aria-expanded', 'true');
 		}
@@ -717,6 +718,7 @@ class MobileMenuManager {
 		if (this.menu && this.burger) {
 			this.menu.classList.remove('active');
 			this.burger.style.display = 'flex';
+			document.documentElement.style.overflow = 'auto';
 			document.body.classList.remove('menu-open');
 			this.burger.focus();
 			this.burger.setAttribute('aria-expanded', 'false');
@@ -780,8 +782,9 @@ class FAQManager {
 		this.faqQuestions =
 			this.faqSection?.querySelectorAll('.faq-question') || [];
 		this.lazyAttachThreshold = 50; // Use lazy attach for more than 50 FAQ items
-		this.virtualScrollThreshold = 200; // Use virtual scrolling for more than 200 FAQ items
-		this.ultraLargeThreshold = 500; // Use enhanced virtual scrolling for more than 500 FAQ items
+		// Hard-disable virtual scrolling by using extremely high thresholds
+		this.virtualScrollThreshold = Number.MAX_SAFE_INTEGER;
+		this.ultraLargeThreshold = Number.MAX_SAFE_INTEGER;
 		this.extremeThreshold = 1000; // Use DOM recycling for more than 1000 FAQ items
 		this.attachedElements = new Set();
 		this.intersectionObserver = null;
@@ -915,7 +918,7 @@ class FAQManager {
 	renderVisibleFAQItems(start, end) {
 		// This would render only visible FAQ items
 		// Implementation depends on specific FAQ structure
-		console.log(`Rendering FAQ items ${start} to ${end}`);
+		/* no-op in production */
 	}
 
 	// Enhanced virtual scrolling for ultra-large sections (>500 items)
@@ -987,9 +990,7 @@ class FAQManager {
 
 	renderVisibleFAQItemsEnhanced(start, end) {
 		// Enhanced rendering with performance optimizations
-		console.log(
-			`Enhanced rendering FAQ items ${start} to ${end} (${end - start} items)`
-		);
+		/* no-op in production */
 	}
 
 	setupScrollThrottling(container) {
@@ -1075,9 +1076,7 @@ class FAQManager {
 
 	renderDOMRecycledItems(start, end, container) {
 		// DOM recycling: reuse existing elements instead of creating new ones
-		console.log(
-			`DOM recycling FAQ items ${start} to ${end} (${end - start} items)`
-		);
+		/* no-op in production */
 
 		// Clear container and render only visible items
 		container.innerHTML = '';
@@ -1152,8 +1151,9 @@ class CasinoButtonsManager {
 		this.casinoButtons =
 			this.casinoContainer?.querySelectorAll('.casino-card__button') || [];
 		this.lazyAttachThreshold = 30; // Use lazy attach for more than 30 casino buttons
-		this.virtualScrollThreshold = 100; // Use virtual scrolling for more than 100 casino buttons
-		this.ultraLargeThreshold = 300; // Use enhanced virtual scrolling for more than 300 casino buttons
+		// Hard-disable virtual scrolling by using extremely high thresholds
+		this.virtualScrollThreshold = Number.MAX_SAFE_INTEGER;
+		this.ultraLargeThreshold = Number.MAX_SAFE_INTEGER;
 		this.attachedElements = new Set();
 		this.intersectionObserver = null;
 		this.virtualScrollEnabled = false;
@@ -1300,7 +1300,7 @@ class CasinoButtonsManager {
 	renderVisibleCasinoCards(start, end) {
 		// This would render only visible casino cards
 		// Implementation depends on specific casino card structure
-		console.log(`Rendering casino cards ${start} to ${end}`);
+		/* no-op in production */
 	}
 
 	// Enhanced virtual scrolling for ultra-large casino sections (>300 items)
@@ -1372,11 +1372,7 @@ class CasinoButtonsManager {
 
 	renderVisibleCasinoCardsEnhanced(start, end) {
 		// Enhanced rendering with performance optimizations
-		console.log(
-			`Enhanced rendering casino cards ${start} to ${end} (${
-				end - start
-			} items)`
-		);
+		/* no-op in production */
 	}
 
 	setupScrollThrottling(container) {
@@ -1963,17 +1959,8 @@ class DarkModeManager {
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-	// Safety: ensure body is scrollable on initial load
-	document.body.style.overflow = '';
-	document.body.classList.remove('menu-open', 'modal-open');
-
-	// Force enable scrolling immediately
 	document.documentElement.style.overflow = '';
-	document.body.style.position = '';
-	document.body.style.top = '';
-	document.body.style.left = '';
-	document.body.style.right = '';
-	document.body.style.bottom = '';
+	document.body.classList.remove('menu-open', 'modal-open');
 
 	// Initialize critical managers first (non-blocking for scroll)
 	window.cookieConsentManager = new CookieConsentManager();
@@ -1990,27 +1977,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.animationManager = new AnimationManager();
 		window.scrollRevealManager = new ScrollRevealManager();
 	});
-
-	// Additional safety: ensure scrolling is never blocked
-	setTimeout(() => {
-		document.body.style.overflow = '';
-		document.documentElement.style.overflow = '';
-		document.body.classList.remove('menu-open', 'modal-open');
-	}, 100);
-
-	// Force enable scrolling immediately on mobile
-	if (window.innerWidth <= 768) {
-		document.body.style.overflow = '';
-		document.documentElement.style.overflow = '';
-		// Remove any blocking classes
-		document.body.classList.remove('menu-open', 'modal-open');
-		// Force scroll to be enabled
-		document.body.style.position = '';
-		document.body.style.top = '';
-		document.body.style.left = '';
-		document.body.style.right = '';
-		document.body.style.bottom = '';
-	}
 
 	// ========================================================================
 	// INPUT METHOD DETECTION (Keyboard-only focus outlines)
@@ -2095,16 +2061,7 @@ const mobileScrollSafeguard = () => {
 	if (window.innerWidth > 768) return;
 
 	const unblock = () => {
-		// Reset body and html overflow
-		document.body.style.overflow = '';
-		document.documentElement.style.overflow = '';
-		document.body.style.position = '';
-		document.body.style.top = '';
-		document.body.style.left = '';
-		document.body.style.right = '';
-		document.body.style.bottom = '';
-
-		// Remove any blocking classes
+		document.documentElement.style.overflow = 'auto';
 		document.body.classList.remove('menu-open', 'modal-open');
 	};
 
@@ -2115,6 +2072,82 @@ const mobileScrollSafeguard = () => {
 
 	// Also trigger on menu/modal open/close mutation (optional)
 	const observer = new MutationObserver(unblock);
-	observer.observe(document.body, { attributes: true, attributeFilter: ['class', 'style'] });
+	observer.observe(document.body, {
+		attributes: true,
+		attributeFilter: ['class', 'style'],
+	});
 };
 mobileScrollSafeguard();
+
+// ========================================================================
+// FINAL SCROLL STABILIZER
+// ========================================================================
+window.addEventListener('load', () => {
+	setTimeout(() => {
+		document.documentElement.style.overflow = 'auto';
+		document.body.style.overflow = 'visible';
+		document.body.style.position = '';
+		document.body.removeAttribute('style');
+		document.body.classList.remove('menu-open', 'modal-open');
+	}, 500);
+});
+
+// ========================================================================
+// SINGLE SCROLL ENFORCER (keeps scroll only on <html>)
+// ========================================================================
+(function singleScrollEnforcer() {
+	const enforce = () => {
+		const root = document.documentElement;
+		const body = document.body;
+
+		// Body must never be a scroll container
+		if (getComputedStyle(body).overflow !== 'visible') {
+			body.style.overflow = 'visible';
+		}
+		// Avoid accidental body scroll containers created by libs
+		body.style.overscrollBehavior = 'none';
+		body.style.maxHeight = '';
+		body.style.height = '';
+
+		// Root controls scroll; if nothing open, ensure auto
+		const modalOpen =
+			body.classList.contains('modal-open') ||
+			body.classList.contains('menu-open') ||
+			document.querySelector('.privacy-popup.show') ||
+			document.querySelector('.nav-menu.active');
+		if (!modalOpen && getComputedStyle(root).overflow === 'hidden') {
+			root.style.overflow = 'auto';
+		}
+	};
+
+	// Run now and keep enforced on changes
+	try {
+		enforce();
+	} catch {}
+	const observer = new MutationObserver(enforce);
+	observer.observe(document.body, {
+		attributes: true,
+		attributeFilter: ['class', 'style'],
+	});
+	window.addEventListener('resize', enforce, { passive: true });
+	window.addEventListener('orientationchange', enforce, { passive: true });
+
+	// Light polling only while tab is visible
+	let rafId = 0;
+	const loop = () => {
+		if (document.visibilityState === 'visible') {
+			enforce();
+		}
+		rafId = window.requestAnimationFrame(loop);
+	};
+	rafId = window.requestAnimationFrame(loop);
+
+	window.addEventListener(
+		'beforeunload',
+		() => {
+			if (rafId) cancelAnimationFrame(rafId);
+			observer.disconnect();
+		},
+		{ passive: true }
+	);
+})();

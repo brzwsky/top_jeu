@@ -8,6 +8,14 @@ body {
 	overflow-x: hidden;
 }
 
+/* Prevent dual vertical scrollbars: let the root handle scrolling */
+html {
+	overflow-y: auto !important;
+}
+body {
+	overflow-y: visible !important;
+}
+
 body {
 	display: flex;
 	flex-direction: column;
