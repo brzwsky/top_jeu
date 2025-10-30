@@ -664,6 +664,19 @@ class MobileMenuManager {
 		this.closeBtn = document.querySelector('.close-menu');
 
 		this.init();
+
+		// Add resize handler to reset menu state on desktop
+		window.addEventListener('resize', () => {
+			if (window.innerWidth > 768) {
+				if (this.menu) this.menu.classList.remove('active');
+				if (this.burger) {
+					this.burger.style.display = '';
+					this.burger.setAttribute('aria-expanded', 'false');
+				}
+				document.documentElement.style.overflow = 'auto';
+				document.body.classList.remove('menu-open');
+			}
+		});
 	}
 
 	init() {
