@@ -1560,7 +1560,7 @@ class ScrollRevealManager {
 			clearTimeout(resizeTimeout);
 			resizeTimeout = setTimeout(() => {
 				this.adaptiveConfig = this.getAdaptiveConfig();
-				// Recreate observers with new config if needed
+				
 				this.recreateObservers();
 			}, 250);
 		});
@@ -1584,11 +1584,11 @@ class ScrollRevealManager {
 	}
 
 	setupSectionObservers() {
-		// Create observers for each section with more than threshold elements
+		
 		Object.entries(this.sectionElements).forEach(([sectionName, elements]) => {
 			if (elements.length === 0) return;
 
-			// Use global observer for small sections, separate observers for large ones
+	
 			if (elements.length > this.adaptiveConfig.sectionThreshold) {
 				this.createSectionObserver(sectionName, elements);
 			} else {
@@ -1603,15 +1603,14 @@ class ScrollRevealManager {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						entry.target.classList.add('visible');
-						// Check individual element setting first, then section setting
+					
 						const elementOnce = this.getElementOnce(entry.target);
-						// Only unobserve if it's a "once" animation and element is fully visible
+						
 						if (elementOnce && entry.intersectionRatio >= 0.5) {
 							observer.unobserve(entry.target);
 						}
 					} else if (this.enableScrollUpAnimations) {
-						// Remove visible class when scrolling up to allow re-animation
-						// This works for both once and repeat animations
+						
 						entry.target.classList.remove('visible');
 					}
 				});
@@ -1622,27 +1621,27 @@ class ScrollRevealManager {
 			}
 		);
 
-		// Store observer for cleanup
+	
 		observerRegistry.scrollObservers.set(sectionName, observer);
 
-		// Observe all elements in this section
+		
 		elements.forEach((el) => observer.observe(el));
 	}
 
 	useGlobalObserver(elements) {
-		// Use global observer if it doesn't exist
+		
 		if (!observerRegistry.globalScrollObserver) {
 			observerRegistry.globalScrollObserver = new IntersectionObserver(
 				(entries) => {
 					entries.forEach((entry) => {
 						if (entry.isIntersecting) {
 							entry.target.classList.add('visible');
-							// Only unobserve if element is fully visible (allows scroll-up animations)
+						
 							if (entry.intersectionRatio >= 0.5) {
 								observerRegistry.globalScrollObserver.unobserve(entry.target);
 							}
 						} else if (this.enableScrollUpAnimations) {
-							// Remove visible class when scrolling up to allow re-animation
+					
 							entry.target.classList.remove('visible');
 						}
 					});
@@ -1959,10 +1958,11 @@ class DarkModeManager {
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+	// Immediately reset overflow and body classes
 	document.documentElement.style.overflow = '';
 	document.body.classList.remove('menu-open', 'modal-open');
 
-	// Initialize critical managers first (non-blocking for scroll)
+	// Initialize all managers immediately
 	window.cookieConsentManager = new CookieConsentManager();
 	window.popupManager = new PopupManager();
 	window.mobileMenuManager = new MobileMenuManager();
@@ -1971,7 +1971,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.casinoButtonsManager = new CasinoButtonsManager();
 	window.darkModeManager = new DarkModeManager();
 
-	// Defer non-critical visual managers to idle time to avoid blocking initial scroll
+	// Defer visual managers to idle time (for animation & scroll-reveal)
 	const defer = window.requestIdleCallback || ((cb) => setTimeout(cb, 200));
 	defer(() => {
 		window.animationManager = new AnimationManager();
@@ -2055,99 +2055,17 @@ window.addEventListener('beforeunload', () => {
 });
 
 // ========================================================================
-// MOBILE SCROLL SAFEGUARD (Ensures scroll is never blocked)
+// MOBILE SCROLL SAFEGUARD 
 // ========================================================================
 const mobileScrollSafeguard = () => {
 	if (window.innerWidth > 768) return;
-
 	const unblock = () => {
 		document.documentElement.style.overflow = 'auto';
 		document.body.classList.remove('menu-open', 'modal-open');
 	};
-
-	// Trigger on touch interactions
 	['touchstart', 'touchend', 'touchcancel', 'touchmove'].forEach((evt) => {
 		window.addEventListener(evt, unblock, { passive: true });
-	});
-
-	// Also trigger on menu/modal open/close mutation (optional)
-	const observer = new MutationObserver(unblock);
-	observer.observe(document.body, {
-		attributes: true,
-		attributeFilter: ['class', 'style'],
 	});
 };
 mobileScrollSafeguard();
 
-// ========================================================================
-// FINAL SCROLL STABILIZER
-// ========================================================================
-window.addEventListener('load', () => {
-	setTimeout(() => {
-		document.documentElement.style.overflow = 'auto';
-		document.body.style.overflow = 'visible';
-		document.body.style.position = '';
-		document.body.removeAttribute('style');
-		document.body.classList.remove('menu-open', 'modal-open');
-	}, 500);
-});
-
-// ========================================================================
-// SINGLE SCROLL ENFORCER (keeps scroll only on <html>)
-// ========================================================================
-(function singleScrollEnforcer() {
-	const enforce = () => {
-		const root = document.documentElement;
-		const body = document.body;
-
-		// Body must never be a scroll container
-		if (getComputedStyle(body).overflow !== 'visible') {
-			body.style.overflow = 'visible';
-		}
-		// Avoid accidental body scroll containers created by libs
-		body.style.overscrollBehavior = 'none';
-		body.style.maxHeight = '';
-		body.style.height = '';
-
-		// Root controls scroll; if nothing open, ensure auto
-		const modalOpen =
-			body.classList.contains('modal-open') ||
-			body.classList.contains('menu-open') ||
-			document.querySelector('.privacy-popup.show') ||
-			document.querySelector('.nav-menu.active');
-		if (!modalOpen && getComputedStyle(root).overflow === 'hidden') {
-			root.style.overflow = 'auto';
-		}
-	};
-
-	// Run now and keep enforced on changes
-	try {
-		enforce();
-	} catch {}
-	const observer = new MutationObserver(enforce);
-	observer.observe(document.body, {
-		attributes: true,
-		attributeFilter: ['class', 'style'],
-	});
-	window.addEventListener('resize', enforce, { passive: true });
-	window.addEventListener('orientationchange', enforce, { passive: true });
-
-	// Light polling only while tab is visible
-	let rafId = 0;
-	const loop = () => {
-		if (document.visibilityState === 'visible') {
-			enforce();
-		}
-		rafId = window.requestAnimationFrame(loop);
-	};
-	rafId = window.requestAnimationFrame(loop);
-
-	window.addEventListener(
-		'beforeunload',
-		() => {
-			if (rafId) cancelAnimationFrame(rafId);
-			observer.disconnect();
-		},
-		{ passive: true }
-	);
-})();
