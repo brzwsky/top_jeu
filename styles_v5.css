@@ -1627,7 +1627,7 @@ body.dark .cookie-consent-banner button:hover {
 @media (max-width: 768px) {
 	/* Cookie Consent Banner */
 	.cookie-consent-banner {
-		top: 8px;
+		top: 6.5rem !important;
 		left: 8px;
 		right: 8px;
 		transform: none;
