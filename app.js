@@ -1984,6 +1984,26 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.casinoButtonsManager = new CasinoButtonsManager();
 	window.darkModeManager = new DarkModeManager();
 
+	// ============================================================================
+	// SCROLL TO TOP BUTTON
+	// ============================================================================
+	const scrollBtn = document.getElementById('scrolltop');
+
+	if (scrollBtn) {
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 300) {
+				scrollBtn.classList.add('show');
+			} else {
+				scrollBtn.classList.remove('show');
+			}
+		});
+
+		scrollBtn.addEventListener('click', (e) => {
+			e.preventDefault();
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+	}
+
 	// Defer visual managers to idle time (for animation & scroll-reveal)
 	const defer = window.requestIdleCallback || ((cb) => setTimeout(cb, 200));
 	defer(() => {
