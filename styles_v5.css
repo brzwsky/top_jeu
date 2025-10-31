@@ -197,7 +197,7 @@ body.user-is-tabbing :focus-visible {
 	background: #fff;
 	border: 1px solid #ccc;
 	padding: 1rem;
-	z-index: 1000;
+	z-index: 2000;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -2375,5 +2375,3 @@ body.dark .faq-answer {
 	opacity: 1;
 	transform: translateY(0);
 }
-
-
