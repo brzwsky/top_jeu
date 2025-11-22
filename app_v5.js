@@ -424,8 +424,16 @@ class PopupManager {
 		// Add visual feedback to prevent flicker
 		if (this.visualFeedback) {
 			popupElement.style.opacity = '0';
-			popupElement.style.transition = `opacity ${this.animationDuration}ms ease`;
+			// Animate both opacity and transform for a smooth scale+fade open
+			popupElement.style.transition = `opacity ${this.animationDuration}ms ease, transform ${this.animationDuration}ms ease`;
 			popupElement.style.transform = 'scale(0.95)';
+			// Ensure the backdrop starts transparent during the open animation to avoid
+			// an initial black paint flash on some browsers. We'll restore the backdrop
+			// after the animation completes.
+			popupElement.style.background = 'transparent';
+			popupElement.style.pointerEvents = 'none';
+			// Hint the browser that opacity/transform will change to improve smoothness
+			popupElement.style.willChange = 'opacity, transform';
 		}
 
 		// Add opening delay to prevent conflicts
@@ -444,6 +452,11 @@ class PopupManager {
 				requestAnimationFrame(() => {
 					popupElement.style.opacity = '1';
 					popupElement.style.transform = 'scale(1)';
+					popupElement.style.pointerEvents = 'auto';
+					// Remove the inline transparent backdrop so the CSS background-color
+					// transition (defined in CSS) begins at the same frame as the
+					// content animation — this prevents the two-stage appearance effect.
+					popupElement.style.background = '';
 				});
 			}
 
@@ -462,6 +475,12 @@ class PopupManager {
 					popupElement.style.transition = '';
 					popupElement.style.opacity = '';
 					popupElement.style.transform = '';
+					// Restore the CSS-defined backdrop after the open animation so the
+					// element no longer relies on inline background. This prevents the
+					// inline 'transparent' background from remaining.
+					popupElement.style.background = '';
+					popupElement.style.pointerEvents = '';
+					popupElement.style.willChange = '';
 				}
 			}, this.animationDuration);
 		}, 50); // Small delay to prevent rapid opening
@@ -474,6 +493,10 @@ class PopupManager {
 
 		// Smooth fade-out to prevent flicker
 		if (this.visualFeedback) {
+			// Make backdrop transparent while closing to avoid a lingering dark
+			// background during the scale/opacity animation on some browsers.
+			popupElement.style.background = 'transparent';
+			popupElement.style.pointerEvents = 'none';
 			popupElement.style.transition = `opacity ${this.animationDuration}ms ease, transform ${this.animationDuration}ms ease`;
 			popupElement.style.opacity = '0';
 			popupElement.style.transform = 'scale(0.95)';
@@ -483,6 +506,8 @@ class PopupManager {
 				popupElement.style.transition = '';
 				popupElement.style.opacity = '';
 				popupElement.style.transform = '';
+				popupElement.style.background = '';
+				popupElement.style.pointerEvents = '';
 			}, this.animationDuration);
 		} else {
 			popupElement.classList.add('hidden');
@@ -1562,8 +1587,32 @@ class ScrollRevealManager {
 	init() {
 		if (!this.elements.length) return;
 		this.categorizeElements();
+		// Immediately show elements that are already in viewport to prevent flash
+		this.showVisibleElementsImmediately();
 		this.setupSectionObservers();
 		this.setupResizeListener();
+	}
+
+	// Immediately show elements already in viewport to prevent flash on page load
+	showVisibleElementsImmediately() {
+		// Use a simple viewport check without IntersectionObserver for immediate results
+		const viewportHeight = window.innerHeight;
+		const viewportWidth = window.innerWidth;
+
+		this.elements.forEach((element) => {
+			const rect = element.getBoundingClientRect();
+			// Check if element is in viewport (with small margin for better UX)
+			const isInViewport =
+				rect.top < viewportHeight * 0.9 &&
+				rect.bottom > 0 &&
+				rect.left < viewportWidth &&
+				rect.right > 0;
+
+			if (isInViewport) {
+				// Immediately add visible class to prevent flash
+				element.classList.add('visible');
+			}
+		});
 	}
 
 	// Listen for resize events to update adaptive config
@@ -1573,7 +1622,7 @@ class ScrollRevealManager {
 			clearTimeout(resizeTimeout);
 			resizeTimeout = setTimeout(() => {
 				this.adaptiveConfig = this.getAdaptiveConfig();
-				
+
 				this.recreateObservers();
 			}, 250);
 		});
@@ -1597,11 +1646,9 @@ class ScrollRevealManager {
 	}
 
 	setupSectionObservers() {
-		
 		Object.entries(this.sectionElements).forEach(([sectionName, elements]) => {
 			if (elements.length === 0) return;
 
-	
 			if (elements.length > this.adaptiveConfig.sectionThreshold) {
 				this.createSectionObserver(sectionName, elements);
 			} else {
@@ -1616,14 +1663,13 @@ class ScrollRevealManager {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						entry.target.classList.add('visible');
-					
+
 						const elementOnce = this.getElementOnce(entry.target);
-						
+
 						if (elementOnce && entry.intersectionRatio >= 0.5) {
 							observer.unobserve(entry.target);
 						}
 					} else if (this.enableScrollUpAnimations) {
-						
 						entry.target.classList.remove('visible');
 					}
 				});
@@ -1634,27 +1680,23 @@ class ScrollRevealManager {
 			}
 		);
 
-	
 		observerRegistry.scrollObservers.set(sectionName, observer);
 
-		
 		elements.forEach((el) => observer.observe(el));
 	}
 
 	useGlobalObserver(elements) {
-		
 		if (!observerRegistry.globalScrollObserver) {
 			observerRegistry.globalScrollObserver = new IntersectionObserver(
 				(entries) => {
 					entries.forEach((entry) => {
 						if (entry.isIntersecting) {
 							entry.target.classList.add('visible');
-						
+
 							if (entry.intersectionRatio >= 0.5) {
 								observerRegistry.globalScrollObserver.unobserve(entry.target);
 							}
 						} else if (this.enableScrollUpAnimations) {
-					
 							entry.target.classList.remove('visible');
 						}
 					});
@@ -1736,10 +1778,8 @@ class ScrollRevealManager {
 class DarkModeManager {
 	constructor() {
 		// Cache DOM elements
-		this.toggleCheckbox = document.getElementById('theme-toggle');
-		this.toggleBall = document.querySelector('.toggle-ball');
-		this.themeLabel = document.querySelector('.theme-label');
-		this.themeSwitchLabel = document.querySelector('.theme-switch-label');
+		this.toggleButton = document.getElementById('theme-toggle');
+		this.themeIcon = document.querySelector('.theme-icon');
 		this.body = document.body;
 		this.casinoImages = document.querySelectorAll('.casino-card__image');
 
@@ -1754,7 +1794,7 @@ class DarkModeManager {
 
 	init() {
 		this.loadSavedTheme();
-		if (this.toggleCheckbox && this.body) {
+		if (this.toggleButton && this.body) {
 			this.setupEventListeners();
 			this.setupMutationObserver();
 		}
@@ -1769,17 +1809,18 @@ class DarkModeManager {
 		if (savedTheme) {
 			this.body.classList.add(savedTheme);
 			isDark = savedTheme === 'dark';
-			if (this.toggleCheckbox) this.toggleCheckbox.checked = isDark;
+			this.updateToggleButtonState(isDark);
 		} else {
 			const prefersDark = window.matchMedia(
 				'(prefers-color-scheme: dark)'
 			).matches;
 			this.body.classList.add(prefersDark ? 'dark' : 'light');
 			isDark = prefersDark;
-			if (this.toggleCheckbox) this.toggleCheckbox.checked = prefersDark;
+			this.updateToggleButtonState(isDark);
 		}
 
 		this.updateToggleUI(isDark);
+		this.updateToggleButtonState(isDark);
 		this.updateLogos();
 
 		// Listen for system theme changes
@@ -1793,14 +1834,14 @@ class DarkModeManager {
 					this.body.classList.toggle('light', !isDark);
 					this.updateToggleUI(isDark);
 					this.updateLogos();
-					if (this.toggleCheckbox) this.toggleCheckbox.checked = isDark;
+					this.updateToggleButtonState(isDark);
 				}
 			});
 	}
 
 	setupEventListeners() {
-		if (!this.toggleCheckbox) return;
-		this.toggleCheckbox.addEventListener('change', () => this.toggleTheme());
+		if (!this.toggleButton) return;
+		this.toggleButton.addEventListener('click', () => this.toggleTheme());
 	}
 
 	// Setup MutationObserver to watch for dynamically added casino cards
@@ -1914,22 +1955,34 @@ class DarkModeManager {
 		this.body.classList.toggle('dark', isDark);
 		this.body.classList.toggle('light', !isDark);
 		this.updateToggleUI(isDark);
+		this.updateToggleButtonState(isDark);
 		localStorage.setItem('theme', isDark ? 'dark' : 'light');
 		this.updateLogos();
 	}
 
 	updateToggleUI(isDark) {
-		if (this.toggleBall) {
-			this.toggleBall.textContent = isDark ? '🌙' : '☀️';
-			this.toggleBall.style.transition =
-				'transform 0.3s ease, background 0.3s ease, color 0.3s ease';
+		// Update icon in button
+		// Moon for light theme, Sun for dark theme
+		if (this.themeIcon) {
+			this.themeIcon.textContent = isDark ? '☀️' : '🌙';
 		}
-		if (this.themeLabel) {
-			this.themeLabel.style.color = isDark ? '#fff' : '#000';
-			this.themeLabel.style.transition = 'color 0.3s ease';
-		}
-		if (this.themeSwitchLabel) {
-			this.themeSwitchLabel.style.transition = 'background 0.3s ease';
+	}
+
+	updateToggleButtonState(isDark) {
+		// Add/remove active class for glow effect
+		// Active when dark mode is ON (sun icon glows white)
+		// Inactive when light mode is ON (moon icon glows dark)
+		if (this.toggleButton) {
+			if (isDark) {
+				// Dark theme is active - sun glows white
+				this.toggleButton.classList.add('active');
+				this.toggleButton.classList.add('dark-mode');
+			} else {
+				// Light theme is active - moon glows dark
+				this.toggleButton.classList.remove('active');
+				this.toggleButton.classList.remove('dark-mode');
+				this.toggleButton.classList.add('light-mode');
+			}
 		}
 	}
 
@@ -1985,6 +2038,42 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.darkModeManager = new DarkModeManager();
 
 	// ============================================================================
+	// STICKY HEADER - Add scrolled class when scrolling
+	// ============================================================================
+	const header = document.querySelector('.header');
+
+	if (header) {
+		let lastScrollY = window.scrollY;
+		let ticking = false;
+
+		const updateHeader = () => {
+			const currentScrollY = window.scrollY;
+
+			// Add scrolled class when scrolled down more than 10px
+			if (currentScrollY > 10) {
+				header.classList.add('scrolled');
+			} else {
+				header.classList.remove('scrolled');
+			}
+
+			lastScrollY = currentScrollY;
+			ticking = false;
+		};
+
+		const onScroll = () => {
+			if (!ticking) {
+				window.requestAnimationFrame(updateHeader);
+				ticking = true;
+			}
+		};
+
+		window.addEventListener('scroll', onScroll, { passive: true });
+
+		// Check initial scroll position
+		updateHeader();
+	}
+
+	// ============================================================================
 	// SCROLL TO TOP BUTTON
 	// ============================================================================
 	const scrollBtn = document.getElementById('scrolltop');
@@ -2002,13 +2091,37 @@ document.addEventListener('DOMContentLoaded', () => {
 			e.preventDefault();
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		});
+
+		// Reset background on mouseup to ensure it returns to transparent
+		scrollBtn.addEventListener('mouseup', (e) => {
+			// Only reset if mouse is not hovering
+			setTimeout(() => {
+				if (!scrollBtn.matches(':hover')) {
+					scrollBtn.style.backgroundColor = '';
+				}
+			}, 50);
+		});
+
+		// Reset background when mouse leaves button
+		scrollBtn.addEventListener('mouseleave', () => {
+			scrollBtn.style.backgroundColor = '';
+		});
+
+		// Reset background after touch/click ends
+		scrollBtn.addEventListener('touchend', () => {
+			setTimeout(() => {
+				scrollBtn.style.backgroundColor = '';
+			}, 100);
+		});
 	}
 
-	// Defer visual managers to idle time (for animation & scroll-reveal)
+	// Initialize scroll reveal immediately to prevent flash of invisible content
+	// But defer animation manager to idle time
+	window.scrollRevealManager = new ScrollRevealManager();
+
 	const defer = window.requestIdleCallback || ((cb) => setTimeout(cb, 200));
 	defer(() => {
 		window.animationManager = new AnimationManager();
-		window.scrollRevealManager = new ScrollRevealManager();
 	});
 
 	// ========================================================================
@@ -2088,7 +2201,7 @@ window.addEventListener('beforeunload', () => {
 });
 
 // ========================================================================
-// MOBILE SCROLL SAFEGUARD 
+// MOBILE SCROLL SAFEGUARD
 // ========================================================================
 const mobileScrollSafeguard = () => {
 	if (window.innerWidth > 768) return;
@@ -2101,4 +2214,3 @@ const mobileScrollSafeguard = () => {
 	});
 };
 mobileScrollSafeguard();
-

@@ -563,9 +563,12 @@
 					>
 						<img
 							class="header__logo"
-							src="img/card-queen-logo.webp"
+							src="img/logo-queen-rad.webp"
 							alt="Logo principal de TopJeu, représentant une reine de carte à jouer"
-							loading="lazy"
+							loading="eager"
+							width="160"
+							height="60"
+							style="width:160px;height:60px;object-fit:contain;display:block;"
 						/>
 					</a>
 					<div class="header__logo-text fade-in">
@@ -598,7 +601,10 @@
 							class="youtube-icon"
 							src="img/youtube.webp"
 							alt="Icône YouTube TopJeu"
-							loading="lazy"
+							loading="eager"
+							width="25"
+							height="25"
+							style="width: 25px; height: 25px; object-fit: contain"
 						/>
 						<span>YouTube</span>
 					</a>
@@ -622,23 +628,14 @@
 					>
 				</nav>
 				<div class="theme-switch-wrapper fade-in">
-					<label class="theme-switch-container">
-						<!-- Label next to toggle -->
-						<span class="theme-label">Theme</span>
-
-						<!-- Hidden checkbox for toggle -->
-						<input
-							type="checkbox"
-							id="theme-toggle"
-							class="theme-switch"
-							aria-label="Toggle dark/light mode"
-						/>
-
-						<!-- Toggle track with ball -->
-						<span class="theme-switch-label">
-							<span class="toggle-ball">🌙</span>
-						</span>
-					</label>
+					<button
+						type="button"
+						id="theme-toggle"
+						class="theme-toggle-button"
+						aria-label="Toggle dark/light mode"
+					>
+						<span class="theme-icon">🌙</span>
+					</button>
 				</div>
 			</div>
 		</header>
