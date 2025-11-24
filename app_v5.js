@@ -132,19 +132,24 @@ class CookieConsentManager {
 	setupAnalyticsBanner() {
 		if (!this.analyticsBanner || !this.analyticsAccept) return;
 
+		this.analyticsBanner.classList.remove('fade-in');
+		this.analyticsBanner.classList.remove('hidden');
+		this.analyticsBanner.setAttribute('aria-hidden', 'true');
+
 		const analyticsChoice = localStorage.getItem(this.analyticsConsentKey);
 
 		if (analyticsChoice === 'accepted') {
-			this.analyticsBanner.style.display = 'none';
+			this.hideAnalyticsBanner();
 		} else {
+			this.analyticsBanner.style.display = '';
 			setTimeout(() => {
-				this.analyticsBanner.classList.add('show');
+				this.showAnalyticsBanner();
 			}, 2000);
 		}
 
 		this.analyticsAccept.addEventListener('click', () => {
 			localStorage.setItem(this.analyticsConsentKey, 'accepted');
-			this.analyticsBanner.style.display = 'none';
+			this.hideAnalyticsBanner();
 
 			// Update gtag consent
 			if (typeof gtag !== 'undefined') {
@@ -154,6 +159,24 @@ class CookieConsentManager {
 				});
 			}
 		});
+	}
+
+	showAnalyticsBanner() {
+		if (!this.analyticsBanner) return;
+
+		this.analyticsBanner.style.display = '';
+		this.analyticsBanner.classList.add('show');
+		this.analyticsBanner.classList.add('visible');
+		this.analyticsBanner.setAttribute('aria-hidden', 'false');
+	}
+
+	hideAnalyticsBanner() {
+		if (!this.analyticsBanner) return;
+
+		this.analyticsBanner.classList.remove('show');
+		this.analyticsBanner.classList.remove('visible');
+		this.analyticsBanner.setAttribute('aria-hidden', 'true');
+		this.analyticsBanner.style.display = 'none';
 	}
 
 	resetAndShowBanner() {
@@ -1175,6 +1198,23 @@ class FAQManager {
 			this.intersectionObserver = null;
 		}
 		this.attachedElements.clear();
+
+		if (this.mostVisibleObserver) {
+			this.mostVisibleObserver.disconnect();
+			this.mostVisibleObserver = null;
+		}
+
+		if (this.mostVisibleMutationObserver) {
+			this.mostVisibleMutationObserver.disconnect();
+			this.mostVisibleMutationObserver = null;
+		}
+
+		if (this.mostVisibleResizeHandler) {
+			window.removeEventListener('resize', this.mostVisibleResizeHandler, {
+				passive: true,
+			});
+			this.mostVisibleResizeHandler = null;
+		}
 	}
 }
 
@@ -1202,6 +1242,14 @@ class CasinoButtonsManager {
 
 	init() {
 		this.setupCasinoButtons();
+
+		// On mobile we enable the "most-visible" highlighting behavior which
+		// highlights the single card that occupies the largest visible area.
+		if (typeof window !== 'undefined' && window.matchMedia) {
+			if (window.matchMedia('(max-width: 767px)').matches) {
+				this.setupMostVisibleHighlighting();
+			}
+		}
 		if (this.casinoButtons.length > this.ultraLargeThreshold) {
 			this.setupEnhancedVirtualScrolling();
 		} else if (this.casinoButtons.length > this.virtualScrollThreshold) {
@@ -1277,6 +1325,128 @@ class CasinoButtonsManager {
 	attachCasinoEvents(casinoCard) {
 		// Attach specific events to individual casino card if needed
 		// This is called when the casino card comes into view
+	}
+
+	// Mobile-only: observe casino cards and add `most-visible` class to the one
+	// with the largest visible intersection ratio. This keeps a single card
+	// highlighted without any press/selection animation.
+	setupMostVisibleHighlighting() {
+		// Helper to (re)collect cards and observe them
+		const collectCards = () => {
+			const cards = Array.from(
+				document.querySelectorAll('.casino-card, .casino-card--top, .top-card')
+			).filter(Boolean);
+			if (!cards.length) return;
+
+			// reset ratios map
+			if (this.mostVisibleRatios) this.mostVisibleRatios.clear();
+			cards.forEach((c) => {
+				if (!this.mostVisibleObserved || !this.mostVisibleObserved.has(c)) {
+					this.mostVisibleObserved = this.mostVisibleObserved || new Set();
+					this.mostVisibleObserved.add(c);
+					this.mostVisibleObserver.observe(c);
+				}
+				this.mostVisibleRatios.set(c, 0);
+			});
+		};
+
+		// Map of latest intersection ratios
+		this.mostVisibleRatios = new Map();
+		this.mostVisibleObserved = new Set();
+		let mostVisibleCard = null;
+
+		// Adaptive throttle: weaker devices get a longer minimum interval
+		const hwConcurrency = navigator.hardwareConcurrency || 4;
+		const saveData = navigator.connection && navigator.connection.saveData;
+		const defaultInterval = hwConcurrency <= 2 || saveData ? 200 : 100;
+		this.mostVisibleMinInterval = defaultInterval;
+		this.mostVisibleScheduled = false;
+
+		const thresholds = [];
+		for (let i = 0; i <= 100; i += 5) thresholds.push(i / 100);
+
+		// applyMostVisible: computes the current max and updates classes
+		const applyMostVisible = () => {
+			// compute the most-visible card and update classes
+			let maxRatio = 0;
+			let maxEl = null;
+			this.mostVisibleRatios.forEach((r, el) => {
+				if (r > maxRatio) {
+					maxRatio = r;
+					maxEl = el;
+				}
+			});
+
+			if (maxEl !== mostVisibleCard) {
+				if (mostVisibleCard) {
+					mostVisibleCard.classList.remove('most-visible');
+					mostVisibleCard.classList.remove('primary-most-visible');
+				}
+				mostVisibleCard = maxEl;
+				if (mostVisibleCard) mostVisibleCard.classList.add('most-visible');
+			}
+		};
+
+		// schedule an update instead of updating on every IO callback
+		const scheduleMostVisibleUpdate = () => {
+			if (this.mostVisibleScheduled) return;
+			this.mostVisibleScheduled = true;
+			setTimeout(() => {
+				applyMostVisible();
+				this.mostVisibleScheduled = false;
+			}, this.mostVisibleMinInterval);
+		};
+
+		this.mostVisibleObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					const el = entry.target;
+					this.mostVisibleRatios.set(el, entry.intersectionRatio || 0);
+				});
+				// Defer actual class updates to throttled scheduler
+				scheduleMostVisibleUpdate();
+			},
+			{ threshold: thresholds }
+		);
+
+		// Observe dynamic additions to the casino container if present
+		const container =
+			document.querySelector('.casino-cards-container') || document;
+		this.mostVisibleMutationObserver = new MutationObserver(() => {
+			collectCards();
+		});
+		if (container && container.nodeType === 1) {
+			this.mostVisibleMutationObserver.observe(container, {
+				childList: true,
+				subtree: true,
+			});
+		}
+
+		// initial collect & observe
+		collectCards();
+
+		// keep a resize handler to enable/disable observer when viewport changes
+		this.mostVisibleResizeHandler = () => {
+			if (window.matchMedia('(max-width: 1024px)').matches) {
+				// ensure observed cards are collected
+				collectCards();
+			} else {
+				if (this.mostVisibleObserver) {
+					this.mostVisibleObserver.disconnect();
+				}
+				if (mostVisibleCard) {
+					mostVisibleCard.classList.remove('most-visible');
+					mostVisibleCard = null;
+				}
+			}
+		};
+		window.addEventListener('resize', this.mostVisibleResizeHandler, {
+			passive: true,
+		});
+
+		window.addEventListener('resize', this.mostVisibleResizeHandler, {
+			passive: true,
+		});
 	}
 
 	// Virtual scrolling setup for very large casino sections
@@ -1463,9 +1633,22 @@ class AnimationManager {
 
 		// Rotate once on initial load
 		this.headerLogo.classList.add('rotate-once');
-		this.headerLogo.addEventListener('mouseenter', () => {
+
+		// Rotate on click (or keyboard activate) — replace hover behavior with explicit activation
+		const runLogoRotate = (e) => {
+			// prevent if reduced-motion is active
+			if (this.reduceMotion) return;
+			// re-trigger animation by adding the class; animationend handler will remove it
 			this.headerLogo.classList.add('rotate-once');
+			// ensure focus remains for keyboard users
+			if (e && e.type === 'keydown') e.preventDefault();
+		};
+
+		this.headerLogo.addEventListener('click', runLogoRotate);
+		this.headerLogo.addEventListener('keydown', (e) => {
+			if (e.key === 'Enter' || e.key === ' ') runLogoRotate(e);
 		});
+
 		this.headerLogo.addEventListener('animationend', () => {
 			this.headerLogo.classList.remove('rotate-once');
 		});
@@ -2167,6 +2350,39 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.addEventListener('pointerdown', disableKeyboardMode, {
 			passive: true,
 		});
+	})();
+
+	// Prevent touch / pointer taps from producing persistent focus on cards.
+	// Selection should be handled by scroll (IntersectionObserver). Keep keyboard
+	// focus intact for accessibility (body.user-is-tabbing is set on keyboard input).
+	(function preventCardFocusOnTouch() {
+		if (typeof document === 'undefined') return;
+		// Capture focusin events so we can blur programmatically when the user
+		// is interacting via touch/pointer rather than keyboard.
+		document.addEventListener(
+			'focusin',
+			function (e) {
+				try {
+					if (document.body.classList.contains('user-is-tabbing')) return;
+					const card =
+						e.target && e.target.closest && e.target.closest('.casino-card');
+					if (card) {
+						// Remove focus obtained by touch so :focus-within styles do not apply.
+						if (e.target && typeof e.target.blur === 'function') {
+							e.target.blur();
+						} else if (
+							document.activeElement &&
+							typeof document.activeElement.blur === 'function'
+						) {
+							document.activeElement.blur();
+						}
+					}
+				} catch (err) {
+					// Fail silently; this is a non-critical UX improvement
+				}
+			},
+			true
+		);
 	})();
 });
 

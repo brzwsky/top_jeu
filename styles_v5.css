@@ -320,10 +320,16 @@ body.user-is-tabbing :focus-visible {
 .cookie-consent-banner button {
 	margin-left: 1rem;
 	padding: 0.5rem 1rem;
-	background: rgba(255, 255, 255, 0.06);
-	color: #fff;
-	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.88);
+	color: #000;
+	border: 1px solid rgba(0, 0, 0, 0.12);
 	cursor: pointer;
+}
+
+body:not(.dark) #accept-analytics-btn {
+	color: #000 !important;
+	background: rgba(255, 255, 255, 0.9) !important;
+	border-color: rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Dark Mode for cookie consent banner */
@@ -746,6 +752,7 @@ body:not(.dark) #cookie-title {
 	z-index: 10;
 	background: rgba(255, 255, 255, 0.7);
 	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 0 18px rgba(179, 0, 0, 0.32), 0 10px 24px rgba(0, 0, 0, 0.16);
 }
 
 .casino-card--top::before {
@@ -848,6 +855,7 @@ body:not(.dark) #cookie-title {
 	z-index: 10;
 	background: rgba(255, 255, 255, 0.7);
 	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 0 18px rgba(179, 0, 0, 0.32), 0 10px 24px rgba(0, 0, 0, 0.16);
 }
 
 .casino-card--top::before {
@@ -1297,12 +1305,13 @@ body:not(.dark) #cookie-title {
 }
 
 .cookie-banner__btn--accept {
-	background: #0f1626;
-	color: #fff;
+	background: #ffe0e0;
+	color: #000;
+	border: 1px solid rgba(230, 0, 0, 0.28);
 }
 
 .cookie-banner__btn--accept:hover {
-	background: #1e3f73;
+	background: #ffc7c7;
 	transform: translateY(-1px);
 }
 
@@ -1356,7 +1365,7 @@ body:not(.dark) #cookie-title {
 	justify-content: center;
 	width: 100%;
 	height: 100%;
-	font-size: 24px;
+	font-size: 30px;
 	line-height: 1;
 	color: #fff; /* ensure contrast on glass background */
 	text-align: center;
@@ -1372,8 +1381,8 @@ body:not(.dark) #cookie-title {
 	height: 100% !important;
 	line-height: 1 !important;
 	margin: 0 !important;
-	transform: translateX(
-		-2px
+	transform: translateY(
+		1px
 	) !important; /* nudge slightly left (adjusted +1px) */
 }
 
@@ -1710,8 +1719,13 @@ body:not(.dark) #cookie-title {
 
 .popup__content,
 .privacy-popup__content {
-	/* Match header glass (liquid glass) effect */
-	background: rgba(0, 0, 0, 0.18);
+	/* Glass effect similar to header, but with slightly denser tint to avoid flicker */
+	background: rgba(12, 14, 24, 0.48);
+	background-image: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.08),
+		rgba(255, 255, 255, 0)
+	);
 	backdrop-filter: blur(20px) saturate(180%);
 	-webkit-backdrop-filter: blur(20px) saturate(180%);
 	border: 1px solid rgba(255, 255, 255, 0.06);
@@ -2558,7 +2572,7 @@ body:not(.dark) #cookie-title {
 		bottom: 1.5rem;
 		right: 1.5rem;
 		font-size: 1rem;
-		padding: 0.4rem 0.6rem;
+		padding: 0.1rem 0.1rem;
 		width: 40px;
 		height: 40px;
 		min-width: 40px;
@@ -2855,6 +2869,12 @@ body.dark .casino-card--top {
 		box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Give the top card a constant red glow in dark mode as well */
+body.dark .casino-card--top,
+body.dark .top-card {
+	box-shadow: 0 0 20px rgba(179, 0, 0, 0.42), 0 12px 28px rgba(0, 0, 0, 0.32);
+}
+
 /* Dark mode hover - red glow effect and bounce (apply only to top card variants) */
 body.dark .top-card:hover,
 body.dark .casino-card--top:hover {
@@ -3144,6 +3164,10 @@ body.dark .faq-answer {
 	transform: translateY(0);
 }
 
+.casino-cards.fade-in.visible {
+	margin-top: 2rem;
+}
+
 /* Prevent flash of invisible content - immediately show elements in viewport on page load */
 .fade-in:not(.visible) {
 	/* Reduce flash by checking if element is likely in viewport */
@@ -3160,6 +3184,7 @@ body.dark .faq-answer {
 .top-card,
 .casino-card--top {
 	transition: box-shadow 180ms ease, transform 180ms ease;
+	box-shadow: 0 0 18px rgba(179, 0, 0, 0.32), 0 10px 24px rgba(0, 0, 0, 0.16);
 }
 
 .top-card:hover,
@@ -3225,7 +3250,24 @@ body.dark .faq-answer {
 
 	/* Ensure crown icon animation is disabled on small screens */
 	.casino-card__icon {
-		animation: none !important;
+		/* keep animation active but slightly tone down the glow */
 		filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4));
+	}
+
+	/* Automatically highlight the card that is most visible in viewport */
+	body:not(.dark) .casino-card.most-visible,
+	body:not(.dark) .casino-card--top.most-visible,
+	body:not(.dark) .top-card.most-visible {
+		transform: translateY(-6px) !important;
+		box-shadow: 0 12px 30px rgba(40, 40, 40, 0.22),
+			0 0 18px rgba(40, 40, 40, 0.18);
+	}
+
+	body.dark .casino-card.most-visible,
+	body.dark .casino-card--top.most-visible,
+	body.dark .top-card.most-visible {
+		transform: translateY(-6px) scale(1.01) !important;
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32),
+			0 0 20px rgba(255, 215, 0, 0.45), 0 0 32px rgba(255, 215, 0, 0.28);
 	}
 }
