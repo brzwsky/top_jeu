@@ -469,6 +469,9 @@ class PopupManager {
 			this.closeMenu();
 			this.lastFocusedElement = document.activeElement;
 			popupElement.classList.remove('hidden');
+			if (popupElement === this.popup && window.aboutCarousel) {
+				window.aboutCarousel.reset();
+			}
 
 			// Smooth fade-in to prevent flicker
 			if (this.visualFeedback) {
@@ -697,6 +700,296 @@ class PopupManager {
 				activeModal.style.animation = '';
 			}, 300);
 		}
+	}
+}
+
+// ============================================================================
+// ABOUT POPUP TESTIMONIAL CAROUSEL
+// ============================================================================
+
+class AboutCarousel {
+	constructor() {
+		this.root = document.querySelector('[data-carousel]');
+		this.track = this.root?.querySelector('[data-carousel-track]') || null;
+		this.slides = this.track
+			? Array.from(this.track.querySelectorAll('[data-carousel-slide]'))
+			: [];
+		this.viewport = this.root?.querySelector('.testimonial-carousel__viewport');
+		this.prevBtn = this.root?.querySelector('[data-carousel-prev]') || null;
+		this.nextBtn = this.root?.querySelector('[data-carousel-next]') || null;
+		this.dotsContainer =
+			this.root?.querySelector('[data-carousel-dots]') || null;
+		this.dots = [];
+		this.currentIndex = 0;
+		this.touchStartX = 0;
+		this.touchDeltaX = 0;
+		this.isTouching = false;
+		this.autoAdvanceTimer = null;
+		this.autoAdvanceDelay = 5000;
+
+		if (!this.root || !this.track || this.slides.length === 0) return;
+
+		this.root.setAttribute('role', 'region');
+		this.root.setAttribute('aria-live', 'polite');
+		this.root.setAttribute('aria-roledescription', 'carousel');
+
+		this.handleClick = this.handleClick.bind(this);
+		this.handleKeydown = this.handleKeydown.bind(this);
+		this.handleTouchStart = this.handleTouchStart.bind(this);
+		this.handleTouchMove = this.handleTouchMove.bind(this);
+		this.handleTouchEnd = this.handleTouchEnd.bind(this);
+		this.handleResize = this.handleResize.bind(this);
+
+		this.enhanceSlides();
+		this.setupDots();
+		this.update();
+		this.deferHeight();
+		this.root.addEventListener('click', this.handleClick);
+		this.root.addEventListener('keydown', this.handleKeydown);
+		this.root.addEventListener('touchstart', this.handleTouchStart, {
+			passive: true,
+		});
+		this.root.addEventListener('touchmove', this.handleTouchMove, {
+			passive: true,
+		});
+		this.root.addEventListener('touchend', this.handleTouchEnd);
+		window.addEventListener('resize', this.handleResize, { passive: true });
+		this.startAutoAdvance();
+	}
+
+	enhanceSlides() {
+		const total = this.slides.length;
+		this.slides.forEach((slide, index) => {
+			if (!slide.id) {
+				slide.id = `testimonial-slide-${index + 1}`;
+			}
+			slide.setAttribute('role', 'group');
+			slide.setAttribute('aria-label', `Témoignage ${index + 1} sur ${total}`);
+			slide.setAttribute('aria-roledescription', 'slide');
+		});
+
+		if (this.slides.length <= 1) {
+			this.toggleControls(false);
+		}
+	}
+
+	toggleControls(visible) {
+		const display = visible ? '' : 'none';
+		if (this.prevBtn) this.prevBtn.style.display = display;
+		if (this.nextBtn) this.nextBtn.style.display = display;
+		if (this.dotsContainer)
+			this.dotsContainer.style.display = visible ? '' : 'none';
+	}
+
+	setupDots() {
+		if (!this.dotsContainer || this.slides.length <= 1) return;
+
+		this.dotsContainer.innerHTML = '';
+		this.dots = this.slides.map((slide, index) => {
+			const dot = document.createElement('button');
+			dot.type = 'button';
+			dot.className = 'testimonial-carousel__dot';
+			dot.setAttribute('data-carousel-dot', String(index));
+			dot.setAttribute('role', 'tab');
+			dot.setAttribute('aria-controls', slide.id);
+			dot.setAttribute('aria-label', `Aller au témoignage ${index + 1}`);
+			dot.setAttribute('tabindex', index === 0 ? '0' : '-1');
+			this.dotsContainer.appendChild(dot);
+			return dot;
+		});
+
+		this.dotsContainer.setAttribute('role', 'tablist');
+		this.dotsContainer.setAttribute('aria-label', 'Pagination des témoignages');
+	}
+
+	update() {
+		this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+		this.slides.forEach((slide, index) => {
+			const isActive = index === this.currentIndex;
+			slide.setAttribute('aria-hidden', String(!isActive));
+			slide.setAttribute('tabindex', isActive ? '0' : '-1');
+			slide.classList.toggle('testimonial-card--active', isActive);
+		});
+
+		this.dots.forEach((dot, index) => {
+			const isActive = index === this.currentIndex;
+			dot.setAttribute('aria-selected', String(isActive));
+			dot.setAttribute('tabindex', isActive ? '0' : '-1');
+		});
+	}
+
+	deferHeight() {
+		if (!this.viewport) return;
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				this.updateHeight();
+			});
+		});
+	}
+
+	updateHeight() {
+		if (!this.viewport) return;
+		const activeSlide = this.slides[this.currentIndex];
+		if (!activeSlide) return;
+		if (!this.viewport.offsetParent) {
+			this.viewport.style.height = '';
+			return;
+		}
+		const height = activeSlide.offsetHeight;
+		if (height) {
+			this.viewport.style.height = `${height}px`;
+		}
+	}
+
+	showSlide(index, source = 'button') {
+		if (this.slides.length === 0) return;
+		const total = this.slides.length;
+		const nextIndex = (index + total) % total;
+		this.currentIndex = nextIndex;
+		this.update();
+		this.deferHeight();
+		if (source === 'dot') {
+			const activeDot = this.dots[this.currentIndex];
+			if (activeDot) activeDot.focus();
+		}
+	}
+
+	reset() {
+		if (!this.root) return;
+		this.currentIndex = 0;
+		this.update();
+		this.deferHeight();
+		this.restartAutoAdvance();
+	}
+
+	refresh() {
+		this.update();
+		this.deferHeight();
+		this.restartAutoAdvance();
+	}
+
+	startAutoAdvance() {
+		if (this.slides.length <= 1) return;
+		this.stopAutoAdvance();
+		this.autoAdvanceTimer = window.setInterval(() => {
+			if (!this.root || this.isTouching) return;
+			if (this.root.offsetParent === null) return;
+			this.showSlide(this.currentIndex + 1, 'auto');
+		}, this.autoAdvanceDelay);
+	}
+
+	stopAutoAdvance() {
+		if (this.autoAdvanceTimer) {
+			clearInterval(this.autoAdvanceTimer);
+			this.autoAdvanceTimer = null;
+		}
+	}
+
+	restartAutoAdvance() {
+		this.stopAutoAdvance();
+		this.startAutoAdvance();
+	}
+
+	handleClick(event) {
+		const target = event.target;
+		if (!target) return;
+		if (target.closest('[data-carousel-prev]')) {
+			event.preventDefault();
+			this.showSlide(this.currentIndex - 1);
+			this.restartAutoAdvance();
+			return;
+		}
+		if (target.closest('[data-carousel-next]')) {
+			event.preventDefault();
+			this.showSlide(this.currentIndex + 1);
+			this.restartAutoAdvance();
+			return;
+		}
+		const dot = target.closest('[data-carousel-dot]');
+		if (dot && typeof dot.dataset.carouselDot !== 'undefined') {
+			event.preventDefault();
+			const nextIndex = parseInt(dot.dataset.carouselDot, 10);
+			if (!Number.isNaN(nextIndex)) {
+				this.showSlide(nextIndex, 'dot');
+				this.restartAutoAdvance();
+			}
+		}
+	}
+
+	handleKeydown(event) {
+		if (!this.root.contains(event.target)) return;
+		switch (event.key) {
+			case 'ArrowLeft':
+				event.preventDefault();
+				this.showSlide(this.currentIndex - 1, 'keyboard');
+				this.restartAutoAdvance();
+				break;
+			case 'ArrowRight':
+				event.preventDefault();
+				this.showSlide(this.currentIndex + 1, 'keyboard');
+				this.restartAutoAdvance();
+				break;
+			case 'Home':
+				event.preventDefault();
+				this.showSlide(0, 'keyboard');
+				this.restartAutoAdvance();
+				break;
+			case 'End':
+				event.preventDefault();
+				this.showSlide(this.slides.length - 1, 'keyboard');
+				this.restartAutoAdvance();
+				break;
+			default:
+				break;
+		}
+	}
+
+	handleTouchStart(event) {
+		if (!event.changedTouches || event.changedTouches.length === 0) return;
+		this.isTouching = true;
+		this.touchStartX = event.changedTouches[0].clientX;
+		this.touchDeltaX = 0;
+		this.stopAutoAdvance();
+	}
+
+	handleTouchMove(event) {
+		if (
+			!this.isTouching ||
+			!event.changedTouches ||
+			event.changedTouches.length === 0
+		)
+			return;
+		this.touchDeltaX = event.changedTouches[0].clientX - this.touchStartX;
+	}
+
+	handleTouchEnd() {
+		if (!this.isTouching) return;
+		if (Math.abs(this.touchDeltaX) > 40) {
+			if (this.touchDeltaX > 0) {
+				this.showSlide(this.currentIndex - 1, 'swipe');
+			} else {
+				this.showSlide(this.currentIndex + 1, 'swipe');
+			}
+		}
+		this.isTouching = false;
+		this.touchStartX = 0;
+		this.touchDeltaX = 0;
+		this.restartAutoAdvance();
+	}
+
+	handleResize() {
+		this.deferHeight();
+	}
+
+	cleanup() {
+		if (!this.root) return;
+		this.root.removeEventListener('click', this.handleClick);
+		this.root.removeEventListener('keydown', this.handleKeydown);
+		this.root.removeEventListener('touchstart', this.handleTouchStart);
+		this.root.removeEventListener('touchmove', this.handleTouchMove);
+		this.root.removeEventListener('touchend', this.handleTouchEnd);
+		window.removeEventListener('resize', this.handleResize);
+		this.stopAutoAdvance();
 	}
 }
 
@@ -2219,6 +2512,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.faqManager = new FAQManager();
 	window.casinoButtonsManager = new CasinoButtonsManager();
 	window.darkModeManager = new DarkModeManager();
+	window.aboutCarousel = new AboutCarousel();
 
 	// ============================================================================
 	// STICKY HEADER - Add scrolled class when scrolling

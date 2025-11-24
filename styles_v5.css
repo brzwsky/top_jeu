@@ -8,40 +8,36 @@ html {
 	box-sizing: border-box;
 }
 
-/* Strong final override: ensure popup text is white in light mode on desktop
-   This is placed at the end of the stylesheet so it takes precedence over
-   earlier conflicting rules. Buttons, close controls and form fields are
-   excluded so their intended colors remain intact. */
-@media (min-width: 1024px) {
-	body:not(.dark) .popup__content,
-	body:not(.dark) .privacy-popup__content {
-		color: #fff !important;
-	}
+/* Strong final override: ensure popup text is white in light mode across viewports
+   This sits at the end for precedence; interactive controls keep specific colors. */
+body:not(.dark) .popup__content,
+body:not(.dark) .privacy-popup__content {
+	color: #fff !important;
+}
 
-	/* Force white for most text children, but exclude interactive controls */
-	body:not(.dark)
-		.popup__content
-		*:not(button):not(.popup__button):not(.popup__close):not(input):not(
-			textarea
-		):not(select),
-	body:not(.dark)
-		.privacy-popup__content
-		*:not(button):not(.popup__button):not(.popup__close):not(input):not(
-			textarea
-		):not(select) {
-		color: #fff !important;
-	}
+/* Force white for most text children, but exclude interactive controls */
+body:not(.dark)
+	.popup__content
+	*:not(button):not(.popup__button):not(.popup__close):not(input):not(
+		textarea
+	):not(select),
+body:not(.dark)
+	.privacy-popup__content
+	*:not(button):not(.popup__button):not(.popup__close):not(input):not(
+		textarea
+	):not(select) {
+	color: #fff !important;
+}
 
-	/* Restore semantic colors for controls */
-	body:not(.dark) .popup__content .popup__close,
-	body:not(.dark) .privacy-popup__content .popup__close {
-		color: #b30000 !important;
-	}
+/* Restore semantic colors for controls */
+body:not(.dark) .popup__content .popup__close,
+body:not(.dark) .privacy-popup__content .popup__close {
+	color: #b30000 !important;
+}
 
-	body:not(.dark) .popup__content .popup__button,
-	body:not(.dark) .privacy-popup__content .popup__button {
-		color: #fff !important;
-	}
+body:not(.dark) .popup__content .popup__button,
+body:not(.dark) .privacy-popup__content .popup__button {
+	color: #fff !important;
 }
 
 /* ==========================================================
@@ -1330,13 +1326,13 @@ body.dark .header__link:focus-visible {
 }
 
 .cookie-banner__btn--accept {
-	background: #ffe0e0;
+	background: #53a551a6;
 	color: #000;
-	border: 1px solid rgba(230, 0, 0, 0.28);
+	border: 1px solid rgba(245, 242, 242, 0.28);
 }
 
 .cookie-banner__btn--accept:hover {
-	background: #ffc7c7;
+	background: #53a551;
 	transform: translateY(-1px);
 }
 
@@ -1824,6 +1820,202 @@ body.dark .header__link:focus-visible {
 	box-sizing: border-box;
 	width: 100%;
 	max-width: 100%;
+}
+
+.about-carousel {
+	margin-top: 2rem;
+}
+
+.about-carousel__title {
+	margin-bottom: 1rem;
+	font-size: 1.35rem;
+	font-weight: 600;
+}
+
+.testimonial-carousel {
+	position: relative;
+	padding: 0 2.5rem;
+}
+
+.testimonial-carousel__viewport {
+	flex: 1;
+	overflow: hidden;
+	border-radius: 14px;
+	position: relative;
+	background: rgba(18, 20, 34, 0.4);
+	box-shadow: inset 0 18px 28px rgba(255, 255, 255, 0.05),
+		inset 0 -20px 35px rgba(0, 0, 0, 0.35);
+	width: 100%;
+}
+
+.testimonial-carousel__viewport::before {
+	content: '';
+	position: absolute;
+	inset: 1px;
+	border-radius: inherit;
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.2) 0%,
+		rgba(255, 255, 255, 0.08) 32%,
+		rgba(18, 20, 34, 0.65) 100%
+	);
+	opacity: 0.9;
+	pointer-events: none;
+}
+
+.testimonial-carousel__track {
+	display: flex;
+	transition: transform 240ms ease;
+	will-change: transform;
+}
+
+.testimonial-card {
+	flex: 0 0 100%;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0 auto;
+	background: rgb(24, 24, 24);
+	border: 1px solid rgb(29, 29, 29);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+	padding: 1.4rem 1.6rem;
+	min-height: 190px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.testimonial-card__quote {
+	font-style: italic;
+	font-size: 1rem;
+	line-height: 1.6;
+	margin: 0 0 1.2rem;
+}
+
+.testimonial-card__author {
+	margin: 0;
+	font-weight: 600;
+	color: #b30000;
+}
+
+.testimonial-carousel__control {
+	background: rgba(255, 255, 255, 0.18);
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	color: #b30000;
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(16px) saturate(180%);
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-80%);
+	z-index: 5;
+}
+
+.testimonial-carousel__control:hover,
+.testimonial-carousel__control:focus-visible {
+	transform: translateY(calc(-85%));
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+	background: rgba(255, 255, 255, 0.28);
+	outline: none;
+}
+
+.testimonial-carousel__control--prev {
+	left: -0.01rem;
+}
+
+.testimonial-carousel__control--next {
+	right: -0.01rem;
+}
+
+.testimonial-carousel__dots {
+	display: flex;
+	justify-content: center;
+	gap: 0.4rem;
+	margin: 1rem auto 0;
+	width: 100%;
+}
+
+.testimonial-carousel__dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 1px solid #fff;
+	background: transparent;
+	padding: 0;
+	cursor: pointer;
+	transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.testimonial-carousel__dot[aria-selected='true'] {
+	background: #792d30;
+	transform: scale(1.05);
+}
+
+body.dark .testimonial-card {
+	background: rgba(18, 20, 34, 0.72);
+	border-color: rgba(255, 255, 255, 0.06);
+	box-shadow: 0 16px 30px rgba(0, 0, 0, 0.45);
+}
+
+body.dark .testimonial-card__author {
+	color: #ffd700;
+}
+
+body.dark .testimonial-carousel__control {
+	background: rgba(18, 20, 34, 0.55);
+	border-color: rgba(255, 255, 255, 0.18);
+	color: #ffd700;
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.38);
+}
+
+body.dark .testimonial-carousel__control:hover,
+body.dark .testimonial-carousel__control:focus-visible {
+	background: rgba(26, 30, 48, 0.75);
+	transform: translateY(calc(-50% - 2px));
+}
+
+body.dark .testimonial-carousel__dot {
+	border-color: #fff;
+}
+
+body.dark .testimonial-carousel__dot[aria-selected='true'] {
+	background: #792d30;
+}
+
+@media (max-width: 767px) {
+	.testimonial-carousel {
+		padding: 0;
+	}
+
+	.testimonial-carousel__control {
+		display: none;
+	}
+
+	.testimonial-carousel__viewport {
+		width: 100%;
+	}
+
+	.testimonial-carousel__dots {
+		width: 100%;
+		max-width: 220px;
+		margin-top: 0.75rem;
+		gap: 0.5rem;
+	}
+
+	.testimonial-carousel__dot {
+		flex: 0 0 auto;
+	}
+
+	body.dark .testimonial-carousel__dot {
+		background: transparent;
+	}
 }
 
 .popup__title {
@@ -2611,8 +2803,8 @@ body.dark .header__link:focus-visible {
 	}
 
 	.arrow-up {
-		width: 1.5rem;
-		height: 1.5rem;
+		width: 2rem;
+		height: 2rem;
 	}
 }
 
