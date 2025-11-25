@@ -1083,8 +1083,10 @@ class MobileMenuManager {
 				const target = trigger.dataset.popupTarget;
 				if (!target || !window.popupManager) return;
 				event.preventDefault();
-				event.stopPropagation();
-				window.popupManager.openByTarget(target);
+				this.closeMenu({ restoreFocus: false });
+				requestAnimationFrame(() => {
+					window.popupManager.openByTarget(target);
+				});
 			});
 		});
 	}
