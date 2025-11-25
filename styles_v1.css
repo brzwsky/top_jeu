@@ -811,7 +811,7 @@ body.dark .header__link:focus-visible {
 
 .casino-card {
 	background: #fff;
-	padding: 1rem;
+	padding: 1.5rem 1.75rem;
 	margin-bottom: 1.5rem;
 	display: flex;
 	justify-content: space-between;
@@ -1063,7 +1063,7 @@ body.dark .header__link:focus-visible {
 	height: 6px;
 	border-top: 2px solid #fff;
 	border-right: 2px solid #fff;
-	transform: translate(calc(0px), calc(-50%)) rotate(45deg);
+	transform: translate(-130%, -50%) rotate(45deg);
 	opacity: 0;
 	transition: transform 0.3s ease, opacity 0.3s ease;
 	pointer-events: none;
@@ -1071,7 +1071,7 @@ body.dark .header__link:focus-visible {
 
 .casino-card__button:hover .casino-card__button-link::after {
 	opacity: 1;
-	transform: translate(calc(5px), calc(-50%)) rotate(45deg);
+	transform: translate(20%, -50%) rotate(45deg);
 	border-color: #e0ffd6;
 }
 /* duplicate :hover removed (kept the first occurrence above) */
@@ -2297,6 +2297,68 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 		margin-left: 6px;
 		line-height: 1;
 	}
+
+	.casino-card.casino-button {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		text-align: left;
+		gap: 1.5rem;
+		flex-wrap: nowrap;
+	}
+
+	.casino-card.casino-button .casino-card__info {
+		order: 1;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		flex: 0 0 auto;
+		margin-right: 1rem;
+	}
+
+	.casino-card.casino-button .casino-card__image {
+		margin: 0 1rem 0 1rem;
+	}
+
+	.casino-card.casino-button .casino-card__features {
+		order: 2;
+		flex: 0 0 280px;
+		max-width: 320px;
+		margin: 0;
+	}
+
+	.casino-card.casino-button .casino-button__rating {
+		order: 3;
+		flex: 0 0 auto;
+		margin: 0 0 0 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.3rem;
+	}
+
+	.casino-card.casino-button .casino-button__rating p {
+		margin: 0;
+	}
+
+	.casino-card.casino-button .casino-card__button {
+		order: 4;
+		flex: 0 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 210px;
+		margin: 0;
+		align-self: center;
+	}
+
+	.casino-card.casino-button .casino-card__button-link {
+		width: 100%;
+		justify-content: center;
+		text-align: center;
+	}
 }
 
 @media (max-width: 768px) {
@@ -2743,7 +2805,6 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 		z-index: 900; /* keep below header/nav (z-index >= 1000) so the drawer stays above the overlay */
 		transition: opacity 0.3s ease;
 	}
-
 	body.menu-open .menu-overlay {
 		opacity: 1;
 		visibility: visible;
@@ -2751,7 +2812,6 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 	}
 
 	body.menu-open {
-		overflow: hidden !important;
 		height: 100vh;
 		position: relative;
 	}
