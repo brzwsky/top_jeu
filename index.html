@@ -620,24 +620,24 @@
 						/>
 						<span>YouTube</span>
 					</a>
-					<a
+					<button
+						type="button"
 						class="header__link"
-						href="#about"
-						role="button"
+						data-popup-target="about"
 						aria-haspopup="dialog"
 						aria-controls="popup"
-						tabindex="0"
-						>Qui suis-je ?</a
 					>
-					<a
+						Qui suis-je ?
+					</button>
+					<button
+						type="button"
 						class="header__link"
-						href="#contact"
-						role="button"
+						data-popup-target="contact"
 						aria-haspopup="dialog"
 						aria-controls="popup-contact"
-						tabindex="0"
-						>Envoyez-moi un message</a
 					>
+						Envoyez-moi un message
+					</button>
 				</nav>
 				<div class="theme-switch-wrapper fade-in">
 					<button
@@ -3704,16 +3704,29 @@
 								>
 							</li>
 							<li>
-								<a href="#about" class="footer__link fade-in">Qui suis-je ?</a>
+								<a
+									href="#about"
+									class="footer__link fade-in"
+									data-popup-target="about"
+								>
+									Qui suis-je ?
+								</a>
 							</li>
 							<li>
-								<a href="#contact" class="footer__link fade-in">Contact</a>
+								<a
+									href="#contact"
+									class="footer__link fade-in"
+									data-popup-target="contact"
+								>
+									Contact
+								</a>
 							</li>
 							<li>
 								<a
 									href="#privacy-popup"
 									class="footer__link fade-in"
 									id="privacy-link"
+									data-popup-target="privacy"
 								>
 									Politique de confidentialité
 								</a>
@@ -4148,6 +4161,7 @@
 							class="footer__link"
 							style="font-weight: 600"
 							id="cookie-privacy-link"
+							data-popup-target="privacy"
 							>Lire la politique de confidentialité</a
 						>
 					</p>

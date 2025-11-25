@@ -317,18 +317,6 @@ class CookieConsentManager {
 
 class PopupManager {
 	constructor() {
-		// Cache DOM elements
-		this.aboutLink = document.querySelector('.header__link[href="#about"]');
-		this.aboutFooterLink = document.querySelector(
-			'.footer__link[href="#about"]'
-		);
-		this.contactLink = document.querySelector('.header__link[href="#contact"]');
-		this.contactFooterLink = document.querySelector(
-			'.footer__link[href="#contact"]'
-		);
-		this.privacyLink = document.getElementById('privacy-link');
-		this.cookiePrivacyLink = document.getElementById('cookie-privacy-link');
-
 		this.popup = document.getElementById('popup');
 		this.popupClose = document.getElementById('popup-close');
 		this.popupContact = document.getElementById('popup-contact');
@@ -355,32 +343,27 @@ class PopupManager {
 	setupEventListeners() {
 		// Event delegation for all popup interactions
 		document.addEventListener('click', (e) => {
-			// About popup
-			if (e.target === this.aboutLink || e.target === this.aboutFooterLink) {
+			const trigger = e.target?.closest?.('[data-popup-target]');
+			if (trigger && trigger.dataset.popupTarget) {
 				e.preventDefault();
-				this.openPopup(this.popup);
-			} else if (e.target === this.popupClose) {
+				const target = trigger.dataset.popupTarget;
+				if (target === 'about') {
+					this.openPopup(this.popup);
+				} else if (target === 'contact') {
+					this.openPopup(this.popupContact);
+				} else if (target === 'privacy') {
+					this.openPrivacyPopup();
+				}
+				return;
+			}
+
+			if (e.target === this.popupClose || e.target?.closest?.('#popup-close')) {
 				this.closePopup(this.popup);
-			}
-
-			// Contact popup
-			else if (
-				e.target === this.contactLink ||
-				e.target === this.contactFooterLink
+			} else if (
+				e.target === this.popupContactClose ||
+				e.target?.closest?.('#popup-contact-close')
 			) {
-				e.preventDefault();
-				this.openPopup(this.popupContact);
-			} else if (e.target === this.popupContactClose) {
 				this.closePopup(this.popupContact);
-			}
-
-			// Privacy popup
-			else if (
-				e.target === this.privacyLink ||
-				e.target === this.cookiePrivacyLink
-			) {
-				e.preventDefault();
-				this.openPrivacyPopup();
 			} else if (e.target === this.privacyClose) {
 				this.closePrivacyPopup();
 			}
@@ -397,34 +380,17 @@ class PopupManager {
 
 		document.addEventListener('keydown', (e) => {
 			const isActivateKey = e.key === 'Enter' || e.key === ' ';
-
-			// About popup
-			if (
-				(e.target === this.aboutLink || e.target === this.aboutFooterLink) &&
-				isActivateKey
-			) {
+			const trigger = e.target?.closest?.('[data-popup-target]');
+			if (trigger && trigger.dataset.popupTarget && isActivateKey) {
 				e.preventDefault();
-				this.openPopup(this.popup);
-			}
-
-			// Contact popup
-			else if (
-				(e.target === this.contactLink ||
-					e.target === this.contactFooterLink) &&
-				isActivateKey
-			) {
-				e.preventDefault();
-				this.openPopup(this.popupContact);
-			}
-
-			// Privacy popup
-			else if (
-				(e.target === this.privacyLink ||
-					e.target === this.cookiePrivacyLink) &&
-				isActivateKey
-			) {
-				e.preventDefault();
-				this.openPrivacyPopup();
+				const target = trigger.dataset.popupTarget;
+				if (target === 'about') {
+					this.openPopup(this.popup);
+				} else if (target === 'contact') {
+					this.openPopup(this.popupContact);
+				} else if (target === 'privacy') {
+					this.openPrivacyPopup();
+				}
 			}
 
 			// Escape key
