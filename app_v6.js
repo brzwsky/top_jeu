@@ -1157,18 +1157,27 @@ class MobileMenuManager {
 	updateVisibilityState() {
 		if (!this.menu) return;
 		const isMobile = isMobileViewport();
+		const menuActive = this.menu.classList.contains('active');
 		if (isMobile) {
-			if (!this.menu.classList.contains('active')) {
+			if (!menuActive) {
 				this.menu.setAttribute('aria-hidden', 'true');
 				if (!this.menu.hasAttribute('hidden')) {
 					this.menu.setAttribute('hidden', '');
 				}
+				if (this.burger) {
+					this.burger.style.display = 'flex';
+					this.burger.setAttribute('aria-expanded', 'false');
+				}
+				document.body.classList.remove('menu-open');
+			} else {
+				this.menu.removeAttribute('hidden');
+				this.menu.setAttribute('aria-hidden', 'false');
+				document.body.classList.add('menu-open');
+				if (this.burger) {
+					this.burger.style.display = 'none';
+					this.burger.setAttribute('aria-expanded', 'true');
+				}
 			}
-			if (this.burger) {
-				this.burger.style.display = 'flex';
-				this.burger.setAttribute('aria-expanded', 'false');
-			}
-			document.body.classList.remove('menu-open');
 		} else {
 			if (this.hideTimeout) {
 				clearTimeout(this.hideTimeout);
