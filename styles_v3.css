@@ -2757,29 +2757,28 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 			justify-content: flex-start;
 			align-items: stretch;
 			position: fixed;
-			top: 0;
+			top: -100vh;
 			left: 0;
 			right: 0;
 			width: 100%;
-			max-height: calc(100vh - 0.75rem);
+			height: 100vh;
 			padding: 5.25rem 1.75rem 2rem;
 			box-sizing: border-box;
 			background-color: rgba(0, 0, 0, 0.95);
 			gap: 1.75rem;
-			transform: translateY(-110%);
 			opacity: 0;
-			transition: transform 0.35s ease, opacity 0.35s ease;
-			z-index: 1100; /* ensure the mobile menu overlays header icons */
+			transition: top 0.35s ease, opacity 0.35s ease;
+			z-index: 2000; /* ensure the mobile menu overlays header icons */
 			overflow-y: auto;
 			overflow-x: hidden;
-			-webkit-overflow-scrolling: touch;
+			-webkit-overflow-scrolling: auto;
 			box-shadow: none;
 			pointer-events: none;
 			visibility: hidden;
 		}
 
 		.nav-menu.active {
-			transform: translateY(0);
+			top: 0;
 			opacity: 1;
 			box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 			pointer-events: auto;
@@ -2803,6 +2802,7 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 			justify-content: flex-start;
 			text-align: left;
 			color: #fff !important;
+			touch-action: manipulation;
 		}
 
 		.nav-menu__link {
@@ -2889,7 +2889,6 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 
 	body.menu-open {
 		overflow: hidden;
-		touch-action: none;
 	}
 
 	body.menu-open .theme-switch-wrapper {

@@ -1079,14 +1079,18 @@ class MobileMenuManager {
 		if (!this.menu) return;
 		const triggers = this.menu.querySelectorAll('[data-popup-target]');
 		triggers.forEach((trigger) => {
-			trigger.addEventListener('click', (event) => {
+			const openPopup = (event) => {
 				const target = trigger.dataset.popupTarget;
 				if (!target || !window.popupManager) return;
-				event.preventDefault();
 				this.closeMenu({ restoreFocus: false });
 				requestAnimationFrame(() => {
 					window.popupManager.openByTarget(target);
 				});
+			};
+			trigger.addEventListener('click', openPopup);
+			trigger.addEventListener('touchstart', (event) => {
+				if (event.touches && event.touches.length > 1) return;
+				openPopup(event);
 			});
 		});
 	}
