@@ -1039,6 +1039,9 @@ class MobileMenuManager {
 		this.closeBtn = document.querySelector('.close-menu');
 		this.overlay = document.querySelector('.menu-overlay');
 		this.hideTimeout = null;
+		this.scrollLocked = false;
+		this.scrollPosition = 0;
+		this.savedBodyStyles = null;
 
 		this.handleResize = this.handleResize.bind(this);
 		this.updateVisibilityState = this.updateVisibilityState.bind(this);
@@ -1124,6 +1127,7 @@ class MobileMenuManager {
 		this.menu.scrollTop = 0;
 		this.burger.style.display = 'none';
 		document.body.classList.add('menu-open');
+		this.lockScroll();
 		this.burger.setAttribute('aria-expanded', 'true');
 	}
 
@@ -1136,6 +1140,7 @@ class MobileMenuManager {
 		} else {
 			this.burger.style.display = 'flex';
 			document.body.classList.remove('menu-open');
+			this.unlockScroll();
 			this.menu.setAttribute('aria-hidden', 'true');
 			if (this.hideTimeout) clearTimeout(this.hideTimeout);
 			this.hideTimeout = setTimeout(() => {
@@ -1152,6 +1157,9 @@ class MobileMenuManager {
 			}
 		}
 		this.burger.setAttribute('aria-expanded', 'false');
+		if (!isMobileViewport()) {
+			this.unlockScroll();
+		}
 	}
 
 	updateVisibilityState() {
@@ -1169,10 +1177,12 @@ class MobileMenuManager {
 					this.burger.setAttribute('aria-expanded', 'false');
 				}
 				document.body.classList.remove('menu-open');
+				this.unlockScroll();
 			} else {
 				this.menu.removeAttribute('hidden');
 				this.menu.setAttribute('aria-hidden', 'false');
 				document.body.classList.add('menu-open');
+				this.lockScroll();
 				if (this.burger) {
 					this.burger.style.display = 'none';
 					this.burger.setAttribute('aria-expanded', 'true');
@@ -1187,11 +1197,51 @@ class MobileMenuManager {
 			this.menu.setAttribute('aria-hidden', 'false');
 			this.menu.classList.remove('active');
 			document.body.classList.remove('menu-open');
+			this.unlockScroll();
 			if (this.burger) {
 				this.burger.style.display = '';
 				this.burger.setAttribute('aria-expanded', 'false');
 			}
 		}
+	}
+
+	lockScroll() {
+		if (this.scrollLocked) return;
+		this.scrollLocked = true;
+		this.scrollPosition =
+			window.scrollY || document.documentElement.scrollTop || 0;
+		const bodyStyle = document.body.style;
+		this.savedBodyStyles = {
+			position: bodyStyle.position || '',
+			top: bodyStyle.top || '',
+			left: bodyStyle.left || '',
+			right: bodyStyle.right || '',
+			width: bodyStyle.width || '',
+			overflowY: bodyStyle.overflowY || '',
+		};
+		bodyStyle.position = 'fixed';
+		bodyStyle.top = `-${this.scrollPosition}px`;
+		bodyStyle.left = '0';
+		bodyStyle.right = '0';
+		bodyStyle.width = '100%';
+		bodyStyle.overflowY = 'hidden';
+	}
+
+	unlockScroll() {
+		if (!this.scrollLocked) return;
+		const bodyStyle = document.body.style;
+		const saved = this.savedBodyStyles || {};
+		bodyStyle.position = saved.position || '';
+		bodyStyle.top = saved.top || '';
+		bodyStyle.left = saved.left || '';
+		bodyStyle.right = saved.right || '';
+		bodyStyle.width = saved.width || '';
+		bodyStyle.overflowY = saved.overflowY || '';
+		const targetScroll = this.scrollPosition;
+		this.scrollLocked = false;
+		this.scrollPosition = 0;
+		this.savedBodyStyles = null;
+		window.scrollTo(0, targetScroll || 0);
 	}
 
 	handleResize() {
