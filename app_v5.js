@@ -588,13 +588,19 @@ class PopupManager {
 
 	// Safe menu closing with conflict prevention
 	closeMenu() {
+		if (
+			window.mobileMenuManager &&
+			typeof window.mobileMenuManager.closeMenu === 'function'
+		) {
+			window.mobileMenuManager.closeMenu({ restoreFocus: false });
+			return;
+		}
 		const menu = document.querySelector('.nav-menu');
 		const burger = document.querySelector('.burger');
 		if (menu && burger && menu.classList.contains('active')) {
 			menu.classList.remove('active');
 			burger.style.display = 'flex';
 			document.body.classList.remove('menu-open');
-			burger.focus();
 			burger.setAttribute('aria-expanded', 'false');
 		}
 	}
@@ -1009,13 +1015,7 @@ class MobileMenuManager {
 		// Add resize handler to reset menu state on desktop
 		window.addEventListener('resize', () => {
 			if (window.innerWidth > 768) {
-				if (this.menu) this.menu.classList.remove('active');
-				if (this.burger) {
-					this.burger.style.display = '';
-					this.burger.setAttribute('aria-expanded', 'false');
-				}
-				document.documentElement.style.overflow = 'auto';
-				document.body.classList.remove('menu-open');
+				this.closeMenu({ restoreFocus: false });
 			}
 		});
 	}
@@ -1060,23 +1060,28 @@ class MobileMenuManager {
 
 	openMenu() {
 		if (this.menu && this.burger) {
+			if (this.menu.classList.contains('active')) return;
 			this.menu.classList.add('active');
 			this.burger.style.display = 'none';
-			document.documentElement.style.overflow = 'hidden';
 			document.body.classList.add('menu-open');
 			this.burger.setAttribute('aria-expanded', 'true');
 		}
 	}
 
-	closeMenu() {
-		if (this.menu && this.burger) {
-			this.menu.classList.remove('active');
+	closeMenu({ restoreFocus = true } = {}) {
+		if (!this.menu || !this.burger) return;
+		const wasActive = this.menu.classList.contains('active');
+		this.menu.classList.remove('active');
+		if (window.innerWidth > 768) {
+			this.burger.style.display = '';
+		} else {
 			this.burger.style.display = 'flex';
-			document.documentElement.style.overflow = 'auto';
-			document.body.classList.remove('menu-open');
-			this.burger.focus();
-			this.burger.setAttribute('aria-expanded', 'false');
 		}
+		document.body.classList.remove('menu-open');
+		if (restoreFocus && wasActive) {
+			this.burger.focus();
+		}
+		this.burger.setAttribute('aria-expanded', 'false');
 	}
 }
 
