@@ -607,6 +607,10 @@ body:not(.dark) #cookie-title {
 	transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
+.nav-menu__link {
+	color: #fff;
+}
+
 button.header__link {
 	background: none;
 	border: none;
@@ -2798,6 +2802,7 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 			width: 100%;
 			justify-content: flex-start;
 			text-align: left;
+			color: #fff !important;
 		}
 
 		.nav-menu__link {
@@ -2811,7 +2816,7 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 		body.menu-open .header__link:hover {
 			background: none !important;
 			box-shadow: none !important;
-			color: inherit !important;
+			/* color: inherit !important; */
 		}
 
 		.close-menu {
