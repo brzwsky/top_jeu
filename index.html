@@ -603,41 +603,49 @@
 					aria-hidden="true"
 				>
 					<button class="close-menu" aria-label="Fermer le menu">✕</button>
-					<a
-						class="header__link"
-						href="https://www.youtube.com/@TopJeu777"
-						target="_blank"
-						rel="nofollow noopener noreferrer"
-					>
-						<img
-							class="youtube-icon"
-							src="img/youtube.webp"
-							alt="Icône YouTube TopJeu"
-							loading="eager"
-							width="25"
-							height="25"
-							style="width: 25px; height: 25px; object-fit: contain"
-						/>
-						<span>YouTube</span>
-					</a>
-					<button
-						type="button"
-						class="header__link"
-						data-popup-target="about"
-						aria-haspopup="dialog"
-						aria-controls="popup"
-					>
-						Qui suis-je ?
-					</button>
-					<button
-						type="button"
-						class="header__link"
-						data-popup-target="contact"
-						aria-haspopup="dialog"
-						aria-controls="popup-contact"
-					>
-						Envoyez-moi un message
-					</button>
+					<ul class="nav-menu__list" role="list">
+						<li class="nav-menu__item">
+							<a
+								class="header__link nav-menu__link"
+								href="https://www.youtube.com/@TopJeu777"
+								target="_blank"
+								rel="nofollow noopener noreferrer"
+							>
+								<img
+									class="youtube-icon"
+									src="img/youtube.webp"
+									alt="Icône YouTube TopJeu"
+									loading="eager"
+									width="25"
+									height="25"
+									style="width: 25px; height: 25px; object-fit: contain"
+								/>
+								<span>YouTube</span>
+							</a>
+						</li>
+						<li class="nav-menu__item">
+							<button
+								type="button"
+								class="header__link nav-menu__link"
+								data-popup-target="about"
+								aria-haspopup="dialog"
+								aria-controls="popup"
+							>
+								Qui suis-je ?
+							</button>
+						</li>
+						<li class="nav-menu__item">
+							<button
+								type="button"
+								class="header__link nav-menu__link"
+								data-popup-target="contact"
+								aria-haspopup="dialog"
+								aria-controls="popup-contact"
+							>
+								Envoyez-moi un message
+							</button>
+						</li>
+					</ul>
 				</nav>
 				<div class="theme-switch-wrapper fade-in">
 					<button

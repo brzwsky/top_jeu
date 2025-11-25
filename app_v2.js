@@ -346,17 +346,7 @@ class PopupManager {
 			const trigger = e.target?.closest?.('[data-popup-target]');
 			if (trigger && trigger.dataset.popupTarget) {
 				e.preventDefault();
-				const target = trigger.dataset.popupTarget;
-				if (target === 'about') {
-					this.openPopup(this.popup);
-				} else if (target === 'contact') {
-					this.openPopup(this.popupContact);
-				} else if (target === 'privacy') {
-					this.openPrivacyPopup();
-				}
-				if (window.mobileMenuManager?.menu?.classList.contains('active')) {
-					window.mobileMenuManager.closeMenu({ restoreFocus: false });
-				}
+				this.openByTarget(trigger.dataset.popupTarget);
 				return;
 			}
 
@@ -386,17 +376,7 @@ class PopupManager {
 			const trigger = e.target?.closest?.('[data-popup-target]');
 			if (trigger && trigger.dataset.popupTarget && isActivateKey) {
 				e.preventDefault();
-				const target = trigger.dataset.popupTarget;
-				if (target === 'about') {
-					this.openPopup(this.popup);
-				} else if (target === 'contact') {
-					this.openPopup(this.popupContact);
-				} else if (target === 'privacy') {
-					this.openPrivacyPopup();
-				}
-				if (window.mobileMenuManager?.menu?.classList.contains('active')) {
-					window.mobileMenuManager.closeMenu({ restoreFocus: false });
-				}
+				this.openByTarget(trigger.dataset.popupTarget);
 			}
 
 			// Escape key
@@ -416,6 +396,23 @@ class PopupManager {
 				}
 			}
 		});
+	}
+
+	openByTarget(target) {
+		if (!target) return;
+		switch (target) {
+			case 'about':
+				this.openPopup(this.popup);
+				break;
+			case 'contact':
+				this.openPopup(this.popupContact);
+				break;
+			case 'privacy':
+				this.openPrivacyPopup();
+				break;
+			default:
+				break;
+		}
 	}
 
 	openPopup(popupElement) {
@@ -1034,6 +1031,7 @@ class MobileMenuManager {
 
 	init() {
 		this.setupEventListeners();
+		this.bindMenuActions();
 	}
 
 	setupEventListeners() {
@@ -1074,6 +1072,20 @@ class MobileMenuManager {
 			) {
 				this.closeMenu();
 			}
+		});
+	}
+
+	bindMenuActions() {
+		if (!this.menu) return;
+		const triggers = this.menu.querySelectorAll('[data-popup-target]');
+		triggers.forEach((trigger) => {
+			trigger.addEventListener('click', (event) => {
+				const target = trigger.dataset.popupTarget;
+				if (!target || !window.popupManager) return;
+				event.preventDefault();
+				event.stopPropagation();
+				window.popupManager.openByTarget(target);
+			});
 		});
 	}
 
