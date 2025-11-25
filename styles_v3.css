@@ -2888,8 +2888,8 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 	}
 
 	body.menu-open {
-		height: 100vh;
-		position: relative;
+		overflow: hidden;
+		touch-action: none;
 	}
 
 	body.menu-open .theme-switch-wrapper {
@@ -3000,8 +3000,8 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 
 	.casino-card__button {
 		order: 6;
-		max-width: 100%;
-		margin-top: 1.5rem;
+		max-width: 50%;
+		margin: 0 auto;
 	}
 
 	.casino-card__info_logo {

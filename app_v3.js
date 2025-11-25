@@ -1009,8 +1009,8 @@ class MobileMenuManager {
 		this.overlay = document.querySelector('.menu-overlay');
 		this.hideTimeout = null;
 		this.scrollLocked = false;
-		this.scrollPosition = 0;
 		this.savedBodyStyles = null;
+		this.savedRootStyles = null;
 
 		this.handleResize = this.handleResize.bind(this);
 		this.updateVisibilityState = this.updateVisibilityState.bind(this);
@@ -1194,40 +1194,35 @@ class MobileMenuManager {
 	lockScroll() {
 		if (this.scrollLocked) return;
 		this.scrollLocked = true;
-		this.scrollPosition =
-			window.scrollY || document.documentElement.scrollTop || 0;
 		const bodyStyle = document.body.style;
+		const rootStyle = document.documentElement.style;
 		this.savedBodyStyles = {
-			position: bodyStyle.position || '',
-			top: bodyStyle.top || '',
-			left: bodyStyle.left || '',
-			right: bodyStyle.right || '',
-			width: bodyStyle.width || '',
-			overflowY: bodyStyle.overflowY || '',
+			overflow: bodyStyle.overflow || '',
+			overscrollBehavior: bodyStyle.overscrollBehavior || '',
 		};
-		bodyStyle.position = 'fixed';
-		bodyStyle.top = `-${this.scrollPosition}px`;
-		bodyStyle.left = '0';
-		bodyStyle.right = '0';
-		bodyStyle.width = '100%';
-		bodyStyle.overflowY = 'hidden';
+		this.savedRootStyles = {
+			overflow: rootStyle.overflow || '',
+			overscrollBehavior: rootStyle.overscrollBehavior || '',
+		};
+		bodyStyle.overflow = 'hidden';
+		bodyStyle.overscrollBehavior = 'contain';
+		rootStyle.overflow = 'hidden';
+		rootStyle.overscrollBehavior = 'contain';
 	}
 
 	unlockScroll() {
 		if (!this.scrollLocked) return;
 		const bodyStyle = document.body.style;
-		const saved = this.savedBodyStyles || {};
-		bodyStyle.position = saved.position || '';
-		bodyStyle.top = saved.top || '';
-		bodyStyle.left = saved.left || '';
-		bodyStyle.right = saved.right || '';
-		bodyStyle.width = saved.width || '';
-		bodyStyle.overflowY = saved.overflowY || '';
-		const targetScroll = this.scrollPosition;
+		const rootStyle = document.documentElement.style;
+		const savedBody = this.savedBodyStyles || {};
+		const savedRoot = this.savedRootStyles || {};
+		bodyStyle.overflow = savedBody.overflow || '';
+		bodyStyle.overscrollBehavior = savedBody.overscrollBehavior || '';
+		rootStyle.overflow = savedRoot.overflow || '';
+		rootStyle.overscrollBehavior = savedRoot.overscrollBehavior || '';
 		this.scrollLocked = false;
-		this.scrollPosition = 0;
 		this.savedBodyStyles = null;
-		window.scrollTo(0, targetScroll || 0);
+		this.savedRootStyles = null;
 	}
 
 	handleResize() {
