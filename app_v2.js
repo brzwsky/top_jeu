@@ -354,6 +354,9 @@ class PopupManager {
 				} else if (target === 'privacy') {
 					this.openPrivacyPopup();
 				}
+				if (window.mobileMenuManager?.menu?.classList.contains('active')) {
+					window.mobileMenuManager.closeMenu({ restoreFocus: false });
+				}
 				return;
 			}
 
@@ -390,6 +393,9 @@ class PopupManager {
 					this.openPopup(this.popupContact);
 				} else if (target === 'privacy') {
 					this.openPrivacyPopup();
+				}
+				if (window.mobileMenuManager?.menu?.classList.contains('active')) {
+					window.mobileMenuManager.closeMenu({ restoreFocus: false });
 				}
 			}
 
