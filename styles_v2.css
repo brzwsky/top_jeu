@@ -607,7 +607,6 @@ body:not(.dark) #cookie-title {
 	transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
-.header__link:hover,
 .header__link:focus-visible {
 	color: #ffefef;
 	background: rgba(255, 255, 255, 0.12);
@@ -615,18 +614,37 @@ body:not(.dark) #cookie-title {
 	outline: none;
 }
 
-body:not(.dark) .header__link:hover,
 body:not(.dark) .header__link:focus-visible {
 	color: #b30000 !important;
 	background: rgba(179, 0, 0, 0.12);
 	box-shadow: 0 6px 18px rgba(179, 0, 0, 0.16);
 }
 
-body.dark .header__link:hover,
 body.dark .header__link:focus-visible {
 	color: #ffe6e6;
 	background: rgba(255, 255, 255, 0.08);
 	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.header__link:hover {
+		color: #ffefef;
+		background: rgba(255, 255, 255, 0.12);
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+		outline: none;
+	}
+
+	body:not(.dark) .header__link:hover {
+		color: #b30000 !important;
+		background: rgba(179, 0, 0, 0.12);
+		box-shadow: 0 6px 18px rgba(179, 0, 0, 0.16);
+	}
+
+	body.dark .header__link:hover {
+		color: #ffe6e6;
+		background: rgba(255, 255, 255, 0.08);
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+	}
 }
 
 .youtube-icon {
