@@ -2834,21 +2834,14 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 		margin-bottom: 0.5rem;
 	}
 
-	/* Darken the page behind the slide-out menu */
-	.menu-overlay {
-		position: fixed;
-		inset: 0;
-		background: rgba(0, 0, 0, 0.6);
-		opacity: 0;
-		visibility: hidden;
-		pointer-events: none;
-		z-index: 900; /* keep below header/nav (z-index >= 1000) so the drawer stays above the overlay */
-		transition: opacity 0.3s ease;
-	}
+	/* Disable page dimming on mobile menu */
+	.menu-overlay,
 	body.menu-open .menu-overlay {
-		opacity: 1;
-		visibility: visible;
-		pointer-events: auto;
+		display: none !important;
+		opacity: 0 !important;
+		visibility: hidden !important;
+		pointer-events: none !important;
+		background: transparent !important;
 	}
 
 	body.menu-open {
