@@ -2150,7 +2150,7 @@ class ScrollRevealManager {
 						if (elementOnce && entry.intersectionRatio >= 0.5) {
 							observer.unobserve(entry.target);
 						}
-					} else if (this.enableScrollUpAnimations) {
+					} else if (this.enableScrollUpAnimations && window.innerWidth > 768) {
 						entry.target.classList.remove('visible');
 					}
 				});
@@ -2177,7 +2177,10 @@ class ScrollRevealManager {
 							if (entry.intersectionRatio >= 0.5) {
 								observerRegistry.globalScrollObserver.unobserve(entry.target);
 							}
-						} else if (this.enableScrollUpAnimations) {
+						} else if (
+							this.enableScrollUpAnimations &&
+							window.innerWidth > 768
+						) {
 							entry.target.classList.remove('visible');
 						}
 					});

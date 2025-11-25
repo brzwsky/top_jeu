@@ -342,12 +342,39 @@ body.user-is-tabbing :focus-visible {
 	color: #000;
 	border: 1px solid rgba(0, 0, 0, 0.12);
 	cursor: pointer;
+	border-radius: 999px;
+}
+
+body:not(.dark) .cookie-consent-banner button:hover,
+body:not(.dark) .cookie-consent-banner button:focus-visible {
+	background: #28a745;
+	color: #fff;
+	border-color: #1e7e34;
+	box-shadow: 0 6px 16px rgba(40, 167, 69, 0.24);
+}
+
+body.dark .cookie-consent-banner button:hover,
+body.dark .cookie-consent-banner button:focus-visible {
+	background: #1e7e34;
+	color: #ffffff;
+	border-color: transparent;
+	box-shadow: 0 6px 16px rgba(30, 126, 52, 0.24);
 }
 
 body:not(.dark) #accept-analytics-btn {
 	color: #000 !important;
 	background: rgba(255, 255, 255, 0.9) !important;
 	border-color: rgba(0, 0, 0, 0.15) !important;
+	box-shadow: 0 0 10px rgba(76, 201, 103, 0.45), 0 0 20px rgba(40, 167, 69, 0.3);
+}
+
+body:not(.dark) #accept-analytics-btn:hover,
+body:not(.dark) #accept-analytics-btn:focus-visible {
+	background: #28a745 !important;
+	color: #fff !important;
+	border-color: #1e7e34 !important;
+	box-shadow: 0 6px 18px rgba(40, 167, 69, 0.3),
+		0 0 16px rgba(76, 201, 103, 0.55), 0 0 28px rgba(56, 160, 85, 0.4) !important;
 }
 
 /* Dark Mode for cookie consent banner */
@@ -3408,29 +3435,17 @@ body.dark .faq-answer {
 
 .fade-in {
 	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+	will-change: opacity;
+	display: block;
+	transition: opacity 0.6s ease-out;
 }
 
 .fade-in.visible {
 	opacity: 1;
-	transform: translateY(0);
 }
 
 .casino-cards.fade-in.visible {
 	margin-top: 2rem;
-}
-
-/* Prevent flash of invisible content - immediately show elements in viewport on page load */
-.fade-in:not(.visible) {
-	/* Reduce flash by checking if element is likely in viewport */
-	will-change: opacity, transform;
-}
-
-/* Ensure elements above the fold are visible immediately */
-@media (prefers-reduced-motion: no-preference) {
-	/* On page load, elements in header/hero that are immediately visible 
-	   should not start hidden - this is handled by JS, but CSS fallback helps */
 }
 
 /* Top casino card hover/focus glow (apply only to top card variants) */
