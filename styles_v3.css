@@ -3621,6 +3621,10 @@ body.dark .faq-answer {
 	opacity: 1;
 }
 
+.footer__content.fade-in {
+	display: grid;
+}
+
 .casino-cards.fade-in.visible {
 	margin-top: 2rem;
 }
