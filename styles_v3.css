@@ -2993,7 +2993,7 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 		width: 100%;
 		height: auto;
 		text-align: center;
-		margin-top: 0.5rem;
+		margin: 0.5rem;
 		min-width: auto;
 	}
 

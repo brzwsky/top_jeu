@@ -2876,8 +2876,13 @@ window.addEventListener('beforeunload', () => {
 const mobileScrollSafeguard = () => {
 	if (window.innerWidth > 768) return;
 	const unblock = () => {
+		if (
+			document.body.classList.contains('menu-open') ||
+			document.body.classList.contains('modal-open')
+		) {
+			return;
+		}
 		document.documentElement.style.overflow = 'auto';
-		document.body.classList.remove('menu-open', 'modal-open');
 	};
 	['touchstart', 'touchend', 'touchcancel', 'touchmove'].forEach((evt) => {
 		window.addEventListener(evt, unblock, { passive: true });
