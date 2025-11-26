@@ -2768,7 +2768,7 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 			gap: 1.75rem;
 			opacity: 0;
 			transition: top 0.35s ease, opacity 0.35s ease;
-			z-index: 2000; /* ensure the mobile menu overlays header icons */
+			z-index: 11000; /* highest layer to cover all UI */
 			overflow-y: auto;
 			overflow-x: hidden;
 			-webkit-overflow-scrolling: auto;
