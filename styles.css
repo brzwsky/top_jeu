@@ -598,7 +598,6 @@ body:not(.dark) #cookie-title {
 .header__link {
 	color: #fff;
 	text-decoration: none;
-	font-size: 1.175rem;
 	display: flex;
 	align-items: center;
 	gap: 0.4rem;
@@ -684,7 +683,7 @@ body.dark .header__link:focus-visible {
 
 	/* ensure the youtube icon has a consistent gap to its label */
 	.nav-menu__link .youtube-icon {
-		margin-right: 0.75rem;
+		margin-right: 0.2rem;
 	}
 
 	/* slightly increase letter-spacing for desktop header links for clarity */
@@ -2206,7 +2205,7 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 
 .arrow-up {
 	display: block;
-	width: 1.1rem;
+	width: 1.9rem;
 	height: auto;
 	margin: 0;
 }
