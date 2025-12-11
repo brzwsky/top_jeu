@@ -883,6 +883,16 @@ body.dark .header__link:focus-visible {
 	align-items: center;
 }
 
+.casino-card__info.casino-card__info_logo {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.casino-card__info_logo .casino-card__image {
+	margin: 0 auto 1rem;
+}
+
 .casino-card__info > div {
 	max-width: 200px;
 	overflow-wrap: break-word;
@@ -896,6 +906,8 @@ body.dark .header__link:focus-visible {
 	border-radius: 8px;
 	margin-right: 1rem;
 	margin-left: 1rem;
+	display: block;
+	flex-shrink: 0;
 }
 
 .casino-card__features {
@@ -990,6 +1002,8 @@ body.dark .header__link:focus-visible {
 	border-radius: 8px;
 	margin-right: 1rem;
 	margin-left: 1rem;
+	display: block;
+	flex-shrink: 0;
 }
 
 .casino-card__features {
@@ -2278,8 +2292,10 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 	}
 
 	.casino-card__info {
-		flex-direction: row;
-		max-width: 100%;
+		justify-content: center;
+	}
+	.casino-card__info .casino-card__info_logo {
+		margin: 0 auto;
 	}
 
 	.casino-card__title,
@@ -2293,7 +2309,12 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 		display: flex;
 		flex-direction: column;
 		max-width: 80%;
-		padding: 3rem;
+		padding: 1.2rem;
+	}
+
+	.casino-card__button {
+		max-width: 30%;
+		margin: 0 auto;
 	}
 
 	/* Popup content scaling */
