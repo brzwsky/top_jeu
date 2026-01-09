@@ -15,5 +15,7 @@ img/banners/._captain-banner.webp
 img/banners/._julius-banner.webp
 img/banners/._peaches-banner.webp
 img/banners/._brutal-banner-fix.webp
-.gitignore
 .DS_Store
+.vscode
+.github
+.gitignore

@@ -2660,6 +2660,12 @@ class DarkModeManager {
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+	// EMERGENCY FIX: Show all fade-in elements immediately
+	console.log('[DOMContentLoaded] Showing all .fade-in elements');
+	document.querySelectorAll('.fade-in').forEach((el) => {
+		el.classList.add('visible');
+	});
+
 	// Immediately reset overflow and body classes
 	document.documentElement.style.overflow = '';
 	document.body.classList.remove('menu-open', 'modal-open');
@@ -2670,7 +2676,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.mobileMenuManager = new MobileMenuManager();
 	window.formManager = new FormManager();
 	window.faqManager = new FAQManager();
-	window.casinoButtonsManager = new CasinoButtonsManager();
+	// window.casinoButtonsManager = new CasinoButtonsManager(); // DISABLED - causes content to disappear
 	window.darkModeManager = new DarkModeManager();
 	window.aboutCarousel = new AboutCarousel();
 
@@ -2754,7 +2760,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Initialize scroll reveal immediately to prevent flash of invisible content
 	// But defer animation manager to idle time
+	console.log('[INIT] Creating ScrollRevealManager...');
 	window.scrollRevealManager = new ScrollRevealManager();
+	console.log(
+		'[INIT] ScrollRevealManager created:',
+		window.scrollRevealManager
+	);
 
 	const defer = window.requestIdleCallback || ((cb) => setTimeout(cb, 200));
 	defer(() => {
