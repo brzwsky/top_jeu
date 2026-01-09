@@ -16,10 +16,4 @@ img/banners/._julius-banner.webp
 img/banners/._peaches-banner.webp
 img/banners/._brutal-banner-fix.webp
 .gitignore
-._.gitignore
-.github
-old_versions_backup
-revert_snapshot
-styles_v2.clean.css
-.gitignore
-styles_v5.clean.css
+.DS_Store
