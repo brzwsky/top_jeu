@@ -6,6 +6,6 @@ deployment:
     - /bin/cp -R img $DEPLOYPATH
     - /bin/cp robots.txt $DEPLOYPATH
     - /bin/cp sitemap.xml $DEPLOYPATH
-    - /bin/cp app_v1.js $DEPLOYPATH
+    - /bin/cp app.js $DEPLOYPATH
     - /bin/cp styles.css $DEPLOYPATH
     - /bin/cp favicon.ico $DEPLOYPATH
