@@ -1,234 +1,52 @@
-/* Reset*/
-html {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	min-width: 320px;
-	overflow-x: hidden;
-	box-sizing: border-box;
-}
-
-/* Strong final override: ensure popup text is white in light mode across viewports
-   This sits at the end for precedence; interactive controls keep specific colors. */
-body:not(.dark) .popup__content,
-body:not(.dark) .privacy-popup__content {
-	color: #fff !important;
-}
-
-/* Force white for most text children, but exclude interactive controls */
-body:not(.dark)
-	.popup__content
-	*:not(button):not(.popup__button):not(.popup__close):not(input):not(
-		textarea
-	):not(select),
-body:not(.dark)
-	.privacy-popup__content
-	*:not(button):not(.popup__button):not(.popup__close):not(input):not(
-		textarea
-	):not(select) {
-	color: #fff !important;
-}
-
-/* Restore semantic colors for controls */
-body:not(.dark) .popup__content .popup__close,
-body:not(.dark) .privacy-popup__content .popup__close {
-	color: #b30000 !important;
-}
-
-body:not(.dark) .popup__content .popup__button,
-body:not(.dark) .privacy-popup__content .popup__button {
-	color: #fff !important;
-}
-
-/* ==========================================================
-   Optimizations & safe overrides
-   - Non-invasive: placed at the end so original rules stay intact
-   - Centralizes repeated header/mobile alignment rules
-   - Adds light performance hints and reduced-motion respect
-========================================================== */
-
+/* CSS Variables */
 :root {
 	--card-transition: transform 180ms ease, box-shadow 180ms ease;
 	--mobile-header-control-size: 30px;
 }
 
-/* Glass-style for Scroll-to-top and cookie controls */
-#scrolltop,
-.cookie-banner.minimized {
-	background: rgba(0, 0, 0, 0.18);
-	backdrop-filter: blur(12px) saturate(180%);
-	-webkit-backdrop-filter: blur(12px) saturate(180%);
-	border: 1px solid rgba(255, 255, 255, 0.06);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-	color: #fff;
+/* Reset */
+html {
+	box-sizing: border-box;
+	margin: 0;
+	min-width: 320px;
+	overflow-x: hidden;
+	padding: 0;
+	width: 100%;
 }
 
-/* Make minimized cookie icon circular and centered */
-.cookie-banner.minimized {
-	width: 48px !important;
-	height: 48px !important;
-	padding: 0 !important;
-	border-radius: 50% !important;
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	z-index: 900;
-}
-
-.cookie-banner__minimized-icon {
-	display: block !important;
-	font-size: 20px;
-	color: inherit;
-}
-
-/* Nudge scroll-to-top arrow 1px to the right for visual alignment */
-#scrolltop .arrow-up {
-	transform: translateX(1px) !important;
-}
-
-/* Style decline button to match glass style when visible */
-.cookie-banner__btn--decline {
-	background: rgba(0, 0, 0, 0.12);
-	color: #fff;
-	border: 1px solid rgba(255, 255, 255, 0.06);
-	backdrop-filter: blur(8px) saturate(160%);
-	-webkit-backdrop-filter: blur(8px) saturate(160%);
-}
-
-/* Dark-mode tweak: ensure cookie controls are readable */
-body.dark .cookie-banner.minimized,
-body.dark #scrolltop,
-body.dark .cookie-banner__btn--decline {
-	background: rgba(0, 0, 0, 0.22);
-	border-color: rgba(255, 255, 255, 0.08);
-}
-
-/* Apply a compact, hardware-accelerated transition for cards */
-.casino-card,
-.casino-card--top,
-.top-card {
-	transition: var(--card-transition);
-	will-change: transform, box-shadow;
-}
-
-/* Ensure consistent mobile header controls alignment (safe override) */
-@media (max-width: 768px) {
-	.theme-switch-wrapper,
-	.burger {
-		top: 50% !important;
-		transform: translateY(-50%) !important;
-		height: var(--mobile-header-control-size) !important;
-		display: flex !important;
-		align-items: center !important;
-		justify-content: center !important;
-	}
-
-	.theme-switch-wrapper {
-		left: 0.5rem !important;
-	}
-	.burger {
-		right: 1rem !important;
-	}
-
-	.theme-toggle-button {
-		width: var(--mobile-header-control-size) !important;
-		height: var(--mobile-header-control-size) !important;
-		padding: 0 !important;
-	}
-
-	/* Make burger bars center vertically and be touch friendly */
-	.burger {
-		gap: 4px !important;
-	}
-	.burger span {
-		height: 2px;
-		width: 100%;
-		display: block;
-	}
-}
-
-/* Respect users' reduced-motion preference globally for animations */
-@media (prefers-reduced-motion: reduce) {
-	.casino-card,
-	.casino-card--top,
-	.top-card,
-	.casino-card__icon,
-	.theme-toggle-button,
-	.burger {
-		transition: none !important;
-		animation: none !important;
-	}
-}
-
-/* Minor performance hint: avoid expensive paint during hover by preferring transform + shadow */
-.casino-card:hover,
-.casino-card--top:hover,
-.top-card:hover {
-	-webkit-transform: translateZ(0);
-	transform: translateZ(0);
-}
-
-/* Keep a small, explicit override for the underline media fix (ensure it takes precedence) */
-@media (min-width: 1080px) and (max-width: 1190px) {
-	.casino-card__title::after {
-		width: 85% !important;
-		left: 7.5% !important;
-		right: 7.5% !important;
-	}
-}
-
+/* Base Layout */
 body {
+	box-sizing: border-box;
+	color: #000;
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
 	font-family: Helvetica, sans-serif;
-	background: #fff;
-	color: #000;
 	font-size: 1rem;
-	width: 100%;
+	min-height: 100vh;
 	min-width: 320px;
-	overflow: visible !important;
-	overflow-x: clip !important;
-	box-sizing: border-box;
+	overflow-x: hidden;
+	overflow-y: visible;
+	width: 100%;
 }
 
 main {
 	flex: 1 0 auto;
-	padding: 0 2rem;
-	max-width: 1200px;
 	margin: 0 auto;
+	max-width: 1200px;
+	padding: 0 2rem;
 }
 
 section {
 	margin-top: 2rem;
 }
 
-ul {
-	max-width: 700px;
-	margin-bottom: 1.5rem;
-	padding-left: 1.5rem;
-	color: #444;
-}
-
-li {
-	margin-bottom: 0.6rem;
-	line-height: 1.4;
-}
-
-p {
-	font-size: 0.975rem;
-	line-height: 1.6;
-	color: #222;
-	margin-bottom: 1rem;
-	max-width: 800px;
-}
-
+/* Typography */
 h1,
 h2,
 h3,
 h4 {
-	font-family: 'Arial Black', Arial, sans-serif;
 	color: #1a1a1a;
+	font-family: 'Arial Black', Arial, sans-serif;
 	line-height: 1.2;
 }
 
@@ -240,13 +58,13 @@ h1 {
 }
 
 h2 {
+	display: block;
 	font-size: 1.875rem;
 	font-weight: 700;
-	position: relative;
-	display: block;
-	width: 100%;
-	padding-bottom: 0.6rem;
 	margin: 2rem 0 0.5rem;
+	padding-bottom: 0.6rem;
+	position: relative;
+	width: 100%;
 }
 
 h2::after {
@@ -254,15 +72,23 @@ h2::after {
 }
 
 h3 {
+	color: black;
 	font-size: 1.175rem;
 	font-weight: 700;
-	color: black;
 }
 
 h4 {
 	font-size: 0.875rem;
 	font-weight: 600;
 	margin: 1.5rem 0 0.3rem;
+}
+
+p {
+	color: #222;
+	font-size: 0.975rem;
+	line-height: 1.6;
+	margin-bottom: 1rem;
+	max-width: 800px;
 }
 
 strong {
@@ -279,7 +105,19 @@ a:hover {
 	color: red;
 }
 
-/* Focus management - only show focus when using keyboard */
+ul {
+	color: #444;
+	margin-bottom: 1.5rem;
+	max-width: 700px;
+	padding-left: 1.5rem;
+}
+
+li {
+	line-height: 1.4;
+	margin-bottom: 0.6rem;
+}
+
+/* Focus Management */
 *:focus {
 	outline: none;
 }
@@ -288,262 +126,318 @@ body.user-is-tabbing :focus-visible {
 	outline: 2px solid #e60000;
 	outline-offset: 2px;
 }
-/* Cookie Consent Banner - Light styles */
-.cookie-consent-banner {
-	position: fixed;
-	top: 8rem;
-	left: 50%;
-	transform: translateX(-50%);
-	/* Match popup glass */
-	background: rgba(0, 0, 0, 0.18);
-	backdrop-filter: blur(20px) saturate(180%);
-	-webkit-backdrop-filter: blur(20px) saturate(180%);
-	border: 1px solid rgba(255, 255, 255, 0.06);
-	padding: 1rem;
-	z-index: 900;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	max-width: 400px;
-	width: auto;
-	border-radius: 8px;
-	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-	color: #fff;
-}
 
-@media (min-width: 1024px) {
-	.cookie-consent-banner {
-		left: 50%;
-		right: auto;
-		transform: translateX(-50%);
-		width: min(1200px, calc(100% - 2rem));
-		max-width: 1200px;
-		border-radius: 16px;
-		margin-left: auto;
-		margin-right: auto;
-		box-sizing: border-box;
-		justify-content: center;
-		gap: 1.5rem;
-	}
-
-	.cookie-consent-banner p {
-		max-width: 460px;
-		text-align: left;
-	}
-}
-.cookie-consent-banner p {
-	margin: 0;
-	font-size: 0.9rem;
-}
-.cookie-consent-banner button {
-	margin-left: 1rem;
-	padding: 0.5rem 1rem;
-	background: rgba(255, 255, 255, 0.88);
-	color: #000;
-	border: 1px solid rgba(0, 0, 0, 0.12);
-	cursor: pointer;
-	border-radius: 999px;
-}
-
-body:not(.dark) .cookie-consent-banner button:hover,
-body:not(.dark) .cookie-consent-banner button:focus-visible {
-	background: #28a745;
-	color: #fff;
-	border-color: #1e7e34;
-	box-shadow: 0 6px 16px rgba(40, 167, 69, 0.24);
-}
-
-body.dark .cookie-consent-banner button:hover,
-body.dark .cookie-consent-banner button:focus-visible {
-	background: #1e7e34;
-	color: #ffffff;
-	border-color: transparent;
-	box-shadow: 0 6px 16px rgba(30, 126, 52, 0.24);
-}
-
-body:not(.dark) #accept-analytics-btn {
-	color: #000 !important;
-	background: rgba(255, 255, 255, 0.9) !important;
-	border-color: rgba(0, 0, 0, 0.15) !important;
-	box-shadow: 0 0 10px rgba(76, 201, 103, 0.45), 0 0 20px rgba(40, 167, 69, 0.3);
-}
-
-body:not(.dark) #accept-analytics-btn:hover,
-body:not(.dark) #accept-analytics-btn:focus-visible {
-	background: #28a745 !important;
+/* Light Mode Popup Text Overrides */
+body:not(.dark) .popup__content,
+body:not(.dark) .privacy-popup__content {
 	color: #fff !important;
-	border-color: #1e7e34 !important;
-	box-shadow: 0 6px 18px rgba(40, 167, 69, 0.3),
-		0 0 16px rgba(76, 201, 103, 0.55), 0 0 28px rgba(56, 160, 85, 0.4) !important;
 }
 
-/* Dark Mode for cookie consent banner */
-body.dark .cookie-consent-banner {
-	/* keep the glass look in dark mode */
-	background: rgba(0, 0, 0, 0.22);
-	backdrop-filter: blur(24px) saturate(180%);
-	-webkit-backdrop-filter: blur(24px) saturate(180%);
-	color: #ffffff;
-	border: 1px solid rgba(255, 255, 255, 0.06);
-	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+body:not(.dark)
+	.popup__content
+	*:not(button):not(.popup__button):not(.popup__close):not(input):not(
+		textarea
+	):not(select),
+body:not(.dark)
+	.privacy-popup__content
+	*:not(button):not(.popup__button):not(.popup__close):not(input):not(
+		textarea
+	):not(select) {
+	color: #fff !important;
 }
 
-/* Dark mode mobile styles */
-@media (max-width: 768px) {
-	body.dark .cookie-consent-banner {
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-	}
+body:not(.dark) .popup__content .popup__close,
+body:not(.dark) .privacy-popup__content .popup__close {
+	color: #b30000 !important;
 }
 
-body.dark .cookie-consent-banner p {
-	color: #ffffff;
+body:not(.dark) .popup__content .popup__button,
+body:not(.dark) .privacy-popup__content .popup__button {
+	color: #fff !important;
 }
 
-body.dark .cookie-consent-banner button {
-	background: #28a745;
-	color: #ffffff;
-	border: none;
-}
-
-body.dark .cookie-consent-banner button:hover {
-	background: #1e7e34;
-}
 /* Header */
 .header {
-	/* Glass morphism effect - iOS style liquid glass */
-	/* Fully transparent with blur only - no color tint */
-	background: rgba(0, 0, 0, 0.2);
-	backdrop-filter: blur(20px) saturate(180%);
 	-webkit-backdrop-filter: blur(20px) saturate(180%);
+	backdrop-filter: blur(20px) saturate(180%);
+	background: rgba(0, 0, 0, 0.2);
 	border-bottom: none;
-	color: #fff;
-	padding: 0.5rem 0; /* Reduced height by half: 1rem -> 0.5rem */
-	width: 100%;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 	box-sizing: border-box;
+	color: #fff;
 	font-family: Arial, sans-serif;
+	padding: 0.5rem 0;
 	position: sticky;
 	top: 0;
-	z-index: 900;
-	transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease,
-		backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-/* Enhanced glass effect when scrolled - more blur but same transparency */
-.header.scrolled {
-	background: rgba(0, 0, 0, 0.2);
-	backdrop-filter: blur(30px) saturate(180%);
-	-webkit-backdrop-filter: blur(30px) saturate(180%);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-	border-bottom: none;
-}
-
-.header__container,
-.footer__container {
-	max-width: 1200px;
-	margin: 0 auto;
+	transition: all 0.3s ease;
 	width: 100%;
-	padding: 0 2rem;
-	display: flex;
-	justify-content: space-between;
+	z-index: 900;
+}
+
+.header.scrolled {
+	-webkit-backdrop-filter: blur(30px) saturate(180%);
+	backdrop-filter: blur(30px) saturate(180%);
+	background: rgba(0, 0, 0, 0.2);
+	border-bottom: none;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header__container {
 	align-items: center;
 	box-sizing: border-box;
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-	html,
-	body {
-		width: 100%;
-		margin: 0 !important;
-		padding: 0 !important;
-		/* overflow-x: hidden !important; */
-	}
-
-	.header {
-		width: 100%;
-		max-width: 100% !important;
-		margin: 0 !important;
-		/* Reduced height for tablet - half of original */
-		padding: 0.3rem 0 !important; /* 0.6rem -> 0.3rem (half) */
-		box-sizing: border-box;
-	}
-
-	.header__container {
-		width: 100% !important;
-		max-width: none !important;
-		padding: 0.2rem 1rem !important;
-		margin: 0 auto !important;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		box-sizing: border-box;
-	}
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 0.15rem 2rem;
+	position: relative;
+	width: 100%;
 }
 
-/* Desktop & Tablet (light mode): header controls should be dark for better contrast */
-@media (min-width: 768px) {
-	body:not(.dark) .header__link {
-		color: #000 !important;
-	}
-
-	/* Theme toggle/icon color */
-	body:not(.dark) .theme-toggle-button,
-	body:not(.dark) .theme-switch-wrapper,
-	body:not(.dark) .theme-toggle-button .theme-icon {
-		color: #000 !important;
-		border-color: rgba(0, 0, 0, 0.12) !important;
-	}
-
-	/* Ensure header logo lines (title/sub) remain as set elsewhere; do not change mobile rules */
+.header__logo {
+	height: auto;
+	margin-right: 2rem;
+	max-height: 87.5px;
+	min-height: 52.5px;
+	width: auto;
 }
 
-/* Light mode: make logo title and subtitle black for better contrast */
+.header__logo.rotate-once {
+	animation: rotate-once 1s ease forwards;
+}
+
+.header__logo-block {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.header__logo-block .header__logo {
+	display: block;
+	margin: 0 auto 0.1rem;
+	max-height: 85px;
+}
+
+.header__logo-text {
+	color: #fff;
+	text-align: center;
+}
+
+.header__logo-line {
+	line-height: 1.2;
+	margin: 0;
+	text-align: center;
+}
+
+.header__logo-line--title {
+	color: #fff;
+	font-family: 'Helvetica', sans-serif;
+	font-size: 1.2rem;
+	font-weight: 700;
+}
+
+.header__logo-line--subtitle {
+	color: #fff;
+	font-family: 'Helvetica', sans-serif;
+	font-size: 0.7rem;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.header__link {
+	align-items: center;
+	border-radius: 999px;
+	color: #fff;
+	display: flex;
+	gap: 0.4rem;
+	padding: 0.35rem 0.6rem;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+button.header__link {
+	background: none;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font: inherit;
+	padding: 0.35rem 0.6rem;
+	text-align: left;
+}
+
+.header__link:focus-visible {
+	background: rgba(255, 255, 255, 0.12);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+	color: #ffefef;
+	outline: none;
+}
+
+body:not(.dark) .header__link:focus-visible {
+	background: rgba(179, 0, 0, 0.12);
+	box-shadow: 0 6px 18px rgba(179, 0, 0, 0.16);
+	color: #b30000 !important;
+}
+
+body.dark .header__link:focus-visible {
+	background: rgba(255, 255, 255, 0.08);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+	color: #ffe6e6;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.header__link:hover {
+		background: rgba(255, 255, 255, 0.12);
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+		color: #ffefef;
+		outline: none;
+	}
+
+	body:not(.dark) .header__link:hover {
+		background: rgba(179, 0, 0, 0.12);
+		box-shadow: 0 6px 18px rgba(179, 0, 0, 0.16);
+		color: #b30000 !important;
+	}
+
+	body.dark .header__link:hover {
+		background: rgba(255, 255, 255, 0.08);
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+		color: #ffe6e6;
+	}
+}
+
 body:not(.dark) .header__logo-line--title,
 body:not(.dark) .header__logo-line--subtitle {
 	color: #000 !important;
 }
 
-/* Light mode: ensure cookie banner title is black (overrides inline styles) */
-body:not(.dark) .cookie-banner #cookie-title,
-body:not(.dark) #cookie-title {
-	color: #000 !important;
-}
-
-/* Scroll-to-top: desktop arrow size and mobile position tweaks */
-@media (min-width: 1024px) {
-	/* Desktop: make the arrow image a bit larger for visibility */
-	.arrow-up {
-		width: 1.8rem;
-		height: auto;
-	}
-}
-
-@media (max-width: 768px) {
-	/* Mobile: move the scroll button slightly closer to bottom-right */
-	#scrolltop {
-		right: 1rem !important;
-		bottom: 1rem !important;
-		width: 44px !important;
-		height: 44px !important;
-	}
-
-	.arrow-up {
-		width: 1.6rem;
-	}
-}
-
-.header__container {
+/* Navigation Menu */
+.nav-menu {
+	display: block;
 	position: relative;
-	padding-top: 0.15rem; /* Reduced by half: 0.3rem -> 0.15rem */
-	padding-bottom: 0.15rem; /* Reduced by half: 0.3rem -> 0.15rem */
 }
 
-.header__logo {
-	max-height: 87.5px;
-	min-height: 52.5px;
+.nav-menu__list {
+	align-items: center;
+	display: flex;
+	gap: 1rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-menu__item {
+	display: flex;
+}
+
+.nav-menu__link {
+	align-items: center;
+	color: #fff;
+	display: flex;
+	gap: 0.4rem;
+	justify-content: center;
 	width: auto;
-	margin-right: 2rem;
 }
 
+.youtube-icon {
+	aspect-ratio: 1 / 1;
+	display: inline-block;
+	height: 25px;
+	object-fit: contain;
+	opacity: 1;
+	visibility: visible;
+	width: 25px;
+}
+
+/* Burger Menu */
+.burger {
+	background: none;
+	border: none;
+	cursor: pointer;
+	display: none;
+	flex-direction: column;
+	height: 18px;
+	justify-content: space-between;
+	margin: 0;
+	overflow-y: auto;
+	padding: 0;
+	width: 24px;
+	z-index: 999;
+}
+
+.burger span {
+	background-color: #fff;
+	display: block;
+	height: 2px;
+	width: 100%;
+}
+
+.close-menu {
+	display: none;
+}
+
+/* Scroll to Top */
+#scrolltop {
+	-webkit-backdrop-filter: blur(12px) saturate(180%);
+	align-items: center;
+	backdrop-filter: blur(12px) saturate(180%);
+	background: rgba(0, 0, 0, 0.18);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	border-radius: 50%;
+	bottom: 2rem;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	font-family: 'Helvetica', sans-serif;
+	font-size: 1.5rem;
+	font-weight: bold;
+	height: 48px;
+	justify-content: center;
+	opacity: 0;
+	padding: 0;
+	pointer-events: none;
+	position: fixed;
+	right: 2rem;
+	text-align: center;
+	text-decoration: none;
+	transform: translateY(20px);
+	transition:
+		opacity 0.4s ease,
+		transform 0.4s ease,
+		background-color 0.3s ease;
+	width: 48px;
+	z-index: 10000;
+}
+
+#scrolltop.show {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0);
+}
+
+#scrolltop:hover {
+	background: rgba(0, 0, 0, 0.26) !important;
+	transition: background 0.3s ease;
+}
+
+#scrolltop:active {
+	background-color: #09162b !important;
+	transition: background-color 0.1s ease;
+}
+
+#scrolltop .arrow-up {
+	transform: translateX(1px) !important;
+}
+
+.arrow-up {
+	aspect-ratio: 1 / 1;
+	display: block;
+	height: auto;
+	margin: 0;
+	width: 1.9rem;
+}
+
+/* Animations */
 @keyframes rotate-once {
 	from {
 		transform: rotateY(0deg);
@@ -553,143 +447,596 @@ body:not(.dark) #cookie-title {
 	}
 }
 
-.header__logo.rotate-once {
-	animation: rotate-once 1s ease forwards;
+/* Footer */
+.footer {
+	background: #121626;
+	box-sizing: border-box;
+	color: #e6e6e6;
+	font-family: Arial, sans-serif;
+	font-size: 0.9rem;
+	padding: 2rem 0 1rem;
+	position: relative;
+	width: 100%;
 }
 
-.header__logo-block {
+.footer__container {
+	align-items: center;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 0 2rem;
+	width: 100%;
+}
+
+.footer__content {
+	align-items: start;
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	margin-bottom: 2rem;
+}
+
+.footer__content.fade-in {
+	display: grid;
+}
+
+.footer__section h3,
+.footer__section h4 {
+	border-bottom: 2px solid #e60000;
+	color: #ffffff;
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: 700;
+	margin: 0 0 1rem 0;
+	padding-bottom: 0.5rem;
+}
+
+.footer__section p,
+.footer__section li {
+	color: #bfbfbf;
+	font-size: 0.85rem;
+	line-height: 1.6;
+	margin-bottom: 0.5rem;
+	text-align: left;
+}
+
+.footer__section strong {
+	color: #e30011;
+}
+
+.footer__section ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.footer__section li::before {
+	content: none;
+}
+
+.footer__section--bottom .footer__copyright {
+	color: #bfbfbf;
+	font-size: 0.8rem;
+	margin-top: 0;
+	opacity: 0.7;
+}
+
+.footer__section--bottom .footer__social {
+	margin-bottom: 1.5rem;
+}
+
+.footer__link {
+	color: #e6e6e6;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.footer__link:hover {
+	color: #ff6b6b;
+}
+
+.footer__contact {
+	align-items: center;
+	display: flex;
+	gap: 0.5rem;
+	justify-content: flex-start;
+	margin-bottom: 0.5rem;
+}
+
+.footer__contact-icon {
+	flex-shrink: 0;
+	height: 16px;
+	width: 16px;
+}
+
+.footer__social {
+	align-items: center;
+	display: flex;
+	gap: 0.5rem;
+	justify-content: flex-start;
+	margin-bottom: 1rem;
+}
+
+.footer__social a {
+	align-items: center;
+	display: flex;
+	gap: 0.5rem;
+}
+
+.footer__disclaimer {
+	color: #999;
+	font-size: 0.75rem;
+	line-height: 1.4;
+	max-width: 400px;
+}
+
+.footer__copyright-desktop {
+	bottom: 1rem;
+	color: #bfbfbf;
+	font-size: 0.8rem;
+	left: 2rem;
+	opacity: 0.7;
+	position: absolute;
+	text-align: left;
+}
+
+.footer__copyright--mobile {
+	display: none;
+}
+
+/* List Section */
+.list {
+	align-items: center;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	margin: 0 auto 3rem;
+	max-width: 900px;
 }
 
-.header__logo-block .header__logo {
-	max-height: 85px;
-	margin: 0 auto 0.1rem;
-	display: block;
-}
-
-.header__logo-text {
-	text-align: center;
-	color: #fff;
-}
-
-.header__logo-line {
-	margin: 0;
-	line-height: 1.2;
-	text-align: center;
-}
-
-.header__logo-line--title {
-	font-size: 1.2rem; /* 0.65rem * 1.25 = 25% увеличение */
-	font-weight: 700;
-	font-family: 'Helvetica', sans-serif;
-	color: #fff;
-}
-
-.header__logo-line--subtitle {
-	font-size: 0.7rem; /* 0.5rem * 1.25 = 25% увеличение */
-	font-weight: 500;
-	font-family: 'Helvetica', sans-serif;
-	color: #fff;
-	text-transform: uppercase;
-}
-
-.header__link {
-	color: #fff;
-	text-decoration: none;
-	display: flex;
-	align-items: center;
-	gap: 0.4rem;
-	padding: 0.35rem 0.6rem;
-	border-radius: 999px;
-	transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease;
-}
-
-.nav-menu__link {
-	color: #fff;
-}
-
-button.header__link {
-	background: none;
-	border: none;
-	color: inherit;
-	font: inherit;
-	padding: 0.35rem 0.6rem;
+.list p {
+	box-sizing: border-box;
 	text-align: left;
-	cursor: pointer;
+	width: 100%;
 }
 
-.header__link:focus-visible {
-	color: #ffefef;
-	background: rgba(255, 255, 255, 0.12);
-	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+/* Casino Cards */
+.casino-cards {
+	margin-bottom: 2rem;
+	margin-top: 1rem;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.casino-cards.fade-in.visible {
+	margin-top: 2rem;
+}
+
+/* Base Casino Card Styles */
+.casino-card,
+.casino-card--top,
+.top-card {
+	border-radius: 15px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	overflow: visible;
+	position: relative;
+	transition: var(--card-transition);
+	transform: translateZ(0);
+	will-change: transform, box-shadow;
+}
+
+.casino-card {
+	align-items: center;
+	background: #fff;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1.5rem;
+	padding: 1.5rem 1.75rem;
+}
+
+.casino-card--top {
+	background: rgba(255, 255, 255, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow:
+		0 0 18px rgba(179, 0, 0, 0.32),
+		0 10px 24px rgba(0, 0, 0, 0.16);
+	z-index: 10;
+}
+
+.casino-card--top::before {
+	border: 1.5px solid #952631;
+	border-radius: 15px;
+	content: '';
+	height: 100%;
+	left: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 6;
+}
+
+.top-card,
+.casino-card--top {
+	box-shadow:
+		0 0 18px rgba(179, 0, 0, 0.32),
+		0 10px 24px rgba(0, 0, 0, 0.16);
+	transition:
+		box-shadow 180ms ease,
+		transform 180ms ease;
+}
+
+.casino-card:hover,
+.casino-card--top:hover,
+.top-card:hover {
+	animation: none !important;
+	box-shadow:
+		0 8px 25px rgba(0, 0, 0, 0.15),
+		0 0 20px rgba(255, 255, 255, 0.3);
+	transform: translateY(-8px) scale(1.02);
+}
+
+.top-card:hover,
+.top-card:focus-within,
+.casino-card--top:hover,
+.casino-card--top:focus-within {
+	box-shadow:
+		0 6px 24px rgba(179, 0, 0, 0.18),
+		0 2px 8px rgba(179, 0, 0, 0.12),
+		0 0 28px rgba(179, 0, 0, 0.2) inset;
 	outline: none;
+	transform: translateY(-4px);
 }
 
-body:not(.dark) .header__link:focus-visible {
-	color: #b30000 !important;
-	background: rgba(179, 0, 0, 0.12);
-	box-shadow: 0 6px 18px rgba(179, 0, 0, 0.16);
+.top-card:focus-within,
+.casino-card--top:focus-within {
+	box-shadow:
+		0 8px 34px rgba(179, 0, 0, 0.25),
+		0 2px 10px rgba(179, 0, 0, 0.14);
 }
 
-body.dark .header__link:focus-visible {
-	color: #ffe6e6;
-	background: rgba(255, 255, 255, 0.08);
-	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+/* Casino Card Info */
+.casino-card__info {
+	align-items: center;
+	display: flex;
 }
 
-@media (hover: hover) and (pointer: fine) {
-	.header__link:hover {
-		color: #ffefef;
-		background: rgba(255, 255, 255, 0.12);
-		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-		outline: none;
-	}
-
-	body:not(.dark) .header__link:hover {
-		color: #b30000 !important;
-		background: rgba(179, 0, 0, 0.12);
-		box-shadow: 0 6px 18px rgba(179, 0, 0, 0.16);
-	}
-
-	body.dark .header__link:hover {
-		color: #ffe6e6;
-		background: rgba(255, 255, 255, 0.08);
-		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-	}
+.casino-card__info.casino-card__info_logo {
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 }
 
-.youtube-icon {
-	width: 25px;
-	height: 25px;
+.casino-card__info_logo .casino-card__image {
+	margin: 0 auto;
+}
+
+.casino-card__info > div {
+	max-width: 200px;
+	overflow-wrap: break-word;
+}
+
+/* Casino Card Image */
+.casino-card__image {
+	aspect-ratio: 1 / 1;
+	border-radius: 8px;
+	display: block;
+	flex-shrink: 0;
+	height: 150px;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	max-width: 150px;
 	object-fit: contain;
-	/* Prevent flash of unstyled content */
-	opacity: 1;
-	visibility: visible;
-	display: inline-block;
+	width: 150px;
 }
 
-/* Desktop: add extra spacing between header action links (YouTube / Qui suis-je / Contact) */
-@media (min-width: 1024px) {
-	.nav-menu__list {
-		gap: 2.4rem; /* increased space between links on desktop */
-		align-items: center;
-	}
+/* Casino Card Features */
+.casino-card__features {
+	box-sizing: border-box;
+	flex: 0 1 auto;
+	font-size: 12px;
+	list-style: none;
+	max-height: calc(100% - 2rem);
+	max-width: 300px;
+	overflow-wrap: break-word;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 0;
+	word-wrap: break-word;
+}
 
-	.nav-menu__link {
-		padding: 0.45rem 0.75rem; /* larger click target and visual spacing */
-	}
+.casino-card__features li {
+	align-items: flex-start;
+	color: #222;
+	display: flex;
+	gap: 0.5em;
+}
 
-	/* ensure the youtube icon has a consistent gap to its label */
-	.nav-menu__link .youtube-icon {
-		margin-right: 0.2rem;
-	}
+.casino-card__features li::before {
+	color: #1db100;
+	content: '✓';
+	margin-right: 0.5em;
+}
 
-	/* slightly increase letter-spacing for desktop header links for clarity */
-	.nav-menu__link span {
-		letter-spacing: 0.02em;
+.casino-card__features li::first-letter {
+	color: inherit;
+}
+
+/* Casino Card Title */
+.casino-card__title {
+	display: inline-block;
+	font-size: 20px;
+	margin: 0.2rem 0;
+	padding-bottom: 0.3rem;
+	width: 220px;
+}
+
+.casino-card:not(.casino-card--top) .casino-card__title {
+	border-bottom: 2px solid #e60000;
+}
+
+.casino-card--top .casino-card__title {
+	border-bottom: 2px solid #33b538;
+}
+
+/* Casino Card Rating */
+.casino-card__rating {
+	align-items: center;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	height: 100px;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 120px;
+	min-width: 120px;
+	text-align: center;
+	width: 100px;
+}
+
+.casino-card__score {
+	font-size: 1.375rem;
+	font-weight: bold;
+	margin: 0;
+}
+
+.casino-card__stars {
+	color: gold;
+	margin: 0;
+}
+
+/* Casino Card Button */
+.casino-card__button {
+	align-items: center;
+	background-color: #1e7e34;
+	border-radius: 6px;
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	overflow: hidden;
+	padding: 1rem 2rem;
+	position: relative;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+}
+
+.casino-card__button:hover {
+	background-color: #155724;
+}
+
+.casino-card__button-link {
+	align-items: center;
+	color: #ffffff;
+	display: inline-flex;
+	font-size: 0.875rem;
+	font-weight: 700;
+	justify-content: center;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	z-index: 1;
+}
+
+.casino-card__button-link:hover {
+	color: #e0ffd6;
+}
+
+.casino-card__button-link::after {
+	border-right: 2px solid #fff;
+	border-top: 2px solid #fff;
+	content: '';
+	height: 6px;
+	left: 100%;
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 50%;
+	transform: translate(-130%, -50%) rotate(45deg);
+	transition:
+		transform 0.3s ease,
+		opacity 0.3s ease;
+	width: 6px;
+}
+
+.casino-card__button:hover .casino-card__button-link::after {
+	border-color: #e0ffd6;
+	opacity: 1;
+	transform: translate(20%, -50%) rotate(45deg);
+}
+
+/* Casino Card Rank */
+.casino-card__rank {
+	align-items: center;
+	background: rgba(23, 22, 38, 0.65);
+	border: 0.1px solid #e60000;
+	border-radius: 50%;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	display: flex;
+	font-size: 1.4rem;
+	font-weight: bold;
+	height: 36px;
+	justify-content: center;
+	left: -19.5px;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	width: 36px;
+	z-index: 7;
+}
+
+/* Casino Card Icon (Crown) */
+.casino-card__icon {
+	animation: crown-wiggle 3s ease-in-out infinite;
+	aspect-ratio: 1 / 1;
+	filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+	height: 60px;
+	left: -28px;
+	position: absolute;
+	top: -36px;
+	transform: rotate(-35deg);
+	width: 60px;
+	z-index: 5;
+}
+
+.casino-card__icon::before {
+	animation: crown-shine 2s ease-in-out infinite;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.8),
+		transparent
+	);
+	content: '';
+	height: 100%;
+	left: -100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+/* Casino Button Variant */
+.casino-button .casino-card__button {
+	text-decoration: none;
+}
+
+.casino-button__title {
+	border-bottom: 2px solid #e60000;
+	font-size: 1.075rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	text-align: center;
+}
+
+.casino-button__title::after {
+	content: none;
+}
+
+.casino-button__rating {
+	align-items: center;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	height: 100px;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 120px;
+	min-width: 120px;
+	text-align: center;
+	width: 120px;
+}
+
+/* Utility Classes */
+.visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Animations for Casino Cards */
+@keyframes crown-wiggle {
+	0%,
+	100% {
+		transform: rotate(-35deg) translateY(0px);
 	}
+	25% {
+		transform: rotate(-32deg) translateY(-2px);
+	}
+	50% {
+		transform: rotate(-38deg) translateY(1px);
+	}
+	75% {
+		transform: rotate(-33deg) translateY(-1px);
+	}
+}
+
+@keyframes crown-shine {
+	0% {
+		left: -100%;
+	}
+	50% {
+		left: 100%;
+	}
+	100% {
+		left: 100%;
+	}
+}
+
+/* Components */
+.avis-wrapper {
+	position: relative;
+}
+
+.avis-dropdown {
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+	list-style: none;
+	margin: 0;
+	min-width: 180px;
+	padding: 0.25rem 0;
+}
+
+.avis-link {
+	border-radius: 4px;
+	color: #071428;
+	display: block;
+	padding: 0.5rem 1.25rem;
+	text-decoration: none;
+	transition: background 0.18s;
+}
+
+.avis-link:hover,
+.avis-link:focus {
+	background: #f5f7fa;
+}
+
+.avis-toggle__icon {
+	align-items: center;
+	color: #fff;
+	display: inline-flex;
+	height: 1em;
+	justify-content: center;
+	margin-left: -0.4em;
+	transform: rotate(0deg);
+	transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	vertical-align: middle;
+	width: 1em;
+}
+
+.avis-wrapper.open .avis-toggle__icon {
+	color: #fff;
+	transform: rotate(90deg);
 }
 
 /* Hero Section */
@@ -704,67 +1051,57 @@ body.dark .header__link:focus-visible {
 }
 
 .hero__meta {
-	display: flex;
 	align-items: center;
-	gap: 0.5rem;
+	display: flex;
 	flex-wrap: wrap;
+	gap: 0.5rem;
 	margin: 1.2rem 0 1.5rem 0;
 }
 
-.author__icon {
-	width: 20px;
-	height: 20px;
-}
-
-.author__name {
-	text-decoration: underline;
-	color: inherit;
-	font-weight: 200;
-}
-
-.author {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-}
-
-.author__photo {
-	width: 35px;
-	height: 35px;
-	border-radius: 50%;
-	object-fit: cover;
-	display: inline-block;
-}
-
 .hero__text {
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
 	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .hero__text p {
-	max-width: 1200px;
 	line-height: 1.6;
+	max-width: 1200px;
+}
+
+.author {
+	align-items: center;
+	display: inline-flex;
+	gap: 0.5rem;
+}
+
+.author__icon {
+	height: 20px;
+	width: 20px;
+}
+
+.author__name {
+	color: inherit;
+	font-weight: 200;
+	text-decoration: underline;
+}
+
+.author__photo {
+	aspect-ratio: 1 / 1;
+	border-radius: 50%;
+	display: inline-block;
+	height: 35px;
+	object-fit: cover;
+	width: 35px;
 }
 
 .light {
 	font-weight: 300;
 }
 
+/* Disclaimer */
 .disclaimer {
-	position: relative;
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
-	padding-left: 30px;
-	width: 100%;
-	font-size: 0.7rem;
-	color: #555;
-	max-width: 750px;
-	margin-top: 2rem;
-	margin-bottom: 1rem;
-	line-height: 1.4;
-	border-radius: 10px;
 	background: #ffffff;
 	background: linear-gradient(
 		298deg,
@@ -772,22 +1109,37 @@ body.dark .header__link:focus-visible {
 		rgba(255, 250, 250, 1) 67%,
 		rgba(255, 224, 217, 1) 100%
 	);
+	border-radius: 10px;
+	color: #555;
+	font-size: 0.7rem;
+	line-height: 1.4;
+	margin-bottom: 1rem;
+	margin-top: 2rem;
+	max-width: 750px;
+	padding-bottom: 0.5rem;
+	padding-left: 30px;
+	padding-top: 0.5rem;
+	position: relative;
+	width: 100%;
 }
 
 .disclaimer::before {
 	content: '🔔';
-	position: absolute;
+	font-size: 1rem;
 	left: 5px;
+	line-height: 1;
+	position: absolute;
 	top: 55%;
-
-	--bell-ty: -100%;
 	transform: translateY(var(--bell-ty));
 	transform-origin: 50% 0%;
-	font-size: 1rem;
-	line-height: 1;
+	--bell-ty: -100%;
 }
 
-/* Bell ring animation (global) */
+.disclaimer:hover::before,
+.disclaimer.bell-start::before {
+	animation: bell-ring 1s ease-in-out 0s 2;
+}
+
 @keyframes bell-ring {
 	0% {
 		transform: translateY(var(--bell-ty)) rotate(0deg) scale(1);
@@ -812,444 +1164,12 @@ body.dark .header__link:focus-visible {
 	}
 }
 
-.disclaimer:hover::before {
-	animation: bell-ring 1s ease-in-out 0s 2;
-}
-.disclaimer.bell-start::before {
-	animation: bell-ring 1s ease-in-out 0s 2;
-}
-
-/* Animation "rebond" for casino cards */
-@keyframes bounce-slow {
-	0%,
-	100% {
-		transform: translateY(-5%);
-	}
-	50% {
-		transform: translateY(0);
-	}
-}
-
-.casino-card,
-.casino-card--top {
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	border-radius: 15px;
-	overflow: visible;
-	position: relative;
-	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-		box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.casino-card {
-	background: #fff;
-	padding: 1.5rem 1.75rem;
-	margin-bottom: 1.5rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.casino-card--top {
-	z-index: 10;
-	background: rgba(255, 255, 255, 0.7);
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	box-shadow: 0 0 18px rgba(179, 0, 0, 0.32), 0 10px 24px rgba(0, 0, 0, 0.16);
-}
-
-.casino-card--top::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	border: 1.5px solid #952631;
-	border-radius: 15px;
-	z-index: 6;
-	pointer-events: none;
-}
-
-/* Hover animation - lift up, glow and bounce (light theme) */
-.casino-card:hover,
-.casino-card--top:hover {
-	transform: translateY(-8px) scale(1.02);
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 255, 255, 0.3);
-	/* remove infinite bounce animation to prevent hover flicker */
-	animation: none !important;
-}
-
-.casino-card__info {
-	display: flex;
-	align-items: center;
-}
-
-.casino-card__info.casino-card__info_logo {
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.casino-card__info_logo .casino-card__image {
-	margin: 0 auto 1rem;
-}
-
-.casino-card__info > div {
-	max-width: 200px;
-	overflow-wrap: break-word;
-}
-
-.casino-card__image {
-	max-width: 150px;
-	width: 150px;
-	height: 150px;
-	object-fit: contain;
-	border-radius: 8px;
-	margin-right: 1rem;
-	margin-left: 1rem;
-	display: block;
-	flex-shrink: 0;
-}
-
-.casino-card__features {
-	margin: 0 auto;
-	list-style: none;
-	font-size: 12px;
-	width: 100%;
-	max-width: 100%;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	max-height: calc(100% - 2rem);
-	overflow-y: auto;
-	overflow-x: hidden; /* убираем горизонтальный скролл */
-	box-sizing: border-box;
-	padding: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.disclaimer:hover::before,
-	.disclaimer.bell-start::before {
-		animation: none !important;
-	}
-
-	.casino-card,
-	.casino-card--top {
-		animation: none !important;
-	}
-}
-
-/* Casino Cards */
-.casino-cards {
-	padding-left: 0;
-	padding-right: 0;
-	margin-top: 1rem;
-	margin-bottom: 2rem;
-}
-
-.casino-card,
-.casino-card--top {
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	border-radius: 15px;
-	overflow: visible;
-	position: relative;
-	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-		box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.casino-card {
-	background: #fff;
-	padding: 1rem;
-	margin-bottom: 1.5rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.casino-card--top {
-	z-index: 10;
-	background: rgba(255, 255, 255, 0.7);
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	box-shadow: 0 0 18px rgba(179, 0, 0, 0.32), 0 10px 24px rgba(0, 0, 0, 0.16);
-}
-
-.casino-card--top::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	border: 1.5px solid #952631;
-	border-radius: 15px;
-	z-index: 6;
-	pointer-events: none;
-}
-
-.casino-card__info {
-	display: flex;
-	align-items: center;
-}
-
-.casino-card__info > div {
-	max-width: 200px;
-	overflow-wrap: break-word;
-}
-
-.casino-card__image {
-	max-width: 150px;
-	width: 150px;
-	height: 150px;
-	object-fit: contain;
-	border-radius: 8px;
-	margin-right: 1rem;
-	margin-left: 1rem;
-	display: block;
-	flex-shrink: 0;
-}
-
-.casino-card__features {
-	margin: 0 auto;
-	list-style: none;
-	font-size: 12px;
-	width: 250px;
-	max-width: 100%;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	max-height: calc(100% - 2rem);
-	overflow-y: auto;
-	box-sizing: border-box;
-}
-
-.casino-card__features li {
-	color: #222;
-	display: flex;
-	align-items: flex-start;
-	gap: 0.5em;
-}
-
-.casino-card__features li::before {
-	content: '✓';
-	color: #1db100;
-	margin-right: 0.5em;
-}
-
-.casino-card__features li::first-letter {
-	color: inherit;
-}
-
-.casino-card__rating {
-	text-align: center;
-	min-width: 120px;
-	max-width: 120px;
-	width: 100px;
-	height: 100px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	box-sizing: border-box;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.casino-card__score {
-	font-size: 1.375rem;
-	font-weight: bold;
-	margin: 0;
-}
-
-.casino-card__stars {
-	color: gold;
-	margin: 0;
-}
-
-.casino-card__button {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	padding: 1rem 2rem;
-	background-color: #28a745;
-	border-radius: 6px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	overflow: hidden;
-	text-decoration: none;
-}
-
-.casino-card__button:hover {
-	background-color: #1e7e34;
-}
-
-.casino-card__button-link {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-
-	text-align: center;
-	position: relative;
-	color: #fff;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 0.875rem;
-	z-index: 1;
-}
-
-.casino-card__button-link:hover {
-	color: #e0ffd6;
-}
-
-.casino-card__button-link::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 100%;
-	width: 6px;
-	height: 6px;
-	border-top: 2px solid #fff;
-	border-right: 2px solid #fff;
-	transform: translate(-130%, -50%) rotate(45deg);
-	opacity: 0;
-	transition: transform 0.3s ease, opacity 0.3s ease;
-	pointer-events: none;
-}
-
-.casino-card__button:hover .casino-card__button-link::after {
-	opacity: 1;
-	transform: translate(20%, -50%) rotate(45deg);
-	border-color: #e0ffd6;
-}
-/* duplicate :hover removed (kept the first occurrence above) */
-
-.casino-card__title {
-	margin: 0.2rem 0;
-	font-size: 20px;
-	display: inline-block;
-	width: 220px;
-	padding-bottom: 0.3rem;
-}
-
-.casino-card:not(.casino-card--top) .casino-card__title {
-	border-bottom: 2px solid #e60000;
-}
-
-.casino-card--top .casino-card__title {
-	border-bottom: 2px solid #33b538;
-}
-
-.casino-button__title::after {
-	content: none;
-}
-
-.casino-card__rank {
-	position: absolute;
-	top: 50%;
-	left: -19.5px;
-	transform: translate(0, -50%);
-	background: rgba(23, 22, 38, 0.65);
-	color: #fff;
-	font-size: 1.4rem;
-	font-weight: bold;
-	border-radius: 50%;
-	width: 36px;
-	height: 36px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 7;
-	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-	border: 0.1px solid #e60000;
-	-webkit-font-smoothing: antialiased;
-}
-
-.casino-card__icon {
-	position: absolute;
-	top: -36px;
-	left: -28px;
-	width: 60px;
-	height: 60px;
-	z-index: 5;
-	transform: rotate(-35deg);
-	animation: crown-wiggle 3s ease-in-out infinite;
-	filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
-}
-
-/* Crown wiggle animation */
-@keyframes crown-wiggle {
-	0%,
-	100% {
-		transform: rotate(-35deg) translateY(0px);
-	}
-	25% {
-		transform: rotate(-32deg) translateY(-2px);
-	}
-	50% {
-		transform: rotate(-38deg) translateY(1px);
-	}
-	75% {
-		transform: rotate(-33deg) translateY(-1px);
-	}
-}
-
-.visually-hidden {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0 0 0 0);
-	white-space: nowrap;
-	border: 0;
-}
-
-/* Crown shine effect */
-.casino-card__icon::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: -100%;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(
-		90deg,
-		transparent,
-		rgba(255, 255, 255, 0.8),
-		transparent
-	);
-	animation: crown-shine 2s ease-in-out infinite;
-}
-
-@keyframes crown-shine {
-	0% {
-		left: -100%;
-	}
-	50% {
-		left: 100%;
-	}
-	100% {
-		left: 100%;
-	}
-}
-
-/* Respect reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-	.casino-card__icon {
-		animation: none;
-		filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4));
-	}
-
-	.casino-card__icon::before {
-		animation: none;
-		display: none;
-	}
-}
-
+/* FAQ */
 .faq {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 1rem;
 	box-sizing: border-box;
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 0 1rem;
 }
 
 .faq-item {
@@ -1257,7 +1177,7 @@ body.dark .header__link:focus-visible {
 }
 
 .faq-question {
-	width: 100%;
+	align-items: center;
 	background: #ffffff;
 	background: linear-gradient(
 		298deg,
@@ -1267,14 +1187,14 @@ body.dark .header__link:focus-visible {
 	);
 	border: none;
 	border-radius: 10px;
-	padding: 1rem;
-	text-align: left;
-	font-weight: bold;
 	cursor: pointer;
 	display: flex;
+	font-weight: bold;
 	justify-content: space-between;
-	align-items: center;
 	margin-bottom: 1rem;
+	padding: 1rem;
+	text-align: left;
+	width: 100%;
 }
 
 .faq-toggle {
@@ -1288,19 +1208,14 @@ body.dark .header__link:focus-visible {
 
 .faq-answer {
 	border-left: 2px solid #e60000;
-	max-height: 0;
 	margin-bottom: 0 !important;
-	padding: 0 0 0 1rem !important;
+	max-height: 0;
 	overflow: hidden;
-
-	transition: max-height 0.3s ease, margin-bottom 0.3s ease,
+	padding: 0 0 0 1rem !important;
+	transition:
+		max-height 0.3s ease,
+		margin-bottom 0.3s ease,
 		padding-bottom 0.3s ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.faq-answer {
-		transition: none;
-	}
 }
 
 .faq-answer.open {
@@ -1310,26 +1225,30 @@ body.dark .header__link:focus-visible {
 
 /* Cookie Banner */
 .cookie-banner {
-	position: fixed;
-	bottom: 2rem;
-	left: 2rem;
-	transform: translateY(10px);
-	background: rgba(0, 0, 0, 0.18);
-	backdrop-filter: blur(20px) saturate(180%);
 	-webkit-backdrop-filter: blur(20px) saturate(180%);
-	color: #fff;
-	padding: 1.5rem 2rem;
-	border-radius: 20px;
-	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-	z-index: 1000;
-	transition: opacity 0.5s ease, transform 0.5s ease,
-		box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-	font-family: Arial, sans-serif;
-	max-width: 500px;
-	width: 90%;
+	backdrop-filter: blur(20px) saturate(180%);
+	background: rgba(0, 0, 0, 0.18);
 	border: 1px solid rgba(255, 255, 255, 0.06);
+	border-radius: 20px;
+	bottom: 2rem;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+	color: #fff;
+	contain: layout style paint;
+	font-family: Arial, sans-serif;
+	left: 2rem;
+	max-width: 500px;
 	opacity: 0;
+	padding: 1.5rem 2rem;
+	position: fixed;
+	transform: translateY(10px);
 	transform-origin: left bottom;
+	transition:
+		opacity 0.5s ease,
+		transform 0.5s ease,
+		box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	width: 90%;
+	will-change: transform, opacity;
+	z-index: 1000;
 }
 
 .cookie-banner.show {
@@ -1337,33 +1256,106 @@ body.dark .header__link:focus-visible {
 	transform: translateY(0);
 }
 
-/* Hide cookie banner under modals to avoid overlap */
+.cookie-banner[style*='display: none'] {
+	opacity: 0 !important;
+	pointer-events: none !important;
+	visibility: hidden !important;
+}
+
 .modal-open #cookie-banner {
 	opacity: 0 !important;
 	pointer-events: none !important;
-}
-
-/* Expand animation from minimized circle to full card */
-@keyframes cookie-expand {
-	0% {
-		transform: translateY(0) scale(0.85);
-		border-radius: 50%;
-		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-	}
-	100% {
-		transform: translateY(0) scale(1);
-		border-radius: 20px;
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-	}
 }
 
 .cookie-banner.expanding {
 	animation: cookie-expand 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+@keyframes cookie-expand {
+	0% {
+		border-radius: 50%;
+		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+		transform: translateY(0) scale(0.85);
+	}
+	100% {
+		border-radius: 20px;
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+		transform: translateY(0) scale(1);
+	}
+}
+
+.cookie-banner.minimized {
+	-webkit-backdrop-filter: blur(12px) saturate(180%);
+	align-items: center;
+	backdrop-filter: blur(12px) saturate(180%);
+	background: rgba(0, 0, 0, 0.18);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	border-radius: 50% !important;
+	bottom: 4rem;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+	color: #fff;
+	cursor: pointer;
+	display: flex !important;
+	height: 48px !important;
+	justify-content: center !important;
+	left: 2rem;
+	max-width: 60px;
+	opacity: 1;
+	padding: 0 !important;
+	transform: translateY(0);
+	transition:
+		width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		border-radius 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		bottom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	width: 48px !important;
+	z-index: 900;
+}
+
+.cookie-banner.minimized:hover {
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+	transform: translateX(0) scale(1.1);
+}
+
+.cookie-banner.minimized .cookie-banner__container {
+	display: none;
+}
+
+.cookie-banner.minimized .cookie-banner__minimized-icon {
+	align-items: center !important;
+	color: #fff;
+	display: flex !important;
+	font-size: 30px;
+	height: 100% !important;
+	justify-content: center !important;
+	line-height: 1 !important;
+	margin: 0 !important;
+	text-align: center;
+	transform: translateY(1px) !important;
+	width: 100% !important;
+}
+
+.cookie-banner:not(.minimized) {
+	border-radius: 20px !important;
+	max-width: 500px !important;
+	padding: 1.5rem 2rem !important;
+	width: 90% !important;
+}
+
+.cookie-banner:not(.minimized) .cookie-banner__minimized-icon {
+	display: none !important;
+}
+
 .cookie-banner__container {
-	transition: opacity 0.4s ease, max-height 0.4s ease;
+	max-height: 0.4s ease;
+	opacity: 0.4s ease;
 	overflow: hidden;
+	transition:
+		opacity 0.4s ease,
+		max-height 0.4s ease;
 }
 
 .cookie-banner__content {
@@ -1371,31 +1363,30 @@ body.dark .header__link:focus-visible {
 }
 
 .cookie-banner__text {
+	color: #555;
 	font-size: 0.95rem;
 	line-height: 1.5;
 	margin: 0;
-	color: #555;
 }
 
 .cookie-banner__text a {
 	color: #e60000;
-	text-decoration: underline;
 	font-weight: 600;
-}
-
-/* Ensure footer link style doesn't override cookie link color */
-.cookie-banner .footer__link {
-	color: #8a212c !important;
 	text-decoration: underline;
-	font-weight: 600;
-}
-
-.cookie-banner .footer__link:hover {
-	color: #b30000 !important;
 }
 
 .cookie-banner__text a:hover {
 	color: #b30000;
+}
+
+.cookie-banner .footer__link {
+	color: #8a212c !important;
+	font-weight: 600;
+	text-decoration: underline;
+}
+
+.cookie-banner .footer__link:hover {
+	color: #b30000 !important;
 }
 
 .cookie-banner__actions {
@@ -1406,23 +1397,23 @@ body.dark .header__link:focus-visible {
 }
 
 .cookie-banner__btn {
-	padding: 0.75rem 1.5rem;
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
+	display: inline-block;
 	font-size: 0.9rem;
 	font-weight: 600;
-	transition: all 0.3s ease;
-	text-decoration: none;
-	display: inline-block;
-	text-align: center;
 	min-width: 120px;
+	padding: 0.75rem 1.5rem;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.3s ease;
 }
 
 .cookie-banner__btn--accept {
 	background: #53a551a6;
-	color: #000;
 	border: 1px solid rgba(245, 242, 242, 0.28);
+	color: #000;
 }
 
 .cookie-banner__btn--accept:hover {
@@ -1431,410 +1422,159 @@ body.dark .header__link:focus-visible {
 }
 
 .cookie-banner__btn--decline {
-	background: #f5f5f5;
-	color: #666;
-	border: 1px solid #ddd;
+	-webkit-backdrop-filter: blur(8px) saturate(160%);
+	backdrop-filter: blur(8px) saturate(160%);
+	background: rgba(0, 0, 0, 0.12);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	color: #fff;
 }
 
 .cookie-banner__btn--decline:hover {
 	background: #e9e9e9;
+	color: #666;
 	transform: translateY(-1px);
 }
 
-/* Minimized state */
-.cookie-banner.minimized {
-	width: 60px;
-	height: 60px;
-	padding: 0;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	left: 2rem;
-	bottom: 4rem;
-	max-width: 60px;
-	opacity: 1;
-	transform: translateY(0);
-	transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-		height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-		border-radius 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-		left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-		bottom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-		transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-		box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.cookie-banner.minimized:hover {
-	transform: translateX(0) scale(1.1);
-	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-}
-
-.cookie-banner.minimized .cookie-banner__container {
-	display: none;
-}
-
-.cookie-banner.minimized .cookie-banner__minimized-icon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
-	font-size: 30px;
-	line-height: 1;
-	color: #fff; /* ensure contrast on glass background */
-	text-align: center;
-}
-
-/* Strong override to ensure the minimized icon is centered even if earlier rules
-   use !important or different display types. Uses !important sparingly for layout. */
-.cookie-banner.minimized .cookie-banner__minimized-icon {
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	width: 100% !important;
-	height: 100% !important;
-	line-height: 1 !important;
-	margin: 0 !important;
-	transform: translateY(
-		1px
-	) !important; /* nudge slightly left (adjusted +1px) */
-}
-
 .cookie-banner__minimized-icon {
-	display: none;
+	color: inherit;
+	display: block !important;
+	font-size: 20px;
 }
 
 .cookie-banner__minimized-icon:focus-visible {
 	border-radius: 50%;
 }
 
-.cookie-banner:not(.minimized) .cookie-banner__minimized-icon {
-	display: none !important;
+body:not(.dark) .cookie-banner #cookie-title,
+body:not(.dark) #cookie-title {
+	color: #000 !important;
 }
 
-.cookie-banner:not(.minimized) {
-	width: 90% !important;
-	max-width: 500px !important;
-	padding: 1.5rem 2rem !important;
-	border-radius: 20px !important;
+#cookie-title::after {
+	content: '';
 }
 
-/* Respect reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-	.cookie-banner {
-		transition: none !important;
-	}
-	.cookie-banner__container {
-		transition: none !important;
-	}
-	.cookie-banner.expanding,
-	.cookie-banner.collapsing {
-		animation: none !important;
-	}
+/* Cookie Consent Banner */
+.cookie-consent-banner {
+	-webkit-backdrop-filter: blur(20px) saturate(180%);
+	align-items: center;
+	backdrop-filter: blur(20px) saturate(180%);
+	background: rgba(0, 0, 0, 0.18);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	border-radius: 8px;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	left: 50%;
+	max-width: 400px;
+	padding: 1rem;
+	position: fixed;
+	top: 8rem;
+	transform: translateX(-50%);
+	width: auto;
+	z-index: 900;
 }
 
-/* Footer */
-.footer {
-	background: #121626;
-	color: #e6e6e6;
-	padding: 2rem 0 1rem;
-	font-family: Arial, sans-serif;
+.cookie-consent-banner p {
 	font-size: 0.9rem;
-	width: 100%;
-	box-sizing: border-box;
-	position: relative;
-}
-
-.footer__content {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	gap: 2rem;
-	margin-bottom: 2rem;
-	align-items: start;
-}
-
-.footer__section h3,
-.footer__section h4 {
-	color: #ffffff;
-	font-size: 1rem;
-	font-weight: 700;
-	margin: 0 0 1rem 0;
-	border-bottom: 2px solid #e60000;
-	padding-bottom: 0.5rem;
-	display: inline-block;
-}
-
-.footer__section p,
-.footer__section li {
-	font-size: 0.85rem;
-	line-height: 1.6;
-	margin-bottom: 0.5rem;
-	color: #bfbfbf;
-	text-align: left;
-}
-
-.footer__section strong {
-	color: #e30011;
-}
-
-.footer__section ul {
-	list-style: none;
-	padding: 0;
 	margin: 0;
 }
 
-.footer__section li::before {
-	content: none;
+.cookie-consent-banner button {
+	background: rgba(255, 255, 255, 0.88);
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	border-radius: 999px;
+	color: #000;
+	cursor: pointer;
+	margin-left: 1rem;
+	padding: 0.5rem 1rem;
 }
 
-.footer__link {
-	color: #e6e6e6;
-	text-decoration: none;
-	transition: color 0.3s ease;
+body:not(.dark) .cookie-consent-banner button:hover,
+body:not(.dark) .cookie-consent-banner button:focus-visible {
+	background: #28a745;
+	border-color: #1e7e34;
+	box-shadow: 0 6px 16px rgba(40, 167, 69, 0.24);
+	color: #fff;
 }
 
-.footer__link:hover {
-	color: #ff6b6b;
+body.dark .cookie-consent-banner button:hover,
+body.dark .cookie-consent-banner button:focus-visible {
+	background: #1e7e34;
+	border-color: transparent;
+	box-shadow: 0 6px 16px rgba(30, 126, 52, 0.24);
+	color: #ffffff;
 }
 
-.footer__contact {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	margin-bottom: 0.5rem;
-	justify-content: flex-start;
+body:not(.dark) #accept-analytics-btn {
+	background: rgba(255, 255, 255, 0.9) !important;
+	border-color: rgba(0, 0, 0, 0.15) !important;
+	box-shadow:
+		0 0 10px rgba(76, 201, 103, 0.45),
+		0 0 20px rgba(40, 167, 69, 0.3);
+	color: #000 !important;
 }
 
-.footer__contact-icon {
-	width: 16px;
-	height: 16px;
-	flex-shrink: 0;
+body:not(.dark) #accept-analytics-btn:hover,
+body:not(.dark) #accept-analytics-btn:focus-visible {
+	background: #28a745 !important;
+	border-color: #1e7e34 !important;
+	box-shadow:
+		0 6px 18px rgba(40, 167, 69, 0.3),
+		0 0 16px rgba(76, 201, 103, 0.55),
+		0 0 28px rgba(56, 160, 85, 0.4) !important;
+	color: #fff !important;
 }
 
-.footer__disclaimer {
-	font-size: 0.75rem;
-	color: #999;
-	line-height: 1.4;
-	max-width: 400px;
-}
-
-.footer__social {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	justify-content: flex-start;
-	margin-bottom: 1rem;
-}
-
-.footer__social a {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-}
-
-.footer__section--bottom .footer__social {
-	margin-bottom: 1.5rem;
-}
-
-.footer__section--bottom .footer__copyright {
-	font-size: 0.8rem;
-	opacity: 0.7;
-	color: #bfbfbf;
-	margin-top: 0;
-}
-
-.footer__copyright-desktop {
-	position: absolute;
-	bottom: 1rem;
-	left: 2rem;
-	font-size: 0.8rem;
-	opacity: 0.7;
-	color: #bfbfbf;
-	text-align: left;
-}
-
-.footer__copyright--mobile {
-	display: none;
-}
-
-/* List section */
-.list {
-	max-width: 900px;
-	margin: 0 auto 3rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.list p {
-	text-align: left;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-/* Landing content */
-.landing-content {
-	max-width: 100%;
-	line-height: 1.6;
-}
-
-.content-width {
-	max-width: 1200px;
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.landing-content h2 {
-	font-size: 1.875rem;
-	margin-top: 2rem;
-}
-
-.landing-content h3 {
-	font-size: 1.375rem;
-	margin-top: 1.5rem;
-}
-
-.landing-content h4 {
-	font-size: 1.175rem;
-	margin-top: 1rem;
-	margin-bottom: 0.5rem;
-}
-
-.landing-content ul {
-	padding-left: 1.5rem;
-	margin-bottom: 1rem;
-}
-
-.landing-content li {
-	margin-bottom: 0.5rem;
-}
-
-/* Banners */
-.banners {
-	width: 100%;
-	max-width: 1200px;
-	margin: 1rem auto;
-	display: block;
-}
-
-.banners img {
-	width: 100%;
-	height: auto;
-	display: block;
-}
-
-.casino-info table {
-	width: 100%;
-	border-collapse: collapse;
-	margin: 2rem 0;
-	font-size: 1rem;
-	color: #222;
-}
-
-.casino-info th,
-.casino-info td {
-	padding: 0.75rem 1rem;
-	border: 1px solid #ddd;
-	text-align: left;
-	vertical-align: middle;
-}
-
-.casino-info th {
-	background-color: #f9f9f9;
-	font-weight: 700;
-	width: 40%;
-}
-
-.casino-info tbody tr:hover {
-	background-color: #f1f1f1;
-}
-
-.casino-button__rating {
-	text-align: center;
-	min-width: 120px;
-	max-width: 120px;
-	width: 120px;
-	height: 100px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	box-sizing: border-box;
-	margin-left: auto;
-	margin-right: auto;
-}
-.casino-button__title {
-	text-align: center;
-	font-size: 1.075rem;
-	font-weight: bold;
-	margin-bottom: 0.5rem;
-	border-bottom: 2px solid #e60000;
-}
-
-/* Casino button sections */
-.casino-button .casino-card__button {
-	text-decoration: none;
-}
-
-/* Popup */
+/* Popups */
 .popup {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	/* Use background-color and a short transition so the overlay darkens
-		 smoothly when inline styles are removed (popupElement.style.background='').
-		 Opacity/transform are still handled by JS for the content. */
+	align-items: center;
 	background-color: rgba(0, 0, 0, 0.6);
-	transition: background-color 200ms ease;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 1200;
-	padding: 1rem;
 	box-sizing: border-box;
-}
-
-.privacy-popup {
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	left: 0;
+	padding: 1rem;
 	position: fixed;
 	top: 0;
-	left: 0;
+	transition: background-color 200ms ease;
 	width: 100vw;
-	height: 100vh;
-	/* Start transparent to avoid a brief black flash while the privacy popup
-	   is being inserted — this one is toggled via the `.show` class. */
-	background: transparent;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	z-index: 1200;
-	padding: 1rem;
-	box-sizing: border-box;
-	opacity: 0;
-	pointer-events: none;
-	transition: background 240ms ease, opacity 240ms ease;
 }
 
 .privacy-popup {
+	align-items: center;
+	background: transparent;
+	box-sizing: border-box;
 	display: none;
+	height: 100vh;
+	justify-content: center;
+	left: 0;
+	opacity: 0;
+	padding: 1rem;
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	transition:
+		background 240ms ease,
+		opacity 240ms ease;
+	width: 100vw;
+	z-index: 1200;
 }
 
-/* When a popup becomes visible, apply the dark overlay and enable interaction.
-   This transitions from transparent -> semi-transparent instead of briefly
-   showing a solid black background. */
 .privacy-popup.show {
 	background: rgba(0, 0, 0, 0.6);
+	display: flex;
 	opacity: 1;
 	pointer-events: auto;
-	display: flex;
 }
 
 .popup__content,
 .privacy-popup__content {
-	/* Glass effect similar to header, but with slightly denser tint to avoid flicker */
+	-webkit-backdrop-filter: blur(20px) saturate(180%);
+	-webkit-overflow-scrolling: touch;
 	background: rgba(12, 14, 24, 0.48);
 	background-image: linear-gradient(
 		135deg,
@@ -1842,35 +1582,48 @@ body.dark .header__link:focus-visible {
 		rgba(255, 255, 255, 0)
 	);
 	backdrop-filter: blur(20px) saturate(180%);
-	-webkit-backdrop-filter: blur(20px) saturate(180%);
 	border: 1px solid rgba(255, 255, 255, 0.06);
-	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-	padding: 2rem;
 	border-radius: 8px;
-	max-width: 750px;
-	width: 90%;
-	max-height: 90vh;
-	position: relative;
-	padding-bottom: 5rem;
-	font-size: 1rem;
-	color: #fff;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 	box-sizing: border-box;
+	color: #fff;
+	font-size: 1rem;
+	max-height: 90vh;
+	max-width: 750px;
 	overflow-y: auto;
-	-webkit-overflow-scrolling: touch;
+	padding: 2rem;
+	padding-bottom: 5rem;
+	position: relative;
+	width: 90%;
+}
+
+.popup__content form {
+	box-sizing: border-box;
+	margin: 0;
+	max-width: 100%;
+	padding: 0;
+	width: 100%;
+}
+
+.popup__content form input,
+.popup__content form textarea {
+	box-sizing: border-box;
+	max-width: 100%;
+	width: 100%;
 }
 
 .popup__close,
 .privacy-popup__close {
-	position: absolute;
-	top: 0.5rem;
-	right: 1rem;
-	font-size: 2rem;
-	cursor: pointer;
-	color: #b30000;
-	z-index: 10;
-	border: none;
 	background: transparent;
+	border: none;
+	color: #b30000;
+	cursor: pointer;
+	font-size: 2rem;
+	position: absolute;
+	right: 1rem;
+	top: 0.5rem;
 	user-select: none;
+	z-index: 10;
 }
 
 .popup__close:focus,
@@ -1885,76 +1638,67 @@ body.dark .header__link:focus-visible {
 }
 
 .popup__button {
-	position: absolute;
-	right: 2rem;
-	bottom: 2rem;
 	background: #121626;
-	color: #fff;
-	padding: 0.5rem 1rem;
 	border: none;
 	border-radius: 4px;
-	font-size: 1rem;
+	bottom: 2rem;
+	color: #fff;
 	cursor: pointer;
+	font-size: 1rem;
+	padding: 0.5rem 1rem;
+	position: absolute;
+	right: 2rem;
 }
 
 .popup__button:hover {
 	background: #b30000;
 }
 
-.popup__content form {
-	box-sizing: border-box;
-	width: 100%;
-	max-width: 100%;
-	padding: 0;
-	margin: 0;
+.popup__title {
+	text-align: right;
 }
 
-.popup__content form input,
-.popup__content form textarea {
-	box-sizing: border-box;
-	width: 100%;
-	max-width: 100%;
-}
-
+/* Testimonial Carousel */
 .about-carousel {
 	margin-top: 2rem;
 }
 
 .about-carousel__title {
-	margin-bottom: 1rem;
 	font-size: 1.35rem;
 	font-weight: 600;
+	margin-bottom: 1rem;
 }
 
 .testimonial-carousel {
-	position: relative;
 	padding: 0 2.5rem;
+	position: relative;
 }
 
 .testimonial-carousel__viewport {
+	background: rgba(18, 20, 34, 0.4);
+	border-radius: 14px;
+	box-shadow:
+		inset 0 18px 28px rgba(255, 255, 255, 0.05),
+		inset 0 -20px 35px rgba(0, 0, 0, 0.35);
 	flex: 1;
 	overflow: hidden;
-	border-radius: 14px;
 	position: relative;
-	background: rgba(18, 20, 34, 0.4);
-	box-shadow: inset 0 18px 28px rgba(255, 255, 255, 0.05),
-		inset 0 -20px 35px rgba(0, 0, 0, 0.35);
 	width: 100%;
 }
 
 .testimonial-carousel__viewport::before {
-	content: '';
-	position: absolute;
-	inset: 1px;
-	border-radius: inherit;
 	background: linear-gradient(
 		135deg,
 		rgba(255, 255, 255, 0.2) 0%,
 		rgba(255, 255, 255, 0.08) 32%,
 		rgba(18, 20, 34, 0.65) 100%
 	);
+	border-radius: inherit;
+	content: '';
+	inset: 1px;
 	opacity: 0.9;
 	pointer-events: none;
+	position: absolute;
 }
 
 .testimonial-carousel__track {
@@ -1964,60 +1708,63 @@ body.dark .header__link:focus-visible {
 }
 
 .testimonial-card {
-	flex: 0 0 100%;
-	width: 100%;
-	box-sizing: border-box;
-	margin: 0 auto;
 	background: rgb(24, 24, 24);
 	border: 1px solid rgb(29, 29, 29);
 	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
-	padding: 1.4rem 1.6rem;
-	min-height: 190px;
+	box-sizing: border-box;
 	display: flex;
+	flex: 0 0 100%;
 	flex-direction: column;
 	justify-content: space-between;
+	margin: 0 auto;
+	min-height: 190px;
+	padding: 1.4rem 1.6rem;
+	width: 100%;
 }
 
 .testimonial-card__quote {
-	font-style: italic;
 	font-size: 1rem;
+	font-style: italic;
 	line-height: 1.6;
 	margin: 0 0 1.2rem;
 }
 
 .testimonial-card__author {
-	margin: 0;
-	font-weight: 600;
 	color: #b30000;
+	font-weight: 600;
+	margin: 0;
 }
 
 .testimonial-carousel__control {
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	align-items: center;
+	backdrop-filter: blur(16px) saturate(180%);
 	background: rgba(255, 255, 255, 0.18);
 	border: 1px solid rgba(255, 255, 255, 0.35);
-	color: #b30000;
-	width: 34px;
-	height: 34px;
 	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
 	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
-	backdrop-filter: blur(16px) saturate(180%);
-	-webkit-backdrop-filter: blur(16px) saturate(180%);
-	transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+	color: #b30000;
+	cursor: pointer;
+	display: flex;
+	height: 34px;
+	justify-content: center;
 	position: absolute;
 	top: 50%;
 	transform: translateY(-80%);
+	transition:
+		transform 160ms ease,
+		box-shadow 160ms ease,
+		background 160ms ease;
+	width: 34px;
 	z-index: 5;
 }
 
 .testimonial-carousel__control:hover,
 .testimonial-carousel__control:focus-visible {
-	transform: translateY(calc(-85%));
-	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 	background: rgba(255, 255, 255, 0.28);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 	outline: none;
+	transform: translateY(calc(-85%));
 }
 
 .testimonial-carousel__control--prev {
@@ -2030,21 +1777,23 @@ body.dark .header__link:focus-visible {
 
 .testimonial-carousel__dots {
 	display: flex;
-	justify-content: center;
 	gap: 0.4rem;
+	justify-content: center;
 	margin: 1rem auto 0;
 	width: 100%;
 }
 
 .testimonial-carousel__dot {
-	width: 10px;
-	height: 10px;
-	border-radius: 50%;
-	border: 1px solid #fff;
 	background: transparent;
-	padding: 0;
+	border: 1px solid #fff;
+	border-radius: 50%;
 	cursor: pointer;
-	transition: background-color 160ms ease, transform 160ms ease;
+	height: 10px;
+	padding: 0;
+	transition:
+		background-color 160ms ease,
+		transform 160ms ease;
+	width: 10px;
 }
 
 .testimonial-carousel__dot[aria-selected='true'] {
@@ -2052,6 +1801,371 @@ body.dark .header__link:focus-visible {
 	transform: scale(1.05);
 }
 
+/* Landing Content */
+.landing-content {
+	line-height: 1.6;
+	max-width: 100%;
+}
+
+.content-width {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1200px;
+	width: 100%;
+}
+
+.landing-content h2 {
+	font-size: 1.875rem;
+	margin-top: 2rem;
+}
+
+.landing-content h3 {
+	font-size: 1.375rem;
+	margin-top: 1.5rem;
+}
+
+.landing-content h4 {
+	font-size: 1.175rem;
+	margin-bottom: 0.5rem;
+	margin-top: 1rem;
+}
+
+.landing-content ul {
+	margin-bottom: 1rem;
+	padding-left: 1.5rem;
+}
+
+.landing-content li {
+	margin-bottom: 0.5rem;
+}
+
+/* Banners */
+.banners {
+	display: block;
+	margin: 1rem auto;
+	max-width: 1200px;
+	width: 100%;
+}
+
+.banners img {
+	aspect-ratio: 4 / 1;
+	display: block;
+	height: auto;
+	width: 100%;
+}
+
+/* Casino Info Tables */
+.casino-info table {
+	border-collapse: collapse;
+	color: #222;
+	font-size: 1rem;
+	margin: 2rem 0;
+	width: 100%;
+}
+
+.casino-info th,
+.casino-info td {
+	border: 1px solid #ddd;
+	padding: 0.75rem 1rem;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.casino-info th {
+	background-color: #f9f9f9;
+	font-weight: 700;
+	width: 40%;
+}
+
+.casino-info tbody tr:hover {
+	background-color: #f1f1f1;
+}
+
+/* Utility Classes */
+.form-success-message {
+	color: #28a745;
+	font-weight: bold;
+	margin-top: 1rem;
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+/* Fade In Animation */
+.fade-in {
+	display: block;
+	opacity: 0;
+	transition: opacity 0.6s ease-out;
+	will-change: opacity;
+}
+
+.fade-in.visible {
+	opacity: 1;
+}
+
+/* Dark Mode */
+body.dark {
+	background: #121212;
+	color: #ffffff;
+	transition: all 0.3s;
+}
+
+body.dark p,
+body.dark strong,
+body.dark li,
+body.dark span,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4 {
+	color: #ffffff !important;
+}
+
+body.dark a {
+	color: #66aaff;
+}
+
+body.dark a:hover {
+	color: #99cfff;
+}
+
+/* Dark Mode - Header */
+body.dark .header {
+	-webkit-backdrop-filter: blur(20px) saturate(180%);
+	backdrop-filter: blur(20px) saturate(180%);
+	background: rgba(0, 0, 0, 0.2);
+	border-bottom: none;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+	color: #ffffff;
+}
+
+body.dark .header.scrolled {
+	-webkit-backdrop-filter: blur(30px) saturate(180%);
+	backdrop-filter: blur(30px) saturate(180%);
+	background: rgba(0, 0, 0, 0.2);
+	border-bottom: none;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .header__link {
+	color: #ffffff;
+}
+
+/* Dark Mode - Footer */
+body.dark .footer {
+	background: #000;
+	color: #ffffff;
+}
+
+body.dark .footer__link {
+	color: #ffffff;
+}
+
+body.dark .footer__section p,
+body.dark .footer__section li {
+	color: #ffffff;
+}
+
+/* Dark Mode - FAQ */
+body.dark .faq-question {
+	background: #1e1e1e;
+	color: #ffffff;
+}
+
+body.dark .faq-answer {
+	background: #1a1a1a;
+	color: #ffffff;
+	transition:
+		max-height 0.3s ease,
+		margin-bottom 0.3s ease,
+		padding-bottom 0.3s ease,
+		background 0.3s,
+		color 0.3s,
+		border-color 0.3s;
+}
+
+body.dark .faq-toggle {
+	color: #ffffff;
+}
+
+/* Dark Mode - Popups */
+body.dark .popup__content,
+body.dark .privacy-popup__content {
+	-webkit-backdrop-filter: blur(30px) saturate(180%);
+	backdrop-filter: blur(30px) saturate(180%);
+	background: rgba(0, 0, 0, 0.22);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+	color: #fff;
+}
+
+/* Dark Mode - Cookie Banner */
+body.dark .cookie-banner {
+	-webkit-backdrop-filter: blur(24px) saturate(180%);
+	backdrop-filter: blur(24px) saturate(180%);
+	background: rgba(0, 0, 0, 0.22);
+	border-color: rgba(255, 255, 255, 0.06);
+	color: #ffffff;
+}
+
+body.dark .cookie-banner.minimized,
+body.dark #scrolltop,
+body.dark .cookie-banner__btn--decline {
+	background: rgba(0, 0, 0, 0.22);
+	border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark .cookie-banner__btn--accept {
+	background: #28a745;
+	color: #ffffff;
+}
+
+body.dark .cookie-banner__btn--accept:hover {
+	background: #1e7e34;
+}
+
+body.dark .cookie-banner__btn--decline {
+	background: #333;
+	border: 1px solid #555;
+	color: #ffffff;
+}
+
+body.dark .cookie-banner__btn--decline:hover {
+	background: #444;
+}
+
+body.dark .cookie-banner__minimized-icon {
+	color: #494949;
+}
+
+body.dark .cookie-consent-banner {
+	-webkit-backdrop-filter: blur(24px) saturate(180%);
+	backdrop-filter: blur(24px) saturate(180%);
+	background: rgba(0, 0, 0, 0.22);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+	color: #ffffff;
+}
+
+body.dark .cookie-consent-banner p {
+	color: #ffffff;
+}
+
+body.dark .cookie-consent-banner button {
+	background: #28a745;
+	border: none;
+	color: #ffffff;
+}
+
+body.dark .cookie-consent-banner button:hover {
+	background: #1e7e34;
+}
+
+/* Dark Mode - Casino Cards */
+body.dark .casino-card,
+body.dark .casino-card--top {
+	background: #2a2a2a;
+	border-color: #333;
+	color: #ffffff;
+	transition:
+		transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+		box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark .casino-card--top,
+body.dark .top-card {
+	box-shadow:
+		0 0 20px rgba(179, 0, 0, 0.42),
+		0 12px 28px rgba(0, 0, 0, 0.32);
+}
+
+body.dark .top-card:hover,
+body.dark .casino-card--top:hover {
+	animation: none !important;
+	box-shadow:
+		0 8px 25px rgba(0, 0, 0, 0.4),
+		0 0 20px rgba(179, 0, 0, 0.42),
+		0 0 30px rgba(179, 0, 0, 0.28),
+		0 0 40px rgba(179, 0, 0, 0.16);
+	transform: translateY(-8px) scale(1.02);
+}
+
+body.dark .casino-card:not(.casino-card--top):hover,
+body.dark .casino-card:not(.casino-card--top):focus-within {
+	animation: none !important;
+	box-shadow:
+		0 8px 25px rgba(0, 0, 0, 0.4),
+		0 0 20px rgba(255, 215, 0, 0.4),
+		0 0 30px rgba(255, 215, 0, 0.22),
+		0 0 40px rgba(255, 215, 0, 0.12);
+	transform: translateY(-6px) scale(1.01);
+}
+
+body.dark .casino-card__title {
+	color: #ffffff;
+}
+
+body.dark .casino-card__features li {
+	color: #ffffff;
+}
+
+body.dark .casino-card__score {
+	color: #ffffff;
+}
+
+body.dark .casino-card__button {
+	background-color: #1e7e34;
+}
+
+body.dark .casino-card__button:hover {
+	background-color: #155724;
+}
+
+body.dark .casino-card__button-link {
+	color: #ffffff;
+}
+
+body.dark .casino-card__button-link:hover {
+	color: #e0ffd6;
+}
+
+body.dark .casino-card__stars {
+	color: #ffd700 !important;
+	display: inline-block;
+	filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+	position: relative;
+	text-shadow:
+		0 0 6px rgba(255, 215, 0, 0.1),
+		0 0 12px rgba(255, 215, 0, 0.1);
+}
+
+/* Dark Mode - Casino Info Tables */
+body.dark .casino-info table {
+	color: #ffffff;
+}
+
+body.dark .casino-info th {
+	background-color: #1e1e1e;
+	border-color: #444;
+	color: #ffffff;
+}
+
+body.dark .casino-info td {
+	background-color: #121212;
+	border-color: #444;
+	color: #ffffff;
+}
+
+/* Dark Mode - Disclaimer */
+body.dark .disclaimer {
+	background: linear-gradient(to right, #3f0f05, #130f0f) !important;
+	border-color: #444 !important;
+	color: #ffffff !important;
+}
+
+/* Dark Mode - Testimonial Carousel */
 body.dark .testimonial-card {
 	background: rgba(18, 20, 34, 0.72);
 	border-color: rgba(255, 255, 255, 0.06);
@@ -2063,10 +2177,12 @@ body.dark .testimonial-card__author {
 }
 
 body.dark .testimonial-carousel__control {
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	backdrop-filter: blur(16px) saturate(180%);
 	background: rgba(18, 20, 34, 0.55);
 	border-color: rgba(255, 255, 255, 0.18);
-	color: #ffd700;
 	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.38);
+	color: #ffd700;
 }
 
 body.dark .testimonial-carousel__control:hover,
@@ -2083,7 +2199,401 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 	background: #792d30;
 }
 
+/* Dark Mode - Smooth Transitions */
+body.dark,
+body.dark a,
+body.dark .header,
+body.dark .footer,
+body.dark .faq-question,
+body.dark .faq-answer,
+body.dark .popup__content,
+body.dark .privacy-popup__content,
+body.dark .cookie-banner,
+body.dark .casino-card,
+body.dark .disclaimer {
+	transition:
+		background 0.3s,
+		color 0.3s,
+		border-color 0.3s;
+}
+
+/* Theme Toggle */
+.theme-switch-wrapper {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.theme-toggle-button {
+	-webkit-backdrop-filter: blur(10px);
+	align-items: center;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	box-shadow:
+		0 2px 8px rgba(0, 0, 0, 0.1),
+		inset 0 1px 1px rgba(255, 255, 255, 0.1);
+	cursor: pointer;
+	display: flex;
+	height: 44px;
+	justify-content: center;
+	outline: none;
+	padding: 0.5rem;
+	position: relative;
+	transition: all 0.3s ease;
+	width: 44px;
+}
+
+.theme-toggle-button:hover {
+	background: rgba(255, 255, 255, 0.15);
+	border-color: rgba(255, 255, 255, 0.5);
+	box-shadow:
+		0 2px 12px rgba(0, 0, 0, 0.15),
+		inset 0 1px 1px rgba(255, 255, 255, 0.15);
+	transform: scale(1.05);
+}
+
+.theme-toggle-button:active {
+	background: rgba(230, 0, 0, 0.1) !important;
+	border-color: rgba(230, 0, 0, 0.8) !important;
+	transform: scale(0.95);
+	transition:
+		border-color 0.1s ease,
+		background 0.1s ease,
+		transform 0.1s ease;
+}
+
+.theme-toggle-button:not(:active) {
+	transition:
+		border-color 0.3s ease,
+		background 0.3s ease,
+		transform 0.3s ease;
+}
+
+.theme-toggle-button:focus-visible {
+	border-color: rgba(230, 0, 0, 0.5);
+	outline: 2px solid #e60000;
+	outline-offset: 2px;
+}
+
+body.dark .theme-toggle-button {
+	background: rgba(0, 0, 0, 0.2);
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	box-shadow:
+		0 2px 8px rgba(0, 0, 0, 0.2),
+		inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+body.dark .theme-toggle-button:hover {
+	background: rgba(0, 0, 0, 0.3);
+	border-color: rgba(255, 255, 255, 0.3);
+	box-shadow:
+		0 2px 12px rgba(0, 0, 0, 0.3),
+		inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+body.dark .theme-toggle-button:active {
+	background: rgba(230, 0, 0, 0.15) !important;
+	border-color: rgba(230, 0, 0, 0.8) !important;
+}
+
+body:not(.dark) .theme-toggle-button,
+body:not(.dark) .theme-switch-wrapper,
+body:not(.dark) .theme-toggle-button .theme-icon {
+	border-color: rgba(0, 0, 0, 0.12) !important;
+	color: #000 !important;
+}
+
+.theme-icon {
+	align-items: center;
+	display: flex;
+	filter: drop-shadow(0 0 0 rgba(230, 0, 0, 0));
+	height: 100%;
+	justify-content: center;
+	line-height: 1;
+	margin: 0;
+	padding: 0;
+	transition:
+		filter 0.3s ease,
+		transform 0.3s ease;
+	width: 100%;
+}
+
+.theme-toggle-button:hover .theme-icon {
+	transform: scale(1.15);
+}
+
+.theme-toggle-button.active.dark-mode .theme-icon {
+	animation: white-glow-pulse 2s ease-in-out infinite;
+	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9))
+		drop-shadow(0 0 15px rgba(255, 255, 255, 0.7))
+		drop-shadow(0 0 20px rgba(255, 255, 255, 0.5))
+		drop-shadow(0 0 25px rgba(255, 255, 255, 0.3));
+	transform: scale(1.1);
+}
+
+.theme-toggle-button.active.dark-mode:hover .theme-icon {
+	filter: drop-shadow(0 0 12px rgba(255, 255, 255, 1))
+		drop-shadow(0 0 18px rgba(255, 255, 255, 0.9))
+		drop-shadow(0 0 24px rgba(255, 255, 255, 0.7))
+		drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+	transform: scale(1.2);
+}
+
+.theme-toggle-button.light-mode .theme-icon {
+	animation: dark-glow-pulse 2s ease-in-out infinite;
+	filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.6))
+		drop-shadow(0 0 12px rgba(0, 0, 0, 0.4))
+		drop-shadow(0 0 16px rgba(0, 0, 0, 0.3))
+		drop-shadow(0 0 20px rgba(0, 0, 0, 0.2));
+	transform: scale(1.05);
+}
+
+.theme-toggle-button.light-mode:hover .theme-icon {
+	filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7))
+		drop-shadow(0 0 15px rgba(0, 0, 0, 0.5))
+		drop-shadow(0 0 20px rgba(0, 0, 0, 0.4))
+		drop-shadow(0 0 25px rgba(0, 0, 0, 0.3));
+	transform: scale(1.15);
+}
+
+@keyframes white-glow-pulse {
+	0%,
+	100% {
+		filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9))
+			drop-shadow(0 0 15px rgba(255, 255, 255, 0.7))
+			drop-shadow(0 0 20px rgba(255, 255, 255, 0.5))
+			drop-shadow(0 0 25px rgba(255, 255, 255, 0.3));
+	}
+	50% {
+		filter: drop-shadow(0 0 12px rgba(255, 255, 255, 1))
+			drop-shadow(0 0 18px rgba(255, 255, 255, 0.8))
+			drop-shadow(0 0 24px rgba(255, 255, 255, 0.6))
+			drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
+	}
+}
+
+@keyframes dark-glow-pulse {
+	0%,
+	100% {
+		filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.6))
+			drop-shadow(0 0 12px rgba(0, 0, 0, 0.4))
+			drop-shadow(0 0 16px rgba(0, 0, 0, 0.3))
+			drop-shadow(0 0 20px rgba(0, 0, 0, 0.2));
+	}
+	50% {
+		filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7))
+			drop-shadow(0 0 15px rgba(0, 0, 0, 0.5))
+			drop-shadow(0 0 20px rgba(0, 0, 0, 0.4))
+			drop-shadow(0 0 25px rgba(0, 0, 0, 0.3));
+	}
+}
+
+/* Utilities & Animations */
+@keyframes bounce-slow {
+	0%,
+	100% {
+		transform: translateY(-5%);
+	}
+	50% {
+		transform: translateY(0);
+	}
+}
+
+/* Popup Title Underlines */
+#about-title::after,
+#contact-title::after {
+	background-color: #e60000;
+	bottom: 0;
+	content: '';
+	display: block;
+	height: 2px;
+	left: 0;
+	position: absolute;
+	right: 0;
+	width: 100%;
+}
+
+#cookie-title::after {
+	content: '';
+}
+
+/* Media Queries */
+@media (prefers-reduced-motion: reduce) {
+	.casino-card,
+	.casino-card--top,
+	.top-card,
+	.casino-card__icon,
+	.theme-toggle-button,
+	.burger {
+		animation: none !important;
+		transition: none !important;
+	}
+
+	.disclaimer:hover::before,
+	.disclaimer.bell-start::before {
+		animation: none !important;
+	}
+
+	.casino-card__icon {
+		animation: none;
+		filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4));
+	}
+
+	.casino-card__icon::before {
+		animation: none;
+		display: none;
+	}
+
+	.cookie-banner {
+		transition: none !important;
+	}
+
+	.cookie-banner__container {
+		transition: none !important;
+	}
+
+	.cookie-banner.expanding,
+	.cookie-banner.collapsing {
+		animation: none !important;
+	}
+
+	.faq-answer {
+		transition: none;
+	}
+
+	body.dark .faq-answer {
+		transition: none !important;
+	}
+
+	.theme-toggle-button.active.dark-mode .theme-icon,
+	.theme-toggle-button.light-mode .theme-icon {
+		animation: none;
+	}
+
+	.top-card,
+	.casino-card {
+		box-shadow: none;
+		transform: none;
+		transition: none;
+	}
+}
+
+/* Max Width: 320px */
+@media (max-width: 320px) {
+	.popup__content {
+		font-size: 0.8rem;
+		padding: 1rem;
+	}
+
+	.popup__close {
+		font-size: 1.5rem;
+		right: 0.5rem;
+		top: 0.3rem;
+	}
+}
+
+/* Max Width: 406px */
+@media (max-width: 406px) {
+	main {
+		flex: 1;
+		max-width: 100%;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+
+	main * {
+		box-sizing: border-box;
+		max-width: 100%;
+		overflow-wrap: break-word;
+		white-space: normal !important;
+		word-break: break-word;
+	}
+
+	.theme-switch-wrapper,
+	.burger {
+		height: 30px;
+	}
+
+	.burger span {
+		margin: auto 0;
+	}
+}
+
+/* Max Width: 480px */
+@media (max-width: 480px) {
+	.cookie-consent-banner {
+		gap: 8px;
+		left: 6px;
+		padding: 10px;
+		right: 6px;
+		top: 6px;
+	}
+
+	.cookie-consent-banner p {
+		font-size: 0.8rem;
+		margin-right: 6px;
+	}
+
+	.cookie-consent-banner button {
+		font-size: 0.8rem;
+		padding: 6px 10px;
+	}
+}
+
+/* Max Width: 767px */
 @media (max-width: 767px) {
+	body:not(.dark) .burger span {
+		background-color: #000 !important;
+	}
+
+	body.dark .burger span {
+		background-color: #fff !important;
+	}
+
+	.casino-card,
+	.casino-card--top,
+	.top-card {
+		animation: none !important;
+		transition:
+			transform 140ms ease,
+			box-shadow 140ms ease !important;
+	}
+
+	.casino-card:hover,
+	.casino-card:focus-within,
+	.casino-card--top:hover,
+	.casino-card--top:focus-within,
+	.top-card:hover,
+	.top-card:focus-within {
+		animation: none !important;
+		transform: none !important;
+	}
+
+	.casino-card__icon {
+		filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4));
+	}
+
+	body:not(.dark) .casino-card.most-visible,
+	body:not(.dark) .casino-card--top.most-visible,
+	body:not(.dark) .top-card.most-visible {
+		box-shadow:
+			0 0 18px rgba(40, 40, 40, 0.18),
+			0 12px 30px rgba(40, 40, 40, 0.22);
+		transform: none !important;
+	}
+
+	body.dark .casino-card.most-visible,
+	body.dark .casino-card--top.most-visible,
+	body.dark .top-card.most-visible {
+		box-shadow:
+			0 0 20px rgba(255, 215, 0, 0.45),
+			0 0 32px rgba(255, 215, 0, 0.28),
+			0 12px 32px rgba(0, 0, 0, 0.32);
+		transform: none !important;
+	}
+
 	.testimonial-carousel {
 		padding: 0;
 	}
@@ -2097,10 +2607,10 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 	}
 
 	.testimonial-carousel__dots {
-		width: 100%;
-		max-width: 220px;
-		margin-top: 0.75rem;
 		gap: 0.5rem;
+		margin-top: 0.75rem;
+		max-width: 220px;
+		width: 100%;
 	}
 
 	.testimonial-carousel__dot {
@@ -2110,126 +2620,735 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 	body.dark .testimonial-carousel__dot {
 		background: transparent;
 	}
-}
 
-.popup__title {
-	text-align: right;
-}
+	.nav-menu {
+		align-items: stretch;
+		background-color: rgba(0, 0, 0, 0.95);
+		box-shadow: none;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+		height: 100vh;
+		justify-content: flex-start;
+		left: 0;
+		opacity: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding: 5.25rem 1.75rem 2rem;
+		pointer-events: none;
+		position: fixed;
+		right: 0;
+		top: -100vh;
+		transition:
+			top 0.35s ease,
+			opacity 0.35s ease;
+		visibility: hidden;
+		width: 100%;
+		z-index: 11000;
+		-webkit-overflow-scrolling: auto;
+	}
 
-.close-menu {
-	display: none;
-}
+	.nav-menu.active {
+		box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+		opacity: 1;
+		pointer-events: auto;
+		top: 0;
+		visibility: visible;
+	}
 
-.burger {
-	display: none;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 24px;
-	height: 18px;
-	background: none;
-	border: none;
-	padding: 0;
-	margin: 0;
-	cursor: pointer;
-	z-index: 999;
-	overflow-y: auto;
-}
-
-.burger span {
-	display: block;
-	height: 2px;
-	background-color: #fff;
-	width: 100%;
-}
-
-.nav-menu {
-	position: relative;
-	display: block;
-}
-
-.nav-menu__list {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.nav-menu__item {
-	display: flex;
-}
-
-.nav-menu__link {
-	width: auto;
-	display: flex;
-	align-items: center;
-	gap: 0.4rem;
-	justify-content: center;
-}
-
-#scrolltop {
-	position: fixed;
-	bottom: 2rem;
-	right: 2rem;
-	font-family: 'Helvetica', sans-serif;
-	font-weight: bold;
-	font-size: 1.5rem;
-	color: #fff;
-	/* make a translucent glass circle like the header */
-	width: 48px;
-	height: 48px;
-	padding: 0;
-	border-radius: 50%;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-	cursor: pointer;
-	z-index: 10000;
-	text-align: center;
-	text-decoration: none;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.3s ease;
-	pointer-events: none;
-	background: rgba(0, 0, 0, 0.18);
-	backdrop-filter: blur(12px) saturate(180%);
-	-webkit-backdrop-filter: blur(12px) saturate(180%);
-	border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-#scrolltop.show {
-	opacity: 1;
-	transform: translateY(0);
-	pointer-events: auto;
-}
-
-#scrolltop:hover {
-	background: rgba(0, 0, 0, 0.26) !important;
-	transition: background 0.3s ease;
-}
-
-#scrolltop:active {
-	background-color: #09162b !important;
-	transition: background-color 0.1s ease;
-}
-
-/* Default state handled above (glass circle) */
-
-.arrow-up {
-	display: block;
-	width: 1.9rem;
-	height: auto;
-	margin: 0;
-}
-
-/* Responsive Styles */
-
-@media (min-width: 768px) and (max-width: 1023px) {
-	.footer__content {
-		grid-template-columns: 1fr 1fr;
+	.nav-menu__list {
+		align-items: stretch;
+		flex-direction: column;
 		gap: 1.5rem;
+		width: 100%;
+	}
+
+	.nav-menu__item {
+		width: 100%;
+	}
+
+	.nav-menu .header__link,
+	.nav-menu__link {
+		color: #fff !important;
+		justify-content: flex-start;
+		text-align: left;
+		touch-action: manipulation;
+		width: 100%;
+	}
+
+	.nav-menu__link {
+		font-size: 1.1rem;
+	}
+
+	body.menu-animations-ready .nav-menu {
+		transition:
+			transform 0.35s ease,
+			opacity 0.35s ease;
+	}
+
+	body.menu-open .header__link:hover {
+		background: none !important;
+		box-shadow: none !important;
+	}
+
+	.close-menu {
+		background: none;
+		border: none;
+		color: #fff;
+		cursor: pointer;
+		display: block;
+		font-size: 2rem;
+		position: absolute;
+		right: 1rem;
+		top: 1rem;
+		z-index: 1200;
+	}
+
+	.header__logo-line--subtitle {
+		display: none !important;
+	}
+
+	.header__logo-line--title {
+		font-size: 0.825rem !important;
+	}
+
+	.header__logo-block .header__logo,
+	.header__logo {
+		height: auto !important;
+		max-height: 50px !important;
+	}
+
+	.popup__content,
+	.privacy-popup__content {
+		color: #fff !important;
+	}
+
+	.popup__content h1,
+	.popup__content h2,
+	.popup__content h3,
+	.popup__content h4,
+	.popup__content p,
+	.popup__content li,
+	.popup__content span,
+	.popup__content a,
+	.popup__content strong,
+	.popup__content em,
+	.privacy-popup__content h1,
+	.privacy-popup__content h2,
+	.privacy-popup__content h3,
+	.privacy-popup__content h4,
+	.privacy-popup__content p,
+	.privacy-popup__content li,
+	.privacy-popup__content span,
+	.privacy-popup__content a,
+	.privacy-popup__content strong,
+	.privacy-popup__content em {
+		color: #fff !important;
+	}
+
+	.header__logo-text {
+		margin-top: 0.15rem !important;
+	}
+
+	.hero .fade-in.visible {
+		margin-top: 0.2rem !important;
+		padding-top: 0 !important;
+	}
+}
+
+/* Max Width: 768px */
+@media (max-width: 768px) {
+	ul {
+		margin-bottom: 0.8rem;
+	}
+
+	.avis-toggle__icon {
+		align-items: center;
+		color: #fff;
+		display: inline-flex;
+		height: 1em;
+		justify-content: center;
+		margin-left: -0.4em;
+		transform: rotate(0deg);
+		transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+		vertical-align: middle;
+		width: 1em;
+	}
+
+	.avis-wrapper.open .avis-toggle__icon {
+		color: #fff;
+		transform: rotate(90deg);
+	}
+
+	.avis-dropdown {
+		background: #181c2b;
+		border-radius: 8px;
+		box-shadow: none;
+		color: #fff;
+		min-width: 0;
+		padding: 0.25rem 0;
+	}
+
+	.avis-link {
+		color: #fff;
+		padding-left: 1.5rem;
+		padding-right: 1rem;
+	}
+
+	.avis-link:hover,
+	.avis-link:focus {
+		background: #232a3e;
+	}
+
+	.nav-menu__item--avis {
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	.nav-menu__item--avis .avis-dropdown {
+		background: transparent;
+		box-shadow: none;
+		margin: 0;
+		padding: 0.25rem 0 0.25rem 1.25rem;
+	}
+
+	.nav-menu.active .nav-menu__item--avis .avis-dropdown,
+	body.menu-open .nav-menu__item--avis .avis-dropdown,
+	#primary-menu:not([hidden]) .nav-menu__item--avis .avis-dropdown {
+		max-height: 0;
+		opacity: 0;
+		overflow: hidden;
+		pointer-events: none;
+		position: static !important;
+		transform: none !important;
+		transition:
+			max-height 240ms ease,
+			opacity 180ms ease;
+		visibility: hidden;
+		box-shadow: none !important;
+		min-width: auto !important;
+	}
+
+	.nav-menu.active .nav-menu__item--avis .avis-wrapper.open .avis-dropdown,
+	body.menu-open .nav-menu__item--avis .avis-wrapper.open .avis-dropdown,
+	#primary-menu:not([hidden])
+		.nav-menu__item--avis
+		.avis-wrapper.open
+		.avis-dropdown {
+		max-height: 480px;
+		opacity: 1;
+		pointer-events: auto;
+		visibility: visible;
+	}
+
+	.nav-menu__item--avis .avis-dropdown {
+		background: transparent;
+		color: inherit;
+		padding-left: 1.25rem;
+		padding-right: 1rem;
+	}
+
+	body.dark .cookie-consent-banner {
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+	}
+
+	.cookie-consent-banner {
+		align-items: center;
+		border-radius: 8px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		flex-direction: row;
+		gap: 12px;
+		justify-content: space-between;
+		left: 8px;
+		max-width: none;
+		padding: 12px;
+		right: 8px;
+		top: 6.5rem !important;
+		transform: none;
+		width: auto;
+	}
+
+	.cookie-consent-banner p {
+		flex: 1;
+		font-size: 0.85rem;
+		line-height: 1.4;
+		margin: 0;
+		margin-right: 8px;
+	}
+
+	.cookie-consent-banner button {
+		flex-shrink: 0;
+		font-size: 0.85rem;
+		margin-left: 0;
+		min-width: auto;
+		padding: 8px 12px;
+		white-space: nowrap;
+	}
+
+	.cookie-banner:not(.minimized) .cookie-banner__minimized-icon {
+		display: none !important;
+	}
+
+	.cookie-banner {
+		border-radius: 16px !important;
+		bottom: calc(env(safe-area-inset-bottom, 0) + 1rem);
+		box-sizing: border-box;
+		left: calc(env(safe-area-inset-left, 0) + 1rem);
+		max-width: none;
+		opacity: 0;
+		padding: 1rem;
+		right: calc(env(safe-area-inset-right, 0) + 1rem);
+		transform: translateY(0);
+		width: auto;
+	}
+
+	.cookie-banner.show {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.cookie-banner__actions {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.cookie-banner__btn {
+		min-width: auto;
+		width: 100%;
+	}
+
+	.cookie-banner__container {
+		max-height: 60vh;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.cookie-banner__text {
+		overflow-wrap: anywhere;
+		word-break: break-word;
+	}
+
+	.footer__content {
+		gap: 1.5rem;
+		grid-template-columns: 1fr;
+	}
+
+	.footer__copyright {
+		text-align: center;
+	}
+
+	.footer__copyright-desktop {
+		display: none !important;
+		height: 0 !important;
+		margin: 0 !important;
+		opacity: 0 !important;
+		overflow: hidden !important;
+		padding: 0 !important;
+	}
+
+	.footer__copyright--mobile {
+		display: block !important;
+		opacity: 1 !important;
+		text-align: center;
+	}
+
+	.footer__container {
+		align-items: flex-start;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		justify-content: flex-start;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.header {
+		align-items: flex-start;
+		overflow: visible;
+		padding: 1.5rem 1rem;
+		position: sticky !important;
+		top: 0 !important;
+		z-index: 1000 !important;
+	}
+
+	.header__logo-text {
+		margin-top: 0.5rem;
+	}
+
+	.header__logo-block {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		margin-top: 0.01rem;
+		left: 50%;
+		max-width: 120px;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1001;
+	}
+
+	.header__logo-block .header__logo {
+		display: block;
+		height: auto;
+		margin: 0 auto;
+		max-width: 100%;
+		object-fit: contain;
+	}
+
+	.header__logo {
+		height: auto !important;
+		max-height: 23px !important;
+		min-height: unset !important;
+		object-fit: contain !important;
+		width: auto !important;
+	}
+
+	.header__logo-line--title,
+	.header__logo-line--subtitle {
+		margin-top: 0.01rem !important;
+		font-size: 0.9rem !important;
+	}
+
+	.theme-toggle-button {
+		align-items: center;
+		border-width: 1.5px !important;
+		display: flex;
+		height: 30px !important;
+		justify-content: center;
+		left: auto;
+		margin: 0;
+		padding: 0 !important;
+		position: relative;
+		top: auto;
+		transform: none;
+		width: 30px !important;
+		z-index: 1002;
+	}
+
+	.theme-icon {
+		align-items: center !important;
+		display: flex !important;
+		height: 100% !important;
+		justify-content: center !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+	}
+
+	.theme-switch-wrapper {
+		align-items: center;
+		display: flex;
+		height: 30px;
+		justify-content: center;
+		left: 0.5rem;
+		line-height: 30px;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 1002;
+	}
+
+	.theme-icon {
+		font-size: 1rem !important;
+	}
+
+	.burger {
+		align-items: center;
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		height: 30px;
+		justify-content: center;
+		position: absolute;
+		right: 1rem;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 24px;
+		z-index: 1002;
+	}
+
+	.header__container {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		min-height: 30px;
+		padding-bottom: 0.5rem;
+		padding-top: 0.5rem;
+		position: relative;
+	}
+
+	.header__nav ul {
+		flex-direction: column;
+		padding: 0;
+		width: 100%;
+	}
+
+	.header__nav li {
+		margin-bottom: 0.5rem;
+		margin-left: 0;
+	}
+
+	.menu-overlay,
+	body.menu-open .menu-overlay {
+		background: transparent !important;
+		display: none !important;
+		opacity: 0 !important;
+		pointer-events: none !important;
+		visibility: hidden !important;
+	}
+
+	body.menu-open {
+		overflow: hidden;
+	}
+
+	body.menu-open .theme-switch-wrapper {
+		opacity: 0;
+		pointer-events: none;
+		visibility: hidden;
+	}
+
+	header.header {
+		-webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+		backdrop-filter: blur(20px) saturate(180%) !important;
+		background: rgba(0, 0, 0, 0.2) !important;
+		border-bottom: none !important;
+	}
+
+	header.header.scrolled {
+		-webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+		backdrop-filter: blur(30px) saturate(180%) !important;
+		background: rgba(0, 0, 0, 0.2) !important;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+	}
+
+	.disclaimer {
+		cursor: pointer;
+		display: inline-block;
+		font-size: 0.85rem;
+		margin-top: 0.5rem;
+		max-width: 88%;
+		padding-left: 1.8rem;
+		padding-right: 1rem;
+		position: relative;
+	}
+
+	.disclaimer::before {
+		content: '🔔';
+		display: inline-block;
+		font-size: 1.2rem;
+		left: 0;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		transform-origin: 50% 0%;
+	}
+
+	.disclaimer:hover::before {
+		animation: bell-ring 0.6s ease-in-out 0s 2;
+	}
+
+	.casino-article {
+		display: flex;
+		justify-content: center;
+	}
+
+	.casino-card,
+	.casino-card--top {
+		align-items: center;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+		width: 100%;
+	}
+
+	.casino-card__image {
+		height: auto;
+		width: 100%;
+	}
+
+	.casino-card__info {
+		flex-direction: column;
+		margin: 1rem;
+	}
+
+	.casino-card__title {
+		margin-top: 0.1rem;
+		order: 2;
+		text-align: center;
+		width: 100%;
+	}
+
+	.casino-card__bonus {
+		margin-bottom: 0.5rem;
+		order: 3;
+		text-align: center;
+		width: 100%;
+	}
+
+	.casino-card__features {
+		display: flex;
+		flex-direction: column;
+		justify-items: center;
+		max-width: 60%;
+		min-width: 30%;
+		order: 4;
+		padding: 0;
+	}
+
+	.casino-card__rating {
+		height: auto;
+		margin-bottom: 1rem;
+		min-width: auto;
+		order: 5;
+		text-align: center;
+		width: 100%;
+	}
+
+	.casino-card__button {
+		margin: 0 auto;
+		max-width: 50%;
+		order: 6;
+	}
+
+	.casino-card__info_logo {
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 1rem;
+		text-align: center;
+	}
+
+	.popup__content {
+		max-width: 90vw;
+	}
+
+	.popup__content p,
+	.popup__content ul,
+	.popup__content li {
+		font-size: 0.9rem;
+	}
+
+	.popup__title {
+		text-align: left;
+	}
+
+	#scrolltop {
+		-webkit-backdrop-filter: blur(12px) saturate(180%);
+		align-items: center;
+		backdrop-filter: blur(12px) saturate(180%);
+		background: rgba(0, 0, 0, 0.18);
+		border: 1px solid rgba(255, 255, 255, 0.06);
+		bottom: 1.5rem;
+		display: flex;
+		font-size: 1rem;
+		height: 40px;
+		justify-content: center;
+		min-width: 40px;
+		padding: 0.1rem;
+		right: 1.5rem;
+		width: 40px;
+	}
+
+	.arrow-up {
+		height: 2rem;
+		width: 2rem;
+	}
+
+	h1 {
+		font-size: 2.2rem;
+	}
+
+	.theme-switch-wrapper,
+	.burger {
+		align-items: center !important;
+		display: flex !important;
+		height: 30px !important;
+		justify-content: center !important;
+		top: 50% !important;
+		transform: translateY(-50%) !important;
+	}
+
+	.theme-switch-wrapper {
+		left: 0.5rem !important;
+	}
+
+	.burger {
+		gap: 4px !important;
+		right: 1rem !important;
+	}
+
+	.theme-toggle-button {
+		height: 30px !important;
+		padding: 0 !important;
+		width: 30px !important;
+	}
+}
+
+/* Min Width: 768px */
+@media (min-width: 768px) {
+	body:not(.dark) .header__link {
+		color: #000 !important;
+	}
+
+	body:not(.dark) .theme-toggle-button,
+	body:not(.dark) .theme-switch-wrapper,
+	body:not(.dark) .theme-toggle-button .theme-icon {
+		border-color: rgba(0, 0, 0, 0.12) !important;
+		color: #000 !important;
+	}
+}
+
+/* Min Width: 768px and Max Width: 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+	html,
+	body {
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100%;
+		overflow-x: hidden;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.casino-cards {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	.header {
+		box-sizing: border-box;
+		margin: 0 !important;
+		max-width: 100% !important;
+		padding: 0.3rem 0 !important;
+		width: 100%;
+	}
+
+	.header__container {
+		align-items: center;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto !important;
+		max-width: none !important;
+		padding: 0.2rem 1rem !important;
+		width: 100% !important;
+	}
+
+	.footer__content {
+		gap: 1.5rem;
+		grid-template-columns: 1fr 1fr;
 	}
 
 	.footer__section:nth-child(1) {
@@ -2248,22 +3367,74 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 		order: 3;
 	}
 
-	/* Отключаем max-width для .header__container в этом диапазоне */
 	.header__container {
 		max-width: none !important;
 	}
 }
 
-/* iPad / Tablet adjustments */
+/* Min Width: 769px */
+@media (min-width: 769px) {
+	.avis-toggle__icon {
+		display: none !important;
+	}
+
+	.avis-wrapper {
+		position: relative;
+	}
+
+	.avis-dropdown {
+		background: #fff;
+		border-radius: 6px;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+		color: #071428;
+		left: 0;
+		margin: 0;
+		min-width: 180px;
+		opacity: 0;
+		padding: 0.25rem 0;
+		pointer-events: none;
+		position: absolute;
+		top: 100%;
+		transform: translateY(-6px) scale(0.995);
+		transition:
+			transform 200ms ease,
+			opacity 200ms ease;
+		visibility: hidden;
+		z-index: 1100;
+	}
+
+	.avis-wrapper.open .avis-dropdown,
+	.nav-menu__item--avis:hover .avis-dropdown,
+	.nav-menu__item--avis:focus-within .avis-dropdown {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateY(0) scale(1);
+		visibility: visible;
+	}
+
+	#cookie-title::before {
+		content: '🍪';
+		display: inline-block;
+		margin-right: 0.35rem;
+	}
+}
+
+/* Min Width: 769px and Max Width: 1023px */
+@media (min-width: 769px) and (max-width: 1023px) {
+	h1 {
+		font-size: 2.5rem;
+	}
+}
+
+/* Min Width: 769px and Max Width: 1080px */
 @media (min-width: 769px) and (max-width: 1080px) {
-	/* Header - reduced height for tablet */
 	.header {
 		padding: 0.6rem 0 !important;
 	}
 
 	.header__container {
-		padding-top: 0.2rem !important;
 		padding-bottom: 0.2rem !important;
+		padding-top: 0.2rem !important;
 	}
 
 	.header__logo {
@@ -2271,29 +3442,28 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 		min-height: 35px !important;
 	}
 
-	/* Main layout */
 	main {
-		padding: 1rem 2rem;
 		max-width: 100%;
+		padding: 1rem 1rem;
 	}
 
-	/* Casino cards full width and column layout */
 	.casino-card,
 	.casino-card--top {
 		align-items: center;
-		width: 100%;
 		box-sizing: border-box;
+		width: 100%;
 	}
 
 	.casino-card__image {
-		max-width: 100%;
 		height: auto;
 		margin-bottom: 1rem;
+		max-width: 100%;
 	}
 
 	.casino-card__info {
 		justify-content: center;
 	}
+
 	.casino-card__info .casino-card__info_logo {
 		margin: 0 auto;
 	}
@@ -2301,8 +3471,8 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 	.casino-card__title,
 	.casino-card__bonus,
 	.casino-card__rating {
-		width: 100%;
 		margin: 0.5rem;
+		width: 100%;
 	}
 
 	.casino-card__features {
@@ -2312,31 +3482,30 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 		padding: 1.2rem;
 	}
 
-	.casino-card__button {
-		max-width: 30%;
+	.casino-card__features.fade-in.visible {
 		margin: 0 auto;
 	}
 
-	/* Popup content scaling */
+	.casino-card__button {
+		margin: 0 auto;
+		max-width: 30%;
+	}
+
 	.popup__content {
-		width: 80%;
+		box-sizing: border-box;
 		max-width: 600px;
 		min-width: 320px;
-		padding: 2rem;
-		box-sizing: border-box;
 		overflow-y: auto;
+		padding: 2rem;
+		width: 80%;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	/* Header adjustments - already set above */
-
-	/* Footer adjustments */
 	.footer__content {
-		grid-template-columns: 1fr 1fr;
 		gap: 1.5rem;
+		grid-template-columns: 1fr 1fr;
 	}
 
-	/* Text resizing */
 	h1 {
 		font-size: 2.5rem;
 	}
@@ -2346,70 +3515,63 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 	}
 }
 
+/* Min Width: 1024px */
 @media (min-width: 1024px) {
-	.casino-card__button {
-		width: 264px;
-		height: 50px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 0;
-	}
-
-	.casino-card__button-link {
-		font-size: 14px;
-		line-height: 1;
-		padding: 0;
-		margin: 0;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.casino-card__button-link::after {
-		margin-left: 6px;
-		line-height: 1;
+	.casino-card__features {
+		margin-left: 2rem;
 	}
 
 	.casino-card.casino-button {
+		align-items: center;
 		display: flex;
 		flex-direction: row;
-		align-items: center;
+		flex-wrap: nowrap;
+		gap: 1.5rem;
 		justify-content: space-between;
 		text-align: left;
-		gap: 1.5rem;
-		flex-wrap: nowrap;
+		transition:
+			transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+			box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
+		will-change: transform, box-shadow;
+	}
+
+	.casino-card.casino-button:hover,
+	.casino-card.casino-button:focus-within {
+		box-shadow:
+			0 1.5px 6px 0 rgba(0, 0, 0, 0.08),
+			0 8px 32px 0 rgba(0, 0, 0, 0.1);
+		transform: translateY(-8px) scale(1.015);
 	}
 
 	.casino-card.casino-button .casino-card__info {
-		order: 1;
-		display: flex;
 		align-items: center;
-		justify-content: flex-start;
+		display: flex;
 		flex: 0 0 auto;
+		justify-content: flex-start;
 		margin-right: 1rem;
+		order: 1;
 	}
 
 	.casino-card.casino-button .casino-card__image {
-		margin: 0 1rem 0 1rem;
+		margin: 0 1rem;
 	}
 
 	.casino-card.casino-button .casino-card__features {
-		order: 2;
 		flex: 0 0 280px;
-		max-width: 320px;
 		margin: 0;
+		max-width: 320px;
+		order: 2;
 	}
 
 	.casino-card.casino-button .casino-button__rating {
-		order: 3;
-		flex: 0 0 auto;
-		margin: 0 0 0 1rem;
-		display: flex;
-		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		display: flex;
+		flex: 0 0 auto;
+		flex-direction: column;
 		gap: 0.3rem;
+		justify-content: center;
+		margin: 0 0 0 1rem;
+		order: 3;
 	}
 
 	.casino-card.casino-button .casino-button__rating p {
@@ -2417,1325 +3579,124 @@ body.dark .testimonial-carousel__dot[aria-selected='true'] {
 	}
 
 	.casino-card.casino-button .casino-card__button {
-		order: 4;
-		flex: 0 0 auto;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 210px;
-		margin: 0;
 		align-self: center;
+		display: flex;
+		flex: 0 0 auto;
+		justify-content: center;
+		margin: 0;
+		order: 4;
+		width: 210px;
 	}
 
 	.casino-card.casino-button .casino-card__button-link {
-		width: 100%;
 		justify-content: center;
 		text-align: center;
-	}
-}
-
-@media (max-width: 768px) {
-	/* Cookie Consent Banner */
-	.cookie-consent-banner {
-		top: 6.5rem !important;
-		left: 8px;
-		right: 8px;
-		transform: none;
-		max-width: none;
-		width: auto;
-		padding: 12px;
-		border-radius: 8px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-		flex-direction: row;
-		gap: 12px;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	.cookie-consent-banner p {
-		margin: 0;
-		font-size: 0.85rem;
-		line-height: 1.4;
-		flex: 1;
-		margin-right: 8px;
-	}
-
-	.cookie-consent-banner button {
-		margin-left: 0;
-		padding: 8px 12px;
-		font-size: 0.85rem;
-		flex-shrink: 0;
-		min-width: auto;
-		white-space: nowrap;
-	}
-
-	/* Для очень маленьких экранов */
-	@media (max-width: 480px) {
-		.cookie-consent-banner {
-			top: 6px;
-			left: 6px;
-			right: 6px;
-			padding: 10px;
-			gap: 8px;
-		}
-
-		.cookie-consent-banner p {
-			font-size: 0.8rem;
-			margin-right: 6px;
-		}
-
-		.cookie-consent-banner button {
-			padding: 6px 10px;
-			font-size: 0.8rem;
-		}
-	}
-
-	/* Cookie Banner */
-	.cookie-banner:not(.minimized) .cookie-banner__minimized-icon {
-		display: none !important;
-	}
-
-	.cookie-banner {
-		bottom: calc(env(safe-area-inset-bottom, 0) + 1rem);
-		left: calc(env(safe-area-inset-left, 0) + 1rem);
-		right: calc(env(safe-area-inset-right, 0) + 1rem);
-		transform: translateY(0);
-		max-width: none;
-		width: auto;
-		opacity: 0;
-		box-sizing: border-box;
-		padding: 1rem 1rem;
-		border-radius: 16px !important;
-	}
-
-	.cookie-banner.show {
-		transform: translateY(0);
-		opacity: 1;
-	}
-
-	.cookie-banner__actions {
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-
-	.cookie-banner__btn {
 		width: 100%;
-		min-width: auto;
-	}
-
-	.cookie-banner__container {
-		max-height: 60vh;
-		overflow-y: auto;
-		-webkit-overflow-scrolling: touch;
-	}
-
-	.cookie-banner__text {
-		word-break: break-word;
-		overflow-wrap: anywhere;
-	}
-
-	/* Footer */
-	.footer__content {
-		grid-template-columns: 1fr;
-		gap: 1.5rem;
-	}
-
-	.footer__copyright {
-		text-align: center;
-	}
-
-	.footer__copyright-desktop {
-		display: none;
-	}
-
-	.footer__copyright--mobile {
-		display: block;
-		text-align: center;
-	}
-
-	.footer__container {
-		padding-left: 1rem;
-		padding-right: 1rem;
-		box-sizing: border-box;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		justify-content: flex-start;
-		gap: 1.25rem;
-	}
-
-	/* Header */
-	.header {
-		position: sticky;
-		top: 0;
-		overflow: visible;
-		padding-top: 1.5rem;
-		padding-bottom: 1.5rem;
-		z-index: 1000;
-	}
-
-	/* Header layout for mobile: centered logo, toggle left, burger right */
-
-	.header__logo-text {
-		margin-top: 0.5rem;
-	}
-
-	.header__logo-line--title,
-	.header__logo-line--subtitle {
-		font-size: 0.5rem; /* 0.4rem * 1.25 = 25% увеличение */
-	}
-	.header__logo-block {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 1001;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		max-width: 120px;
-	}
-
-	.header__logo-block .header__logo {
-		max-width: 100%;
-		height: auto;
-		object-fit: contain;
-		display: block;
-		margin: 0 auto;
-		max-height: 23px !important; /* 20px * 1.15 = 15% увеличение */
-	}
-
-	.header__logo {
-		max-height: 23px !important; /* 20px * 1.15 = 15% увеличение */
-		min-height: unset !important;
-		width: auto !important;
-		height: auto !important;
-		object-fit: contain !important;
-	}
-
-	.header__logo-line--title,
-	.header__logo-line--subtitle {
-		font-size: 0.575rem !important; /* 0.5rem * 1.15 = 15% увеличение */
-	}
-
-	/* Mobile: hide logo subtitle and increase title size by ~3px for readability */
-	@media (max-width: 767px) {
-		.header__logo-line--subtitle {
-			display: none !important;
-		}
-
-		/* Increase title font-size approx +3px (set to 0.75rem for clarity) */
-		.header__logo-line--title {
-			/* increased by ~10% as requested */
-			font-size: 0.825rem !important;
-		}
-
-		/* Mobile: increase logo size and tighten spacing to title */
-		.header__logo-block .header__logo,
-		.header__logo {
-			max-height: 50px !important; /* slightly larger as requested */
-			height: auto !important;
-		}
-
-		/* Ensure popup text is white on mobile for good contrast over glass background */
-		.popup__content,
-		.privacy-popup__content {
-			color: #fff !important;
-		}
-
-		/* Force white for common text elements inside popups, but avoid buttons/controls */
-		.popup__content h1,
-		.popup__content h2,
-		.popup__content h3,
-		.popup__content h4,
-		.popup__content p,
-		.popup__content li,
-		.popup__content span,
-		.popup__content a,
-		.popup__content strong,
-		.popup__content em,
-		.privacy-popup__content h1,
-		.privacy-popup__content h2,
-		.privacy-popup__content h3,
-		.privacy-popup__content h4,
-		.privacy-popup__content p,
-		.privacy-popup__content li,
-		.privacy-popup__content span,
-		.privacy-popup__content a,
-		.privacy-popup__content strong,
-		.privacy-popup__content em {
-			color: #fff !important;
-		}
-
-		.header__logo-text {
-			margin-top: 0.15rem !important;
-		}
-
-		/* Desktop (light mode): force popup text to white for good contrast over glass */
-		@media (min-width: 1024px) {
-			body:not(.dark) .popup__content,
-			body:not(.dark) .privacy-popup__content {
-				color: #fff !important;
-			}
-
-			body:not(.dark) .popup__content h1,
-			body:not(.dark) .popup__content h2,
-			body:not(.dark) .popup__content h3,
-			body:not(.dark) .popup__content h4,
-			body:not(.dark) .popup__content p,
-			body:not(.dark) .popup__content li,
-			body:not(.dark) .popup__content span,
-			body:not(.dark) .popup__content a,
-			body:not(.dark) .popup__content strong,
-			body:not(.dark) .popup__content em,
-			body:not(.dark) .privacy-popup__content h1,
-			body:not(.dark) .privacy-popup__content h2,
-			body:not(.dark) .privacy-popup__content h3,
-			body:not(.dark) .privacy-popup__content h4,
-			body:not(.dark) .privacy-popup__content p,
-			body:not(.dark) .privacy-popup__content li,
-			body:not(.dark) .privacy-popup__content span,
-			body:not(.dark) .privacy-popup__content a,
-			body:not(.dark) .privacy-popup__content strong,
-			body:not(.dark) .privacy-popup__content em {
-				color: #fff !important;
-			}
-		}
-
-		/* Reduce top margin for visible fade-in elements inside hero on mobile */
-		.hero .fade-in.visible {
-			margin-top: 0.2rem !important;
-			padding-top: 0 !important; /* remove extra top padding on mobile */
-		}
-	}
-
-	.theme-toggle-button {
-		position: relative;
-		left: auto;
-		top: auto;
-		transform: none;
-		z-index: 1002;
-		width: 30px !important;
-		height: 30px !important;
-		padding: 0 !important;
-		border-width: 1.5px !important;
-		margin: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.theme-icon {
-		display: flex !important;
-		align-items: center !important;
-		justify-content: center !important;
-		width: 100% !important;
-		height: 100% !important;
-		margin: 0 !important;
-		padding: 0 !important;
-	}
-
-	.theme-switch-wrapper {
-		position: absolute;
-		left: 0.5rem;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 1002;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.theme-icon {
-		font-size: 1rem !important;
-	}
-
-	.burger {
-		position: absolute;
-		right: 1rem;
-		top: 50%;
-		transform: translateY(-50%);
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		gap: 4px;
-		width: 24px;
-		height: 30px;
-		background: none;
-		border: none;
-		cursor: pointer;
-		z-index: 1002;
-		align-items: center;
-	}
-
-	@media (max-width: 767px) {
-		.nav-menu {
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-start;
-			align-items: stretch;
-			position: fixed;
-			top: -100vh;
-			left: 0;
-			right: 0;
-			width: 100%;
-			height: 100vh;
-			padding: 5.25rem 1.75rem 2rem;
-			box-sizing: border-box;
-			background-color: rgba(0, 0, 0, 0.95);
-			gap: 1.75rem;
-			opacity: 0;
-			transition: top 0.35s ease, opacity 0.35s ease;
-			z-index: 11000; /* highest layer to cover all UI */
-			overflow-y: auto;
-			overflow-x: hidden;
-			-webkit-overflow-scrolling: auto;
-			box-shadow: none;
-			pointer-events: none;
-			visibility: hidden;
-		}
-
-		.nav-menu.active {
-			top: 0;
-			opacity: 1;
-			box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-			pointer-events: auto;
-			visibility: visible;
-		}
-
-		.nav-menu__list {
-			flex-direction: column;
-			align-items: stretch;
-			gap: 1.5rem;
-			width: 100%;
-		}
-
-		.nav-menu__item {
-			width: 100%;
-		}
-
-		.nav-menu .header__link,
-		.nav-menu__link {
-			width: 100%;
-			justify-content: flex-start;
-			text-align: left;
-			color: #fff !important;
-			touch-action: manipulation;
-		}
-
-		.nav-menu__link {
-			font-size: 1.1rem;
-		}
-
-		body.menu-animations-ready .nav-menu {
-			transition: transform 0.35s ease, opacity 0.35s ease;
-		}
-
-		body.menu-open .header__link:hover {
-			background: none !important;
-			box-shadow: none !important;
-			/* color: inherit !important; */
-		}
-
-		.close-menu {
-			display: block;
-			position: absolute;
-			top: 1rem;
-			right: 1rem;
-			background: none;
-			border: none;
-			color: #fff;
-			font-size: 2rem;
-			cursor: pointer;
-			z-index: 1200;
-		}
-	}
-
-	.header {
-		align-items: flex-start;
-		padding: 1.5rem 1rem 1.5rem 1rem;
-		position: sticky !important;
-		top: 0 !important;
-		z-index: 1000 !important;
-	}
-
-	.header__container {
-		padding-top: 0.5rem; /* Reduced by half: 1rem -> 0.5rem */
-		padding-bottom: 0.5rem; /* Reduced by half: 1rem -> 0.5rem */
-		position: relative;
-		min-height: 30px; /* Reduced by half: 60px -> 30px */
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.theme-switch-wrapper {
-		position: absolute;
-		left: 0.5rem;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 1002;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 30px;
-		line-height: 30px;
-	}
-
-	.header__nav ul {
-		flex-direction: column;
-		width: 100%;
-		padding: 0;
-	}
-
-	.header__nav li {
-		margin-left: 0;
-		margin-bottom: 0.5rem;
-	}
-
-	/* Disable page dimming on mobile menu */
-	.menu-overlay,
-	body.menu-open .menu-overlay {
-		display: none !important;
-		opacity: 0 !important;
-		visibility: hidden !important;
-		pointer-events: none !important;
-		background: transparent !important;
-	}
-
-	body.menu-open {
-		overflow: hidden;
-	}
-
-	body.menu-open .theme-switch-wrapper {
-		opacity: 0;
-		visibility: hidden;
-		pointer-events: none;
-	}
-
-	header.header {
-		/* Maintain glass morphism transparency on mobile */
-		background: rgba(0, 0, 0, 0.2) !important;
-		backdrop-filter: blur(20px) saturate(180%) !important;
-		-webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-		border-bottom: none !important;
-	}
-
-	header.header.scrolled {
-		background: rgba(0, 0, 0, 0.2) !important;
-		backdrop-filter: blur(30px) saturate(180%) !important;
-		-webkit-backdrop-filter: blur(30px) saturate(180%) !important;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-	}
-
-	/* Disclaimer */
-	.disclaimer {
-		position: relative;
-		display: inline-block;
-		cursor: pointer;
-		font-size: 0.85rem;
-		padding-left: 1.8rem;
-		padding-right: 1rem;
-		max-width: 88%;
-		margin-top: 0.5rem;
-	}
-
-	.disclaimer::before {
-		content: '🔔';
-		position: absolute;
-		left: 0;
-		top: 50%;
-		transform: translateY(-50%);
-		transform-origin: 50% 0%;
-		font-size: 1.2rem;
-		display: inline-block;
-	}
-
-	.disclaimer:hover::before {
-		animation: bell-ring 0.6s ease-in-out 0s 2;
-	}
-
-	/* Casino cards adjustments for mobile - full column layout */
-	.casino-article {
-		display: flex;
-		justify-content: center;
-	}
-	.casino-card,
-	.casino-card--top {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 1rem;
-		box-sizing: border-box;
-		width: 100%;
-	}
-
-	.casino-card__image {
-		width: 100%;
-		height: auto;
-	}
-
-	.casino-card__info {
-		flex-direction: column;
-		margin: 1rem;
-	}
-
-	.casino-card__title {
-		order: 2;
-		width: 100%;
-		text-align: center;
-		margin-top: 2rem;
-	}
-
-	.casino-card__bonus {
-		order: 3;
-		width: 100%;
-		text-align: center;
-		margin-bottom: 0.5rem;
-	}
-
-	.casino-card__features {
-		order: 4;
-		display: flex;
-		flex-direction: column;
-		justify-items: center;
-		padding: 0;
-		max-width: 60%;
-		min-width: 30%;
-	}
-
-	.casino-card__rating {
-		order: 5;
-		width: 100%;
-		height: auto;
-		text-align: center;
-		margin: 0.5rem;
-		min-width: auto;
 	}
 
 	.casino-card__button {
-		order: 6;
-		max-width: 50%;
-		margin: 0 auto;
-	}
-
-	.casino-card__info_logo {
 		align-items: center;
+		display: flex;
+		height: 50px;
 		justify-content: center;
-		text-align: center;
-		margin-bottom: 1rem;
+		padding: 0;
+		width: 264px;
 	}
 
-	.popup__content {
-		max-width: 90vw;
+	.casino-card__button-link {
+		align-items: center;
+		display: inline-flex;
+		font-size: 14px;
+		justify-content: center;
+		line-height: 1;
+		margin: 0;
+		padding: 0;
 	}
 
-	.popup__content p,
-	.popup__content ul,
-	.popup__content li {
-		font-size: 0.9rem;
+	.casino-card__button-link::after {
+		line-height: 1;
+		margin-left: 6px;
 	}
 
-	.popup__title {
+	.cookie-consent-banner {
+		border-radius: 16px;
+		box-sizing: border-box;
+		gap: 1.5rem;
+		justify-content: center;
+		left: 50%;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 1200px;
+		right: auto;
+		transform: translateX(-50%);
+		width: min(1200px, calc(100% - 2rem));
+	}
+
+	.cookie-consent-banner p {
+		max-width: 460px;
 		text-align: left;
 	}
 
-	/* Scroll to top button - smaller size for mobile */
-	#scrolltop {
-		bottom: 1.5rem;
-		right: 1.5rem;
-		font-size: 1rem;
-		padding: 0.1rem 0.1rem;
-		width: 40px;
-		height: 40px;
-		min-width: 40px;
-		background: rgba(0, 0, 0, 0.18);
-		backdrop-filter: blur(12px) saturate(180%);
-		-webkit-backdrop-filter: blur(12px) saturate(180%);
-		border: 1px solid rgba(255, 255, 255, 0.06);
-		display: flex;
+	.nav-menu__list {
 		align-items: center;
-		justify-content: center;
+		gap: 2.4rem;
+	}
+
+	.nav-menu__link {
+		padding: 0.45rem 0.75rem;
+	}
+
+	.nav-menu__link .youtube-icon {
+		margin-right: 0.2rem;
+	}
+
+	.nav-menu__link span {
+		letter-spacing: 0.02em;
 	}
 
 	.arrow-up {
-		width: 2rem;
-		height: 2rem;
+		height: auto;
+		width: 1.8rem;
 	}
-}
 
-@media (max-width: 768px) {
-	h1 {
-		font-size: 2.2rem;
-	}
-}
-
-@media (min-width: 769px) and (max-width: 1023px) {
-	h1 {
-		font-size: 2.5rem;
-	}
-}
-
-@media (min-width: 1024px) {
 	h1 {
 		font-size: 2.8rem;
 	}
-}
-.form-success-message {
-	color: #28a745;
-	font-weight: bold;
-	margin-top: 1rem;
-	text-align: center;
-}
-.hidden {
-	display: none;
-}
-.cookie-banner[style*='display: none'] {
-	opacity: 0 !important;
-	pointer-events: none !important;
-	visibility: hidden !important;
-}
-@media (max-width: 406px) {
-	main {
-		flex: 1;
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-		max-width: 100%;
 
-		/* Ensure burger and theme toggle align visually */
-		.theme-switch-wrapper,
-		.burger {
-			height: 30px;
-		}
-
-		.burger span {
-			margin: auto 0;
-		}
+	body:not(.dark) .popup__content,
+	body:not(.dark) .privacy-popup__content {
+		color: #fff !important;
 	}
 
-	main * {
-		max-width: 100%;
-		box-sizing: border-box;
-		white-space: normal !important;
-		word-break: break-word;
-		overflow-wrap: break-word;
-	}
-}
-@media (max-width: 320px) {
-	.popup__content {
-		padding: 1rem;
-		font-size: 0.8rem;
-	}
-
-	.popup__close {
-		font-size: 1.5rem;
-		top: 0.3rem;
-		right: 0.5rem;
+	body:not(.dark) .popup__content h1,
+	body:not(.dark) .popup__content h2,
+	body:not(.dark) .popup__content h3,
+	body:not(.dark) .popup__content h4,
+	body:not(.dark) .popup__content p,
+	body:not(.dark) .popup__content li,
+	body:not(.dark) .popup__content span,
+	body:not(.dark) .popup__content a,
+	body:not(.dark) .popup__content strong,
+	body:not(.dark) .popup__content em,
+	body:not(.dark) .privacy-popup__content h1,
+	body:not(.dark) .privacy-popup__content h2,
+	body:not(.dark) .privacy-popup__content h3,
+	body:not(.dark) .privacy-popup__content h4,
+	body:not(.dark) .privacy-popup__content p,
+	body:not(.dark) .privacy-popup__content li,
+	body:not(.dark) .privacy-popup__content span,
+	body:not(.dark) .privacy-popup__content a,
+	body:not(.dark) .privacy-popup__content strong,
+	body:not(.dark) .privacy-popup__content em {
+		color: #fff !important;
 	}
 }
 
-/* Strong mobile alignment overrides to ensure theme toggle and burger sit on same line */
-@media (max-width: 768px) {
-	.theme-switch-wrapper,
-	.burger {
-		top: 50% !important;
-		transform: translateY(-50%) !important;
-		height: 30px !important;
-		display: flex !important;
-		align-items: center !important;
-		justify-content: center !important;
-	}
-
-	.theme-switch-wrapper {
-		left: 0.5rem !important;
-	}
-	.burger {
-		right: 1rem !important;
-	}
-
-	.theme-toggle-button {
-		width: 30px !important;
-		height: 30px !important;
-		padding: 0 !important;
-	}
-
-	.burger {
-		gap: 4px !important;
-	}
-}
-
-/* Restore underline for popup titles only */
-#about-title::after,
-#contact-title::after {
-	content: '';
-	display: block;
-	width: 100%;
-	height: 2px;
-	background-color: #e60000;
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-}
-
-/* Card title underline: reduce width by 15% for 1080px–1190px screens */
+/* Min Width: 1080px and Max Width: 1190px */
 @media (min-width: 1080px) and (max-width: 1190px) {
 	.casino-card__title::after {
-		width: 85% !important;
 		left: 7.5% !important;
 		right: 7.5% !important;
-	}
-}
-
-#cookie-title::after {
-	content: '';
-}
-
-@media (min-width: 769px) {
-	#cookie-title::before {
-		content: '🍪';
-		display: inline-block;
-		margin-right: 0.35rem;
-	}
-}
-
-/* ============================== */
-/*           Dark Mode            */
-/* ============================== */
-
-/* Main background and text */
-body.dark {
-	background: #121212;
-	color: #ffffff;
-	transition: background 0.3s, color 0.3s;
-}
-
-/* Make all text bright white and override light colors */
-body.dark p,
-body.dark strong,
-body.dark li,
-body.dark span,
-body.dark h1,
-body.dark h2,
-body.dark h3,
-body.dark h4 {
-	color: #ffffff !important;
-}
-
-/* Links */
-body.dark a {
-	color: #66aaff;
-}
-body.dark a:hover {
-	color: #99cfff;
-}
-
-/* Header - Dark Mode with Glass Morphism */
-body.dark .header {
-	/* Fully transparent with blur only */
-	background: rgba(0, 0, 0, 0.2);
-	backdrop-filter: blur(20px) saturate(180%);
-	-webkit-backdrop-filter: blur(20px) saturate(180%);
-	border-bottom: none;
-	color: #ffffff;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-body.dark .header.scrolled {
-	background: rgba(0, 0, 0, 0.2);
-	backdrop-filter: blur(30px) saturate(180%);
-	-webkit-backdrop-filter: blur(30px) saturate(180%);
-	border-bottom: none;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-body.dark .header__link {
-	color: #ffffff;
-}
-
-/* Ensure popups also use the stronger glass effect in dark mode (match header) */
-body.dark .popup__content,
-body.dark .privacy-popup__content {
-	background: rgba(0, 0, 0, 0.22);
-	backdrop-filter: blur(30px) saturate(180%);
-	-webkit-backdrop-filter: blur(30px) saturate(180%);
-	border: 1px solid rgba(255, 255, 255, 0.06);
-	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
-	color: #fff;
-}
-
-/* Footer */
-body.dark .footer {
-	background: #000;
-	color: #ffffff;
-}
-body.dark .footer__link {
-	color: #ffffff;
-}
-body.dark .footer__section p,
-body.dark .footer__section li {
-	color: #ffffff;
-}
-
-/* FAQ */
-body.dark .faq-question {
-	background: #1e1e1e;
-	color: #ffffff;
-}
-body.dark .faq-answer {
-	background: #1a1a1a;
-	color: #ffffff;
-}
-body.dark .faq-toggle {
-	color: #ffffff;
-}
-
-/* Popups */
-body.dark .popup__content,
-body.dark .privacy-popup__content {
-	/* Use glass effect like header/popups in dark mode */
-	background: rgba(0, 0, 0, 0.22);
-	backdrop-filter: blur(30px) saturate(180%);
-	-webkit-backdrop-filter: blur(30px) saturate(180%);
-	border: 1px solid rgba(255, 255, 255, 0.06);
-	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
-	color: #ffffff;
-}
-
-/* Cookie Banner */
-body.dark .cookie-banner {
-	/* glass background to match popups/header */
-	background: rgba(0, 0, 0, 0.22);
-	backdrop-filter: blur(24px) saturate(180%);
-	-webkit-backdrop-filter: blur(24px) saturate(180%);
-	color: #ffffff;
-	border-color: rgba(255, 255, 255, 0.06);
-}
-body.dark .cookie-banner__btn--accept {
-	background: #28a745;
-	color: #ffffff;
-}
-body.dark .cookie-banner__btn--accept:hover {
-	background: #1e7e34;
-}
-body.dark .cookie-banner__btn--decline {
-	background: #333;
-	color: #ffffff;
-	border: 1px solid #555;
-}
-
-body.dark .cookie-banner__btn--decline:hover {
-	background: #444;
-}
-
-body.dark .cookie-banner__minimized-icon {
-	color: #494949;
-}
-
-/* Casino Cards */
-body.dark .casino-card,
-body.dark .casino-card--top {
-	background: #2a2a2a; /* lighter gray for contrast */
-	color: #ffffff;
-	border-color: #333;
-	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-		box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Give the top card a constant red glow in dark mode as well */
-body.dark .casino-card--top,
-body.dark .top-card {
-	box-shadow: 0 0 20px rgba(179, 0, 0, 0.42), 0 12px 28px rgba(0, 0, 0, 0.32);
-}
-
-/* Dark mode hover - red glow effect and bounce (apply only to top card variants) */
-body.dark .top-card:hover,
-body.dark .casino-card--top:hover {
-	transform: translateY(-8px) scale(1.02);
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(179, 0, 0, 0.42),
-		0 0 30px rgba(179, 0, 0, 0.28), 0 0 40px rgba(179, 0, 0, 0.16);
-	/* remove infinite bounce animation to prevent hover flicker */
-	animation: none !important;
-}
-
-/* Dark mode: non-top cards get a yellow glow like the crown */
-body.dark .casino-card:not(.casino-card--top):hover,
-body.dark .casino-card:not(.casino-card--top):focus-within {
-	transform: translateY(-6px) scale(1.01);
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.4),
-		0 0 30px rgba(255, 215, 0, 0.22), 0 0 40px rgba(255, 215, 0, 0.12);
-	/* remove infinite bounce animation to prevent hover flicker */
-	animation: none !important;
-}
-
-body.dark .casino-card__title {
-	color: #ffffff;
-}
-body.dark .casino-card__features li {
-	color: #ffffff;
-}
-body.dark .casino-card__score {
-	color: #ffffff;
-}
-
-/* Buttons inside casino cards */
-body.dark .casino-card__button {
-	background-color: #28a745;
-}
-body.dark .casino-card__button:hover {
-	background-color: #1e7e34;
-}
-body.dark .casino-card__button-link {
-	color: #ffffff;
-}
-body.dark .casino-card__button-link:hover {
-	color: #e0ffd6;
-}
-
-/* Casino Tables */
-body.dark .casino-info table {
-	color: #ffffff;
-}
-body.dark .casino-info th {
-	background-color: #1e1e1e;
-	color: #ffffff;
-	border-color: #444;
-}
-body.dark .casino-info td {
-	background-color: #121212;
-	color: #ffffff;
-	border-color: #444;
-}
-
-/* Disclaimer */
-body.dark .disclaimer {
-	color: #ffffff !important;
-	background: linear-gradient(to right, #3f0f05, #130f0f) !important;
-	border-color: #444 !important;
-}
-
-/* Stars Glow Effect */
-body.dark .casino-card__stars {
-	position: relative;
-	display: inline-block;
-	color: #ffd700 !important;
-	filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
-	text-shadow: 0 0 6px rgba(255, 215, 0, 0.1), 0 0 12px rgba(255, 215, 0, 0.1);
-}
-
-/* Theme switch wrapper */
-.theme-switch-wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-/* Theme toggle button */
-.theme-toggle-button {
-	background: rgba(255, 255, 255, 0.1);
-	border: 2px solid rgba(255, 255, 255, 0.3);
-	cursor: pointer;
-	padding: 0.5rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 50%;
-	transition: all 0.3s ease;
-	outline: none;
-	width: 44px;
-	height: 44px;
-	position: relative;
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1),
-		inset 0 1px 1px rgba(255, 255, 255, 0.1);
-}
-
-.theme-toggle-button:hover {
-	background: rgba(255, 255, 255, 0.15);
-	border-color: rgba(255, 255, 255, 0.5);
-	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15),
-		inset 0 1px 1px rgba(255, 255, 255, 0.15);
-	transform: scale(1.05);
-}
-
-.theme-toggle-button:active {
-	transform: scale(0.95);
-	border-color: rgba(230, 0, 0, 0.8) !important;
-	background: rgba(230, 0, 0, 0.1) !important;
-	transition: border-color 0.1s ease, background 0.1s ease, transform 0.1s ease;
-}
-
-/* Return to white border after click */
-.theme-toggle-button:not(:active) {
-	transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
-}
-
-.theme-toggle-button:focus-visible {
-	outline: 2px solid #e60000;
-	outline-offset: 2px;
-	border-color: rgba(230, 0, 0, 0.5);
-}
-
-/* Dark theme button styles */
-body.dark .theme-toggle-button {
-	background: rgba(0, 0, 0, 0.2);
-	border: 2px solid rgba(255, 255, 255, 0.2);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2),
-		inset 0 1px 1px rgba(255, 255, 255, 0.05);
-}
-
-body.dark .theme-toggle-button:hover {
-	background: rgba(0, 0, 0, 0.3);
-	border-color: rgba(255, 255, 255, 0.3);
-	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3),
-		inset 0 1px 1px rgba(255, 255, 255, 0.1);
-}
-
-body.dark .theme-toggle-button:active {
-	border-color: rgba(230, 0, 0, 0.8) !important;
-	background: rgba(230, 0, 0, 0.15) !important;
-}
-
-/* Theme icon inside button */
-.theme-icon {
-	font-size: 1.5rem;
-	line-height: 1;
-	transition: filter 0.3s ease, transform 0.3s ease;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	filter: drop-shadow(0 0 0 rgba(230, 0, 0, 0));
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
-/* Active state - white glow effect (when dark mode is ON - sun icon glows white) */
-.theme-toggle-button.active.dark-mode .theme-icon {
-	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9))
-		drop-shadow(0 0 15px rgba(255, 255, 255, 0.7))
-		drop-shadow(0 0 20px rgba(255, 255, 255, 0.5))
-		drop-shadow(0 0 25px rgba(255, 255, 255, 0.3));
-	transform: scale(1.1);
-	animation: white-glow-pulse 2s ease-in-out infinite;
-}
-
-/* Light mode - dark glow effect (when light mode is ON - moon icon glows dark) */
-.theme-toggle-button.light-mode .theme-icon {
-	filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.6))
-		drop-shadow(0 0 12px rgba(0, 0, 0, 0.4))
-		drop-shadow(0 0 16px rgba(0, 0, 0, 0.3))
-		drop-shadow(0 0 20px rgba(0, 0, 0, 0.2));
-	transform: scale(1.05);
-	animation: dark-glow-pulse 2s ease-in-out infinite;
-}
-
-/* White glow pulse animation for sun */
-@keyframes white-glow-pulse {
-	0%,
-	100% {
-		filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9))
-			drop-shadow(0 0 15px rgba(255, 255, 255, 0.7))
-			drop-shadow(0 0 20px rgba(255, 255, 255, 0.5))
-			drop-shadow(0 0 25px rgba(255, 255, 255, 0.3));
-	}
-	50% {
-		filter: drop-shadow(0 0 12px rgba(255, 255, 255, 1))
-			drop-shadow(0 0 18px rgba(255, 255, 255, 0.8))
-			drop-shadow(0 0 24px rgba(255, 255, 255, 0.6))
-			drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
-	}
-}
-
-/* Dark glow pulse animation for moon */
-@keyframes dark-glow-pulse {
-	0%,
-	100% {
-		filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.6))
-			drop-shadow(0 0 12px rgba(0, 0, 0, 0.4))
-			drop-shadow(0 0 16px rgba(0, 0, 0, 0.3))
-			drop-shadow(0 0 20px rgba(0, 0, 0, 0.2));
-	}
-	50% {
-		filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7))
-			drop-shadow(0 0 15px rgba(0, 0, 0, 0.5))
-			drop-shadow(0 0 20px rgba(0, 0, 0, 0.4))
-			drop-shadow(0 0 25px rgba(0, 0, 0, 0.3));
-	}
-}
-
-/* Disable animation for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-	.theme-toggle-button.active.dark-mode .theme-icon,
-	.theme-toggle-button.light-mode .theme-icon {
-		animation: none;
-	}
-}
-
-/* Hover effect */
-.theme-toggle-button:hover .theme-icon {
-	transform: scale(1.15);
-}
-
-.theme-toggle-button.active.dark-mode:hover .theme-icon {
-	transform: scale(1.2);
-	filter: drop-shadow(0 0 12px rgba(255, 255, 255, 1))
-		drop-shadow(0 0 18px rgba(255, 255, 255, 0.9))
-		drop-shadow(0 0 24px rgba(255, 255, 255, 0.7))
-		drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
-}
-
-.theme-toggle-button.light-mode:hover .theme-icon {
-	transform: scale(1.15);
-	filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7))
-		drop-shadow(0 0 15px rgba(0, 0, 0, 0.5))
-		drop-shadow(0 0 20px rgba(0, 0, 0, 0.4))
-		drop-shadow(0 0 25px rgba(0, 0, 0, 0.3));
-}
-
-/* Smooth transitions */
-body.dark,
-body.dark a,
-body.dark .header,
-body.dark .footer,
-body.dark .faq-question,
-body.dark .faq-answer,
-body.dark .popup__content,
-body.dark .privacy-popup__content,
-body.dark .cookie-banner,
-body.dark .casino-card,
-body.dark .disclaimer {
-	transition: background 0.3s, color 0.3s, border-color 0.3s;
-}
-
-/* Restore FAQ expand/collapse animation in dark mode */
-body.dark .faq-answer {
-	transition: max-height 0.3s ease, margin-bottom 0.3s ease,
-		padding-bottom 0.3s ease, background 0.3s, color 0.3s, border-color 0.3s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	body.dark .faq-answer {
-		transition: none !important;
-	}
-}
-
-/* ===================================== */
-/*      Scroll Reveal Animation Effect    */
-/* ===================================== */
-
-.fade-in {
-	opacity: 0;
-	will-change: opacity;
-	display: block;
-	transition: opacity 0.6s ease-out;
-}
-
-.fade-in.visible {
-	opacity: 1;
-}
-
-.footer__content.fade-in {
-	display: grid;
-}
-
-.casino-cards.fade-in.visible {
-	margin-top: 2rem;
-}
-
-/* Top casino card hover/focus glow (apply only to top card variants) */
-.top-card,
-.casino-card--top {
-	transition: box-shadow 180ms ease, transform 180ms ease;
-	box-shadow: 0 0 18px rgba(179, 0, 0, 0.32), 0 10px 24px rgba(0, 0, 0, 0.16);
-}
-
-.top-card:hover,
-.top-card:focus-within,
-.casino-card--top:hover,
-.casino-card--top:focus-within {
-	transform: translateY(-4px);
-	box-shadow: 0 6px 24px rgba(179, 0, 0, 0.18), 0 2px 8px rgba(179, 0, 0, 0.12),
-		0 0 28px rgba(179, 0, 0, 0.2) inset;
-	outline: none;
-}
-
-/* Mobile: in light mode make the burger bars black; keep white in dark mode */
-@media (max-width: 767px) {
-	body:not(.dark) .burger span {
-		background-color: #000 !important;
-	}
-
-	/* Ensure dark mode remains white */
-	body.dark .burger span {
-		background-color: #fff !important;
-	}
-}
-
-/* Stronger glow for keyboard focus to meet accessibility expectations */
-.top-card:focus-within,
-.casino-card--top:focus-within {
-	box-shadow: 0 8px 34px rgba(179, 0, 0, 0.25), 0 2px 10px rgba(179, 0, 0, 0.14);
-}
-
-/* Respect reduced-motion preference */
-@media (prefers-reduced-motion: reduce) {
-	.top-card,
-	.casino-card {
-		transition: none;
-		transform: none;
-		box-shadow: none;
-	}
-}
-
-/* Mobile: disable complex animations on cards and use a subtle lift on hover/focus */
-@media (max-width: 767px) {
-	.casino-card,
-	.casino-card--top,
-	.top-card {
-		/* keep simple transitions only for transform/box-shadow */
-		transition: transform 140ms ease, box-shadow 140ms ease !important;
-		animation: none !important;
-	}
-
-	/* On mobile, remove bouncing/pulse animations but keep glow; only slight lift */
-	.casino-card:hover,
-	.casino-card:focus-within,
-	.casino-card--top:hover,
-	.casino-card--top:focus-within,
-	.top-card:hover,
-	.top-card:focus-within {
-		transform: none !important;
-		/* Keep glow via box-shadow only to avoid layout jumps when focusing. */
-		animation: none !important;
-	}
-
-	/* Ensure crown icon animation is disabled on small screens */
-	.casino-card__icon {
-		/* keep animation active but slightly tone down the glow */
-		filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4));
-	}
-
-	/* Automatically highlight the card that is most visible in viewport */
-	body:not(.dark) .casino-card.most-visible,
-	body:not(.dark) .casino-card--top.most-visible,
-	body:not(.dark) .top-card.most-visible {
-		transform: none !important;
-		box-shadow: 0 12px 30px rgba(40, 40, 40, 0.22),
-			0 0 18px rgba(40, 40, 40, 0.18);
-	}
-
-	body.dark .casino-card.most-visible,
-	body.dark .casino-card--top.most-visible,
-	body.dark .top-card.most-visible {
-		transform: none !important;
-		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32),
-			0 0 20px rgba(255, 215, 0, 0.45), 0 0 32px rgba(255, 215, 0, 0.28);
+		width: 85% !important;
 	}
 }

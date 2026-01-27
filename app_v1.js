@@ -36,7 +36,7 @@ class CookieConsentManager {
 		this.declineBtn = document.getElementById('cookie-decline');
 		this.settingsLink = document.getElementById('cookie-settings-link');
 		this.minimizedIcon = this.banner?.querySelector(
-			'.cookie-banner__minimized-icon'
+			'.cookie-banner__minimized-icon',
 		);
 		this.container = this.banner?.querySelector('.cookie-banner__container');
 
@@ -66,7 +66,10 @@ class CookieConsentManager {
 		const consent = localStorage.getItem(this.consentKey);
 
 		if (!consent) {
-			setTimeout(() => this.showBanner(), 2000);
+			// Use requestAnimationFrame to prevent layout shifts
+			requestAnimationFrame(() => {
+				setTimeout(() => this.showBanner(), 2000);
+			});
 		} else if (consent === 'accepted') {
 			this.banner.style.display = 'none';
 		} else if (consent === 'declined') {
@@ -156,10 +159,12 @@ class CookieConsentManager {
 		if (analyticsChoice === 'accepted') {
 			this.hideAnalyticsBanner();
 		} else {
-			this.analyticsBanner.style.display = '';
-			setTimeout(() => {
-				this.showAnalyticsBanner();
-			}, 2000);
+			// Use requestAnimationFrame to prevent layout shifts
+			requestAnimationFrame(() => {
+				setTimeout(() => {
+					this.showAnalyticsBanner();
+				}, 2000);
+			});
 		}
 
 		this.analyticsAccept.addEventListener('click', () => {
@@ -179,10 +184,13 @@ class CookieConsentManager {
 	showAnalyticsBanner() {
 		if (!this.analyticsBanner) return;
 
-		this.analyticsBanner.style.display = '';
-		this.analyticsBanner.classList.add('show');
-		this.analyticsBanner.classList.add('visible');
-		this.analyticsBanner.setAttribute('aria-hidden', 'false');
+		// Use requestAnimationFrame to prevent layout shifts
+		requestAnimationFrame(() => {
+			this.analyticsBanner.style.display = '';
+			this.analyticsBanner.classList.add('show');
+			this.analyticsBanner.classList.add('visible');
+			this.analyticsBanner.setAttribute('aria-hidden', 'false');
+		});
 	}
 
 	hideAnalyticsBanner() {
@@ -547,7 +555,7 @@ class PopupManager {
 		this.privacyPopup.classList.add('show');
 		this.privacyPopup.setAttribute('aria-hidden', 'false');
 		const closeButton = this.privacyPopup.querySelector(
-			'.privacy-popup__close'
+			'.privacy-popup__close',
 		);
 		if (closeButton) closeButton.focus();
 		document.documentElement.style.overflow = 'hidden';
@@ -838,10 +846,13 @@ class AboutCarousel {
 			this.viewport.style.height = '';
 			return;
 		}
+		// PERF: Batch layout read before DOM write to avoid forced reflow
 		const height = activeSlide.offsetHeight;
-		if (height) {
-			this.viewport.style.height = `${height}px`;
-		}
+		requestAnimationFrame(() => {
+			if (height) {
+				this.viewport.style.height = `${height}px`;
+			}
+		});
 	}
 
 	showSlide(index, source = 'button') {
@@ -849,6 +860,7 @@ class AboutCarousel {
 		const total = this.slides.length;
 		const nextIndex = (index + total) % total;
 		this.currentIndex = nextIndex;
+		// PERF: Batch layout reads before DOM writes to avoid forced reflow
 		this.update();
 		this.deferHeight();
 		if (source === 'dot') {
@@ -1108,10 +1120,10 @@ class MobileMenuManager {
 		}
 		if (this.menu.hasAttribute('hidden')) {
 			this.menu.removeAttribute('hidden');
-			// Force reflow so transitions apply after removing hidden
-			// eslint-disable-next-line no-unused-expressions
-			this.menu.offsetHeight;
+			// PERF: Force reflow intentionally for transition, but batch all writes after
+			void this.menu.offsetHeight;
 		}
+		// PERF: Batch all DOM writes after layout read
 		this.menu.setAttribute('aria-hidden', 'false');
 		this.menu.classList.add('active');
 		this.menu.scrollTop = 0;
@@ -1356,7 +1368,7 @@ class FAQManager {
 					}
 				});
 			},
-			{ threshold: 0.1, rootMargin: '100px' }
+			{ threshold: 0.1, rootMargin: '100px' },
 		);
 
 		// Observe all FAQ questions
@@ -1398,7 +1410,7 @@ class FAQManager {
 					}
 				});
 			},
-			{ threshold: 0.1, rootMargin: '200px' }
+			{ threshold: 0.1, rootMargin: '200px' },
 		);
 
 		this.intersectionObserver.observe(virtualContainer);
@@ -1406,6 +1418,7 @@ class FAQManager {
 
 	updateVisibleFAQItems(container) {
 		// Calculate visible range based on scroll position
+		// PERF: Batch layout reads before DOM writes to avoid forced reflow
 		const scrollTop = container.scrollTop || window.pageYOffset;
 		const containerHeight = container.clientHeight;
 		const itemHeight = 60; // Estimated FAQ item height
@@ -1413,7 +1426,7 @@ class FAQManager {
 		const start = Math.max(0, Math.floor(scrollTop / itemHeight) - 5);
 		const end = Math.min(
 			this.faqQuestions.length,
-			Math.ceil((scrollTop + containerHeight) / itemHeight) + 5
+			Math.ceil((scrollTop + containerHeight) / itemHeight) + 5,
 		);
 
 		// Only update if range has changed significantly
@@ -1468,7 +1481,7 @@ class FAQManager {
 					}
 				});
 			},
-			{ threshold: 0.05, rootMargin: '300px' } // Larger margin for better performance
+			{ threshold: 0.05, rootMargin: '300px' }, // Larger margin for better performance
 		);
 
 		this.intersectionObserver.observe(virtualContainer);
@@ -1476,6 +1489,7 @@ class FAQManager {
 
 	updateVisibleFAQItemsEnhanced(container) {
 		// Enhanced calculation with performance optimizations
+		// PERF: Batch layout reads before DOM writes to avoid forced reflow
 		const scrollTop = container.scrollTop || window.pageYOffset;
 		const containerHeight = container.clientHeight;
 		const itemHeight = 60;
@@ -1486,7 +1500,7 @@ class FAQManager {
 		const start = Math.max(0, Math.floor(scrollTop / itemHeight) - bufferSize);
 		const end = Math.min(
 			this.faqQuestions.length,
-			Math.ceil((scrollTop + containerHeight) / itemHeight) + bufferSize
+			Math.ceil((scrollTop + containerHeight) / itemHeight) + bufferSize,
 		);
 
 		// Only update if range has changed significantly (reduced sensitivity)
@@ -1514,7 +1528,7 @@ class FAQManager {
 					this.updateVisibleFAQItemsEnhanced(container);
 				}, 16); // ~60fps throttling
 			},
-			{ passive: true }
+			{ passive: true },
 		);
 	}
 
@@ -1554,7 +1568,7 @@ class FAQManager {
 					}
 				});
 			},
-			{ threshold: 0.01, rootMargin: '100px' } // Very sensitive for extreme lists
+			{ threshold: 0.01, rootMargin: '100px' }, // Very sensitive for extreme lists
 		);
 
 		this.intersectionObserver.observe(virtualContainer);
@@ -1572,7 +1586,7 @@ class FAQManager {
 		const start = Math.max(0, Math.floor(scrollTop / itemHeight) - bufferSize);
 		const end = Math.min(
 			this.faqQuestions.length,
-			Math.ceil((scrollTop + containerHeight) / itemHeight) + bufferSize
+			Math.ceil((scrollTop + containerHeight) / itemHeight) + bufferSize,
 		);
 
 		// Only update if range has changed significantly
@@ -1760,7 +1774,7 @@ class CasinoButtonsManager {
 					}
 				});
 			},
-			{ threshold: 0.1, rootMargin: '100px' }
+			{ threshold: 0.1, rootMargin: '100px' },
 		);
 
 		// Observe all casino cards
@@ -1784,7 +1798,7 @@ class CasinoButtonsManager {
 		// Helper to (re)collect cards and observe them
 		const collectCards = () => {
 			const cards = Array.from(
-				document.querySelectorAll('.casino-card, .casino-card--top, .top-card')
+				document.querySelectorAll('.casino-card, .casino-card--top, .top-card'),
 			).filter(Boolean);
 			if (!cards.length) return;
 
@@ -1856,7 +1870,7 @@ class CasinoButtonsManager {
 				// Defer actual class updates to throttled scheduler
 				scheduleMostVisibleUpdate();
 			},
-			{ threshold: thresholds }
+			{ threshold: thresholds },
 		);
 
 		// Observe dynamic additions to the casino container if present
@@ -1927,7 +1941,7 @@ class CasinoButtonsManager {
 					}
 				});
 			},
-			{ threshold: 0.1, rootMargin: '200px' }
+			{ threshold: 0.1, rootMargin: '200px' },
 		);
 
 		this.intersectionObserver.observe(virtualContainer);
@@ -1935,6 +1949,7 @@ class CasinoButtonsManager {
 
 	updateVisibleCasinoCards(container) {
 		// Calculate visible range based on scroll position
+		// PERF: Batch layout reads before DOM writes to avoid forced reflow
 		const scrollTop = container.scrollTop || window.pageYOffset;
 		const containerHeight = container.clientHeight;
 		const itemHeight = 200; // Estimated casino card height
@@ -1942,7 +1957,7 @@ class CasinoButtonsManager {
 		const start = Math.max(0, Math.floor(scrollTop / itemHeight) - 3);
 		const end = Math.min(
 			this.casinoButtons.length,
-			Math.ceil((scrollTop + containerHeight) / itemHeight) + 3
+			Math.ceil((scrollTop + containerHeight) / itemHeight) + 3,
 		);
 
 		// Only update if range has changed significantly
@@ -1997,7 +2012,7 @@ class CasinoButtonsManager {
 					}
 				});
 			},
-			{ threshold: 0.05, rootMargin: '400px' } // Larger margin for casino cards
+			{ threshold: 0.05, rootMargin: '400px' }, // Larger margin for casino cards
 		);
 
 		this.intersectionObserver.observe(virtualContainer);
@@ -2015,7 +2030,7 @@ class CasinoButtonsManager {
 		const start = Math.max(0, Math.floor(scrollTop / itemHeight) - bufferSize);
 		const end = Math.min(
 			this.casinoButtons.length,
-			Math.ceil((scrollTop + containerHeight) / itemHeight) + bufferSize
+			Math.ceil((scrollTop + containerHeight) / itemHeight) + bufferSize,
 		);
 
 		// Only update if range has changed significantly (reduced sensitivity)
@@ -2043,7 +2058,7 @@ class CasinoButtonsManager {
 					this.updateVisibleCasinoCardsEnhanced(container);
 				}, 16); // ~60fps throttling
 			},
-			{ passive: true }
+			{ passive: true },
 		);
 	}
 
@@ -2067,7 +2082,7 @@ class AnimationManager {
 		this.headerLogo = document.querySelector('.header__logo');
 		this.disclaimer = document.querySelector('.disclaimer');
 		this.reduceMotion = window.matchMedia?.(
-			'(prefers-reduced-motion: reduce)'
+			'(prefers-reduced-motion: reduce)',
 		).matches;
 
 		this.init();
@@ -2139,12 +2154,14 @@ class ScrollRevealManager {
 
 		// Section-based element collections
 		this.sectionElements = {
-			faq: this.faqSection ? this.faqSection.querySelectorAll('.fade-in') : [],
+			faq: this.faqSection
+				? Array.from(this.faqSection.querySelectorAll('.fade-in'))
+				: [],
 			casino: this.casinoSection
-				? this.casinoSection.querySelectorAll('.fade-in')
+				? Array.from(this.casinoSection.querySelectorAll('.fade-in'))
 				: [],
 			hero: this.heroSection
-				? this.heroSection.querySelectorAll('.fade-in')
+				? Array.from(this.heroSection.querySelectorAll('.fade-in'))
 				: [],
 			other: [],
 		};
@@ -2310,7 +2327,7 @@ class ScrollRevealManager {
 			{
 				threshold: this.adaptiveConfig.threshold,
 				rootMargin: this.adaptiveConfig.rootMargin,
-			}
+			},
 		);
 
 		observerRegistry.scrollObservers.set(sectionName, observer);
@@ -2340,7 +2357,7 @@ class ScrollRevealManager {
 				{
 					threshold: this.adaptiveConfig.threshold,
 					rootMargin: this.adaptiveConfig.rootMargin,
-				}
+				},
 			);
 		}
 
@@ -2397,7 +2414,7 @@ class ScrollRevealManager {
 	// Cleanup method for memory management
 	cleanup() {
 		observerRegistry.scrollObservers.forEach((observer) =>
-			observer.disconnect()
+			observer.disconnect(),
 		);
 		observerRegistry.scrollObservers.clear();
 		if (observerRegistry.globalScrollObserver) {
@@ -2448,7 +2465,7 @@ class DarkModeManager {
 			this.updateToggleButtonState(isDark);
 		} else {
 			const prefersDark = window.matchMedia(
-				'(prefers-color-scheme: dark)'
+				'(prefers-color-scheme: dark)',
 			).matches;
 			this.body.classList.add(prefersDark ? 'dark' : 'light');
 			isDark = prefersDark;
@@ -2627,20 +2644,34 @@ class DarkModeManager {
 		if (!this.body) return;
 
 		const isDark = this.body.classList.contains('dark');
-		this.casinoImages.forEach((img) => {
-			// Safe attribute checking - skip if attributes don't exist
+		// Get fresh list of all images with data-dark attribute each time
+		const allCasinoImages = document.querySelectorAll('img[data-dark]');
+		// PERF: Batch layout reads before DOM writes to avoid forced reflow
+		allCasinoImages.forEach((img) => {
 			const darkSrc = img.dataset.dark;
-			if (!darkSrc) return; // Skip if no dark source
-
+			if (!darkSrc) return;
+			// Read layout if needed (e.g. img.offsetWidth)
 			if (isDark) {
-				// Store current light source before switching
 				if (!img.dataset.light) {
 					img.dataset.light = img.src;
 				}
 				img.src = darkSrc;
 			} else if (img.dataset.light) {
-				// Only switch if light source exists
 				img.src = img.dataset.light;
+			}
+
+			// Update srcset if it exists
+			if (img.srcset) {
+				if (isDark) {
+					if (!img.dataset.originalSrcset) {
+						img.dataset.originalSrcset = img.srcset;
+					}
+					img.srcset = ''; // Clear srcset in dark mode to use src
+				} else {
+					if (img.dataset.originalSrcset) {
+						img.srcset = img.dataset.originalSrcset; // Restore srcset in light mode
+					}
+				}
 			}
 		});
 	}
@@ -2660,9 +2691,9 @@ class DarkModeManager {
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-	// EMERGENCY FIX: Show all fade-in elements immediately
-	console.log('[DOMContentLoaded] Showing all .fade-in elements');
-	document.querySelectorAll('.fade-in').forEach((el) => {
+	// Show all fade-in elements immediately
+	const fadeIns = Array.from(document.querySelectorAll('.fade-in'));
+	fadeIns.forEach((el) => {
 		el.classList.add('visible');
 	});
 
@@ -2680,40 +2711,52 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.darkModeManager = new DarkModeManager();
 	window.aboutCarousel = new AboutCarousel();
 
+	// Avis dropdown toggle
+	const avisToggle = document.querySelector('.avis-toggle');
+	const avisWrapper = document.querySelector('.avis-wrapper');
+	if (avisToggle && avisWrapper) {
+		avisToggle.addEventListener('click', (e) => {
+			e.preventDefault();
+			avisWrapper.classList.toggle('open');
+			const expanded = avisWrapper.classList.contains('open');
+			avisToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+			const dropdown = document.getElementById('avis-list');
+			if (dropdown) {
+				dropdown.hidden = !expanded;
+				dropdown.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+			}
+		});
+	}
+
 	// ============================================================================
 	// STICKY HEADER - Add scrolled class when scrolling
 	// ============================================================================
 	const header = document.querySelector('.header');
-
 	if (header) {
-		let lastScrollY = window.scrollY;
 		let ticking = false;
-
-		const updateHeader = () => {
-			const currentScrollY = window.scrollY;
-
+		// PERF: Only use rAF for DOM writes, read scrollY outside
+		const updateHeader = (scrollY) => {
 			// Add scrolled class when scrolled down more than 10px
-			if (currentScrollY > 10) {
+			if (scrollY > 10) {
 				header.classList.add('scrolled');
 			} else {
 				header.classList.remove('scrolled');
 			}
-
-			lastScrollY = currentScrollY;
+			// No forced reflow: no layout reads here
 			ticking = false;
 		};
-
 		const onScroll = () => {
 			if (!ticking) {
-				window.requestAnimationFrame(updateHeader);
 				ticking = true;
+				window.requestAnimationFrame(() => {
+					const scrollY = window.scrollY;
+					updateHeader(scrollY);
+				});
 			}
 		};
-
 		window.addEventListener('scroll', onScroll, { passive: true });
-
-		// Check initial scroll position
-		updateHeader();
+		// Initial state
+		updateHeader(window.scrollY);
 	}
 
 	// ============================================================================
@@ -2760,12 +2803,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Initialize scroll reveal immediately to prevent flash of invisible content
 	// But defer animation manager to idle time
-	console.log('[INIT] Creating ScrollRevealManager...');
 	window.scrollRevealManager = new ScrollRevealManager();
-	console.log(
-		'[INIT] ScrollRevealManager created:',
-		window.scrollRevealManager
-	);
 
 	const defer = window.requestIdleCallback || ((cb) => setTimeout(cb, 200));
 	defer(() => {
@@ -2797,7 +2835,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					body.classList.add('user-is-tabbing');
 				}
 			},
-			{ passive: true }
+			{ passive: true },
 		);
 
 		const disableKeyboardMode = () => {
@@ -2846,7 +2884,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					// Fail silently; this is a non-critical UX improvement
 				}
 			},
-			true
+			true,
 		);
 	})();
 });

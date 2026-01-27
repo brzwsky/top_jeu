@@ -49,6 +49,13 @@
 		<link rel="preconnect" href="https://analytics.ahrefs.com" crossorigin />
 		<link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
 
+		<!-- Preload LCP Image -->
+		<link
+			rel="preload"
+			as="image"
+			href="img/logo-casinos/mafiacasino-logo.svg"
+		/>
+
 		<!-- SEO & Open Graph -->
 		<meta
 			name="description"
@@ -184,7 +191,7 @@
 							"@type": "Casino",
 							"name": "MrPacho Casino",
 							"url": "https://mrpc.fynkelto.com/?mid=311639_1885523",
-							"image": "https://www.topjeu777.com/img/logo-casinos/mrpacho-logo.svg",
+							"image": "https://www.topjeu777.com/img/logo-casinos/mrpacho-logo.webp",
 							"description": "Jusqu'à 500 € + 200 Free Spins",
 							"address": "Online",
 							"aggregateRating": {
@@ -390,7 +397,7 @@
 
 		<!-- Google Analytics 4 -->
 		<script
-			async
+			defer
 			src="https://www.googletagmanager.com/gtag/js?id=G-YYE4H0PHYY"
 		></script>
 		<script>
@@ -429,7 +436,7 @@
 		<!-- JS -->
 		<script defer src="app_v1.js"></script>
 	</head>
-	<body lang="fr">
+	<body lang="fr" id="top">
 		<!-- Cookie Consent Banner -->
 		<div class="cookie-consent-banner fade-in">
 			<p>
@@ -450,11 +457,12 @@
 					>
 						<img
 							class="header__logo"
-							src="img/logo-queen-rad.webp"
+							src="img/logo-queen-red.webp"
 							alt="Logo principal de TopJeu, représentant une reine de carte à jouer"
 							loading="eager"
 							width="160"
 							height="60"
+							fetchpriority="high"
 							style="
 								width: 160px;
 								height: 60px;
@@ -462,6 +470,7 @@
 								display: block;
 							"
 						/>
+						<!-- PERF: LCP optimization -->
 					</a>
 					<div class="header__logo-text fade-in">
 						<p class="header__logo-line header__logo-line--title">TopJeu</p>
@@ -508,6 +517,53 @@
 								/>
 								<span>YouTube</span>
 							</a>
+						</li>
+						<li class="nav-menu__item nav-menu__item--avis">
+							<div class="avis-wrapper">
+								<button
+									type="button"
+									class="header__link nav-menu__link avis-toggle"
+									aria-expanded="false"
+									aria-controls="avis-list"
+								>
+									Avis
+									<span class="avis-toggle__icon" aria-hidden="true">
+										<svg
+											viewBox="0 0 10 10"
+											width="10"
+											height="10"
+											style="display: block"
+											fill="currentColor"
+										>
+											<polygon points="3,2 8,5 3,8" />
+										</svg>
+									</span>
+								</button>
+								<ul
+									id="avis-list"
+									class="avis-dropdown"
+									role="menu"
+									aria-hidden="true"
+								>
+									<li role="none">
+										<a
+											role="menuitem"
+											class="avis-link"
+											href="/reviews/dragonia-casino.html"
+											>Dragonia Casino</a
+										>
+									</li>
+									<li role="none">
+										<a
+											role="menuitem"
+											class="avis-link"
+											href="/reviews/brutal-casino.html"
+											>Brutal Casino</a
+										>
+									</li>
+									<li role="none"></li>
+								</ul>
+							</div>
 						</li>
 						<li class="nav-menu__item">
 							<button
@@ -558,6 +614,8 @@
 							src="img/author-photo.webp"
 							alt="Portrait de Dariah Belle, auteure de TopJeu"
 							class="author__photo"
+							width="35"
+							height="35"
 							loading="lazy"
 					/></span>
 					Rédigé par :
@@ -572,7 +630,7 @@
 					pouvez vous permettre de perdre. Si vous sentez que le jeu devient un
 					problème, demandez de l'aide dès maintenant.
 				</p>
-				<div class="hero__text fade-in">
+				<div class="hero__text">
 					<p>
 						Le marché des <strong> casinos en ligne francophones</strong> est en
 						pleine expansion, avec une offre toujours plus variée et
@@ -591,6 +649,7 @@
 			</section>
 			<!-- Casino Cards -->
 			<section id="top5" class="casino-cards-container casino-cards fade-in">
+				<h2 class="visually-hidden">Top 5 Casinos en Ligne</h2>
 				<!--Card Mafia-->
 				<article class="casino-article">
 					<div class="casino-card casino-card--top">
@@ -600,6 +659,8 @@
 							class="casino-card__icon"
 							src="img/crown-icon.webp"
 							alt="Icône de couronne pour le classement Top 1 Mafia Casino"
+							width="60"
+							height="60"
 							loading="lazy"
 						/>
 						<div class="casino-card__info">
@@ -607,8 +668,13 @@
 								class="casino-card__image"
 								src="img/logo-casinos/mafiacasino-logo.svg"
 								alt="Logo de Mafia Casino, classé numéro 1"
-								loading="lazy"
+								loading="eager"
+								fetchpriority="high"
+								width="150"
+								height="83"
+								srcset="img/logo-casinos/mafiacasino-logo.svg 150w"
 							/>
+							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">Mafia Casino</h3>
 								<p class="casino-card__bonus">
@@ -654,7 +720,14 @@
 								data-dark="img/logo-casinos/brutal-logo-dark.webp"
 								alt="Logo de Brutal Casino, classé numéro 2"
 								loading="lazy"
+								width="150"
+								height="83"
+								srcset="
+									img/logo-casinos/brutal-logo.webp      150w,
+									img/logo-casinos/brutal-logo-dark.webp 150w
+								"
 							/>
+							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">Brutal Casino</h3>
 								<p class="casino-card__bonus">100% Jusqu'à 1000 €</p>
@@ -697,7 +770,11 @@
 								src="img/logo-casinos/dragonia-logo.webp"
 								alt="Logo de Captain Slots Casino, classé numéro 3"
 								loading="lazy"
+								width="150"
+								height="83"
+								srcset="img/logo-casinos/dragonia-logo.webp 150w"
 							/>
+							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">Dragonia Casino</h3>
 								<p class="casino-card__bonus">
@@ -739,11 +816,18 @@
 						<div class="casino-card__info">
 							<img
 								class="casino-card__image"
-								src="img/logo-casinos/mrpacho-logo.svg"
+								src="img/logo-casinos/mrpacho-logo.webp"
 								data-dark="img/logo-casinos/mrpacho-logo-dark.webp"
 								alt="Logo de MrPacho Casino, classé numéro 4"
 								loading="lazy"
+								width="150"
+								height="83"
+								srcset="
+									img/logo-casinos/mrpacho-logo.webp      150w,
+									img/logo-casinos/mrpacho-logo-dark.webp 150w
+								"
 							/>
+							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">MrPacho Casino</h3>
 								<p class="casino-card__bonus">Jusqu'à 500 € + 200 Free Spins</p>
@@ -786,7 +870,14 @@
 								data-dark="img/logo-casinos/casinostars-logo-dark.webp"
 								alt="Logo de Casinostars, classé numéro 5"
 								loading="lazy"
+								width="150"
+								height="41"
+								srcset="
+									img/logo-casinos/casinostars-logo.webp      150w,
+									img/logo-casinos/casinostars-logo-dark.webp 150w
+								"
 							/>
+							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">Casinostars</h3>
 								<p class="casino-card__bonus">100% Jusqu'à 300 €</p>
@@ -829,7 +920,14 @@
 								data-dark="img/logo-casinos/peaches-logo-dark.webp"
 								alt="Logo de CasinoPeaches, classé numéro 6"
 								loading="lazy"
+								width="150"
+								height="83"
+								srcset="
+									img/logo-casinos/peaches-logo.webp      150w,
+									img/logo-casinos/peaches-logo-dark.webp 150w
+								"
 							/>
+							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">CasinoPeaches</h3>
 								<p class="casino-card__bonus">250% Jusqu'à 1000 €</p>
@@ -871,7 +969,11 @@
 								src="img/logo-casinos/winzter-logo.webp"
 								alt="Logo de Winzter Casino, classé numéro 8"
 								loading="lazy"
+								width="150"
+								height="83"
+								srcset="img/logo-casinos/winzter-logo.webp 150w"
 							/>
+							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">Winzter Casino</h3>
 								<p class="casino-card__bonus">Jusqu'à 3000 € + 20% Cashback</p>
@@ -914,7 +1016,14 @@
 								data-dark="img/logo-casinos/binobet-logo-dark.webp"
 								alt="Logo de Binobet Casino, classé numéro 9"
 								loading="lazy"
+								width="150"
+								height="83"
+								srcset="
+									img/logo-casinos/binobet-logo.webp      150w,
+									img/logo-casinos/binobet-logo-dark.webp 150w
+								"
 							/>
+							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">Binobet Casino</h3>
 								<p class="casino-card__bonus">
@@ -957,8 +1066,13 @@
 								class="casino-card__image"
 								src="img/logo-casinos/wonderluck-logo.webp"
 								alt="Logo de WonderLuck Casino, classé numéro 10"
+								srcset="img/logo-casinos/wonderluck-logo.webp 150w"
+								sizes="150px"
+								width="150"
+								height="41"
 								loading="lazy"
 							/>
+							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">WonderLuck Casino</h3>
 								<p class="casino-card__bonus">
@@ -1005,6 +1119,7 @@
 								alt="Logo de CasinoLab, classé numéro 11"
 								loading="lazy"
 							/>
+							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">CasinoLab</h3>
 								<p class="casino-card__bonus">
@@ -1259,6 +1374,8 @@
 						<img
 							src="img/banners/mafia-banner.webp"
 							alt="Bannière promotionnelle de Mafia Casino, offrant un bonus de bienvenue"
+							width="1200"
+							height="300"
 							loading="lazy"
 						/>
 					</a>
@@ -1324,6 +1441,8 @@
 								class="casino-card__image"
 								src="img/logo-casinos/mafiacasino-logo.svg"
 								alt="Logo de Mafia Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -1438,6 +1557,8 @@
 						<img
 							src="img/banners/brutal-banner-fix.webp"
 							alt="Bannière promotionnelle de Brutal Casino, bonus de bienvenue"
+							width="1200"
+							height="300"
 							loading="lazy"
 						/>
 					</a>
@@ -1499,6 +1620,8 @@
 								src="img/logo-casinos/brutal-logo.webp"
 								data-dark="img/logo-casinos/brutal-logo-dark.webp"
 								alt="Logo de Brutal Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -1588,6 +1711,8 @@
 						<img
 							src="img/banners/dragonia-banner.webp"
 							alt="Bannière promotionnelle de Dragonia Casino, univers pirate"
+							width="1200"
+							height="300"
 							loading="lazy"
 						/>
 					</a>
@@ -1654,6 +1779,8 @@
 								class="casino-card__image fade-in"
 								src="img/logo-casinos/dragonia-logo.webp"
 								alt="Logo de Dragonia Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -1791,6 +1918,8 @@
 						<img
 							src="img/banners/mrpacho-banner.webp"
 							alt="Bannière promotionnelle de MrPacho Casino, univers pirate"
+							width="1200"
+							height="300"
 							loading="lazy"
 						/>
 					</a>
@@ -1847,9 +1976,11 @@
 						<div class="casino-card__info casino-card__info_logo">
 							<img
 								class="casino-card__image fade-in"
-								src="img/logo-casinos/mrpacho-logo.svg"
+								src="img/logo-casinos/mrpacho-logo.webp"
 								data-dark="img/logo-casinos/mrpacho-logo-dark.webp"
 								alt="Logo de MrPacho Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -1946,6 +2077,8 @@
 						<img
 							src="img/banners/casinostars-banner.webp"
 							alt="Bannière promotionnelle de Casinostars Casino"
+							width="1200"
+							height="300"
 							loading="lazy"
 						/>
 					</a>
@@ -2010,6 +2143,8 @@
 								src="img/logo-casinos/casinostars-logo.webp"
 								data-dark="img/logo-casinos/casinostars-logo-dark.webp"
 								alt="Logo de GoldSpin Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -2123,11 +2258,13 @@
 						rel="nofollow noopener noreferrer"
 						href="https://www.goldspin06310.com/fr-ca"
 					>
-						<img
-							src="img/banners/goldspin-banner.webp"
-							alt="Bannière promotionnelle de GoldSpin Casino, bonus et jeux"
-							loading="lazy"
-						/>
+					<img
+						src="img/banners/goldspin-banner.webp"
+						alt="Bannière promotionnelle de GoldSpin Casino, bonus et jeux"
+						width="1200"
+						height="300"
+						loading="lazy"
+					/>
 					</a>
 					<p class="content-width fade-in">
 						<strong>GoldSpin Casino</strong> est une plateforme lancée en 2024,
@@ -2195,6 +2332,8 @@
 								class="casino-card__image fade-in"
 								src="img/logo-casinos/goldspin-logo.svg"
 								alt="Logo de GoldSpin Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -2276,7 +2415,7 @@
 						💬 Un casino en ligne fiable, rapide, et pensé pour les joueurs
 						francophones exigeants.
 					</p>
-				</section> -->
+				</section>
 
 				<!--Review Sushi Casino-->
 				<!-- <section class="casino-review_sushi-casino fade-in">
@@ -2289,11 +2428,13 @@
 						rel="nofollow noopener noreferrer"
 						href="https://www.sush1casin0.com/fr"
 					>
-						<img
-							src="img/banners/sushi-banner-white.webp"
-							alt="Bannière promotionnelle de Sushi Casino, ambiance japonaise"
-							loading="lazy"
-						/>
+					<img
+						src="img/banners/sushi-banner-white.webp"
+						alt="Bannière promotionnelle de Sushi Casino, ambiance japonaise"
+						width="1200"
+						height="300"
+						loading="lazy"
+					/>
 					</a>
 					<p class="content-width fade-in">
 						Sushi Casino est une plateforme thématique originale autour de
@@ -2359,6 +2500,8 @@
 								class="casino-card__image fade-in"
 								src="img/logo-casinos/sushicasino-logo.webp"
 								alt="Logo de Sushi Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -2446,11 +2589,8 @@
 					</p>
 					<h4 style="margin-top: 2rem" class="fade-in">Verdict :</h4>
 					<p class="content-width">
-						<strong
-							>Franchement, j'ai été agréablement surpris par Sushi
-							Casino.</strong
-						>
-						Le site a du style, les bonus tombent vite, et les missions rendent
+						Franchement, j'ai été agréablement surpris par Sushi
+						Casino. Le site a du style, les bonus tombent vite, et les missions rendent
 						l'expérience de jeu vraiment plus fun. Il y a de quoi faire avec
 						tous les jeux dispo, et le programme de fidélité ajoute un vrai
 						petit plus si tu joues régulièrement.
@@ -2469,7 +2609,7 @@
 						💬 Un casino au goût unique, qui marie parfaitement fun, fidélité et
 						générosité.
 					</p>
-				</section> -->
+				</section>
 
 				<!--Review Peaches Casino-->
 				<section class="casino-review_peaches-casino fade-in">
@@ -2484,6 +2624,8 @@
 						<img
 							src="img/banners/peaches-banner.webp"
 							alt="Bannière promotionnelle de Peaches Casino, univers fruité"
+							width="1200"
+							height="300"
 							loading="lazy"
 						/>
 					</a>
@@ -2547,6 +2689,8 @@
 								src="img/logo-casinos/peaches-logo.webp"
 								data-dark="img/logo-casinos/peaches-logo-dark.webp"
 								alt="Logo de Peaches Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -2637,6 +2781,8 @@
 						<img
 							src="img/banners/winzter-banner.webp"
 							alt="Bannière promotionnelle de Winzter Casino"
+							width="1200"
+							height="300"
 							loading="lazy"
 						/>
 					</a>
@@ -2700,6 +2846,8 @@
 								class="casino-card__image fade-in"
 								src="img/logo-casinos/winzter-logo.webp"
 								alt="Logo de Sushi Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -2805,6 +2953,8 @@
 						<img
 							src="img/banners/binobet-banner.webp"
 							alt="Bannière promotionnelle de Winzter Casino"
+							width="1200"
+							height="300"
 							loading="lazy"
 						/>
 					</a>
@@ -2871,6 +3021,8 @@
 								src="img/logo-casinos/binobet-logo.webp"
 								data-dark="img/logo-casinos/binobet-logo-dark.webp"
 								alt="Logo de Binobet Casino"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -2992,6 +3144,8 @@
 						<img
 							src="img/banners/captain-banner.webp"
 							alt="Bannière promotionnelle de Captain Slots Casino, univers pirate"
+							width="1200"
+							height="300"
 							loading="lazy"
 						/>
 					</a>
@@ -3051,17 +3205,19 @@
 								src="img/logo-casinos/captainslots-logo.webp"
 								data-dark="img/logo-casinos/captainslots-logo-dark.webp"
 								alt="Logo de Captain Slots Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
 						<div class="casino-button__rating fade-in">
+							<p class="casino-card__score">9.6</p>
+							<p class="casino-card__stars">★★★★★</p>
 							<p style="white-space: nowrap">
 								<strong id="casino-name-captainslots-detail"
 									>Captain Slots Casino</strong
 								>
 							</p>
-							<p class="casino-card__score">9.6</p>
-							<p class="casino-card__stars">★★★★★</p>
 						</div>
 						<div class="casino-card__features fade-in">
 							<h4 class="casino-button__title">Bonus De Bienvenue</h4>
@@ -3083,7 +3239,7 @@
 						</a>
 					</section>
 					<h4 style="margin-top: 2rem" class="fade-in">✅ Avantages :</h4>
-					<ul class="content-width">
+					<ul class="content-width fade-in">
 						<li>
 							Large sélection de jeux de
 							<strong>jeux de qualité</strong>
@@ -3138,6 +3294,8 @@
 						<img
 							src="img/banners/julius-banner.webp"
 							alt="Bannière promotionnelle de Julius Casino, ambiance romaine"
+							width="1200"
+							height="300"
 							loading="lazy"
 						/>
 					</a>
@@ -3194,6 +3352,8 @@
 								class="casino-card__image fade-in"
 								src="img/logo-casinos/julius-logo.svg"
 								alt="Logo de Julius Casino (section avis détaillé)"
+								width="150"
+								height="150"
 								loading="lazy"
 							/>
 						</div>
@@ -3264,7 +3424,7 @@
 							complications.</strong
 						>
 					</p>
-					<h4 style="margin-top: 2rem">Verdict :</h4>
+					<h4 style="margin-top: 2rem" class="fade-in">Verdict :</h4>
 					<p class="content-width fade-in">
 						Julius Casino offre une expérience immersive dans
 						<strong>l’univers romain avec des bonus généreux</strong> et une
@@ -3391,9 +3551,9 @@
 							aria-controls="faq-1"
 							aria-label="Afficher la réponse à la question : Comment trouver un casino en ligne fiable ?"
 						>
-							<h4 id="faq-q1">
+							<h3 id="faq-q1">
 								🔍 Comment trouver un casino en ligne fiable ?
-							</h4>
+							</h3>
 							<span class="faq-toggle">+</span>
 						</button>
 						<div
@@ -3424,7 +3584,7 @@
 							aria-controls="faq-2"
 							aria-label="Afficher la réponse à la question : Comment identifier un casino non fiable ?"
 						>
-							<h4 id="faq-q2">📍 Comment identifier un casino non fiable ?</h4>
+							<h3 id="faq-q2">📍 Comment identifier un casino non fiable ?</h3>
 							<span class="faq-toggle">+</span>
 						</button>
 						<div
@@ -3452,9 +3612,9 @@
 							aria-controls="faq-3"
 							aria-label="Afficher la réponse à la question : Peut-on jouer au casino sans avoir 18 ans ?"
 						>
-							<h4 id="faq-q3">
+							<h3 id="faq-q3">
 								🔞 Peut-on jouer au casino sans avoir 18 ans ?
-							</h4>
+							</h3>
 							<span class="faq-toggle">+</span>
 						</button>
 						<div
@@ -3482,10 +3642,10 @@
 							aria-controls="faq-4"
 							aria-label="Afficher la réponse à la question : Sur quels jeux de casinos a-t-on le plus de chance de gagner ?"
 						>
-							<h4 id="faq-q4">
+							<h3 id="faq-q4">
 								🍀 Sur quels jeux de casinos a-t-on le plus de chance de gagner
 								?
-							</h4>
+							</h3>
 							<span class="faq-toggle">+</span>
 						</button>
 						<div
@@ -3515,9 +3675,9 @@
 							aria-controls="faq-5"
 							aria-label="Afficher la réponse à la question : Les bonus des casinos en ligne sont-ils fiables ?"
 						>
-							<h4 id="faq-q5">
+							<h3 id="faq-q5">
 								🎁 Les bonus des casinos en ligne sont-ils fiables ?
-							</h4>
+							</h3>
 							<span class="faq-toggle">+</span>
 						</button>
 						<div
@@ -3817,6 +3977,8 @@
 							src="img/author-photo.webp"
 							alt="Portrait de Dariah Belle, auteure du site TopJeu"
 							class="author__photo"
+							width="60px"
+							height="60px"
 							loading="lazy"
 					/></span>
 					<h3>Dariah Belle</h3>
@@ -4066,8 +4228,14 @@
 			</div>
 		</div>
 		<!-- Scroll to top button -->
-		<a href="#" id="scrolltop">
-			<img class="arrow-up" src="img/arrow-icon.webp" loading="lazy"
+		<a href="#top" id="scrolltop" aria-label="Scroll up the page to the top">
+			<img
+				class="arrow-up"
+				src="img/arrow-icon.webp"
+				alt=""
+				width="30"
+				height="30"
+				loading="lazy"
 		/></a>
 	</body>
 </html>
