@@ -15,7 +15,7 @@
 	},
 	"image": {
 		"@type": "ImageObject",
-		"url": "https://www.topjeu777.com/img/logo.png",
+		"url": "https://www.topjeu777.com/img/logo.webp",
 		"width": 300,
 		"height": 300
 	},
@@ -29,7 +29,7 @@
 		"name": "TopJeu",
 		"logo": {
 			"@type": "ImageObject",
-			"url": "https://www.topjeu777.com/img/logo.png"
+			"url": "https://www.topjeu777.com/img/logo.webp"
 		}
 	}
 }
