@@ -265,7 +265,7 @@
 					<p class="casino-card__stars">★★★★★</p>
 				</div>
 				<div class="casino-card__features fade-in">
-					<h4 class="casino-button__title">Bonus De Bienvenue</h4>
+					<p class="casino-button__title">Bonus De Bienvenue</p>
 					<p class="casino-card__bonus" style="text-align: center">
 						100% Jusqu'à 500 € + 200 Free Spins + 1 Bonus Crab
 					</p>
@@ -310,25 +310,27 @@
 					rel="nofollow noopener noreferrer"
 					style="display: block; margin: 2rem 0"
 				>
-					<img
-						src="/reviews/dragonia-casino/banners/baner-dragonia-1200.webp"
-						srcset="
-							/reviews/dragonia-casino/banners/baner-dragonia-400.webp   400w,
-							/reviews/dragonia-casino/banners/baner-dragonia-800.webp   800w,
-							/reviews/dragonia-casino/banners/baner-dragonia-1200.webp 1200w
-						"
-						sizes="
-      (max-width: 480px) 100vw,
-      (max-width: 1024px) 90vw,
-      100vw
-    "
-						alt="Dragonia Casino – Bonus jusqu'à 500€ + 200 free spins"
-						width="100%"
-						height="auto"
-						style="width: 100%; height: auto; max-width: 1200px"
-						loading="eager"
-						fetchpriority="high"
-					/>
+					<picture>
+						<source
+							srcset="/reviews/dragonia-casino/banners/baner-dragonia-400.webp"
+							media="(max-width: 480px)"
+						/>
+
+						<source
+							srcset="/reviews/dragonia-casino/banners/baner-dragonia-800.webp"
+							media="(max-width: 1024px)"
+						/>
+
+						<img
+							src="/reviews/dragonia-casino/banners/baner-dragonia-1200.webp"
+							alt="Dragonia Casino – Bonus jusqu'à 500€ + 200 free spins"
+							width="1200"
+							height="400"
+							style="width: 100%; height: auto; max-width: 1200px"
+							loading="eager"
+							fetchpriority="high"
+						/>
+					</picture>
 				</a>
 
 				<p>
@@ -406,14 +408,30 @@
 					href="https://drgnn.lynmonkel.com/?mid=319698_1880124"
 					style="display: block; margin: 2rem 0"
 				>
-					<img
-						src="/reviews/dragonia-casino/banners/bonus-baner-dragonia-casino.webp"
-						alt="Bannière promotionnelle de Dragonia Casino, bonus de bienvenue jusqu'à 500 € + 200 free spins"
-						width="1200"
-						height="300"
-						loading="lazy"
-						style="width: 100%; height: auto; max-width: 1200px"
-					/>
+					<picture>
+						<source
+							srcset="
+								/reviews/dragonia-casino/banners/bonus-baner-dragonia-casino-400.webp
+							"
+							media="(max-width: 480px)"
+						/>
+
+						<source
+							srcset="
+								/reviews/dragonia-casino/banners/bonus-baner-dragonia-casino-800.webp
+							"
+							media="(max-width: 1024px)"
+						/>
+
+						<img
+							src="/reviews/dragonia-casino/banners/bonus-baner-dragonia-casino-1200.webp"
+							alt="Bannière promotionnelle de Dragonia Casino – Bonus de bienvenue jusqu'à 500 € + 200 free spins"
+							width="1200"
+							height="300"
+							style="width: 100%; height: auto; max-width: 1200px"
+							loading="lazy"
+						/>
+					</picture>
 				</a>
 
 				<h2>🎮 Logiciels et jeux</h2>
@@ -510,7 +528,7 @@
 					mon côté, tout s’est fait en quelques minutes, sans mauvaise surprise
 					:
 				</p>
-				<ul>
+				<ol>
 					<li>
 						La première chose à faire consiste à se rendre sur le site officiel
 						de Dragonia, puis à cliquer sur le bouton « S’inscrire », mis en
@@ -534,7 +552,7 @@
 						informations personnelles demandées et à valider le formulaire. Une
 						fois le compte créé, l’accès aux jeux en argent réel est immédiat.
 					</li>
-				</ul>
+				</ol>
 				<p>
 					Dragonia Casino propose également une inscription via Play ID, une
 					alternative rapide pour ceux qui souhaitent simplifier la procédure.
@@ -646,7 +664,7 @@
 					<p class="casino-card__stars">★★★★★</p>
 				</div>
 				<div class="casino-card__features fade-in">
-					<h4 class="casino-button__title">Bonus De Bienvenue</h4>
+					<p class="casino-button__title">Bonus De Bienvenue</p>
 					<p class="casino-card__bonus" style="text-align: center">
 						100% Jusqu'à 500 € + 200 Free Spins + 1 Bonus Crab
 					</p>
@@ -1310,8 +1328,14 @@
 			</div>
 		</div>
 		<!-- Scroll to top button -->
-		<a href="#" id="scrolltop">
-			<img class="arrow-up" src="/img/arrow-icon.webp" loading="lazy"
+		<a href="#top" id="scrolltop" aria-label="Scroll up the page to the top">
+			<img
+				class="arrow-up"
+				src="/img/arrow-icon.webp"
+				alt=""
+				width="30"
+				height="30"
+				loading="lazy"
 		/></a>
 	</body>
 </html>
