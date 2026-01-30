@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
@@ -33,7 +33,7 @@
 			}
 		</style>
 	</head>
-	<body lang="fr">
+	<body lang="fr" id="top">
 		<!-- Cookie Consent Banner -->
 		<div class="cookie-consent-banner fade-in">
 			<p>
@@ -202,6 +202,8 @@
 							src="/img/author-photo.webp"
 							alt="Portrait de Dariah Belle, auteure de TopJeu"
 							class="author__photo"
+							width="35"
+							height="35"
 							loading="lazy"
 					/></span>
 					Rédigé par :
@@ -875,6 +877,8 @@
 									class="youtube-icon fade-in"
 									src="/img/youtube.webp"
 									alt="Icône YouTube TopJeu (footer), lien vers chaîne"
+									width="25"
+									height="25"
 									loading="lazy"
 								/>
 								<span>YouTube</span>
@@ -1041,6 +1045,8 @@
 				<div style="display: flex; flex-direction: row; align-items: center">
 					<span class="author"
 						><img
+							width="80"
+							height="80"
 							style="width: 80px; height: 80px; margin-right: 1.5rem"
 							src="/img/author-photo.webp"
 							alt="Portrait de Dariah Belle, auteure du site TopJeu"
@@ -1294,8 +1300,15 @@
 			</div>
 		</div>
 		<!-- Scroll to top button -->
-		<a href="#" id="scrolltop">
-			<img class="arrow-up" src="/img/arrow-icon.webp" loading="lazy"
-		/></a>
+		<a href="#top" id="scrolltop" aria-label="Retour en haut de la page">
+			<img
+				class="arrow-up"
+				src="/img/arrow-icon.webp"
+				alt=""
+				width="30"
+				height="30"
+				loading="lazy"
+			/>
+		</a>
 	</body>
 </html>
