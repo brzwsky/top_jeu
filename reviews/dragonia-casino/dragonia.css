@@ -1,3 +1,8 @@
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .landing-content p {
 	width: 100%;
 	max-width: 1200px;
@@ -15,10 +20,11 @@
 	margin: 0 auto 1rem;
 	box-sizing: border-box;
 }
-.page-review .banners img {
-	aspect-ratio: auto;
-}
 
+.cookie-banner {
+  position: fixed;
+  inset: auto 0 0 0;
+}
 
 /* MOBILE */
 @media (max-width: 767px) {
