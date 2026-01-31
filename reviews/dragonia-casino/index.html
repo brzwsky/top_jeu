@@ -11,10 +11,6 @@
 			name="description"
 			content="Découvrez mon avis complet sur Dragonia Casino, le casino en ligne avec plus de 11 000 jeux. Bonus de bienvenue, jeux, jackpots, retraits rapides et programme VIP détaillés."
 		/>
-		<meta
-			name="keywords"
-			content="Dragonia Casino, avis Dragonia Casino, bonus Dragonia Casino, jeux en ligne, casino fiable, casino français, retraits rapides, programme VIP"
-		/>
 		<link
 			rel="canonical"
 			href="https://www.topjeu777.com/reviews/dragonia-casino/"
@@ -295,52 +291,7 @@
 				font-weight: 700;
 				text-decoration: none;
 			}
-			.cookie-consent-banner {
-				display: flex;
-				align-items: center;
-				flex-wrap: nowrap;
-				gap: 10px;
-				padding: 10px 14px;
-				position: fixed;
-				bottom: 16px;
-				left: 50%;
-				transform: translateX(-50%);
-				width: auto;
-				max-width: min(400px, calc(100% - 2rem));
-				max-height: 80px;
-				z-index: 9999;
-				border-radius: 10px;
-				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-			}
-			.cookie-consent-banner p {
-				margin: 0;
-				font-size: 0.85rem;
-				line-height: 1.35;
-				flex: 1;
-				min-width: 0;
-			}
-			.cookie-consent-banner button {
-				flex-shrink: 0;
-				border-radius: 999px;
-				cursor: pointer;
-				padding: 6px 12px;
-				font-size: 0.85rem;
-				background: #fff;
-				color: #1a1a1a;
-				border: 1px solid rgba(0, 0, 0, 0.2);
-				transition:
-					background 0.2s ease,
-					color 0.2s ease,
-					border-color 0.2s ease,
-					box-shadow 0.2s ease;
-			}
-			.cookie-consent-banner button:hover,
-			.cookie-consent-banner button:focus-visible {
-				background: #28a745;
-				color: #fff;
-				border-color: #1e7e34;
-				box-shadow: 0 4px 12px rgba(40, 167, 69, 0.35);
-			}
+
 			.footer {
 				width: 100%;
 				max-width: 100%;
@@ -373,33 +324,10 @@
 					font-size: 1rem;
 					font-weight: 700;
 				}
-				.cookie-consent-banner {
-					left: 8px;
-					right: 8px;
-					transform: none;
-					max-width: none;
-					padding: 8px 12px;
-					max-height: 72px;
-				}
-				.cookie-consent-banner p {
-					font-size: 0.8rem;
-				}
-				.cookie-consent-banner button {
-					padding: 6px 10px;
-					font-size: 0.8rem;
-				}
 			}
 		</style>
-		<link
-			rel="preload"
-			href="/styles.css"
-			as="style"
-			onload="
-				this.onload = null;
-				this.rel = 'stylesheet';
-			"
-		/>
-		<noscript><link rel="stylesheet" href="/styles.css" /></noscript>
+		<link rel="stylesheet" href="/styles.css" />
+		<link rel="stylesheet" href="dragonia.css" />
 		<style>
 			.landing-content p {
 				width: 100%;
@@ -471,7 +399,7 @@
 	</head>
 	<body lang="fr" class="page-review" id="top">
 		<!-- Cookie Consent Banner -->
-		<div class="cookie-consent-banner fade-in">
+		<div class="cookie-consent-banner">
 			<p>
 				Nous utilisons Google Analytics pour améliorer votre expérience.
 				Acceptez-vous ?
@@ -485,19 +413,11 @@
 				<div class="header__logo-block">
 					<a href="/index.html" class="header__logo-link">
 						<img
-							class="header__logo"
 							src="/img/logo-queen-red.webp"
-							alt="Logo principal de TopJeu, représentant une reine de carte à jouer"
-							loading="eager"
+							class="header__logo"
 							width="160"
 							height="60"
-							fetchpriority="high"
-							style="
-								width: 160px;
-								height: 60px;
-								object-fit: contain;
-								display: block;
-							"
+							alt="TopJeu – logo du site"
 						/>
 					</a>
 					<div class="header__logo-text fade-in">
