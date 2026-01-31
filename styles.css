@@ -195,11 +195,10 @@ body:not(.dark) .privacy-popup__content .popup__button {
 }
 
 .header__logo {
-	height: auto;
+	width: 160px;
+	height: 60px;
 	margin-right: 2rem;
-	max-height: 87.5px;
-	min-height: 52.5px;
-	width: auto;
+	object-fit: contain;
 }
 
 .header__logo.rotate-once {
@@ -401,7 +400,10 @@ body:not(.dark) .header__logo-line--subtitle {
 	text-align: center;
 	text-decoration: none;
 	transform: translateY(20px);
-	transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.3s ease;
+	transition:
+		opacity 0.4s ease,
+		transform 0.4s ease,
+		background-color 0.3s ease;
 	width: 48px;
 	z-index: 10000;
 }
@@ -635,7 +637,9 @@ body:not(.dark) .header__logo-line--subtitle {
 .casino-card--top {
 	background: rgba(255, 255, 255, 0.7);
 	border: 1px solid rgba(255, 255, 255, 0.3);
-	box-shadow: 0 0 18px rgba(179, 0, 0, 0.32), 0 10px 24px rgba(0, 0, 0, 0.16);
+	box-shadow:
+		0 0 18px rgba(179, 0, 0, 0.32),
+		0 10px 24px rgba(0, 0, 0, 0.16);
 	z-index: 10;
 }
 
@@ -654,15 +658,21 @@ body:not(.dark) .header__logo-line--subtitle {
 
 .top-card,
 .casino-card--top {
-	box-shadow: 0 0 18px rgba(179, 0, 0, 0.32), 0 10px 24px rgba(0, 0, 0, 0.16);
-	transition: box-shadow 180ms ease, transform 180ms ease;
+	box-shadow:
+		0 0 18px rgba(179, 0, 0, 0.32),
+		0 10px 24px rgba(0, 0, 0, 0.16);
+	transition:
+		box-shadow 180ms ease,
+		transform 180ms ease;
 }
 
 .casino-card:hover,
 .casino-card--top:hover,
 .top-card:hover {
 	animation: none !important;
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 255, 255, 0.3);
+	box-shadow:
+		0 8px 25px rgba(0, 0, 0, 0.15),
+		0 0 20px rgba(255, 255, 255, 0.3);
 	transform: translateY(-8px) scale(1.02);
 }
 
@@ -670,7 +680,9 @@ body:not(.dark) .header__logo-line--subtitle {
 .top-card:focus-within,
 .casino-card--top:hover,
 .casino-card--top:focus-within {
-	box-shadow: 0 6px 24px rgba(179, 0, 0, 0.18), 0 2px 8px rgba(179, 0, 0, 0.12),
+	box-shadow:
+		0 6px 24px rgba(179, 0, 0, 0.18),
+		0 2px 8px rgba(179, 0, 0, 0.12),
 		0 0 28px rgba(179, 0, 0, 0.2) inset;
 	outline: none;
 	transform: translateY(-4px);
@@ -678,7 +690,9 @@ body:not(.dark) .header__logo-line--subtitle {
 
 .top-card:focus-within,
 .casino-card--top:focus-within {
-	box-shadow: 0 8px 34px rgba(179, 0, 0, 0.25), 0 2px 10px rgba(179, 0, 0, 0.14);
+	box-shadow:
+		0 8px 34px rgba(179, 0, 0, 0.25),
+		0 2px 10px rgba(179, 0, 0, 0.14);
 }
 
 /* Casino Card Info */
@@ -839,7 +853,9 @@ body:not(.dark) .header__logo-line--subtitle {
 	position: absolute;
 	top: 50%;
 	transform: translate(-130%, -50%) rotate(45deg);
-	transition: transform 0.3s ease, opacity 0.3s ease;
+	transition:
+		transform 0.3s ease,
+		opacity 0.3s ease;
 	width: 6px;
 }
 
@@ -1194,7 +1210,9 @@ body:not(.dark) .header__logo-line--subtitle {
 	max-height: 0;
 	overflow: hidden;
 	padding: 0 0 0 1rem !important;
-	transition: max-height 0.3s ease, margin-bottom 0.3s ease,
+	transition:
+		max-height 0.3s ease,
+		margin-bottom 0.3s ease,
 		padding-bottom 0.3s ease;
 }
 
@@ -1222,7 +1240,9 @@ body:not(.dark) .header__logo-line--subtitle {
 	position: fixed;
 	transform: translateY(10px);
 	transform-origin: left bottom;
-	transition: opacity 0.5s ease, transform 0.5s ease,
+	transition:
+		opacity 0.5s ease,
+		transform 0.5s ease,
 		box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	width: 90%;
 	will-change: transform, opacity;
@@ -1281,7 +1301,8 @@ body:not(.dark) .header__logo-line--subtitle {
 	opacity: 1;
 	padding: 0 !important;
 	transform: translateY(0);
-	transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+	transition:
+		width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
 		height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
 		border-radius 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
 		left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -1330,7 +1351,9 @@ body:not(.dark) .header__logo-line--subtitle {
 	max-height: 0.4s ease;
 	opacity: 0.4s ease;
 	overflow: hidden;
-	transition: opacity 0.4s ease, max-height 0.4s ease;
+	transition:
+		opacity 0.4s ease,
+		max-height 0.4s ease;
 }
 
 .cookie-banner__content {
@@ -1464,7 +1487,10 @@ body:not(.dark) #cookie-title {
 	cursor: pointer;
 	margin-left: 1rem;
 	padding: 0.5rem 1rem;
-	transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+	transition:
+		background 0.2s ease,
+		color 0.2s ease,
+		border-color 0.2s ease,
 		box-shadow 0.2s ease;
 }
 
@@ -1495,7 +1521,9 @@ body.dark .cookie-consent-banner button:focus-visible {
 body:not(.dark) #accept-analytics-btn {
 	background: #ffffff !important;
 	border-color: rgba(0, 0, 0, 0.25) !important;
-	box-shadow: 0 0 10px rgba(76, 201, 103, 0.45), 0 0 20px rgba(40, 167, 69, 0.3);
+	box-shadow:
+		0 0 10px rgba(76, 201, 103, 0.45),
+		0 0 20px rgba(40, 167, 69, 0.3);
 	color: #1a1a1a !important;
 }
 
@@ -1503,8 +1531,10 @@ body:not(.dark) #accept-analytics-btn:hover,
 body:not(.dark) #accept-analytics-btn:focus-visible {
 	background: #28a745 !important;
 	border-color: #1e7e34 !important;
-	box-shadow: 0 6px 18px rgba(40, 167, 69, 0.3),
-		0 0 16px rgba(76, 201, 103, 0.55), 0 0 28px rgba(56, 160, 85, 0.4) !important;
+	box-shadow:
+		0 6px 18px rgba(40, 167, 69, 0.3),
+		0 0 16px rgba(76, 201, 103, 0.55),
+		0 0 28px rgba(56, 160, 85, 0.4) !important;
 	color: #fff !important;
 }
 
@@ -1538,7 +1568,9 @@ body:not(.dark) #accept-analytics-btn:focus-visible {
 	pointer-events: none;
 	position: fixed;
 	top: 0;
-	transition: background 240ms ease, opacity 240ms ease;
+	transition:
+		background 240ms ease,
+		opacity 240ms ease;
 	width: 100vw;
 	z-index: 1200;
 }
@@ -1656,7 +1688,8 @@ body:not(.dark) #accept-analytics-btn:focus-visible {
 .testimonial-carousel__viewport {
 	background: rgba(18, 20, 34, 0.4);
 	border-radius: 14px;
-	box-shadow: inset 0 18px 28px rgba(255, 255, 255, 0.05),
+	box-shadow:
+		inset 0 18px 28px rgba(255, 255, 255, 0.05),
 		inset 0 -20px 35px rgba(0, 0, 0, 0.35);
 	flex: 1;
 	overflow: hidden;
@@ -1729,7 +1762,10 @@ body:not(.dark) #accept-analytics-btn:focus-visible {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-80%);
-	transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+	transition:
+		transform 160ms ease,
+		box-shadow 160ms ease,
+		background 160ms ease;
 	width: 34px;
 	z-index: 5;
 }
@@ -1765,7 +1801,9 @@ body:not(.dark) #accept-analytics-btn:focus-visible {
 	cursor: pointer;
 	height: 10px;
 	padding: 0;
-	transition: background-color 160ms ease, transform 160ms ease;
+	transition:
+		background-color 160ms ease,
+		transform 160ms ease;
 	width: 10px;
 }
 
@@ -1948,8 +1986,13 @@ body.dark .faq-question {
 body.dark .faq-answer {
 	background: #1a1a1a;
 	color: #ffffff;
-	transition: max-height 0.3s ease, margin-bottom 0.3s ease,
-		padding-bottom 0.3s ease, background 0.3s, color 0.3s, border-color 0.3s;
+	transition:
+		max-height 0.3s ease,
+		margin-bottom 0.3s ease,
+		padding-bottom 0.3s ease,
+		background 0.3s,
+		color 0.3s,
+		border-color 0.3s;
 }
 
 body.dark .faq-toggle {
@@ -2037,28 +2080,37 @@ body.dark .casino-card--top {
 	background: #2a2a2a;
 	border-color: #333;
 	color: #ffffff;
-	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+	transition:
+		transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
 		box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.dark .casino-card--top,
 body.dark .top-card {
-	box-shadow: 0 0 20px rgba(179, 0, 0, 0.42), 0 12px 28px rgba(0, 0, 0, 0.32);
+	box-shadow:
+		0 0 20px rgba(179, 0, 0, 0.42),
+		0 12px 28px rgba(0, 0, 0, 0.32);
 }
 
 body.dark .top-card:hover,
 body.dark .casino-card--top:hover {
 	animation: none !important;
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(179, 0, 0, 0.42),
-		0 0 30px rgba(179, 0, 0, 0.28), 0 0 40px rgba(179, 0, 0, 0.16);
+	box-shadow:
+		0 8px 25px rgba(0, 0, 0, 0.4),
+		0 0 20px rgba(179, 0, 0, 0.42),
+		0 0 30px rgba(179, 0, 0, 0.28),
+		0 0 40px rgba(179, 0, 0, 0.16);
 	transform: translateY(-8px) scale(1.02);
 }
 
 body.dark .casino-card:not(.casino-card--top):hover,
 body.dark .casino-card:not(.casino-card--top):focus-within {
 	animation: none !important;
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.4),
-		0 0 30px rgba(255, 215, 0, 0.22), 0 0 40px rgba(255, 215, 0, 0.12);
+	box-shadow:
+		0 8px 25px rgba(0, 0, 0, 0.4),
+		0 0 20px rgba(255, 215, 0, 0.4),
+		0 0 30px rgba(255, 215, 0, 0.22),
+		0 0 40px rgba(255, 215, 0, 0.12);
 	transform: translateY(-6px) scale(1.01);
 }
 
@@ -2095,7 +2147,9 @@ body.dark .casino-card__stars {
 	display: inline-block;
 	filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
 	position: relative;
-	text-shadow: 0 0 6px rgba(255, 215, 0, 0.1), 0 0 12px rgba(255, 215, 0, 0.1);
+	text-shadow:
+		0 0 6px rgba(255, 215, 0, 0.1),
+		0 0 12px rgba(255, 215, 0, 0.1);
 }
 
 /* Dark Mode - Casino Info Tables */
@@ -2168,7 +2222,10 @@ body.dark .privacy-popup__content,
 body.dark .cookie-banner,
 body.dark .casino-card,
 body.dark .disclaimer {
-	transition: background 0.3s, color 0.3s, border-color 0.3s;
+	transition:
+		background 0.3s,
+		color 0.3s,
+		border-color 0.3s;
 }
 
 /* Theme Toggle */
@@ -2185,7 +2242,8 @@ body.dark .disclaimer {
 	backdrop-filter: blur(10px);
 	border: 2px solid rgba(255, 255, 255, 0.3);
 	border-radius: 50%;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1),
+	box-shadow:
+		0 2px 8px rgba(0, 0, 0, 0.1),
 		inset 0 1px 1px rgba(255, 255, 255, 0.1);
 	cursor: pointer;
 	display: flex;
@@ -2201,7 +2259,8 @@ body.dark .disclaimer {
 .theme-toggle-button:hover {
 	background: rgba(255, 255, 255, 0.15);
 	border-color: rgba(255, 255, 255, 0.5);
-	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15),
+	box-shadow:
+		0 2px 12px rgba(0, 0, 0, 0.15),
 		inset 0 1px 1px rgba(255, 255, 255, 0.15);
 	transform: scale(1.05);
 }
@@ -2210,11 +2269,17 @@ body.dark .disclaimer {
 	background: rgba(230, 0, 0, 0.1) !important;
 	border-color: rgba(230, 0, 0, 0.8) !important;
 	transform: scale(0.95);
-	transition: border-color 0.1s ease, background 0.1s ease, transform 0.1s ease;
+	transition:
+		border-color 0.1s ease,
+		background 0.1s ease,
+		transform 0.1s ease;
 }
 
 .theme-toggle-button:not(:active) {
-	transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+	transition:
+		border-color 0.3s ease,
+		background 0.3s ease,
+		transform 0.3s ease;
 }
 
 .theme-toggle-button:focus-visible {
@@ -2226,14 +2291,16 @@ body.dark .disclaimer {
 body.dark .theme-toggle-button {
 	background: rgba(0, 0, 0, 0.2);
 	border: 2px solid rgba(255, 255, 255, 0.2);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2),
+	box-shadow:
+		0 2px 8px rgba(0, 0, 0, 0.2),
 		inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 
 body.dark .theme-toggle-button:hover {
 	background: rgba(0, 0, 0, 0.3);
 	border-color: rgba(255, 255, 255, 0.3);
-	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3),
+	box-shadow:
+		0 2px 12px rgba(0, 0, 0, 0.3),
 		inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
@@ -2258,7 +2325,9 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 	line-height: 1;
 	margin: 0;
 	padding: 0;
-	transition: filter 0.3s ease, transform 0.3s ease;
+	transition:
+		filter 0.3s ease,
+		transform 0.3s ease;
 	width: 100%;
 }
 
@@ -2498,7 +2567,9 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 	.casino-card--top,
 	.top-card {
 		animation: none !important;
-		transition: transform 140ms ease, box-shadow 140ms ease !important;
+		transition:
+			transform 140ms ease,
+			box-shadow 140ms ease !important;
 	}
 
 	.casino-card:hover,
@@ -2518,7 +2589,8 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 	body:not(.dark) .casino-card.most-visible,
 	body:not(.dark) .casino-card--top.most-visible,
 	body:not(.dark) .top-card.most-visible {
-		box-shadow: 0 0 18px rgba(40, 40, 40, 0.18),
+		box-shadow:
+			0 0 18px rgba(40, 40, 40, 0.18),
 			0 12px 30px rgba(40, 40, 40, 0.22);
 		transform: none !important;
 	}
@@ -2526,8 +2598,10 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 	body.dark .casino-card.most-visible,
 	body.dark .casino-card--top.most-visible,
 	body.dark .top-card.most-visible {
-		box-shadow: 0 0 20px rgba(255, 215, 0, 0.45),
-			0 0 32px rgba(255, 215, 0, 0.28), 0 12px 32px rgba(0, 0, 0, 0.32);
+		box-shadow:
+			0 0 20px rgba(255, 215, 0, 0.45),
+			0 0 32px rgba(255, 215, 0, 0.28),
+			0 12px 32px rgba(0, 0, 0, 0.32);
 		transform: none !important;
 	}
 
@@ -2577,7 +2651,9 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 		position: fixed;
 		right: 0;
 		top: -100vh;
-		transition: top 0.35s ease, opacity 0.35s ease;
+		transition:
+			top 0.35s ease,
+			opacity 0.35s ease;
 		visibility: hidden;
 		width: 100%;
 		z-index: 11000;
@@ -2617,7 +2693,9 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 	}
 
 	body.menu-animations-ready .nav-menu {
-		transition: transform 0.35s ease, opacity 0.35s ease;
+		transition:
+			transform 0.35s ease,
+			opacity 0.35s ease;
 	}
 
 	body.menu-open .header__link:hover {
@@ -2650,6 +2728,8 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 	.header__logo {
 		height: auto !important;
 		max-height: 50px !important;
+		width: 120px;
+		height: 45px;
 	}
 
 	.popup__content,
@@ -2755,7 +2835,9 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 		pointer-events: none;
 		position: static !important;
 		transform: none !important;
-		transition: max-height 240ms ease, opacity 180ms ease;
+		transition:
+			max-height 240ms ease,
+			opacity 180ms ease;
 		visibility: hidden;
 		box-shadow: none !important;
 		min-width: auto !important;
@@ -3327,7 +3409,9 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 		position: absolute;
 		top: 100%;
 		transform: translateY(-6px) scale(0.995);
-		transition: transform 200ms ease, opacity 200ms ease;
+		transition:
+			transform 200ms ease,
+			opacity 200ms ease;
 		visibility: hidden;
 		z-index: 1100;
 	}
@@ -3458,14 +3542,16 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 		gap: 1.5rem;
 		justify-content: space-between;
 		text-align: left;
-		transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+		transition:
+			transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
 			box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1);
 		will-change: transform, box-shadow;
 	}
 
 	.casino-card.casino-button:hover,
 	.casino-card.casino-button:focus-within {
-		box-shadow: 0 1.5px 6px 0 rgba(0, 0, 0, 0.08),
+		box-shadow:
+			0 1.5px 6px 0 rgba(0, 0, 0, 0.08),
 			0 8px 32px 0 rgba(0, 0, 0, 0.1);
 		transform: translateY(-8px) scale(1.015);
 	}
