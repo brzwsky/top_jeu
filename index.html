@@ -87,7 +87,7 @@
 			content="https://www.topjeu777.com/img/preview.jpg"
 		/>
 
-		<!-- Structured Data: Main Sections (Home, Top 10, FAQ) -->
+		<!-- Structured Data: Main Sections (Home, Top 10, FAQ)  -->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
@@ -97,57 +97,89 @@
 						"@id": "https://www.topjeu777.com/#website",
 						"url": "https://www.topjeu777.com/",
 						"name": "TopJeu",
-						"description": "Comparatif et avis des meilleurs casinos en ligne francophones en 2026",
-						"inLanguage": "fr-FR"
+						"description": "Classement des meilleurs casinos en ligne francophones en 2026",
+						"inLanguage": "fr-FR",
+						"potentialAction": {
+							"@type": "SearchAction",
+							"target": {
+								"@type": "EntryPoint",
+								"urlTemplate": "https://www.topjeu777.com/?q={search_term_string}"
+							},
+							"query-input": "required name=search_term_string"
+						}
 					},
 					{
 						"@type": "ItemList",
 						"@id": "https://www.topjeu777.com/#top-casinos",
-						"name": "Meilleurs casinos en ligne francophones",
-						"itemListOrder": "http://schema.org/ItemListOrderDescending",
-						"numberOfItems": 7,
+						"name": "Top 11 Casinos en Ligne Fiables",
+						"itemListOrder": "https://schema.org/ItemListOrderDescending",
+						"numberOfItems": 11,
 						"itemListElement": [
 							{
 								"@type": "ListItem",
 								"position": 1,
-								"name": "MrPacho Casino",
-								"url": "https://www.topjeu777.com/#mrpacho"
+								"name": "Mafia Casino",
+								"url": "https://www.topjeu777.com/#mafia-casino"
 							},
 							{
 								"@type": "ListItem",
 								"position": 2,
+								"name": "Brutal Casino",
+								"url": "https://www.topjeu777.com/#brutal-casino"
+							},
+							{
+								"@type": "ListItem",
+								"position": 3,
+								"name": "Dragonia Casino",
+								"url": "https://www.topjeu777.com/#dragonia-casino"
+							},
+							{
+								"@type": "ListItem",
+								"position": 4,
+								"name": "MrPacho Casino",
+								"url": "https://www.topjeu777.com/#mrpacho-casino"
+							},
+							{
+								"@type": "ListItem",
+								"position": 5,
 								"name": "Casinostars",
 								"url": "https://www.topjeu777.com/#casinostars"
 							},
 							{
 								"@type": "ListItem",
-								"position": 3,
-								"name": "Peaches Casino",
-								"url": "https://www.topjeu777.com/#peaches"
-							},
-							{
-								"@type": "ListItem",
-								"position": 4,
-								"name": "Winzter Casino",
-								"url": "https://www.topjeu777.com/#winzter"
-							},
-							{
-								"@type": "ListItem",
-								"position": 5,
-								"name": "Binobet Casino",
-								"url": "https://www.topjeu777.com/#binobet"
-							},
-							{
-								"@type": "ListItem",
 								"position": 6,
-								"name": "Spininio Casino",
-								"url": "https://www.topjeu777.com/#spininio"
+								"name": "Casino Peaches",
+								"url": "https://www.topjeu777.com/#peaches-casino"
 							},
 							{
 								"@type": "ListItem",
 								"position": 7,
-								"name": "Julius Casino",
-								"url": "https://www.topjeu777.com/#julius"
+								"name": "Spininio Casino",
+								"url": "https://www.topjeu777.com/#spininio-casino"
+							},
+							{
+								"@type": "ListItem",
+								"position": 8,
+								"name": "Winzter Casino",
+								"url": "https://www.topjeu777.com/#winzter-casino"
+							},
+							{
+								"@type": "ListItem",
+								"position": 9,
+								"name": "Binobet Casino",
+								"url": "https://www.topjeu777.com/#binobet-casino"
+							},
+							{
+								"@type": "ListItem",
+								"position": 10,
+								"name": "WonderLuck Casino",
+								"url": "https://www.topjeu777.com/#wonderluck-casino"
+							},
+							{
+								"@type": "ListItem",
+								"position": 11,
+								"name": "CasinoLab",
+								"url": "https://www.topjeu777.com/#casinolab"
 							}
 						]
 					},
@@ -160,31 +192,31 @@
 								"name": "Comment trouver un casino en ligne fiable ?",
 								"acceptedAnswer": {
 									"@type": "Answer",
-									"text": "Un casino en ligne fiable possède une licence valide, des conditions claires, des retraits rapides et un support client réactif. Les casinos listés sur cette page ont été testés et vérifiés pour les joueurs francophones."
+									"text": "Un casino fiable dispose d’une licence valide, propose des retraits rapides, des conditions de bonus claires et un support client réactif."
 								}
 							},
 							{
 								"@type": "Question",
-								"name": "Comment identifier un casino en ligne non fiable ?",
+								"name": "Comment reconnaître un casino non fiable ?",
 								"acceptedAnswer": {
 									"@type": "Answer",
-									"text": "Un casino non fiable présente souvent des conditions floues, des avis négatifs récurrents, des retraits bloqués ou un service client difficile à joindre."
+									"text": "Les casinos non fiables affichent souvent des conditions floues, bloquent les retraits ou reçoivent de nombreux avis négatifs."
 								}
 							},
 							{
 								"@type": "Question",
-								"name": "Peut-on jouer au casino en ligne sans avoir 18 ans ?",
+								"name": "Peut-on jouer au casino en ligne avant 18 ans ?",
 								"acceptedAnswer": {
 									"@type": "Answer",
-									"text": "Non. Il est strictement interdit de jouer sur un casino en ligne sans avoir au moins 18 ans. Une vérification d’identité est exigée par les plateformes sérieuses."
+									"text": "Non. Les jeux d’argent en ligne sont strictement réservés aux personnes majeures."
 								}
 							},
 							{
 								"@type": "Question",
-								"name": "Les bonus des casinos en ligne sont-ils fiables ?",
+								"name": "Les bonus de casino sont-ils vraiment avantageux ?",
 								"acceptedAnswer": {
 									"@type": "Answer",
-									"text": "Oui, à condition de bien lire les conditions de mise. Certains bonus sont sans wagering, tandis que d’autres nécessitent un volume de jeu avant retrait."
+									"text": "Oui, à condition de bien lire les conditions de mise et de jouer sur des casinos licenciés."
 								}
 							}
 						]
@@ -1058,7 +1090,7 @@
 			<!-- Reviews -->
 			<section class="landing-content">
 				<!-- Review Mafia Casino -->
-				<section id='mafia' class="casino-review_mafia-casino fade-in">
+				<section id="mafia-casino" class="casino-review_mafia-casino fade-in">
 					<h3 class="content-width fade-in">
 						Mafia Casino - un nouveau casino en ligne à l'ambiance unique pour
 						les joueurs francophones
@@ -1241,7 +1273,7 @@
 				</section>
 
 				<!--Review Brutal Casino-->
-				<section id='brutal' class="casino-review_brutal-casino fade-in">
+				<section id="brutal-casino" class="casino-review_brutal-casino fade-in">
 					<h3 class="content-width fade-in">
 						Brutal Casino - une plateforme moderne avec des paiements rapides et
 						une interface en français
@@ -1396,7 +1428,10 @@
 				</section>
 
 				<!--Review Dragonia Casino-->
-				<section id="dragonia" class="casino-review_dragonia-casino fade-in">
+				<section
+					id="dragonia-casino"
+					class="casino-review_dragonia-casino fade-in"
+				>
 					<h3 class="content-width fade-in">
 						Dragonia Casino - plongez dans un royaume de dragons et de gains
 					</h3>
@@ -1602,7 +1637,10 @@
 				</section>
 
 				<!-- Review MrPacho -->
-				<section id="mrpacho" class="casino-review_mr-pacho-casino fade-in">
+				<section
+					id="mrpacho-casino"
+					class="casino-review_mr-pacho-casino fade-in"
+				>
 					<h3 class="content-width fade-in">
 						MrPacho Casino - une plateforme moderne avec un univers unique et
 						des bonus attractifs
@@ -1762,7 +1800,10 @@
 				</section>
 
 				<!-- Reviev Casinostars -->
-				<section id="casinostars" class="casino-review_casinostars fade-in">
+				<section
+					id="casinostars-casino"
+					class="casino-review_casinostars fade-in"
+				>
 					<h3 class="content-width fade-in">
 						Casinostars - une plateforme premium pour jouer en toute simplicité
 					</h3>
@@ -1945,7 +1986,10 @@
 				</section>
 
 				<!-- Review Peaches Casino -->
-				<section id="peaches" class="casino-review_peaches-casino fade-in">
+				<section
+					id="peaches-casino"
+					class="casino-review_peaches-casino fade-in"
+				>
 					<h3 class="content-width fade-in">
 						CasinoPeaches - un site de jeu en ligne rafraîchissant et prometteur
 					</h3>
@@ -2102,7 +2146,10 @@
 				</section>
 
 				<!-- Review  Winzter Casino -->
-				<section id="winzter" class="casino-review_winzter-casino fade-in">
+				<section
+					id="winzter-casino"
+					class="casino-review_winzter-casino fade-in"
+				>
 					<h3 class="content-width fade-in">
 						Winzter Casino - une plateforme moderne aux promesses ambitieuses
 					</h3>
@@ -2273,7 +2320,10 @@
 				</section>
 
 				<!--Review  Binobet Casino -->
-				<section id="binobet" class="casino-review_binobet-casino fade-in">
+				<section
+					id="binobet-casino"
+					class="casino-review_binobet-casino fade-in"
+				>
 					<h3 class="content-width fade-in">
 						Binobet Casino - un univers audacieux pour les joueurs à la
 						recherche de variété
@@ -2465,7 +2515,10 @@
 				</section>
 
 				<!-- Review Spininio Casino -->
-				<section id="spininio" class="casino-review_spininio-casino fade-in">
+				<section
+					id="spininio-casino"
+					class="casino-review_spininio-casino fade-in"
+				>
 					<h3 class="content-width fade-in">
 						Spininio Casino – jouer au casino et aux paris sportifs au même
 						endroit
@@ -2681,7 +2734,7 @@
 				</section>
 
 				<!--Review Julius Casino-->
-				<section id="julius" class="casino-review_julius-casino fade-in">
+				<section id="julius-casino" class="casino-review_julius-casino fade-in">
 					<h3 class="content-width fade-in">
 						Julius Casino - une immersion dans l’Empire romain avec des bonus
 						impressionnants
