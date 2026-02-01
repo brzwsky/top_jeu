@@ -1,9 +1,9 @@
 User-agent: *
 Disallow: /private/
-Allow: /
+Disallow: /tmp/
+Disallow: /dev/
+Disallow: /*?utm_
+Disallow: /*?ref=
+Disallow: /*?aff=
 
-# Sitemap for search engines
 Sitemap: https://topjeu777.com/sitemap.xml
-
-# Optional: limit crawl rate if server is under load
-# Crawl-delay: 5
