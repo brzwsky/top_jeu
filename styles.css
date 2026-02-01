@@ -3185,6 +3185,7 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 	.casino-card__image {
 		height: auto;
 		width: 100%;
+		margin: 2rem auto;
 	}
 
 	.casino-card__info {
@@ -3218,7 +3219,7 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 
 	.casino-card__rating {
 		height: auto;
-		margin-bottom: 1rem;
+		margin: 1rem auto;
 		min-width: auto;
 		order: 5;
 		text-align: center;
@@ -3226,7 +3227,7 @@ body:not(.dark) .theme-toggle-button .theme-icon {
 	}
 
 	.casino-card__button {
-		margin: 0 auto;
+		margin: 0.3rem auto;
 		max-width: 50%;
 		order: 6;
 	}
