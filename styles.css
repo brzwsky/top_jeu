@@ -991,11 +991,14 @@ body:not(.dark) .header__logo-line--subtitle {
 }
 
 /* Components */
+/* Components */
 .avis-wrapper {
 	position: relative;
 }
 
+/* Dropdown */
 .avis-dropdown {
+	display: none; /* ключевое */
 	background: #fff;
 	border-radius: 8px;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
@@ -1005,11 +1008,17 @@ body:not(.dark) .header__logo-line--subtitle {
 	padding: 0.25rem 0;
 }
 
+/* Открытое состояние */
+.avis-wrapper.open .avis-dropdown {
+	display: block;
+}
+
+/* Links */
 .avis-link {
-	border-radius: 4px;
-	color: #071428;
 	display: block;
 	padding: 0.5rem 1.25rem;
+	border-radius: 4px;
+	color: #071428;
 	text-decoration: none;
 	transition: background 0.18s;
 }
@@ -1019,21 +1028,23 @@ body:not(.dark) .header__logo-line--subtitle {
 	background: #f5f7fa;
 }
 
+/* Arrow icon */
 .avis-toggle__icon {
-	align-items: center;
-	color: #fff;
 	display: inline-flex;
-	height: 1em;
+	align-items: center;
 	justify-content: center;
+	width: 1em;
+	height: 1em;
 	margin-left: -0.4em;
+	vertical-align: middle;
+	color: #fff;
+
 	transform: rotate(0deg);
 	transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-	vertical-align: middle;
-	width: 1em;
 }
 
+/* Arrow rotated when open */
 .avis-wrapper.open .avis-toggle__icon {
-	color: #fff;
 	transform: rotate(90deg);
 }
 
