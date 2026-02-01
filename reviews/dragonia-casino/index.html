@@ -41,6 +41,71 @@
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
+				"@type": "Casino",
+				"@id": "https://www.topjeu777.com/reviews/dragonia-casino/#casino",
+				"name": "Dragonia Casino",
+				"url": "https://www.topjeu777.com/reviews/dragonia-casino/",
+				"logo": "https://www.topjeu777.com/img/logo-casinos/dragonia-logo.webp",
+				"image": "https://www.topjeu777.com/reviews/dragonia-casino/banners/baner-dragonia-1200.webp",
+				"description": "Avis détaillé sur Dragonia Casino : bonus, jeux, sécurité, retraits et expérience utilisateur en 2026.",
+				"foundingDate": "2025",
+				"currenciesAccepted": "EUR",
+				"paymentAccepted": [
+					"Visa",
+					"MasterCard",
+					"Skrill",
+					"Neteller",
+					"PaysafeCard",
+					"Jeton",
+					"MiFinity",
+					"Bitcoin",
+					"Ethereum",
+					"Litecoin",
+					"Dogecoin"
+				],
+				"hasOfferCatalog": {
+					"@type": "OfferCatalog",
+					"name": "Bonus Dragonia Casino",
+					"itemListElement": [
+						{
+							"@type": "Offer",
+							"name": "Bonus de bienvenue",
+							"description": "100 % jusqu'à 500 € + 200 free spins + Bonus Crab",
+							"price": "0",
+							"priceCurrency": "EUR",
+							"availability": "https://schema.org/InStock"
+						}
+					]
+				},
+				"aggregateRating": {
+					"@type": "AggregateRating",
+					"ratingValue": "9.6",
+					"bestRating": "10",
+					"ratingCount": "1"
+				},
+				"review": {
+					"@type": "Review",
+					"reviewRating": {
+						"@type": "Rating",
+						"ratingValue": "9.6",
+						"bestRating": "10"
+					},
+					"author": {
+						"@type": "Person",
+						"name": "Dariah Belle"
+					},
+					"publisher": {
+						"@type": "Organization",
+						"name": "TopJeu",
+						"url": "https://www.topjeu777.com"
+					},
+					"reviewBody": "Dragonia Casino propose une expérience complète avec plus de 11 000 jeux, des bonus attractifs, des paiements rapides et une plateforme sécurisée. Un choix solide pour les joueurs francophones en 2026."
+				}
+			}
+		</script>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
 				"@type": "FAQPage",
 				"mainEntity": [
 					{
@@ -48,243 +113,181 @@
 						"name": "Dragonia Casino est-il fiable ?",
 						"acceptedAnswer": {
 							"@type": "Answer",
-							"text": "Oui, licence officielle d'Anjouan, cryptage SSL 256 bits, Cloudflare et audits indépendants garantissent sécurité et équité."
+							"text": "Oui, Dragonia Casino est licencié par les autorités d’Anjouan et utilise un cryptage SSL 256 bits ainsi que Cloudflare pour garantir la sécurité des joueurs."
 						}
 					},
 					{
 						"@type": "Question",
-						"name": "Quels jeux sont disponibles ?",
+						"name": "Quels jeux sont disponibles sur Dragonia Casino ?",
 						"acceptedAnswer": {
 							"@type": "Answer",
-							"text": "Plus de 11 000 titres : slots, jeux de table, live, jackpots et mini-jeux."
+							"text": "Plus de 11 000 jeux sont disponibles, incluant machines à sous, jeux de table, casino en direct, jackpots et mini-jeux."
 						}
 					},
 					{
 						"@type": "Question",
-						"name": "Bonus de bienvenue intéressant ?",
+						"name": "Quel est le bonus de bienvenue Dragonia Casino ?",
 						"acceptedAnswer": {
 							"@type": "Answer",
-							"text": "Oui, 100 % jusqu'à 500 € + 200 free spins + Bonus Crab, avec conditions raisonnables (wager 35x/40x)."
+							"text": "Le bonus de bienvenue offre 100 % jusqu'à 500 € avec 200 free spins et un Bonus Crab, soumis à des conditions de mise."
 						}
 					},
 					{
 						"@type": "Question",
-						"name": "Délais de retrait ?",
+						"name": "Quels sont les délais de retrait sur Dragonia Casino ?",
 						"acceptedAnswer": {
 							"@type": "Answer",
-							"text": "Crypto instantané, cartes et virements : 1 à 3 jours ouvrables."
+							"text": "Les retraits en cryptomonnaies sont généralement instantanés, tandis que les paiements par carte ou virement prennent entre 1 et 3 jours ouvrables."
 						}
 					},
 					{
 						"@type": "Question",
-						"name": "Bonus sans dépôt ?",
+						"name": "Dragonia Casino propose-t-il un bonus sans dépôt ?",
 						"acceptedAnswer": {
 							"@type": "Answer",
-							"text": "Pas de bonus sans dépôt, mais de nombreux défis, recharges et Jetons permettent de gagner régulièrement des récompenses."
+							"text": "Aucun bonus sans dépôt n’est proposé, mais des promotions régulières et des défis permettent de gagner des récompenses."
 						}
 					}
 				]
 			}
 		</script>
 		<style>
-			/* Critical CSS – above-the-fold for LCP/FCP/CLS (SEO, Lighthouse) */
+			/* === Critical CSS (LCP / FCP / CLS safe) === */
+
 			html {
 				box-sizing: border-box;
 				margin: 0;
-				min-width: 320px;
-				overflow-x: hidden;
 				padding: 0;
 				width: 100%;
+				min-width: 320px;
+				overflow-x: hidden;
 			}
+
 			*,
 			*::before,
 			*::after {
 				box-sizing: inherit;
 			}
+
 			body {
 				display: flex;
 				flex-direction: column;
-				font-family: Helvetica, sans-serif;
-				font-size: 1rem;
 				margin: 0;
-				min-height: 100vh;
-				min-width: 320px;
-				overflow-x: hidden;
 				padding: 0;
 				width: 100%;
+				min-width: 320px;
+				min-height: 100vh;
+				font-family: Helvetica, sans-serif;
+				font-size: 1rem;
+				overflow-x: hidden;
 			}
+
 			[hidden] {
 				display: none !important;
 			}
+
 			main {
 				flex: 1 0 auto;
 				margin: 0 auto;
 				max-width: 1200px;
 				padding: 0 2rem;
 			}
+
+			/* ===== Header ===== */
 			.header {
-				background: rgba(0, 0, 0, 0.2);
-				box-sizing: border-box;
-				padding: 0.5rem 0;
 				position: sticky;
 				top: 0;
-				width: 100%;
 				z-index: 900;
-			}
-			.header__container {
-				align-items: center;
-				display: flex;
-				justify-content: space-between;
-				margin: 0 auto;
-				max-width: 1200px;
-				padding: 0.15rem 2rem;
 				width: 100%;
+				background: rgba(0, 0, 0, 0.2);
+				padding: 0.5rem 0;
 			}
-			.header__logo-block {
-				align-items: center;
+
+			.header__container {
 				display: flex;
-				flex-direction: column;
+				align-items: center;
+				justify-content: space-between;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0.15rem 2rem;
 			}
+
 			.header__logo {
 				display: block;
+				width: auto;
 				height: auto;
 				max-height: 85px;
-				width: auto;
 			}
-			.header__logo-text {
-				color: #fff;
-				text-align: center;
-			}
-			.header__logo-line {
-				margin: 0;
-				line-height: 1.2;
-				text-align: center;
-			}
-			.header__logo-line--title {
-				color: #fff;
-				font-size: 1.2rem;
-				font-weight: 700;
-			}
-			.header__logo-line--subtitle {
-				color: #fff;
-				font-size: 0.7rem;
-				font-weight: 500;
-				text-transform: uppercase;
-			}
-			.burger {
-				background: 0;
-				border: 0;
-				cursor: pointer;
-				display: none;
-				flex-direction: column;
-				height: 18px;
-				justify-content: space-between;
-				margin: 0;
-				padding: 0;
-				width: 24px;
-				z-index: 999;
-			}
-			.burger span {
-				background: #fff;
-				display: block;
-				height: 2px;
-				width: 100%;
-			}
-			.menu-overlay {
-				display: none;
-				pointer-events: none;
-				visibility: hidden;
-			}
+
+			/* ===== Hero (LCP text) ===== */
 			.hero {
 				padding-left: 0;
 				padding-right: 0;
 			}
+
 			.hero__title {
 				font-size: 2rem;
+				line-height: 1.2;
 				margin-bottom: 0.5rem;
 				color: #1a1a1a;
-				line-height: 1.2;
 			}
+
 			.hero__meta {
-				align-items: center;
 				display: flex;
 				flex-wrap: wrap;
+				align-items: center;
 				gap: 0.5rem;
 				margin: 1.2rem 0 1.5rem;
 			}
-			.hero__text {
-				align-items: center;
-				display: flex;
-				flex-direction: column;
-			}
+
 			.hero__text p {
-				line-height: 1.6;
-				max-width: 1200px;
-				color: #222;
 				margin-bottom: 1rem;
-			}
-			h1,
-			h2,
-			h3 {
-				color: #1a1a1a;
-				line-height: 1.2;
-			}
-			p {
-				color: #222;
 				line-height: 1.6;
-				margin-bottom: 1rem;
+				color: #222;
 			}
+
+			/* ===== First casino card (visible immediately) ===== */
 			.casino-card,
 			.casino-button {
+				display: flex;
 				align-items: center;
+				justify-content: space-between;
 				background: #fff;
 				border-radius: 15px;
-				display: flex;
-				justify-content: space-between;
-				margin-bottom: 1.5rem;
 				padding: 1.5rem 1.75rem;
-				position: relative;
+				margin-bottom: 1.5rem;
 			}
-			.casino-card__info {
-				align-items: center;
-				display: flex;
-			}
+
 			.casino-card__image {
-				border-radius: 8px;
 				display: block;
-				flex-shrink: 0;
-				height: 150px;
-				max-width: 150px;
-				object-fit: contain;
 				width: 150px;
+				height: 150px;
+				object-fit: contain;
+				border-radius: 8px;
+				flex-shrink: 0;
 			}
-			.casino-card__rating {
-				align-items: center;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				text-align: center;
-				min-width: 120px;
-			}
+
 			.casino-card__score {
-				margin: 0;
 				font-size: 1.375rem;
 				font-weight: 700;
-			}
-			.casino-card__stars {
-				color: gold;
 				margin: 0;
 			}
+
+			.casino-card__stars {
+				margin: 0;
+				color: gold;
+			}
+
 			.casino-card__button {
-				align-items: center;
-				background: #1e7e34;
-				border-radius: 6px;
-				cursor: pointer;
 				display: inline-flex;
+				align-items: center;
 				justify-content: center;
 				padding: 1rem 2rem;
+				background: #1e7e34;
+				border-radius: 6px;
 				text-decoration: none;
 			}
+
 			.casino-card__button-link {
 				color: #fff;
 				font-size: 0.875rem;
@@ -292,40 +295,27 @@
 				text-decoration: none;
 			}
 
-			.footer {
-				width: 100%;
-				max-width: 100%;
-			}
+			/* ===== Mobile critical ===== */
 			@media (max-width: 767px) {
-				.burger {
-					display: flex;
-					height: 30px;
-				}
 				.header__container {
 					padding: 0.15rem 1rem;
 				}
-				.header__logo,
-				.header__logo-block .header__logo {
-					max-height: 50px !important;
+
+				.header__logo {
+					max-height: 50px;
 				}
+
 				.hero__title {
 					font-size: 1.5rem;
 				}
+
 				.casino-button {
 					flex-wrap: wrap;
 					gap: 1rem;
 				}
-				.casino-button__rating {
-					flex-direction: column;
-					align-items: center;
-					margin: 0 auto;
-				}
-				.casino-button__title {
-					font-size: 1rem;
-					font-weight: 700;
-				}
 			}
 		</style>
+
 		<link rel="stylesheet" href="/style.minified.css" />
 		<link rel="stylesheet" href="dragonia.minified.css" />
 		<style>
