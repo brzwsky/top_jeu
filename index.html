@@ -33,28 +33,18 @@
 		/>
 		<link rel="manifest" href="site.webmanifest" />
 
-		<!-- Preconnect / DNS Prefetch -->
+		<!-- Preconnect -->
 		<link
 			rel="preconnect"
 			href="https://www.google-analytics.com"
 			crossorigin
 		/>
-		<link rel="dns-prefetch" href="https://www.google-analytics.com" />
 		<link
 			rel="preconnect"
 			href="https://www.googletagmanager.com"
 			crossorigin
 		/>
-		<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 		<link rel="preconnect" href="https://analytics.ahrefs.com" crossorigin />
-		<link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
-
-		<!-- Preload LCP Image -->
-		<link
-			rel="preload"
-			as="image"
-			href="img/logo-casinos/mafiacasino-logo.svg"
-		/>
 
 		<!-- SEO & Open Graph -->
 		<meta
@@ -119,7 +109,7 @@
 						"@type": "ListItem",
 						"position": 1,
 						"item": {
-							"@type": "Casino",
+							"@type": "Organization",
 							"name": "Mafia Casino",
 							"url": "https://mfac.lunostra.com/?mid=309272_1829542",
 							"image": "https://www.topjeu777.com/img/logo-casinos/mafiacasino-logo.svg",
@@ -142,7 +132,7 @@
 						"@type": "ListItem",
 						"position": 2,
 						"item": {
-							"@type": "Casino",
+							"@type": "Organization",
 							"name": "Brutal Casino",
 							"url": "https://record.igpartners.xyz/_PwBtQtly5-OYkdHVp7xCcmNd7ZgqdRLk/1/",
 							"image": "https://www.topjeu777.com/img/logo-casinos/brutal-logo.webp",
@@ -165,7 +155,7 @@
 						"@type": "ListItem",
 						"position": 3,
 						"item": {
-							"@type": "Casino",
+							"@type": "Organization",
 							"name": "Dragonia Casino",
 							"url": "https://drgnn.lynmonkel.com/?mid=319698_1880124",
 							"image": "https://www.topjeu777.com/img/logo-casinos/dragonia-logo.webp",
@@ -188,7 +178,7 @@
 						"@type": "ListItem",
 						"position": 4,
 						"item": {
-							"@type": "Casino",
+							"@type": "Organization",
 							"name": "MrPacho Casino",
 							"url": "https://mrpc.fynkelto.com/?mid=311639_1885523",
 							"image": "https://www.topjeu777.com/img/logo-casinos/mrpacho-logo.webp",
@@ -211,7 +201,7 @@
 						"@type": "ListItem",
 						"position": 5,
 						"item": {
-							"@type": "Casino",
+							"@type": "Organization",
 							"name": "Casinostars",
 							"url": "https://record.mematoaffiliates.com/_xE9a67iwPh6YnVqGHN08XWNd7ZgqdRLk/1/",
 							"image": "https://www.topjeu777.com/img/logo-casinos/casinostars-logo.webp",
@@ -234,7 +224,7 @@
 						"@type": "ListItem",
 						"position": 6,
 						"item": {
-							"@type": "Casino",
+							"@type": "Organization",
 							"name": "CasinoPeaches",
 							"url": "https://record.primeweb-affiliates.com/_GFcvXbc7UQ6YNevImT-MDGNd7ZgqdRLk/1",
 							"image": "https://www.topjeu777.com/img/logo-casinos/peaches-logo.webp",
@@ -257,7 +247,7 @@
 						"@type": "ListItem",
 						"position": 7,
 						"item": {
-							"@type": "Casino",
+							"@type": "Organization",
 							"name": "Winzter Casino",
 							"url": "https://go.affililinks.com/visit/?bta=35262&nci=5351&afp=1&utm_campaign=FR",
 							"image": "https://www.topjeu777.com/img/logo-casinos/winzter-logo.webp",
@@ -280,7 +270,7 @@
 						"@type": "ListItem",
 						"position": 8,
 						"item": {
-							"@type": "Casino",
+							"@type": "Organization",
 							"name": "Binobet Casino",
 							"url": "https://trackingbino.bet/d0hiyugry",
 							"image": "https://www.topjeu777.com/img/logo-casinos/binobet-logo.webp",
@@ -303,7 +293,7 @@
 						"@type": "ListItem",
 						"position": 9,
 						"item": {
-							"@type": "Casino",
+							"@type": "Organization",
 							"name": "WonderLuck Casino",
 							"url": "https://wdrl.xarvilo.com/?mid=310063_1827767",
 							"image": "https://www.topjeu777.com/img/logo-casinos/wonderluck-logo.webp",
@@ -326,7 +316,7 @@
 						"@type": "ListItem",
 						"position": 10,
 						"item": {
-							"@type": "Casino",
+							"@type": "Organization",
 							"name": "CasinoLab",
 							"url": "https://cnl.naralvin.com/?mid=309905_1826181",
 							"image": "https://www.topjeu777.com/img/logo-casinos/casinolab-logo.svg",
@@ -384,15 +374,8 @@
 		</style>
 
 		<!-- Stylesheet -->
-		<link
-			rel="preload"
-			href="styles.css"
-			as="style"
-			onload="
-				this.onload = null;
-				this.rel = 'stylesheet';
-			"
-		/>
+		<link rel="stylesheet" href="styles.css" />
+
 		<noscript><link rel="stylesheet" href="styles.css" /></noscript>
 
 		<!-- Google Analytics 4 -->
@@ -668,7 +651,6 @@
 								height="83"
 								srcset="img/logo-casinos/mafiacasino-logo.svg 150w"
 							/>
-							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">Mafia Casino</h3>
 								<p class="casino-card__bonus">
@@ -721,7 +703,6 @@
 									img/logo-casinos/brutal-logo-dark.webp 150w
 								"
 							/>
-							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">Brutal Casino</h3>
 								<p class="casino-card__bonus">100% Jusqu'à 1000 €</p>
@@ -768,7 +749,7 @@
 								height="83"
 								srcset="img/logo-casinos/dragonia-logo.webp 150w"
 							/>
-							<!-- PERF: Prevent CLS -->
+
 							<div>
 								<h3 class="casino-card__title">Dragonia Casino</h3>
 								<p class="casino-card__bonus">
@@ -821,7 +802,6 @@
 									img/logo-casinos/mrpacho-logo-dark.webp 150w
 								"
 							/>
-							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">MrPacho Casino</h3>
 								<p class="casino-card__bonus">Jusqu'à 500 € + 200 Free Spins</p>
@@ -871,7 +851,7 @@
 									img/logo-casinos/casinostars-logo-dark.webp 150w
 								"
 							/>
-							<!-- PERF: Prevent CLS -->
+
 							<div>
 								<h3 class="casino-card__title">Casinostars</h3>
 								<p class="casino-card__bonus">100% Jusqu'à 300 €</p>
@@ -921,7 +901,7 @@
 									img/logo-casinos/peaches-logo-dark.webp 150w
 								"
 							/>
-							<!-- PERF: Prevent CLS -->
+
 							<div>
 								<h3 class="casino-card__title">CasinoPeaches</h3>
 								<p class="casino-card__bonus">250% Jusqu'à 1000 €</p>
@@ -952,11 +932,58 @@
 					</div>
 				</article>
 
-				<!--Card Winzter-->
+				<!--Card Spininio-->
 				<article class="casino-article fade-in">
 					<div class="casino-card">
 						<div class="casino-card__rank-bg"></div>
 						<div class="casino-card__rank">7</div>
+						<div class="casino-card__info">
+							<img
+								class="casino-card__image"
+								src="img/logo-casinos/spininio-logo.webp"
+								data-dark="img/logo-casinos/spininio-logo-dark.webp"
+								alt="Logo de Spininio Casino, classé numéro 8"
+								loading="lazy"
+								width="150"
+								height="83"
+								srcset="img/logo-casinos/spininio-logo.webp 150w"
+							/>
+
+							<div>
+								<h3 class="casino-card__title">Spininio Casino</h3>
+								<p class="casino-card__bonus">Jusqu’à 1 000 €</p>
+							</div>
+						</div>
+						<ul class="casino-card__features">
+							<li>Casino & paris sportifs réunis</li>
+							<li>Support en direct 24/7</li>
+							<li>Plateforme sécurisée</li>
+						</ul>
+						<div class="casino-card__rating">
+							<p class="casino-card__score">8.5</p>
+							<p class="casino-card__stars">★★★★★</p>
+							<p style="display: none">
+								<strong id="casino-name-spininio-top5">Spininio Casino</strong>
+							</p>
+						</div>
+						<a
+							class="casino-card__button"
+							href=" https://go.spininio.online/visit/?bta=35107&nci=7796"
+							target="_blank"
+							rel="nofollow noopener noreferrer"
+							tabindex="0"
+							aria-describedby="casino-uuid-007"
+						>
+							<span class="casino-card__button-link">Jouez maintenant</span>
+						</a>
+					</div>
+				</article>
+
+				<!--Card Winzter-->
+				<article class="casino-article fade-in">
+					<div class="casino-card">
+						<div class="casino-card__rank-bg"></div>
+						<div class="casino-card__rank">8</div>
 						<div class="casino-card__info">
 							<img
 								class="casino-card__image"
@@ -967,7 +994,7 @@
 								height="83"
 								srcset="img/logo-casinos/winzter-logo.webp 150w"
 							/>
-							<!-- PERF: Prevent CLS -->
+
 							<div>
 								<h3 class="casino-card__title">Winzter Casino</h3>
 								<p class="casino-card__bonus">Jusqu'à 3000 € + 20% Cashback</p>
@@ -979,7 +1006,7 @@
 							<li>Assistance en direct 24h/24 et 7j/7</li>
 						</ul>
 						<div class="casino-card__rating">
-							<p class="casino-card__score">8.5</p>
+							<p class="casino-card__score">8.3</p>
 							<p class="casino-card__stars">★★★★★</p>
 							<p style="display: none">
 								<strong id="casino-name-winzter-top5">Winzter Casino</strong>
@@ -1002,7 +1029,7 @@
 				<article class="casino-article fade-in">
 					<div class="casino-card">
 						<div class="casino-card__rank-bg"></div>
-						<div class="casino-card__rank">8</div>
+						<div class="casino-card__rank">9</div>
 						<div class="casino-card__info">
 							<img
 								class="casino-card__image"
@@ -1017,7 +1044,7 @@
 									img/logo-casinos/binobet-logo-dark.webp 150w
 								"
 							/>
-							<!-- PERF: Prevent CLS -->
+
 							<div>
 								<h3 class="casino-card__title">Binobet Casino</h3>
 								<p class="casino-card__bonus">
@@ -1031,7 +1058,7 @@
 							<li>Retour aux joueurs estimé à 97%</li>
 						</ul>
 						<div class="casino-card__rating">
-							<p class="casino-card__score">8.4</p>
+							<p class="casino-card__score">8.2</p>
 							<p class="casino-card__stars">★★★★★</p>
 							<p style="display: none">
 								<strong id="casino-name-binobet-top5">Binobet Casino</strong>
@@ -1054,7 +1081,7 @@
 				<article class="casino-article fade-in">
 					<div class="casino-card">
 						<div class="casino-card__rank-bg"></div>
-						<div class="casino-card__rank">9</div>
+						<div class="casino-card__rank">10</div>
 						<div class="casino-card__info">
 							<img
 								class="casino-card__image"
@@ -1066,7 +1093,7 @@
 								height="41"
 								loading="lazy"
 							/>
-							<!-- PERF: Prevent CLS -->
+
 							<div>
 								<h3 class="casino-card__title">WonderLuck Casino</h3>
 								<p class="casino-card__bonus">
@@ -1080,7 +1107,7 @@
 							<li>7621+ jeux en ligne</li>
 						</ul>
 						<div class="casino-card__rating">
-							<p class="casino-card__score">8.3</p>
+							<p class="casino-card__score">8.0</p>
 							<p class="casino-card__stars">★★★★★</p>
 							<p style="display: none">
 								<strong id="casino-name-wonderluck-top5"
@@ -1105,7 +1132,7 @@
 				<article class="casino-article fade-in">
 					<div class="casino-card">
 						<div class="casino-card__rank-bg"></div>
-						<div class="casino-card__rank">10</div>
+						<div class="casino-card__rank">11</div>
 						<div class="casino-card__info">
 							<img
 								class="casino-card__image"
@@ -1113,7 +1140,6 @@
 								alt="Logo de CasinoLab, classé numéro 11"
 								loading="lazy"
 							/>
-							<!-- PERF: Prevent CLS -->
 							<div>
 								<h3 class="casino-card__title">CasinoLab</h3>
 								<p class="casino-card__bonus">
@@ -1127,7 +1153,7 @@
 							<li>Une plateforme au style raffiné</li>
 						</ul>
 						<div class="casino-card__rating">
-							<p class="casino-card__score">8.2</p>
+							<p class="casino-card__score">7.9</p>
 							<p class="casino-card__stars">★★★★★</p>
 							<p style="display: none">
 								<strong id="casino-name-casinolab-top5">CasinoLab</strong>
@@ -1145,184 +1171,6 @@
 						</a>
 					</div>
 				</article>
-
-				<!--Card Captain Slots-->
-				<!-- <article class="casino-article fade-in">
-					<div class="casino-card">
-						<div class="casino-card__rank-bg"></div>
-						<div class="casino-card__rank">11</div>
-						<div class="casino-card__info">
-							<img
-								class="casino-card__image"
-								src="img/logo-casinos/captainslots-logo.webp"
-								data-dark="img/logo-casinos/captainslots-logo-dark.webp"
-								alt="Logo de Captain Slots Casino, classé numéro 3"
-								loading="lazy"
-							/>
-							<div>
-								<h3 class="casino-card__title">Captain Slots Casino</h3>
-								<p class="casino-card__bonus">
-									Jusqu'à 3000 € + 150 Free Spins
-								</p>
-							</div>
-						</div>
-						<ul class="casino-card__features">
-							<li>Non-Sticky Bonus</li>
-							<li>Assistance 24/7 via chat en direct et e-mail</li>
-							<li>Accès à plus de 4 580 titres de jeux en ligne</li>
-						</ul>
-						<div class="casino-card__rating">
-							<p class="casino-card__score">8.1</p>
-							<p class="casino-card__stars">★★★★★</p>
-							<p style="display: none">
-								<strong id="casino-name-captainslots-top5"
-									>Captain Slots Casino</strong
-								>
-							</p>
-						</div>
-						<a
-							class="casino-card__button"
-							href="https://record.roosterz.io/_6vYjCU0IzSRZSuvhn4yj1mNd7ZgqdRLk/1/"
-							target="_blank"
-							rel="nofollow noopener noreferrer"
-							tabindex="0"
-							aria-describedby="casino-uuid-003
-							"
-						>
-							<span class="casino-card__button-link">Jouez maintenant</span>
-						</a>
-					</div>
-				</article> -->
-
-				<!--Card Julius-->
-				<!-- <article class="casino-article fade-in">
-					<div class="casino-card">
-						<div class="casino-card__rank-bg"></div>
-						<div class="casino-card__rank">12</div>
-						<div class="casino-card__info">
-							<img
-								class="casino-card__image"
-								src="img/logo-casinos/julius-logo.svg"
-								alt="Logo de Julius Casino, classé numéro 7"
-								loading="lazy"
-							/>
-							<div>
-								<h3 class="casino-card__title">Julius Casino</h3>
-								<p class="casino-card__bonus">
-									Jusqu'à 3000 € + 150 Free Spins
-								</p>
-							</div>
-						</div>
-						<ul class="casino-card__features">
-							<li>Entièrement régulé par la licence Curaçao</li>
-							<li>RTP élevé de 98%</li>
-							<li>Plus de 4000 jeux</li>
-						</ul>
-						<div class="casino-card__rating">
-							<p class="casino-card__score">8.0</p>
-							<p class="casino-card__stars">★★★★★</p>
-							<p style="display: none">
-								<strong id="casino-name-julius-top5">Julius Casino</strong>
-							</p>
-						</div>
-						<a
-							class="casino-card__button"
-							href="https://record.roosterz.io/_6vYjCU0IzSTUOsjNOfgKeWNd7ZgqdRLk/1/"
-							target="_blank"
-							rel="nofollow noopener noreferrer"
-							tabindex="0"
-							aria-describedby="casino-uuid-007"
-						>
-							<span class="casino-card__button-link">Jouez maintenant</span>
-						</a>
-					</div>
-				</article> -->
-
-				<!--Card Sushi-->
-				<!-- <article class="casino-article fade-in">
-					<div class="casino-card">
-						<div class="casino-card__rank-bg"></div>
-						<div class="casino-card__rank">12</div>
-						<div class="casino-card__info">
-							<img
-								class="casino-card__image"
-								src="img/logo-casinos/sushicasino-logo.webp"
-								alt="Logo de Sushi Casino, classé numéro 12"
-								loading="lazy"
-							/>
-							<div>
-								<h3 class="casino-card__title">Sushi Casino</h3>
-								<p class="casino-card__bonus">Jusqu'à 2500 € + 50 Free Spins</p>
-							</div>
-						</div>
-						<ul class="casino-card__features">
-							<li>+1 000 jeux de casino en direct</li>
-							<li>Programme VIP exclusif</li>
-							<li>RTP - 96%</li>
-						</ul>
-						<div class="casino-card__rating">
-							<p class="casino-card__score">8.1</p>
-							<p class="casino-card__stars">★★★★★</p>
-							<p style="display: none">
-								<strong id="casino-name-sushi-top5">Sushi Casino</strong>
-							</p>
-						</div>
-						<a
-							class="casino-card__button"
-							href="https://www.sush1casin0.com/fr"
-							target="_blank"
-							rel="nofollow noopener noreferrer"
-							tabindex="0"
-							aria-describedby="casino-uuid-012"
-						>
-							<span class="casino-card__button-link">Jouez maintenant</span>
-						</a>
-					</div>
-				</article> -->
-
-				<!--Card GoldSpin-->
-				<!-- <article class="casino-article fade-in">
-					<div class="casino-card">
-						<div class="casino-card__rank-bg"></div>
-						<div class="casino-card__rank">5</div>
-						<div class="casino-card__info">
-							<img
-								class="casino-card__image"
-								src="img/logo-casinos/goldspin-logo.svg"
-								alt="Logo de GoldSpin Casino, classé numéro 5"
-								loading="lazy"
-							/>
-							<div>
-								<h3 class="casino-card__title">GoldSpin Casino</h3>
-								<p class="casino-card__bonus">
-									Jusqu'à 3000 € + 100 Free Spins
-								</p>
-							</div>
-						</div>
-						<ul class="casino-card__features">
-							<li>Double système de cashback</li>
-							<li>Outil de création de paris intuitif</li>
-							<li>Traitement des paiements ultra-rapide</li>
-						</ul>
-						<div class="casino-card__rating">
-							<p class="casino-card__score">9.2</p>
-							<p class="casino-card__stars">★★★★★</p>
-							<p style="display: none">
-								<strong id="casino-name-goldspin-top5">GoldSpin Casino</strong>
-							</p>
-						</div>
-						<a
-							class="casino-card__button"
-							href="https://www.goldspin06310.com/fr-ca"
-							target="_blank"
-							rel="nofollow noopener noreferrer"
-							tabindex="0"
-							aria-describedby="casino-uuid-005"
-						>
-							<span class="casino-card__button-link">Jouez maintenant</span>
-						</a>
-					</div>
-				</article> -->
 			</section>
 
 			<!--Mon Top 10 des meilleurs casinos en ligne 2026-->
@@ -2409,7 +2257,7 @@
 						💬 Un casino en ligne fiable, rapide, et pensé pour les joueurs
 						francophones exigeants.
 					</p>
-				</section>
+				</section>-->
 
 				<!--Review Sushi Casino-->
 				<!-- <section class="casino-review_sushi-casino fade-in">
@@ -2603,9 +2451,9 @@
 						💬 Un casino au goût unique, qui marie parfaitement fun, fidélité et
 						générosité.
 					</p>
-				</section>
+				</section>-->
 
-				<!--Review Peaches Casino-->
+				<!-- Review Peaches Casino -->
 				<section class="casino-review_peaches-casino fade-in">
 					<h3 class="content-width fade-in">
 						CasinoPeaches - un site de jeu en ligne rafraîchissant et prometteur
@@ -2624,13 +2472,13 @@
 						/>
 					</a>
 					<p class="content-width fade-in">
-						Casino Peaches est un nouveau site de jeu en ligne qui se distingue
+						CasinoPeaches est un nouveau site de jeu en ligne qui se distingue
 						par son interface colorée et son approche conviviale. Bien qu’il
 						soit encore jeune, il propose une sélection de jeux de qualité et un
 						<strong>bonus de bienvenue de 250% jusqu’à 1000 €</strong>.
 					</p>
 					<p class="content-width fade-in">
-						Casino Peaches propose des jeux de fournisseurs réputés comme Play’n
+						CasinoPeaches propose des jeux de fournisseurs réputés comme Play’n
 						GO, Pragmatic Play ou BGaming, tous équipés de RNG. Les logiciels
 						sont <strong>certifiés par eCOGRA et iTechLabs</strong> pour assurer
 						des résultats aléatoires et équitables.
@@ -2733,11 +2581,11 @@
 					<h4 style="margin-top: 2rem" class="fade-in">❌ À noter :</h4>
 					<ul class="content-width fade-in">
 						<li>Navigation un peu compliquée sans filtres de jeux</li>
-						<li>Impossible d’essayer les jeux gratuitement en mode démo.</li>
+						<li>Impossible d’essayer les jeux gratuitement en mode démo</li>
 					</ul>
 					<h4 class="fade-in">🔍 Mon petit mot en tant que testeuse :</h4>
 					<p class="light fade-in" style="font-style: italic">
-						J’ai exploré Casino Peaches pour découvrir son univers fruité et
+						J’ai exploré CasinoPeaches pour découvrir son univers fruité et
 						coloré. L’inscription a été rapide et la navigation très intuitive.
 						J’ai déposé 25 € et
 						<strong>j’ai testé le Texas Hold’em Poker en direct</strong> - une
@@ -2747,7 +2595,7 @@
 					</p>
 					<h4 style="margin-top: 2rem" class="fade-in">Verdict :</h4>
 					<p class="content-width fade-in">
-						Casino Peaches, c’est un univers pétillant ✨ où l’on peut s’amuser
+						CasinoPeaches, c’est un univers pétillant ✨ où l’on peut s’amuser
 						sur des jeux comme Sweet Bonanza ou Fruit Party, parfaits pour
 						découvrir le casino sans se prendre la tête. Les bonus sont créatifs
 						et généreux : cashback sans condition de mise et
@@ -2755,14 +2603,14 @@
 					</p>
 					<p class="light fade-in" style="font-style: italic; margin-top: 2rem">
 						💬 Vous aimez les jeux sucrés et les expériences fruitées ? 🍑
-						Casino Peaches est un vrai bonbon ! Même si le site est jeune, il
+						CasinoPeaches est un vrai bonbon ! Même si le site est jeune, il
 						offre des parties fun et colorées qui donnent envie de cliquer
 						partout. Parfait pour les curieux et les joueurs débutants qui
 						veulent explorer sans stress. 😄
 					</p>
 				</section>
 
-				<!-- Winzter Casino -->
+				<!-- Review  Winzter Casino -->
 				<section class="casino-review_winzter-casino fade-in">
 					<h3 class="content-width fade-in">
 						Winzter Casino - une plateforme moderne aux promesses ambitieuses
@@ -2933,7 +2781,7 @@
 					</p>
 				</section>
 
-				<!-- Binobet Casino -->
+				<!--Review  Binobet Casino -->
 				<section class="casino-review_binobet-casino fade-in">
 					<h3 class="content-width fade-in">
 						Binobet Casino - un univers audacieux pour les joueurs à la
@@ -3067,7 +2915,7 @@
 					<ul class="content-width fade-in">
 						<li>
 							Quelques parties des conditions d’utilisation ne sont pas encore
-							dispo en français ;
+							dispo en français 
 						</li>
 						<li>
 							En dehors des cryptos,
@@ -3125,8 +2973,224 @@
 					</p>
 				</section>
 
+				<!-- Review Spininio Casino -->
+				<section class="casino-review_spininio-casino fade-in">
+					<h3 class="content-width fade-in">
+						Spininio Casino – jouer au casino et aux paris sportifs au même
+						endroit
+					</h3>
+					<a
+						class="banners fade-in"
+						rel="nofollow noopener noreferrer"
+						href="https://go.spininio.online/visit/?bta=35107&nci=7796"
+					>
+						<img
+							src="img/banners/spininio-banner.webp"
+							alt="Bannière promotionnelle de Spininio Casino, univers pirate"
+							width="1200"
+							height="680"
+							loading="lazy"
+						/>
+					</a>
+					<p class="content-width fade-in">
+						Spininio Casino est un casino en ligne moderne qui s’adresse aux
+						<strong>joueurs francophones</strong>, avec
+						<strong>des bonus attractifs</strong> en euros, une sélection variée
+						de jeux et une interface simple à prendre en main. Voici mon avis
+						après test.
+					</p>
+					<p class="content-width fade-in">
+						Spininio Casino est une plateforme de jeu en ligne relativement
+						récente qui combine casino en ligne et paris sportifs au sein d’un
+						même compte. Le site mise sur une navigation fluide, des paiements
+						sécurisés en euros et une offre de jeux suffisamment large pour
+						convenir aussi bien aux nouveaux joueurs qu’aux profils plus
+						expérimentés.
+					</p>
+					<p class="content-width fade-in">
+						Dès les premières minutes, l’interface se montre claire, moderne et
+						parfaitement adaptée au jeu sur ordinateur comme sur mobile.
+					</p>
+					<p class="content-width fade-in">
+						Spininio Casino propose un
+						<strong>bonus de bienvenue pouvant atteindre 1 000</strong> €, un
+						large choix de machines à sous, des jeux de table populaires et un
+						casino en direct immersif. Ce
+						<strong>casino en ligne</strong> s’adresse aux
+						<strong>joueurs francophones</strong> et permet de jouer en
+						<strong>euros</strong> (€) en toute simplicité grâce à de
+						<strong>nombreuses méthodes de paiement sécurisées</strong>,
+						incluant
+						<strong>
+							Visa, Mastercard, Skrill, Apple Pay, Google Pay, cartes prépayées,
+							portefeuilles électroniques et cryptomonnaies</strong
+						>, avec des <strong>dépôts rapides et des retraits fiables</strong>.
+					</p>
+
+					<section class="casino-info content-width fade-in">
+						<table>
+							<caption class="visually-hidden">
+								Informations sur Spininio Casino
+							</caption>
+							<tbody>
+								<tr>
+									<th>📅 Année de création</th>
+									<td>2026</td>
+								</tr>
+								<tr>
+									<th>🎮 Nombre de jeux</th>
+									<td>10000+</td>
+								</tr>
+								<tr>
+									<th>🎁 Bonus de bienvenue</th>
+									<td>Jusqu'à 1000 €</td>
+								</tr>
+								<tr>
+									<th>💳 Dépôt minimum</th>
+									<td>10 €</td>
+								</tr>
+								<tr>
+									<th>⏳ Délai de dépôt</th>
+									<td>Instantané</td>
+								</tr>
+								<tr>
+									<th>💶 Retrait minimum</th>
+									<td>5 €</td>
+								</tr>
+								<tr>
+									<th>🕛 Délai de retrait</th>
+									<td>0 à 72 heures</td>
+								</tr>
+								<tr>
+									<th>📜 Licence</th>
+									<td>Anjouan Gaming License</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<section class="casino-card casino-button fade-in">
+						<div class="casino-card__info casino-card__info_logo">
+							<img
+								class="casino-card__image fade-in"
+								src="img/logo-casinos/spininio-logo.webp"
+								data-dark="img/logo-casinos/spininio-logo-dark.webp"
+								alt="Logo de Spininio Casino (section avis détaillé)"
+								width="150"
+								height="30"
+								loading="lazy"
+							/>
+						</div>
+						<div class="casino-button__rating fade-in">
+							<p class="casino-card__score">8.5</p>
+							<p class="casino-card__stars">★★★★★</p>
+							<p style="white-space: nowrap">
+								<strong id="casino-name-captainslots-detail"
+									>Spininio Casino</strong
+								>
+							</p>
+						</div>
+						<div class="casino-card__features fade-in">
+							<h4 class="casino-button__title">Bonus De Bienvenue</h4>
+							<p class="casino-card__bonus" style="text-align: center">
+								Jusqu'à 1000 €
+							</p>
+						</div>
+						<a
+							class="casino-card__button fade-in"
+							href="https://go.spininio.online/visit/?bta=35107&nci=7796"
+							target="_blank"
+							rel="nofollow noopener noreferrer"
+							tabindex="0"
+							aria-describedby="casino-uuid-007"
+						>
+							<span class="casino-card__button-link fade-in"
+								>Jouez maintenant</span
+							>
+						</a>
+					</section>
+					<h4 style="margin-top: 2rem" class="fade-in">✅ Avantages :</h4>
+					<ul class="content-width fade-in">
+						<li>
+							<strong
+								>Casino & sportsbook réunis sur une seule plateforme</strong
+							>
+						</li>
+						<li>
+							<strong>Bonus attractifs en euros</strong>, incluant casino et
+							paris sportifs
+						</li>
+						<li>
+							<strong>Catalogue de jeux étendu</strong>: machines à sous, jeux
+							de table, live casino
+						</li>
+						<li>
+							<strong>Large choix de paris sportifs</strong>, y compris live
+							betting et e-sports
+						</li>
+						<li>
+							<strong>Paiements en EUR</strong> , dépôts rapides et retraits
+							sans frais cachés
+						</li>
+						<li>
+							<strong>Excellente expérience mobile</strong>, sans application
+							obligatoire
+						</li>
+						<li>
+							<strong>Sécurité SSL</strong> et outils de jeu responsable
+							intégrés
+						</li>
+					</ul>
+					<h4 style="margin-top: 2rem" class="fade-in">❌ À noter :</h4>
+					<ul class="content-width">
+						<li>
+							<strong>Licence offshore (Anjouan)</strong> , avec un niveau de
+							régulation plus souple
+						</li>
+						<li>
+							Certaines options peuvent<strong
+								>varier selon la localisation du joueur</strong
+							>
+						</li>
+					</ul>
+					<h4 style="margin-top: 2rem" class="fade-in">
+						🔍 Mon petit mot en tant que testeuse :
+					</h4>
+					<p class="light fade-in" style="font-style: italic">
+						Après test, Spininio laisse une impression plutôt positive, surtout
+						grâce à sa <strong>simplicité d’utilisation</strong> et à son
+						concept <strong>tout-en-un casino + paris sportifs</strong>. La
+						navigation est intuitive, les jeux se chargent rapidement et
+						l’ensemble fonctionne très bien sur mobile.
+					</p>
+					<p class="light fade-in" style="font-style: italic">
+						Comme souvent avec les plateformes sous licence offshore, je
+						recommande cependant de
+						<strong>prendre le temps de lire les conditions de bonus</strong> et
+						de gérer son budget intelligemment. Spininio est intéressant pour
+						jouer régulièrement, mais sans précipitation sur les retraits tant
+						que les exigences ne sont pas remplies.
+					</p>
+
+					<h4 style="margin-top: 2rem" class="fade-in">Verdict :</h4>
+					<p class="content-width">
+						<strong>Spininio Casino</strong> s’adresse aux
+						<strong>joueurs francophones</strong> qui recherchent une plateforme
+						moderne, polyvalente et simple à utiliser, avec la possibilité
+						d’alterner entre <strong>casino et paris sportifs</strong>. Sans
+						être le casino le plus strictement régulé du marché, il offre une
+						<strong>expérience cohérente et équilibrée</strong>,
+						particulièrement appréciable pour ceux qui aiment tout avoir au même
+						endroit.
+					</p>
+					<p class="light" style="font-style: italic; margin-top: 2rem">
+						💬 Spininio mise sur la polyvalence et la simplicité — un bon choix
+						pour les joueurs francophones qui veulent casino et sports sans
+						complications.
+					</p>
+				</section>
+
 				<!--Review Captain Slots Casino-->
-				<section class="casino-review_capitan-slots-casino fade-in">
+				<!-- <section class="casino-review_capitan-slots-casino fade-in">
 					<h3 class="content-width fade-in">
 						Captain Slots Casino - une aventure pirate pleine de surprises
 					</h3>
@@ -3272,7 +3336,7 @@
 						<strong>À vos trésors… et jackpots !</strong>
 						💎
 					</p>
-				</section>
+				</section> -->
 
 				<!--Review Julius Casino-->
 				<section class="casino-review_julius-casino fade-in">

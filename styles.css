@@ -1858,7 +1858,6 @@ body:not(.dark) #accept-analytics-btn:focus-visible {
 }
 
 .banners img {
-	aspect-ratio: 4 / 1;
 	display: block;
 	height: auto;
 	width: 100%;
